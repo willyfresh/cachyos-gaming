@@ -18,3 +18,10 @@ A running record of installs and config changes. Package names that should survi
   - `visual-studio-code-bin` 1.136.0-1 (official Microsoft VS Code with marketplace; repo `code` is Code OSS)
 - `setup.sh` / `pkg-add.sh` now install repo extras via pacman and AUR extras via paru.
 - Launchers: `google-chrome-stable` and `code`. Custom flags live in `~/.config/chrome-flags.conf` and `~/.config/code-flags.conf` if we need them later.
+
+## 2026-09-02 — Super tap opens the launcher
+
+- Stock CachyOS bind is Super+Ctrl+Enter (`Mod+CTRL+Return`). Kept as a fallback.
+- Bound Super+Space to `noctalia msg panel-toggle launcher`.
+- Installed `keyd` so tapping Super sends Super+Space (hold Super still works as a modifier).
+- keyd config lives in `configs/keyd/default.conf` and is installed to `/etc/keyd/default.conf` by `scripts/apply-system.sh`.

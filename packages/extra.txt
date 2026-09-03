@@ -6,3 +6,6 @@
 
 # AUR helper used by setup.sh / pkg-add.sh for packages/aur.txt
 paru
+
+# Super tap -> launcher (see configs/keyd/default.conf)
+keyd

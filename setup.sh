@@ -49,6 +49,7 @@ fi
 
 if ((do_configs)); then
   "$REPO_ROOT/scripts/apply-configs.sh"
+  "$REPO_ROOT/scripts/apply-system.sh"
 fi
 
 journal_append "ran setup.sh" "$(cat <<EOF

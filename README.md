@@ -18,6 +18,7 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `setup.sh` | Fresh-install bootstrap |
 | `configs/niri` | niri config (live, via symlink) |
 | `configs/noctalia` | noctalia-shell config (live, via symlink) |
+| `configs/keyd` | Super-tap → launcher (`/etc/keyd/default.conf`) |
 | `packages/extra.txt` | Extra **repo** packages (pacman), including `paru` |
 | `packages/aur.txt` | Extra **AUR** packages (`google-chrome`, `visual-studio-code-bin`, …) |
 | `packages/baseline/` | Snapshot of explicitly installed packages on day 0 |

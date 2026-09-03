@@ -1,0 +1,9 @@
+# Local backups created when applying configs over existing files
+records/backups/
+
+# Editor / OS noise
+*~
+*.swp
+*.swo
+.DS_Store
+.directory

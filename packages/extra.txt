@@ -1,0 +1,5 @@
+# Extra packages to install on top of a stock CachyOS niri install.
+# One package per line. Blank lines and comments are ignored.
+#
+# Prefer:  ./scripts/pkg-add.sh steam lutris
+# That installs the package, appends it here, and logs it in records/journal.md

@@ -41,6 +41,17 @@ MangoHud:
 mangohud game-performance %command%
 ```
 
+## Halo Infinite (AppID 1240440)
+
+Library lives on `/mnt/tb1/SteamLibrary`. It was exiting instantly because the old Windows launch options called `gamemoderun`, which is not installed here (ananicy-cpp is the CachyOS niceness daemon).
+
+| Setting | Value |
+| --- | --- |
+| Compatibility tool | `proton-cachyos-slr` (EAC-friendly SLR build) |
+| Launch options | `VKD3D_DISABLE_EXTENSIONS=VK_NV_device_generated_commands_compute game-performance %command%` |
+
+The `VKD3D_DISABLE_EXTENSIONS=...` bit is the NVIDIA workaround from ProtonDB (RTX cards freeze in-game without it). Campaign and social/custom games work with Microsoft’s EAC opt-in; ranked can still be picky on a custom kernel.
+
 ## Heroic
 
 Settings → Wine version: **Proton - proton-cachyos-slr**. Wrapper: `game-performance`.

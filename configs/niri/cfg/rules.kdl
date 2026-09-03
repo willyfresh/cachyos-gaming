@@ -45,6 +45,11 @@
        open-focused false
     }
 
+    window-rule {
+        match app-id=r#"^steam_app_1240440$"#
+        open-fullscreen true
+    }
+
     layer-rule {
         match namespace="^noctalia-wallpaper"
         place-within-backdrop true

@@ -44,3 +44,9 @@ A running record of installs and config changes. Package names that should survi
 
 - Steam client update (2026-09-01) + niri/xwayland-satellite: dropdowns appear for a frame then vanish.
 - Stop clipping Steam windows (`clip-to-geometry false`), min-size empty-title popups, launch with `-cef-disable-gpu-compositing` via a user steam.desktop override.
+
+## 2026-09-03 — Halo Infinite launch options
+
+- AppID 1240440 on `/mnt/tb1/SteamLibrary` was exiting instantly: leftover `gamemoderun` in launch options, and GameMode is not installed.
+- Replaced with `game-performance`, kept NVIDIA `VKD3D_DISABLE_EXTENSIONS=VK_NV_device_generated_commands_compute`.
+- Forced compatibility tool to `proton-cachyos-slr` for Easy Anti-Cheat.

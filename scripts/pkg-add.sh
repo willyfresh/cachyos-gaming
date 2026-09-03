@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-# Install packages with pacman, add them to packages/extra.txt, and journal it.
+# Install packages, record them in extra.txt (repos) or aur.txt (AUR), and journal.
 #
-# Usage: ./scripts/pkg-add.sh steam lutris gamemode
+# Repo packages go through pacman. Anything not in a sync db is treated as AUR
+# and installed with paru (installed from the CachyOS repos if missing).
+#
+# Usage: ./scripts/pkg-add.sh steam lutris google-chrome
 
 set -euo pipefail
 # shellcheck source=lib.sh
@@ -14,32 +17,58 @@ fi
 need_cmd pacman
 mkdir -p "$PACKAGES_DIR"
 touch "$EXTRA_PKGS"
+touch "$AUR_PKGS"
 
-mapfile -t existing < <(read_pkg_list "$EXTRA_PKGS")
-declare -A have=()
-for p in "${existing[@]+"${existing[@]}"}"; do
-  [[ -n "$p" ]] && have["$p"]=1
-done
+repo_install=()
+aur_install=()
+repo_new=()
+aur_new=()
 
-new=()
 for p in "$@"; do
-  if [[ -n "${have[$p]:-}" ]]; then
-    log "already in extra.txt: $p"
+  if pkg_is_repo "$p"; then
+    repo_install+=("$p")
+    if list_has_pkg "$EXTRA_PKGS" "$p"; then
+      log "already in extra.txt: $p"
+    else
+      repo_new+=("$p")
+    fi
   else
-    new+=("$p")
+    aur_install+=("$p")
+    if list_has_pkg "$AUR_PKGS" "$p"; then
+      log "already in aur.txt: $p"
+    else
+      aur_new+=("$p")
+    fi
   fi
 done
 
-log "installing: $*"
-sudo pacman -S --needed "$@"
-
-if ((${#new[@]})); then
-  {
-    printf '\n# %s\n' "$(date +%F)"
-    printf '%s\n' "${new[@]}"
-  } >> "$EXTRA_PKGS"
-  log "appended to extra.txt: ${new[*]}"
+if ((${#repo_install[@]})); then
+  log "installing from repos: ${repo_install[*]}"
+  sudo pacman -S --needed "${repo_install[@]}"
 fi
 
-journal_append "installed $*" "$(printf -- '- pacman -S --needed %s\n' "$*")"
+if ((${#aur_install[@]})); then
+  ensure_paru
+  log "installing from AUR: ${aur_install[*]}"
+  paru -S --needed --skipreview --removemake --sudoloop "${aur_install[@]}"
+fi
+
+for p in "${repo_new[@]+"${repo_new[@]}"}"; do
+  [[ -n "$p" ]] || continue
+  append_pkg "$EXTRA_PKGS" "$p"
+  log "appended to extra.txt: $p"
+done
+
+for p in "${aur_new[@]+"${aur_new[@]}"}"; do
+  [[ -n "$p" ]] || continue
+  append_pkg "$AUR_PKGS" "$p"
+  log "appended to aur.txt: $p"
+done
+
+journal_append "installed $*" "$(cat <<EOF
+- requested: $*
+- repos (pacman): ${repo_install[*]:-(none)}
+- AUR (paru): ${aur_install[*]:-(none)}
+EOF
+)"
 log "journaled in $JOURNAL"

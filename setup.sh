@@ -2,7 +2,7 @@
 # Bootstrap this CachyOS niri setup after a reinstall.
 #
 # Usage:
-#   ./setup.sh                 # install extra packages + apply configs
+#   ./setup.sh                 # install extra + AUR packages and apply configs
 #   ./setup.sh --packages-only
 #   ./setup.sh --configs-only
 #   ./setup.sh -h
@@ -17,8 +17,8 @@ usage() {
   cat <<'EOF'
 Bootstrap cachyos-gaming on a CachyOS niri install.
 
-  ./setup.sh                 install extra packages and apply configs
-  ./setup.sh --packages-only install packages listed in packages/extra.txt
+  ./setup.sh                 install extra + AUR packages and apply configs
+  ./setup.sh --packages-only install packages/extra.txt and packages/aur.txt
   ./setup.sh --configs-only  symlink configs/ into ~/.config
   ./setup.sh -h              show this help
 
@@ -44,13 +44,7 @@ done
 
 if ((do_packages)); then
   need_cmd pacman
-  mapfile -t pkgs < <(read_pkg_list "$EXTRA_PKGS")
-  if ((${#pkgs[@]} == 0)); then
-    log "no extra packages in packages/extra.txt"
-  else
-    log "installing extra packages: ${pkgs[*]}"
-    sudo pacman -S --needed "${pkgs[@]}"
-  fi
+  install_package_lists --noconfirm
 fi
 
 if ((do_configs)); then

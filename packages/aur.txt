@@ -1,0 +1,9 @@
+# AUR packages. Installed with paru after packages/extra.txt.
+# One package per line. Blank lines and comments are ignored.
+#
+# google-chrome: Google does not allow CachyOS to ship Chrome in the repos.
+# visual-studio-code-bin: official Microsoft VS Code (marketplace included).
+# The repos only have Code OSS (`code`), which is not this package.
+
+google-chrome
+visual-studio-code-bin

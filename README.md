@@ -9,7 +9,7 @@ cd ~/Projects/cachyos-gaming
 ./setup.sh
 ```
 
-That installs whatever is listed in `packages/extra.txt` and points `~/.config/niri` and `~/.config/noctalia` at the copies in this repo.
+That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (via paru), then points `~/.config/niri` and `~/.config/noctalia` at the copies in this repo.
 
 ## Layout
 
@@ -18,7 +18,8 @@ That installs whatever is listed in `packages/extra.txt` and points `~/.config/n
 | `setup.sh` | Fresh-install bootstrap |
 | `configs/niri` | niri config (live, via symlink) |
 | `configs/noctalia` | noctalia-shell config (live, via symlink) |
-| `packages/extra.txt` | Extra packages to install on top of stock CachyOS niri |
+| `packages/extra.txt` | Extra **repo** packages (pacman), including `paru` |
+| `packages/aur.txt` | Extra **AUR** packages (`google-chrome`, `visual-studio-code-bin`, …) |
 | `packages/baseline/` | Snapshot of explicitly installed packages on day 0 |
 | `records/journal.md` | Human log of installs and setup runs |
 | `records/hardware.md` | This machine's hardware |
@@ -32,7 +33,7 @@ That installs whatever is listed in `packages/extra.txt` and points `~/.config/n
 ./scripts/pkg-add.sh steam gamemode
 ```
 
-That runs `pacman -S --needed`, appends the name to `packages/extra.txt`, and writes a journal entry.
+Repo packages go through pacman into `packages/extra.txt`. Anything not in a sync database is treated as AUR, installed with paru, and recorded in `packages/aur.txt`.
 
 **Edit niri / noctalia:** change files under `configs/`. They are the live configs. Commit when it feels right.
 

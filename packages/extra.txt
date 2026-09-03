@@ -9,3 +9,13 @@ paru
 
 # Super tap -> launcher (see configs/keyd/default.conf)
 keyd
+
+# Gaming: CachyOS meta pulls proton-cachyos-slr, umu-launcher, wine-cachyos-opt,
+# winetricks, protontricks, vulkan-tools, and the 32-bit libs Steam needs.
+cachyos-gaming-meta
+steam
+heroic-games-launcher-bin
+mangohud
+lib32-mangohud
+gamescope
+goverlay

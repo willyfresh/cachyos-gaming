@@ -10,4 +10,9 @@ mkdir -p "$HOME/.config"
 link_path "$CONFIGS_DIR/niri" "$HOME/.config/niri"
 link_path "$CONFIGS_DIR/noctalia" "$HOME/.config/noctalia"
 
+if [[ -f "$CONFIGS_DIR/environment.d/gaming.conf" ]]; then
+  mkdir -p "$HOME/.config/environment.d"
+  link_path "$CONFIGS_DIR/environment.d/gaming.conf" "$HOME/.config/environment.d/gaming.conf"
+fi
+
 log "configs applied"

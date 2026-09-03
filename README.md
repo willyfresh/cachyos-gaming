@@ -24,6 +24,7 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `packages/baseline/` | Snapshot of explicitly installed packages on day 0 |
 | `records/journal.md` | Human log of installs and setup runs |
 | `records/hardware.md` | This machine's hardware |
+| `records/gaming.md` | Steam / Heroic / Proton notes |
 | `scripts/pkg-add.sh` | Install a package *and* record it |
 
 ## Day-to-day

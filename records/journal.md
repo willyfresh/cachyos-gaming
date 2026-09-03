@@ -31,3 +31,11 @@ A running record of installs and config changes. Package names that should survi
 - Stock automatic layout had HDMI-A-1 (serial C5LMQS118094) on the left and DP-1 (K1LMQS100417) on the right.
 - Explicit positions in `configs/niri/cfg/display.kdl`: DP-1 at x=0 (left), HDMI-A-1 at x=1920 (right), both 1920×1080@60.
 - Outputs are adjacent, so the cursor can move across the bezel. Niri still keeps a separate workspace strip per monitor (not one giant canvas).
+
+## 2026-09-02 — gaming stack
+
+- NVIDIA already healthy: driver 610.57.04, Vulkan 1.4, `lib32-nvidia-utils`, ntsync loaded. No driver work needed.
+- Installed `cachyos-gaming-meta` (proton-cachyos-slr, umu-launcher, wine-cachyos-opt, winetricks, protontricks, vulkan-tools), `steam`, `heroic-games-launcher-bin`, `mangohud`, `lib32-mangohud`, `gamescope`, `goverlay`.
+- Did not install GameMode (`ananicy-cpp` is already running) or Lutris.
+- NVIDIA shader cache raised to 12 GB via `configs/environment.d/gaming.conf` and niri `environment`.
+- Notes: `records/gaming.md`.

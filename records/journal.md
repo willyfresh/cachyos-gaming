@@ -25,3 +25,9 @@ A running record of installs and config changes. Package names that should survi
 - Bound Super+Space to `noctalia msg panel-toggle launcher`.
 - Installed `keyd` so tapping Super sends Super+Space (hold Super still works as a modifier).
 - keyd config lives in `configs/keyd/default.conf` and is installed to `/etc/keyd/default.conf` by `scripts/apply-system.sh`.
+
+## 2026-09-02 — swap the two VE247s in software
+
+- Stock automatic layout had HDMI-A-1 (serial C5LMQS118094) on the left and DP-1 (K1LMQS100417) on the right.
+- Explicit positions in `configs/niri/cfg/display.kdl`: DP-1 at x=0 (left), HDMI-A-1 at x=1920 (right), both 1920×1080@60.
+- Outputs are adjacent, so the cursor can move across the bezel. Niri still keeps a separate workspace strip per monitor (not one giant canvas).

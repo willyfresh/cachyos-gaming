@@ -1,9 +1,21 @@
 // ────────────── Output Configuration ──────────────
-// You can run `niri msg outputs` to get the correct name for your displays.
-// You will have to remove "/-" and edit it before it takes effect.
+// niri msg outputs  — connector, serial, and live position
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+//
+// Two ASUS VE247s, side by side. Positions are in logical pixels.
+// The cursor only crosses monitors that actually touch.
 
-/- output "DP-1" {
-    mode "2560x1440@359.979" // Set resolution and refresh rate
-    scale 1 // No scaling (use 2 for HiDPI)
+// Left: DP-1, serial K1LMQS100417
+output "Ancor Communications Inc VE247 K1LMQS100417" {
+    mode "1920x1080@60.000"
+    scale 1
+    position x=0 y=0
+    focus-at-startup
+}
+
+// Right: HDMI-A-1, serial C5LMQS118094
+output "Ancor Communications Inc VE247 C5LMQS118094" {
+    mode "1920x1080@60.000"
+    scale 1
+    position x=1920 y=0
 }

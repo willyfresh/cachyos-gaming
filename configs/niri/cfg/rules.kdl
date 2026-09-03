@@ -18,11 +18,25 @@
         default-window-height { fixed 920; }
     }
 
-    // if you use steam you will probably like these
+    // Steam menus are X11 child windows (empty title). clip-to-geometry plus
+    // focus-follows-mouse makes them flash and vanish on niri/xwayland-satellite.
+    window-rule {
+        match app-id="steam"
+        clip-to-geometry false
+        geometry-corner-radius 0
+    }
+
     window-rule {
         match app-id="steam"
         exclude title=r#"^[Ss]team$"#
         open-floating true
+    }
+
+    window-rule {
+        match app-id="steam" title=r#"^$"#
+        open-floating true
+        min-width 1
+        min-height 1
     }
 
     window-rule {

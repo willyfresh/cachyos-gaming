@@ -39,3 +39,8 @@ A running record of installs and config changes. Package names that should survi
 - Did not install GameMode (`ananicy-cpp` is already running) or Lutris.
 - NVIDIA shader cache raised to 12 GB via `configs/environment.d/gaming.conf` and niri `environment`.
 - Notes: `records/gaming.md`.
+
+## 2026-09-02 — Steam menus flash and close
+
+- Steam client update (2026-09-01) + niri/xwayland-satellite: dropdowns appear for a frame then vanish.
+- Stop clipping Steam windows (`clip-to-geometry false`), min-size empty-title popups, launch with `-cef-disable-gpu-compositing` via a user steam.desktop override.

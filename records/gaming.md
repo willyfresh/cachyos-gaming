@@ -17,6 +17,8 @@ RTX 2060, nvidia-open 610.57.04, niri + noctalia. Drivers were already in place 
 
 ## Steam
 
+Steam menus flash-and-die on niri after the 2026-09-01 client update (xwayland-satellite treats CEF child windows badly). We launch Steam with `-cef-disable-gpu-compositing` via `configs/applications/steam.desktop`, and we do not clip Steam windows. If menus still vanish, fully quit Steam (`steam -shutdown`) and reopen it from the launcher. Settings can also be opened with `steam steam://open/settings`.
+
 1. Open Steam, log in, let it finish first-run downloads.
 2. Settings → Compatibility: leave the **default** on Valve Proton or Proton Experimental.
 3. Per-game, force **proton-cachyos** (the SLR build) when you want CachyOS extras or anti-cheat titles.

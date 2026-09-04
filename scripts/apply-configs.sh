@@ -15,9 +15,33 @@ if [[ -f "$CONFIGS_DIR/environment.d/gaming.conf" ]]; then
   link_path "$CONFIGS_DIR/environment.d/gaming.conf" "$HOME/.config/environment.d/gaming.conf"
 fi
 
+mkdir -p "$HOME/.local/share/applications"
+mkdir -p "$HOME/.local/bin"
+
 if [[ -f "$CONFIGS_DIR/applications/steam.desktop" ]]; then
-  mkdir -p "$HOME/.local/share/applications"
   link_path "$CONFIGS_DIR/applications/steam.desktop" "$HOME/.local/share/applications/steam.desktop"
+fi
+
+if [[ -x "$REPO_ROOT/scripts/board-game-arena" ]]; then
+  chmod +x "$REPO_ROOT/scripts/board-game-arena"
+  link_path "$REPO_ROOT/scripts/board-game-arena" "$HOME/.local/bin/board-game-arena"
+fi
+
+if [[ -f "$CONFIGS_DIR/applications/board-game-arena.desktop" ]]; then
+  link_path "$CONFIGS_DIR/applications/board-game-arena.desktop" "$HOME/.local/share/applications/board-game-arena.desktop"
+fi
+
+# Replace Chrome's generated PWA shortcut so existing launchers stay correct.
+if [[ -f "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" ]]; then
+  link_path "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
+    "$HOME/.local/share/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
+  if [[ -f "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" || -L "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" ]]; then
+    link_path "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
+      "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
+  fi
+fi
+
+if command -v update-desktop-database >/dev/null 2>&1; then
   update-desktop-database "$HOME/.local/share/applications" >/dev/null 2>&1 || true
 fi
 

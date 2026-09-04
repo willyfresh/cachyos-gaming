@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""Board Game Arena as a chrome-less WebKit window.
+
+Chrome PWAs always draw their own title bar and, when the page is out of
+scope, a gray custom tab bar (title + URL + close). niri cannot strip
+client-side decorations from those windows. This wrapper is just the
+page: no title bar, no URL bar, no browser chrome.
+"""
+
+from __future__ import annotations
+
+import os
+from pathlib import Path
+
+import gi
+
+gi.require_version("Gtk", "4.0")
+gi.require_version("WebKit", "6.0")
+from gi.repository import Gio, GLib, Gtk, WebKit  # noqa: E402
+
+APP_ID = "org.willyfresh.BoardGameArena"
+START_URL = "https://en.boardgamearena.com/"
+DATA_DIR = Path(GLib.get_user_data_dir()) / "board-game-arena"
+CACHE_DIR = Path(GLib.get_user_cache_dir()) / "board-game-arena"
+
+
+def _session() -> WebKit.NetworkSession:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    session = WebKit.NetworkSession(
+        data_directory=str(DATA_DIR),
+        cache_directory=str(CACHE_DIR),
+    )
+    cookies = session.get_cookie_manager()
+    cookies.set_persistent_storage(
+        str(DATA_DIR / "cookies.sqlite"),
+        WebKit.CookiePersistentStorage.SQLITE,
+    )
+    cookies.set_accept_policy(WebKit.CookieAcceptPolicy.ALWAYS)
+    if hasattr(session, "set_itp_enabled"):
+        session.set_itp_enabled(False)
+    return session
+
+
+class BoardGameArena(Gtk.Application):
+    def __init__(self) -> None:
+        super().__init__(
+            application_id=APP_ID,
+            flags=Gio.ApplicationFlags.FLAGS_NONE,
+        )
+        self._window: Gtk.ApplicationWindow | None = None
+        self._session = _session()
+
+    def do_activate(self) -> None:  # noqa: N802 - GObject override
+        if self._window is not None:
+            self._window.present()
+            return
+
+        webview = WebKit.WebView(network_session=self._session)
+        settings = webview.get_settings()
+        settings.set_enable_javascript(True)
+        settings.set_enable_webgl(True)
+        settings.set_enable_media_stream(True)
+        settings.set_enable_mediasource(True)
+        settings.set_hardware_acceleration_policy(
+            WebKit.HardwareAccelerationPolicy.ALWAYS
+        )
+        settings.set_enable_developer_extras(False)
+
+        webview.connect("decide-policy", self._on_decide_policy)
+        webview.connect("notify::title", self._on_title)
+        webview.load_uri(START_URL)
+
+        window = Gtk.ApplicationWindow(application=self)
+        window.set_title("Board Game Arena")
+        window.set_default_size(1280, 800)
+        # Empty titlebar so GTK does not draw CSD; niri also has prefer-no-csd.
+        window.set_titlebar(Gtk.Box())
+        window.set_decorated(False)
+        window.set_child(webview)
+        window.present()
+
+        self._window = window
+        self._webview = webview
+
+    def _on_title(self, webview: WebKit.WebView, _pspec) -> None:
+        title = webview.get_title() or "Board Game Arena"
+        if self._window is not None:
+            self._window.set_title(title)
+
+    def _on_decide_policy(self, webview: WebKit.WebView, decision, decision_type) -> bool:
+        if decision_type == WebKit.PolicyDecisionType.NEW_WINDOW_ACTION:
+            nav = decision.get_navigation_action()
+            request = nav.get_request()
+            uri = request.get_uri()
+            if uri:
+                webview.load_uri(uri)
+            decision.ignore()
+            return True
+        return False
+
+
+def main() -> int:
+    os.environ.setdefault("GDK_BACKEND", "wayland")
+    app = BoardGameArena()
+    return app.run(None)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -54,14 +54,12 @@
         geometry-corner-radius 0
     }
 
-    // Board Game Arena Chrome PWA: exclusive fullscreen so Chrome hides its
-    // title bar (the strip with the app name and ⋮ settings menu).
+    // Board Game Arena is a chrome-less WebKit window (scripts/board-game-arena).
+    // Chrome's PWA window cannot drop its title bar or custom tab bar.
     window-rule {
-        match app-id="chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default"
-        open-fullscreen true
+        match app-id="org.willyfresh.BoardGameArena"
+        open-fullscreen false
         open-maximized true
-        clip-to-geometry false
-        geometry-corner-radius 0
     }
 
     // Halo/Xbox sign-in is a Steam overlay web view titled Big Picture.

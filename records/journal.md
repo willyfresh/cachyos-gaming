@@ -70,8 +70,9 @@ A running record of installs and config changes. Package names that should survi
 
 ## 2026-09-03 — Board Game Arena hides its title bar
 
-- The strip with the app name and ⋮ menu is Chrome's **PWA title bar** (client-side decorations). niri cannot strip it per-window; fullscreen does, because Chrome hides that chrome when the window is exclusive-fullscreen.
-- Window rule: `chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default` opens fullscreen. Super+Shift+F toggles it.
+- Chrome PWAs always draw their own **title bar** (CSD) and, when the page is out of the app scope, a gray **custom tab bar** (page title, URL, close). niri cannot strip those; exclusive fullscreen also does not.
+- Replaced the Chrome PWA window with `scripts/board-game-arena`: a GTK4/WebKit window with no title bar, no URL bar, no close strip. Login is stored under `~/.local/share/board-game-arena/` (separate from Chrome, so sign in once).
+- Installed `webkitgtk-6.0`. Existing Board Game Arena launchers now run this wrapper.
 
 ## 2026-09-03 — Super+arrows / Super+scroll
 

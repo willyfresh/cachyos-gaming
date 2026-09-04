@@ -22,3 +22,6 @@ goverlay
 
 # Chat
 discord
+
+# Board Game Arena chrome-less window (scripts/board-game-arena)
+webkitgtk-6.0

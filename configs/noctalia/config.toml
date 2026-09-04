@@ -1,2 +1,71 @@
 [shell]
 polkit_agent = true
+font_family = "Liberation Sans"
+
+[theme]
+mode = "dark"
+source = "custom"
+custom_palette = "Borg"
+
+[widget.hostname]
+type = "text"
+text = "BORG"
+font_weight = 700
+color = "primary"
+capsule = true
+capsule_radius = 0
+capsule_border = "primary"
+interactive = true
+
+[widget.hostname.actions]
+left = "panel-toggle launcher"
+
+[bar.Assimilate]
+position = "bottom"
+radius = 0
+radius_top_left = 0
+radius_top_right = 0
+radius_bottom_left = 0
+radius_bottom_right = 0
+concave_edge_corners = false
+border = "primary"
+border_width = 1.0
+background_opacity = 0.92
+capsule = true
+capsule_radius = 0
+capsule_fill = "surface_variant"
+capsule_border = "outline"
+font_family = "Liberation Sans"
+font_weight = 600
+start = ["hostname", "workspaces"]
+center = ["clock"]
+end = ["media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "control-center", "session"]
+
+[wallpaper]
+enabled = true
+fill_mode = "crop"
+fill_color = "surface"
+directory = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers"
+
+[wallpaper.default]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/1-cube.jpg"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/1-cube.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/2-alcoves.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/3-charging-station.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/4-resistance-is-futile.jpg"
+theme_mode = "dark"
+palette_source = "custom"

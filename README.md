@@ -18,6 +18,8 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `setup.sh` | Fresh-install bootstrap |
 | `configs/niri` | niri config (live, via symlink) |
 | `configs/noctalia` | noctalia-shell config (live, via symlink) |
+| `configs/noctalia/palettes/Borg.json` | Gunmetal + energy-green palette |
+| `configs/noctalia/wallpapers/` | Cube / alcove / charging-station / mantra |
 | `configs/keyd` | Super-tap → launcher (`/etc/keyd/default.conf`) |
 | `packages/extra.txt` | Extra **repo** packages (pacman), including `paru` |
 | `packages/aur.txt` | Extra **AUR** packages (`google-chrome`, `visual-studio-code-bin`, …) |
@@ -25,6 +27,8 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `records/journal.md` | Human log of installs and setup runs |
 | `records/hardware.md` | This machine's hardware |
 | `records/gaming.md` | Steam / Heroic / Proton notes |
+| `records/next.md` | Working list; dump obstacles in `os-notes.txt` |
+| `os-notes.txt` | Scratch inbox, emptied after triage |
 | `scripts/pkg-add.sh` | Install a package *and* record it |
 
 ## Day-to-day
@@ -38,6 +42,16 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 Repo packages go through pacman into `packages/extra.txt`. Anything not in a sync database is treated as AUR, installed with paru, and recorded in `packages/aur.txt`.
 
 **Edit niri / noctalia:** change files under `configs/`. They are the live configs. Commit when it feels right.
+
+**Wallpapers:** Super+Shift+Return opens the picker. Files live in
+`configs/noctalia/wallpapers/` (cube, alcoves, charging station, mantra).
+
+**OS notes:** dump obstacles and wants in `os-notes.txt` (plain text, no
+structure). Hand the file over; they get triaged into `records/next.md`.
+Done items move into `journal.md` / `gaming.md` / `hardware.md` and come
+off `next.md`. The inbox is emptied after that. Same loop as
+[omarchy-delorean](https://github.com/willyfresh/omarchy-delorean), with
+`records/` instead of `docs/`.
 
 **Refresh the package snapshot** (optional, for comparison later):
 

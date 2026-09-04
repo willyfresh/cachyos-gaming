@@ -23,6 +23,9 @@ input {
         //accel-speed 0.0
     }
 
-    focus-follows-mouse // Automatically focus windows under the mouse pointer
+    // 0% = follow the pointer only when it will not scroll the strip.
+    // Bare FFM focuses the next column from CSD resize slivers at a screen
+    // edge, which swaps fullscreen/maximized windows on a slight overshoot.
+    focus-follows-mouse max-scroll-amount="0%"
     workspace-auto-back-and-forth // Enable workspace back & forth switching
 }

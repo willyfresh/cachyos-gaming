@@ -19,6 +19,8 @@ mangohud
 lib32-mangohud
 gamescope
 goverlay
+# System wine-11.16 (Heroic default) .NET; do not use Wine's own installer dialog
+wine-mono
 
 # Chat
 discord

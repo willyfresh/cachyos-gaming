@@ -99,3 +99,56 @@ A running record of installs and config changes. Package names that should survi
 - Super+Up/Down now `focus-window-or-workspace` (stacked window first, then workspace). Super+Shift+Up/Down move the same way.
 - Removed vim HJKL aliases of the arrows, Super+Ctrl+1–9 (Shift+1–9 still moves), Super+O (Super+Tab is overview), and Super+Ctrl+Return (Super+Space / Super tap is the launcher).
 - Super+scroll still maps vertical ticks to windows so a mouse without a tilt-wheel works.
+
+## 2026-09-04 — notes workflow (records, not docs)
+
+- Same loop as omarchy-delorean: dump in `os-notes.txt`, triage into
+  `records/next.md`, empty the inbox. Done work stays in journal / gaming /
+  hardware.
+- Super+V opens Noctalia clipboard history (`noctalia msg panel-toggle clipboard`).
+  Super+Shift+V still toggles floating vs tiling.
+- `focus-follows-mouse max-scroll-amount="0%"` so a mouse overshoot at a
+  screen edge does not swap the next fullscreen/maximized column. Confirm
+  in `records/next.md`.
+
+## 2026-09-04 — wine-mono for Heroic / For Honor
+
+- Heroic's Wine version is system `wine-11.16` (`/usr/bin/wine`), not Proton.
+- Installed distro `wine-mono` 11.3.0-1.1 so Wine uses `/usr/share/wine/mono`
+  instead of the per-prefix WineHQ bootstrap dialog. Recorded in
+  `packages/extra.txt`. Skip Wine's Install button.
+
+## 2026-09-04 — For Honor Ubisoft Connect hang
+
+- wine-11.16 launched Connect (`uplay://launch/569`) then stuck in CEF
+  (upc.exe ~35% CPU, no further launcher log after "Client launched").
+- Switched Sundrop to `proton-cachyos-slr` (umu). Backed up the hung
+  Connect `http2` CEF cache. Stopped the wine prefix.
+
+## 2026-09-04 — For Honor still on wine-11.16
+
+- Next Play still launched `/usr/bin/wine`. Heroic has been running since
+  Sep 2 and keeps game Wine settings in memory; editing
+  `GamesConfig/Sundrop.json` does not apply until Quit (tray) + reopen, or
+  the game's Wine dropdown is changed in the UI.
+- Stopped the hung `upc.exe`. Added `WINEDLLOVERRIDES=libglesv2.dll=d`
+  (known Connect CEF hang workaround). niri rule: `upc.exe` no clip.
+
+## 2026-09-04 — Borg rice
+
+- Custom Noctalia palette `Borg` (gunmetal + `#5CFF6B` energy green). Bar
+  **Assimilate** is square-cornered with a `BORG` hostname chip. Windows
+  dropped the 20px radius; active border is the green, idle is dark metal.
+- Wallpapers in `configs/noctalia/wallpapers/`: cube, regeneration alcoves,
+  charging station, and `RESISTANCE IS FUTILE` (text burned in with
+  Liberation Sans so the words stay exact). Super+Shift+Return cycles them.
+- Bar `BORG` chip replaced the launcher button; left-click toggles the
+  launcher (`panel-toggle launcher`). Super+Space / Super tap still do too.
+- Focused window gets the energy-green ring and border (focus-ring was
+  off, so only idle metal edges showed). `draw-border-with-background false`
+  so the edge sits around opaque clients.
+
+## 2026-09-04 — table For Honor
+
+- proton-cachyos-slr/umu did run (`upc.exe` + WebCore + xalia) but no
+  window. Killed the leftover tree. Tabled with Halo / BGA.

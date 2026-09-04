@@ -1,0 +1,5 @@
+# Scratch inbox. Dump obstacles here, then hand the file over.
+# Absorbed items live in records/next.md.
+super ctrl alt mousescrolling to change window size by 10%
+need to work in window sizing with the super-arrow system
+the mouse no longer moves windows. i liked that, just wanted a little delay before it triggers.

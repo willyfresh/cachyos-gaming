@@ -61,7 +61,15 @@ Xbox Live login needs:
 
 ## Heroic
 
-Settings → Wine version: **Proton - proton-cachyos-slr**. Wrapper: `game-performance`.
+Default Wine version on this box is system **wine-11.16** (`/usr/bin/wine`),
+not Proton. Wrapper: `game-performance`. Force **proton-cachyos-slr**
+per-game when you want CachyOS extras or anti-cheat titles.
+
+For Honor (Epic, Sundrop) is tabled. Distro `wine-mono` is installed.
+wine-11.16 showed Connect then hung in CEF. `proton-cachyos-slr` (umu)
+started Connect with **no window**. Prefix:
+`/run/media/willyfresh/TB1/Heroic/Prefixes/For Honor`. Ubisoft drops
+Linux / Steam Deck for this title on **2026-09-10**. Notes: `records/next.md`.
 
 ## What we did not install
 

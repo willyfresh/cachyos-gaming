@@ -1,6 +1,8 @@
     window-rule {
-        geometry-corner-radius 20 // Set every window radius to 20
+        geometry-corner-radius 0
         clip-to-geometry true
+        // Draw the green/metal edge around the window, not behind it.
+        draw-border-with-background false
     }
 
     window-rule {
@@ -60,6 +62,14 @@
         match app-id="org.willyfresh.BoardGameArena"
         open-fullscreen false
         open-maximized true
+    }
+
+    // Ubisoft Connect (upc.exe) is X11 via xwayland-satellite, like Steam.
+    window-rule {
+        match app-id="upc.exe"
+        clip-to-geometry false
+        geometry-corner-radius 0
+        open-maximized false
     }
 
     // Halo/Xbox sign-in is a Steam overlay web view titled Big Picture.

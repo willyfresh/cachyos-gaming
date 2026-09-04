@@ -7,3 +7,4 @@ records/backups/
 *.swo
 .DS_Store
 .directory
+scripts/__pycache__/

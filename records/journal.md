@@ -61,3 +61,5 @@ A running record of installs and config changes. Package names that should survi
 
 - Sign-in is Steam overlay on a niri-fullscreen game, so clicks never reach it. Stopped auto-fullscreen for `steam_app_1240440`.
 - Disabled Xalia (`PROTON_USE_XALIA=0`); two `xalia.exe` processes were running over the login UI.
+
+- Xbox sign-in is a Steam window titled **Steam Big Picture Mode** (1280×800). Halo was covering it; keep that window focused and on the left (primary) monitor.

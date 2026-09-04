@@ -54,6 +54,17 @@
         geometry-corner-radius 0
     }
 
+    // Halo/Xbox sign-in is a Steam overlay web view titled Big Picture.
+    window-rule {
+        match app-id="steam" title="Steam Big Picture Mode"
+        open-floating true
+        open-focused true
+        clip-to-geometry false
+        geometry-corner-radius 0
+        min-width 1
+        min-height 1
+    }
+
     layer-rule {
         match namespace="^noctalia-wallpaper"
         place-within-backdrop true

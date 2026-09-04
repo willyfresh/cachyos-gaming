@@ -48,7 +48,7 @@ Library lives on `/mnt/tb1/SteamLibrary`. It was exiting instantly because the o
 | Setting | Value |
 | --- | --- |
 | Compatibility tool | `proton-cachyos-slr` (EAC-friendly SLR build) |
-| Launch options | `VKD3D_DISABLE_EXTENSIONS=VK_NV_device_generated_commands_compute game-performance %command%` |
+| Launch options | `VKD3D_DISABLE_EXTENSIONS=VK_NV_device_generated_commands_compute PROTON_USE_XALIA=0 game-performance %command%` |
 
 The `VKD3D_DISABLE_EXTENSIONS=...` bit is the NVIDIA workaround from ProtonDB (RTX cards freeze in-game without it). Campaign and social/custom games work with Microsoft’s EAC opt-in; ranked can still be picky on a custom kernel.
 
@@ -57,6 +57,7 @@ Xbox Live login needs:
 1. A synced clock (`systemd-timesyncd`). XAL will refuse tokens if the machine clock is skewed.
 2. Steam **GPU accelerated rendering in web views** on (the Microsoft sign-in window is a Steam CEF popup).
 3. If you get a sign-in loop, clear Wine Xbox credentials in `compatdata/1240440/pfx/user.reg` (`Credential Manager` keys mentioning xbox / Xbl) and delete `Halo Infinite/XalClockSkew.json`.
+4. Do **not** exclusive-fullscreen Halo while signing in. The Microsoft window is Steam overlay; niri fullscreen steals the pointer. Leave it windowed (`open-fullscreen false`), or tap Super+Shift+F to drop fullscreen, then click the login. `PROTON_USE_XALIA=0` stops Proton’s gamepad helper from eating mouse input on that dialog.
 
 ## Heroic
 

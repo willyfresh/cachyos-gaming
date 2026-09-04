@@ -45,9 +45,13 @@
        open-focused false
     }
 
+    // Windowed so the Steam overlay Xbox login can receive mouse/keyboard.
     window-rule {
         match app-id=r#"^steam_app_1240440$"#
-        open-fullscreen true
+        open-fullscreen false
+        open-maximized true
+        clip-to-geometry false
+        geometry-corner-radius 0
     }
 
     layer-rule {

@@ -56,3 +56,8 @@ A running record of installs and config changes. Package names that should survi
 - NTP was off (`systemd-timesyncd` disabled). Xbox Authentication Library had ~3h of clock skew in `XalClockSkew.json`. Enabled timesyncd.
 - Xbox login popup is a Steam CEF web view. Dropped `-cef-disable-gpu-compositing` and set `GPUAccelWebViewsV3=1`.
 - Cleared Wine `Xbl|DeviceKey` credentials in the Halo prefix (sign-in loop leftover).
+
+## 2026-09-03 — Halo Xbox sign-in window not clickable
+
+- Sign-in is Steam overlay on a niri-fullscreen game, so clicks never reach it. Stopped auto-fullscreen for `steam_app_1240440`.
+- Disabled Xalia (`PROTON_USE_XALIA=0`); two `xalia.exe` processes were running over the login UI.

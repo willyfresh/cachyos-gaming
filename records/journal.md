@@ -93,3 +93,9 @@ A running record of installs and config changes. Package names that should survi
 - Enabled Noctalia plugin `kenn/keybind-cheatsheet` (searchable list of live niri binds, like Omarchy Super+K).
 - Super+K toggles it. Super+Shift+Escape still opens niri's short Important Hotkeys overlay.
 - Super+K used to focus the window above in a stacked column; Super+J still focuses down. Super+Shift+K still moves a stacked window up.
+
+## 2026-09-04 — drop duplicate keybinds
+
+- Super+Up/Down now `focus-window-or-workspace` (stacked window first, then workspace). Super+Shift+Up/Down move the same way.
+- Removed vim HJKL aliases of the arrows, Super+Ctrl+1–9 (Shift+1–9 still moves), Super+O (Super+Tab is overview), and Super+Ctrl+Return (Super+Space / Super tap is the launcher).
+- Super+scroll still maps vertical ticks to windows so a mouse without a tilt-wheel works.

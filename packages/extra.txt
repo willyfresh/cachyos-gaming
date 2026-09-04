@@ -19,3 +19,6 @@ mangohud
 lib32-mangohud
 gamescope
 goverlay
+
+# Chat
+discord

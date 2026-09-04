@@ -63,3 +63,19 @@ A running record of installs and config changes. Package names that should survi
 - Disabled Xalia (`PROTON_USE_XALIA=0`); two `xalia.exe` processes were running over the login UI.
 
 - Xbox sign-in is a Steam window titled **Steam Big Picture Mode** (1280×800). Halo was covering it; keep that window focused and on the left (primary) monitor.
+
+## 2026-09-03 — Discord
+
+- Installed `discord` 1:1.0.156-1 from extra. Recorded in `packages/extra.txt`.
+
+## 2026-09-03 — Board Game Arena hides its title bar
+
+- The strip with the app name and ⋮ menu is Chrome's **PWA title bar** (client-side decorations). niri cannot strip it per-window; fullscreen does, because Chrome hides that chrome when the window is exclusive-fullscreen.
+- Window rule: `chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default` opens fullscreen. Super+Shift+F toggles it.
+
+## 2026-09-03 — Super+arrows / Super+scroll
+
+- Super+Left/Right: focus columns (windows). Super+Up/Down: workspaces. Super+H/L still columns; Super+J/K still stacked windows in a column.
+- Super+scroll left/right: columns. Super+scroll up/down: workspaces. Super+Ctrl+scroll: workspaces (mice without tilt-wheel).
+- Super+Shift on those same keys/scrolls **moves** the window along that axis.
+- Displaced: Super+Shift+arrows used to focus the other monitor. That is now Super+Alt+arrows. Super+Ctrl+Shift+arrows still move a column to the other monitor.

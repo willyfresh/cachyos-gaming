@@ -17,7 +17,7 @@ RTX 2060, nvidia-open 610.57.04, niri + noctalia. Drivers were already in place 
 
 ## Steam
 
-Steam menus flash-and-die on niri after the 2026-09-01 client update (xwayland-satellite treats CEF child windows badly). We launch Steam with `-cef-disable-gpu-compositing` via `configs/applications/steam.desktop`, and we do not clip Steam windows. If menus still vanish, fully quit Steam (`steam -shutdown`) and reopen it from the launcher. Settings can also be opened with `steam steam://open/settings`.
+Steam menus on niri are flaky (xwayland-satellite + the 2026-09-01 client). Do **not** launch Steam with `-cef-disable-gpu-compositing`: Halo Infinite’s Xbox login is a Steam web-view popup and needs GPU-accelerated web views. Open Interface settings without the menu bar: `steam steam://settings/interface` and tick **Enable GPU accelerated rendering in web views**.
 
 1. Open Steam, log in, let it finish first-run downloads.
 2. Settings → Compatibility: leave the **default** on Valve Proton or Proton Experimental.
@@ -51,6 +51,12 @@ Library lives on `/mnt/tb1/SteamLibrary`. It was exiting instantly because the o
 | Launch options | `VKD3D_DISABLE_EXTENSIONS=VK_NV_device_generated_commands_compute game-performance %command%` |
 
 The `VKD3D_DISABLE_EXTENSIONS=...` bit is the NVIDIA workaround from ProtonDB (RTX cards freeze in-game without it). Campaign and social/custom games work with Microsoft’s EAC opt-in; ranked can still be picky on a custom kernel.
+
+Xbox Live login needs:
+
+1. A synced clock (`systemd-timesyncd`). XAL will refuse tokens if the machine clock is skewed.
+2. Steam **GPU accelerated rendering in web views** on (the Microsoft sign-in window is a Steam CEF popup).
+3. If you get a sign-in loop, clear Wine Xbox credentials in `compatdata/1240440/pfx/user.reg` (`Credential Manager` keys mentioning xbox / Xbl) and delete `Halo Infinite/XalClockSkew.json`.
 
 ## Heroic
 

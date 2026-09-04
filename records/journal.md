@@ -50,3 +50,9 @@ A running record of installs and config changes. Package names that should survi
 - AppID 1240440 on `/mnt/tb1/SteamLibrary` was exiting instantly: leftover `gamemoderun` in launch options, and GameMode is not installed.
 - Replaced with `game-performance`, kept NVIDIA `VKD3D_DISABLE_EXTENSIONS=VK_NV_device_generated_commands_compute`.
 - Forced compatibility tool to `proton-cachyos-slr` for Easy Anti-Cheat.
+
+## 2026-09-03 — Halo Infinite Xbox Live login
+
+- NTP was off (`systemd-timesyncd` disabled). Xbox Authentication Library had ~3h of clock skew in `XalClockSkew.json`. Enabled timesyncd.
+- Xbox login popup is a Steam CEF web view. Dropped `-cef-disable-gpu-compositing` and set `GPUAccelWebViewsV3=1`.
+- Cleared Wine `Xbl|DeviceKey` credentials in the Halo prefix (sign-in loop leftover).

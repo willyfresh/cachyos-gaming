@@ -19,4 +19,9 @@ if [[ -f "$KEYD_SRC" ]]; then
   log "keyd is active (Super tap -> launcher)"
 fi
 
+if systemctl list-unit-files systemd-timesyncd.service >/dev/null 2>&1; then
+  log "enabling systemd-timesyncd (Xbox Live / HTTPS need a sane clock)"
+  sudo systemctl enable --now systemd-timesyncd.service
+fi
+
 log "system configs applied"

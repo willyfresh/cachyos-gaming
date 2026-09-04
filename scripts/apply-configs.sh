@@ -45,4 +45,13 @@ if command -v update-desktop-database >/dev/null 2>&1; then
   update-desktop-database "$HOME/.local/share/applications" >/dev/null 2>&1 || true
 fi
 
+plugins_file="$PACKAGES_DIR/noctalia-plugins.txt"
+if command -v noctalia >/dev/null 2>&1 && [[ -f "$plugins_file" ]]; then
+  while read -r plugin; do
+    [[ -n "$plugin" ]] || continue
+    log "enabling noctalia plugin: $plugin"
+    noctalia msg plugins enable "$plugin" >/dev/null || warn "could not enable $plugin"
+  done < <(read_pkg_list "$plugins_file")
+fi
+
 log "configs applied"

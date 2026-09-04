@@ -7,6 +7,7 @@ binds {
     // https://docs.noctalia.dev/getting-started/keybinds/
 
     Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
+    Mod+K                               hotkey-overlay-title="Keybind cheatsheet" { spawn "noctalia" "msg" "panel-toggle" "kenn/keybind-cheatsheet:cheatsheet"; }
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
@@ -53,7 +54,6 @@ binds {
     Mod+L                               { focus-column-right; }
     Mod+Up                              { focus-workspace-up; }
     Mod+Down                            { focus-workspace-down; }
-    Mod+K                               { focus-window-up; }
     Mod+J                               { focus-window-down; }
 
     Mod+CTRL+Left                       { focus-workspace-up; }

@@ -1,0 +1,6 @@
+# Noctalia community plugins. Enabled by scripts/apply-configs.sh
+# via: noctalia msg plugins enable <author/plugin>
+# One plugin per line. Blank lines and comments are ignored.
+
+# Searchable Super+K keybind list (Omarchy-style)
+kenn/keybind-cheatsheet

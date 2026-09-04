@@ -87,3 +87,9 @@ A running record of installs and config changes. Package names that should survi
 - Super+scroll: windows. Super+Ctrl+scroll: workspace. Super+Alt+scroll: monitor. Shift still moves.
 - Super+Tab opens overview. Alt+Tab is niri's recent-windows switcher. Super+Shift+Tab is previous workspace (what Super+Tab did before). Super+O still toggles overview.
 - Super+Alt+L stays lock.
+
+## 2026-09-04 — Super+K keybind cheatsheet
+
+- Enabled Noctalia plugin `kenn/keybind-cheatsheet` (searchable list of live niri binds, like Omarchy Super+K).
+- Super+K toggles it. Super+Shift+Escape still opens niri's short Important Hotkeys overlay.
+- Super+K used to focus the window above in a stacked column; Super+J still focuses down. Super+Shift+K still moves a stacked window up.

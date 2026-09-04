@@ -32,3 +32,14 @@
     hotkey-overlay {
        skip-at-startup
     }
+
+    // Alt+Tab is the recent-windows switcher. Super+Tab is overview (in keybinds).
+    // Listing binds here clears niri's defaults (which also bound Super+Tab).
+    recent-windows {
+        binds {
+            Alt+Tab { next-window; }
+            Alt+Shift+Tab { previous-window; }
+            Alt+grave { next-window filter="app-id"; }
+            Alt+Shift+grave { previous-window filter="app-id"; }
+        }
+    }

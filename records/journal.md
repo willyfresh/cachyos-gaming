@@ -80,3 +80,10 @@ A running record of installs and config changes. Package names that should survi
 - Super+scroll left/right: columns. Super+scroll up/down: workspaces. Super+Ctrl+scroll: workspaces (mice without tilt-wheel).
 - Super+Shift on those same keys/scrolls **moves** the window along that axis.
 - Displaced: Super+Shift+arrows used to focus the other monitor. That is now Super+Alt+arrows. Super+Ctrl+Shift+arrows still move a column to the other monitor.
+
+## 2026-09-03 — Super modifiers: Ctrl workspace, Alt monitor, Shift move
+
+- Super+arrows still focus (Up/Down = workspaces without Ctrl). Ctrl = workspace, Alt = monitor, Shift = move. Combos like Super+Shift+Alt+Left move a window to the other screen; Super+Shift+Ctrl+Alt+Left moves the whole workspace over.
+- Super+scroll: windows. Super+Ctrl+scroll: workspace. Super+Alt+scroll: monitor. Shift still moves.
+- Super+Tab opens overview. Alt+Tab is niri's recent-windows switcher. Super+Shift+Tab is previous workspace (what Super+Tab did before). Super+O still toggles overview.
+- Super+Alt+L stays lock.

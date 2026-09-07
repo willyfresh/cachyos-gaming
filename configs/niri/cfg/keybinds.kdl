@@ -12,6 +12,9 @@ binds {
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
     Mod+B                               hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
+    Mod+Shift+B                         hotkey-overlay-title="Board Game Arena" { spawn "/home/willyfresh/.local/bin/launch-or-focus-webapp.sh" "chrome-boardgamearena.com.*Default" "https://boardgamearena.com/"; }
+    Mod+D                               hotkey-overlay-title="Discord" { spawn "/home/willyfresh/.local/bin/launch-discord.sh"; }
+    Mod+L                               hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
 
     // --- Noctalia ---
     // Super tap also opens the launcher via keyd (tap Super -> Super+Space).
@@ -43,8 +46,9 @@ binds {
     XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
     XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
 
-    // ─── Window / workspace / monitor ───
+    // ─── Window / workspace / monitor / size ───
     // Super+arrows focus. Ctrl = workspace, Alt = monitor, Shift = move.
+    // Super+Ctrl+Alt = size (left/right width, up/down height).
     // Super+Up/Down hop a stacked window first, then the next workspace.
     Mod+Q                               { close-window; }
 
@@ -83,6 +87,11 @@ binds {
     Mod+Shift+CTRL+Alt+Right            { move-workspace-to-monitor-right; }
     Mod+Shift+CTRL+Alt+Up               { move-workspace-to-monitor-up; }
     Mod+Shift+CTRL+Alt+Down             { move-workspace-to-monitor-down; }
+
+    Mod+CTRL+Alt+Left                   { set-column-width "-10%"; }
+    Mod+CTRL+Alt+Right                  { set-column-width "+10%"; }
+    Mod+CTRL+Alt+Up                     { set-window-height "-10%"; }
+    Mod+CTRL+Alt+Down                   { set-window-height "+10%"; }
 
     Mod+Home                            { focus-column-first; }
     Mod+End                             { focus-column-last; }
@@ -141,6 +150,14 @@ binds {
     Mod+CTRL+Shift+Alt+WheelScrollUp    cooldown-ms=150 { move-workspace-to-monitor-left; }
     Mod+CTRL+Shift+Alt+WheelScrollDown  cooldown-ms=150 { move-workspace-to-monitor-right; }
 
+    // Super+Ctrl+Alt+scroll: column width. Wheel up = bigger, down = smaller.
+    // Tilt left/right still thinner/wider. Vertical ticks count so a mouse
+    // without a tilt-wheel can resize.
+    Mod+CTRL+Alt+WheelScrollLeft        cooldown-ms=150 { set-column-width "-10%"; }
+    Mod+CTRL+Alt+WheelScrollRight       cooldown-ms=150 { set-column-width "+10%"; }
+    Mod+CTRL+Alt+WheelScrollUp          cooldown-ms=150 { set-column-width "+10%"; }
+    Mod+CTRL+Alt+WheelScrollDown        cooldown-ms=150 { set-column-width "-10%"; }
+
     Mod+1                               { focus-workspace 1; }
     Mod+2                               { focus-workspace 2; }
     Mod+3                               { focus-workspace 3; }
@@ -165,9 +182,14 @@ binds {
     Mod+Shift+TAB                       { focus-workspace-previous; }
 
     // ─── Layout Controls ───
-    Mod+CTRL+F                          { expand-column-to-available-width; }
+    // Super+Ctrl+F is Omarchy's "full screen inside the window": the app
+    // (Chrome, a webapp, slides) hides its own chrome, the niri window
+    // stays a normal tile. Super+Shift+F is exclusive fullscreen.
+    Mod+CTRL+F                          hotkey-overlay-title="Windowed fullscreen (hide site chrome)" { toggle-windowed-fullscreen; }
+    Mod+Alt+F                           hotkey-overlay-title="Expand column to available width" { expand-column-to-available-width; }
     Mod+C                               { center-column; }
     Mod+CTRL+C                          { center-visible-columns; }
+    // This column wider / thinner. Not Omarchy's left-edge resize.
     Mod+Minus                           { set-column-width "-10%"; }
     Mod+Equal                           { set-column-width "+10%"; }
     Mod+Shift+Minus                     { set-window-height "-10%"; }

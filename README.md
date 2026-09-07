@@ -28,8 +28,12 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `records/hardware.md` | This machine's hardware |
 | `records/gaming.md` | Steam / Heroic / Proton notes |
 | `records/next.md` | Working list; dump obstacles in `os-notes.txt` |
+| `records/keybinds.md` | Super-key table: Windows, Borg, Delorean |
 | `os-notes.txt` | Scratch inbox, emptied after triage |
 | `scripts/pkg-add.sh` | Install a package *and* record it |
+| `scripts/launch-webapp.sh` | Title-less Chrome `--app=URL` (persistent Borg profile) |
+| `scripts/launch-or-focus-webapp.sh` | Focus that window, or launch it |
+| `scripts/launch-discord.sh` | Super+D: focus Discord, skip the updater splash |
 
 ## Day-to-day
 

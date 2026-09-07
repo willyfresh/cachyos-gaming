@@ -41,6 +41,21 @@ MangoHud:
 mangohud game-performance %command%
 ```
 
+## Splitgate: Arena Reloaded (AppID 2918300)
+
+Library lives on `/mnt/tb1/SteamLibrary` (`common/Splitgate 2`). Steam marks it
+Linux-native, but the install is a Windows Unreal `.exe`. Without a forced
+Proton tool it dies in about a second (Steam Linux Runtime tries to exec the
+exe). Force **proton-cachyos-slr**. Launch options:
+
+```
+game-performance %command% -windowed
+```
+
+niri keeps it maximized, not exclusive-fullscreen (`steam_app_2918300`).
+Dedicated servers went P2P on **2026-09-03** — use the in-game server
+browser to host or join. RedKard anti-cheat is supposed to allow Proton.
+
 ## Halo Infinite (AppID 1240440)
 
 Library lives on `/mnt/tb1/SteamLibrary`. It was exiting instantly because the old Windows launch options called `gamemoderun`, which is not installed here (ananicy-cpp is the CachyOS niceness daemon).

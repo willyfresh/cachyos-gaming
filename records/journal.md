@@ -148,6 +148,48 @@ A running record of installs and config changes. Package names that should survi
   off, so only idle metal edges showed). `draw-border-with-background false`
   so the edge sits around opaque clients.
 
+## 2026-09-04 — Splitgate: Arena Reloaded
+
+- AppID 2918300 on `/mnt/tb1/SteamLibrary`. Instant exit: Steam launched
+  the Windows `PortalWars2.exe` as native Linux. Forced
+  `proton-cachyos-slr`, launch options `game-performance %command% -windowed`.
+- niri rule: no exclusive fullscreen. Servers are P2P as of 2026-09-03.
+
+## 2026-09-06 — keybinds.md
+
+- `records/keybinds.md`: Super-key chords by letter for Windows 11, this
+  niri box, and the Delorean overlay.
+
+## 2026-09-06 — Super+D Discord, Super+L lock
+
+- Super+D focuses the native Discord client, skipping the updater splash
+  (`scripts/launch-discord.sh`). Super+L locks (noctalia); Super+Alt+L
+  still does too. Remaining Super-letter app keys wait on a Windows pass.
+
+## 2026-09-06 — Super+Ctrl+Alt+scroll up = bigger
+
+- Wheel up widens the column 10%, down thins it. Tilt left/right unchanged.
+
+## 2026-09-06 — Super+Ctrl+Alt size, Super+drag, windowed fullscreen
+
+- Super+Ctrl+Alt+arrows/scroll resize the focused column/window by 10%.
+  Left/Right (and the wheel) are width; Up/Down are height. Super+/- is
+  still `set-column-width ±10%` — not Omarchy's left-edge resize.
+- Super+Ctrl+F is niri `toggle-windowed-fullscreen` (site chrome off,
+  tile stays). Old expand-column bind moved to Super+Alt+F.
+- keyd lists the Glorious Model D and Keychron V6 pointer so Super+click
+  counts as a hold. `overload_tap_timeout = 200` so a Super-hold does not
+  fire the launcher on release. Super+left-drag moves windows again.
+
+## 2026-09-06 — Chrome --app webapps on Borg
+
+- Ported Delorean's persistent `--app=URL` launcher. Profile:
+  `~/.local/share/borg/chrome-webapps`. Scripts: `launch-webapp.sh`,
+  `launch-or-focus-webapp.sh`, `collapse-webapp-profile.sh`.
+- Board Game Arena Super+Shift+B and the old Chrome PWA desktop file now
+  use that launcher. WebKit wrapper stays in the repo unused.
+- Launcher entries: Gmail, Messages, Maps, Calendar, YouTube Music.
+
 ## 2026-09-04 — table For Honor
 
 - proton-cachyos-slr/umu did run (`upc.exe` + WebCore + xalia) but no

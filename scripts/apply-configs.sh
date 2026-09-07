@@ -18,27 +18,61 @@ fi
 mkdir -p "$HOME/.local/share/applications"
 mkdir -p "$HOME/.local/bin"
 
+chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
+  "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" \
+  "$REPO_ROOT/scripts/collapse-webapp-profile.sh" \
+  "$REPO_ROOT/scripts/launch-discord.sh"
+link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.sh"
+link_path "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" "$HOME/.local/bin/launch-or-focus-webapp.sh"
+link_path "$REPO_ROOT/scripts/collapse-webapp-profile.sh" "$HOME/.local/bin/collapse-webapp-profile.sh"
+link_path "$REPO_ROOT/scripts/launch-discord.sh" "$HOME/.local/bin/launch-discord.sh"
+
 if [[ -f "$CONFIGS_DIR/applications/steam.desktop" ]]; then
   link_path "$CONFIGS_DIR/applications/steam.desktop" "$HOME/.local/share/applications/steam.desktop"
 fi
 
-if [[ -x "$REPO_ROOT/scripts/board-game-arena" ]]; then
-  chmod +x "$REPO_ROOT/scripts/board-game-arena"
-  link_path "$REPO_ROOT/scripts/board-game-arena" "$HOME/.local/bin/board-game-arena"
-fi
-
-if [[ -f "$CONFIGS_DIR/applications/board-game-arena.desktop" ]]; then
-  link_path "$CONFIGS_DIR/applications/board-game-arena.desktop" "$HOME/.local/share/applications/board-game-arena.desktop"
-fi
-
-# Replace Chrome's generated PWA shortcut so existing launchers stay correct.
-if [[ -f "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" ]]; then
-  link_path "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
-    "$HOME/.local/share/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
-  if [[ -f "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" || -L "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" ]]; then
-    link_path "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
-      "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
+# Our names: symlink. Chrome-generated names: copy, so a Chrome rewrite
+# cannot clobber the repo (and so Desktop launchers stay --app=URL).
+install_desktop() {
+  local src="$1" dest="$2"
+  [[ -f "$src" ]] || die "desktop source missing: $src"
+  mkdir -p "$(dirname "$dest")"
+  if [[ -L "$dest" ]]; then
+    rm -f "$dest"
+  elif [[ -f "$dest" ]] && cmp -s "$src" "$dest"; then
+    log "already current: $dest"
+    return 0
+  elif [[ -e "$dest" ]]; then
+    local stamp dest_name backup
+    stamp="$(date +%Y%m%d-%H%M%S)"
+    dest_name="$(basename "$dest")"
+    backup="$BACKUP_DIR/$stamp/$dest_name"
+    mkdir -p "$(dirname "$backup")"
+    log "backing up $dest -> $backup"
+    mv "$dest" "$backup"
   fi
+  cp "$src" "$dest"
+  log "installed $dest"
+}
+
+link_path "$CONFIGS_DIR/applications/board-game-arena.desktop" \
+  "$HOME/.local/share/applications/board-game-arena.desktop"
+link_path "$CONFIGS_DIR/applications/gmail.desktop" \
+  "$HOME/.local/share/applications/Gmail.desktop"
+link_path "$CONFIGS_DIR/applications/google-messages.desktop" \
+  "$HOME/.local/share/applications/Google Messages.desktop"
+link_path "$CONFIGS_DIR/applications/google-maps.desktop" \
+  "$HOME/.local/share/applications/Google Maps.desktop"
+link_path "$CONFIGS_DIR/applications/google-calendar.desktop" \
+  "$HOME/.local/share/applications/Google Calendar.desktop"
+link_path "$CONFIGS_DIR/applications/youtube-music.desktop" \
+  "$HOME/.local/share/applications/YouTube Music.desktop"
+
+install_desktop "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
+  "$HOME/.local/share/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
+if [[ -f "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" || -L "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" ]]; then
+  install_desktop "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
+    "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
 fi
 
 if command -v update-desktop-database >/dev/null 2>&1; then

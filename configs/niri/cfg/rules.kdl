@@ -56,10 +56,19 @@
         geometry-corner-radius 0
     }
 
-    // Board Game Arena is a chrome-less WebKit window (scripts/board-game-arena).
-    // Chrome's PWA window cannot drop its title bar or custom tab bar.
+    // Splitgate: Arena Reloaded — exclusive fullscreen fights niri.
     window-rule {
-        match app-id="org.willyfresh.BoardGameArena"
+        match app-id=r#"^steam_app_2918300$"#
+        open-fullscreen false
+        open-maximized true
+        clip-to-geometry false
+        geometry-corner-radius 0
+    }
+
+    // Board Game Arena is a title-less Chrome --app window (launch-webapp.sh),
+    // not a PWA (--app-id draws a CSD title bar niri cannot strip).
+    window-rule {
+        match app-id="chrome-boardgamearena.com-Default"
         open-fullscreen false
         open-maximized true
     }

@@ -2,9 +2,10 @@
 Version=1.0
 Type=Application
 Name=Board Game Arena
-Comment=Board Game Arena without Chrome's PWA title bar or custom tab bar
-Exec=/home/willyfresh/.local/bin/board-game-arena
+Comment=Title-less Chrome --app window (persistent Borg webapp profile)
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://boardgamearena.com/
 Icon=chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default
 Terminal=false
-StartupWMClass=org.willyfresh.BoardGameArena
+StartupNotify=true
+StartupWMClass=chrome-boardgamearena.com-Default
 Categories=Game;BoardGame;

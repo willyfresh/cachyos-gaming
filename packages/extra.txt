@@ -25,5 +25,6 @@ wine-mono
 # Chat
 discord
 
-# Board Game Arena chrome-less window (scripts/board-game-arena)
+# Optional: leftover GTK4/WebKit BGA wrapper (scripts/board-game-arena).
+# Live BGA is Chrome --app via scripts/launch-webapp.sh.
 webkitgtk-6.0

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=YouTube Music
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://music.youtube.com/
+Terminal=false
+Type=Application
+Icon=audio-headphones
+StartupNotify=true
+StartupWMClass=chrome-music.youtube.com-Default
+Categories=AudioVideo;Audio;Player;

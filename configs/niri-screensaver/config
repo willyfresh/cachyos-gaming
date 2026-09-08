@@ -1,0 +1,11 @@
+# niri-screensaver (sourced as shell).
+FRAME_RATE=60
+SHOW_CLOCK=false
+SHOW_NOW_PLAYING=false
+CURSOR_WARP=false
+DISMISS_ON_KEY=true
+MULTI_MONITOR_MODE=mirror
+MIRROR_INTERVAL=20
+LOGO_FILE="$HOME/.config/niri-screensaver/logo.txt"
+FLOWER_FILE="$HOME/.config/niri-screensaver/flower.txt"
+SCREENSAVER_BIN="$HOME/.local/bin/novalis-screensaver"

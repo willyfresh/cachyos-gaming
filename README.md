@@ -1,6 +1,6 @@
 # cachyos-gaming
 
-Dotfiles and rebuild notes for **niri on CachyOS** (hostname: Borg).
+Dotfiles and rebuild notes for **niri on CachyOS** (hostname: Novalis).
 
 If this machine is wiped, install CachyOS again with the niri + noctalia desktop, clone or copy this repo, then run:
 
@@ -18,8 +18,9 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `setup.sh` | Fresh-install bootstrap |
 | `configs/niri` | niri config (live, via symlink) |
 | `configs/noctalia` | noctalia-shell config (live, via symlink) |
-| `configs/noctalia/palettes/Borg.json` | Gunmetal + energy-green palette |
-| `configs/noctalia/wallpapers/` | Cube / alcove / charging-station / mantra |
+| `configs/noctalia/palettes/Novalis.json` | Gunmetal + energy-green palette |
+| `configs/noctalia/wallpapers/` | Rain, ship, dock, construct, blue flower |
+| `configs/niri-screensaver` | Falling-code screensaver (TTE Matrix) |
 | `configs/keyd` | Super-tap → launcher (`/etc/keyd/default.conf`) |
 | `packages/extra.txt` | Extra **repo** packages (pacman), including `paru` |
 | `packages/aur.txt` | Extra **AUR** packages (`google-chrome`, `visual-studio-code-bin`, …) |
@@ -28,12 +29,14 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `records/hardware.md` | This machine's hardware |
 | `records/gaming.md` | Steam / Heroic / Proton notes |
 | `records/next.md` | Working list; dump obstacles in `os-notes.txt` |
-| `records/keybinds.md` | Super-key table: Windows, Borg, Delorean |
+| `records/keybinds.md` | Super-key table: Windows, Novalis, Delorean |
 | `os-notes.txt` | Scratch inbox, emptied after triage |
 | `scripts/pkg-add.sh` | Install a package *and* record it |
-| `scripts/launch-webapp.sh` | Title-less Chrome `--app=URL` (persistent Borg profile) |
+| `scripts/launch-webapp.sh` | Title-less Chrome `--app=URL` (profile still under `~/.local/share/borg`) |
 | `scripts/launch-or-focus-webapp.sh` | Focus that window, or launch it |
 | `scripts/launch-discord.sh` | Super+D: focus Discord, skip the updater splash |
+| `scripts/launch-btop.sh` | Super+Ctrl+T: floating btop (focus, or close if focused) |
+| `scripts/launch-grok-bot.sh` | Super+Shift+Alt+A: focus or launch Grok Bot |
 
 ## Day-to-day
 
@@ -48,7 +51,9 @@ Repo packages go through pacman into `packages/extra.txt`. Anything not in a syn
 **Edit niri / noctalia:** change files under `configs/`. They are the live configs. Commit when it feels right.
 
 **Wallpapers:** Super+Shift+Return opens the picker. Files live in
-`configs/noctalia/wallpapers/` (cube, alcoves, charging station, mantra).
+`configs/noctalia/wallpapers/` (rain, ship, dock, construct, blue flower,
+and the extra rain/ship stills). Old Borg stills are in
+`configs/noctalia/archive-borg-wallpapers/`.
 
 **OS notes:** dump obstacles and wants in `os-notes.txt` (plain text, no
 structure). Hand the file over; they get triaged into `records/next.md`.

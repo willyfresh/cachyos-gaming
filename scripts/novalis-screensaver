@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+# Inner driver for the Novalis screensaver. Same argv as niri-screensaver:
+#   run [--seed N] [--logo PATH] [--measure-logical WxH]
+# Sequence (no random 8s cuts):
+#   1. flower grows from the ground, thunderstorm, then decrypts into NOVALIS
+#   2. Novalis flickers, outer ASCII peels into a matrix-rain tunnel
+#   3. matrix rain on the wordmark, then loop
+set -uo pipefail
+exec 2>>"${XDG_RUNTIME_DIR:-/tmp}/novalis-screensaver.log"
+echo "$(date -Iseconds) start argv=$* tty=$(tty 2>/dev/null || echo none)" >&2
+
+SCREENSAVER_DIR="${SCREENSAVER_DIR:-$HOME/.config/niri-screensaver}"
+CONFIG_FILE="${CONFIG_FILE:-${SCREENSAVER_DIR}/config}"
+LOGO_FILE="${LOGO_FILE:-${SCREENSAVER_DIR}/logo.txt}"
+FLOWER_FILE="${FLOWER_FILE:-${SCREENSAVER_DIR}/flower.txt}"
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+TUNNEL="$SCRIPT_DIR/novalis-tunnel.py"
+BLOOM="$SCRIPT_DIR/novalis-bloom.py"
+SELF_NAME="$(basename "$0")"
+FRAME_RATE="${FRAME_RATE:-60}"
+DISMISS_ON_KEY="${DISMISS_ON_KEY:-true}"
+CURSOR_HIDE="${CURSOR_HIDE:-true}"
+GREEN_STOPS="003B14 5CFF6B 8AFF96"
+
+[[ -f "$CONFIG_FILE" ]] && source "$CONFIG_FILE"
+: "${LOGO_FILE:=${SCREENSAVER_DIR}/logo.txt}"
+: "${FLOWER_FILE:=${SCREENSAVER_DIR}/flower.txt}"
+: "${FRAME_RATE:=60}"
+
+LOGO_FILE="$LOGO_FILE"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    run) shift ;;
+    --logo) LOGO_FILE="$2"; shift 2 ;;
+    --seed) shift 2 ;;
+    --measure-logical) shift 2 ;;
+    *) shift ;;
+  esac
+done
+
+CHILD_PID=""
+
+exit_screensaver() {
+  trap - SIGINT SIGTERM SIGHUP SIGQUIT EXIT
+  if [[ -n "$CHILD_PID" ]]; then
+    kill "$CHILD_PID" 2>/dev/null || true
+    wait "$CHILD_PID" 2>/dev/null || true
+  fi
+  pkill -P $$ -x tte 2>/dev/null || true
+  pkill -P $$ -x python3 2>/dev/null || true
+  printf '\e[?1003l' 2>/dev/null
+  tput cnorm 2>/dev/null
+  tput reset 2>/dev/null
+  stty echo 2>/dev/null
+  exit 0
+}
+
+terminate_siblings() {
+  local self=$$ pid cmd
+  for pid in /proc/[0-9]*; do
+    pid="${pid#/proc/}"
+    [[ "$pid" == "$self" ]] && continue
+    cmd="$(tr '\0' ' ' < "/proc/$pid/cmdline" 2>/dev/null)" || continue
+    [[ "$cmd" == *"${SELF_NAME} run "* ]] && kill -TERM "$pid" 2>/dev/null
+  done
+}
+
+dismiss_all() {
+  terminate_siblings
+  exit_screensaver
+}
+
+trap exit_screensaver SIGINT SIGTERM SIGHUP SIGQUIT EXIT
+STARTED_AT=$SECONDS
+echo "$(date -Iseconds) running logo=$LOGO_FILE flower=$FLOWER_FILE" >&2
+
+stty -echo 2>/dev/null || true
+[[ "$CURSOR_HIDE" != "false" ]] && tput civis
+printf '\033]11;rgb:00/00/00\007'
+
+tte_common=(
+  --frame-rate "$FRAME_RATE"
+  --canvas-width 0 --canvas-height 0
+  --anchor-canvas c --anchor-text c
+  --reuse-canvas --no-eol --no-restore-cursor
+  --terminal-background-color 000000
+)
+
+run_child() {
+  echo "$(date -Iseconds) child: $*" >&2
+  "$@" </dev/null 2>>"${XDG_RUNTIME_DIR:-/tmp}/novalis-screensaver.log" &
+  CHILD_PID=$!
+  sleep 0.15
+  if ! kill -0 "$CHILD_PID" 2>/dev/null; then
+    wait "$CHILD_PID" 2>/dev/null || true
+    echo "$(date -Iseconds) child exited immediately pid=$CHILD_PID" >&2
+    CHILD_PID=""
+    return 0
+  fi
+  # Drain tty queries before mouse tracking; those replies start with ESC
+  # and would look like a user dismiss. Same dance as stock niri-screensaver.
+  while read -r -s -n1 -t 0.01 2>/dev/null; do :; done
+  printf '\e[?1003h'
+  sleep 0.35
+  while read -r -s -n1 -t 0.05 2>/dev/null; do :; done
+  while kill -0 "$CHILD_PID" 2>/dev/null; do
+    if read -r -s -n1 -t 0.4 key 2>/dev/null; then
+      # Pinning the window onto the other monitor injects pointer motion.
+      if (( SECONDS - STARTED_AT < 2 )); then
+        continue
+      fi
+      if [[ "$key" == $'\e' ]]; then
+        read -r -s -n5 -t 0.01 2>/dev/null || true
+        echo "$(date -Iseconds) dismiss (esc/mouse)" >&2
+        dismiss_all
+      elif [[ "$DISMISS_ON_KEY" != "false" ]]; then
+        echo "$(date -Iseconds) dismiss (key)" >&2
+        dismiss_all
+      fi
+    fi
+  done
+  wait "$CHILD_PID" 2>/dev/null || true
+  CHILD_PID=""
+  printf '\e[?1003l'
+}
+
+while true; do
+  # 1. Stem, leaves, bud, blue flower in the rain; lightning; unfold into NOVALIS.
+  run_child python3 "$BLOOM" "$LOGO_FILE"
+  # 2. Flicker, onion-peel (top included) zooming outward into a rain tunnel.
+  run_child python3 "$TUNNEL" "$LOGO_FILE"
+  run_child tte -i "$LOGO_FILE" "${tte_common[@]}" matrix \
+    --highlight-color e8ffe8 \
+    --rain-color-gradient 003b14 5CFF6B \
+    --rain-time 12
+done

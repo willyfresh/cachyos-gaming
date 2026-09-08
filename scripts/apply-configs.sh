@@ -9,6 +9,7 @@ mkdir -p "$HOME/.config"
 
 link_path "$CONFIGS_DIR/niri" "$HOME/.config/niri"
 link_path "$CONFIGS_DIR/noctalia" "$HOME/.config/noctalia"
+link_path "$CONFIGS_DIR/niri-screensaver" "$HOME/.config/niri-screensaver"
 
 if [[ -f "$CONFIGS_DIR/environment.d/gaming.conf" ]]; then
   mkdir -p "$HOME/.config/environment.d"
@@ -21,11 +22,23 @@ mkdir -p "$HOME/.local/bin"
 chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" \
   "$REPO_ROOT/scripts/collapse-webapp-profile.sh" \
-  "$REPO_ROOT/scripts/launch-discord.sh"
+  "$REPO_ROOT/scripts/launch-discord.sh" \
+  "$REPO_ROOT/scripts/launch-btop.sh" \
+  "$REPO_ROOT/scripts/launch-grok-bot.sh" \
+  "$REPO_ROOT/scripts/lock.sh" \
+  "$REPO_ROOT/scripts/novalis-screensaver" \
+  "$REPO_ROOT/scripts/novalis-tunnel.py" \
+  "$REPO_ROOT/scripts/novalis-bloom.py"
 link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.sh"
 link_path "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" "$HOME/.local/bin/launch-or-focus-webapp.sh"
 link_path "$REPO_ROOT/scripts/collapse-webapp-profile.sh" "$HOME/.local/bin/collapse-webapp-profile.sh"
 link_path "$REPO_ROOT/scripts/launch-discord.sh" "$HOME/.local/bin/launch-discord.sh"
+link_path "$REPO_ROOT/scripts/launch-btop.sh" "$HOME/.local/bin/launch-btop.sh"
+link_path "$REPO_ROOT/scripts/launch-grok-bot.sh" "$HOME/.local/bin/launch-grok-bot.sh"
+link_path "$REPO_ROOT/scripts/lock.sh" "$HOME/.local/bin/lock.sh"
+link_path "$REPO_ROOT/scripts/novalis-screensaver" "$HOME/.local/bin/novalis-screensaver"
+link_path "$REPO_ROOT/scripts/novalis-tunnel.py" "$HOME/.local/bin/novalis-tunnel.py"
+link_path "$REPO_ROOT/scripts/novalis-bloom.py" "$HOME/.local/bin/novalis-bloom.py"
 
 if [[ -f "$CONFIGS_DIR/applications/steam.desktop" ]]; then
   link_path "$CONFIGS_DIR/applications/steam.desktop" "$HOME/.local/share/applications/steam.desktop"

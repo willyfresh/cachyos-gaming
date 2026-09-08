@@ -6,7 +6,7 @@ Super-key (Windows key) chords on three machines. A combo is listed if
 | Column | Machine |
 |--------|---------|
 | **Windows** | Windows 11, [Microsoft’s list](https://support.microsoft.com/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
-| **Borg** | This CachyOS niri box (`configs/niri/cfg/keybinds.kdl`, keyd Super-tap) |
+| **Novalis** | This CachyOS niri box (`configs/niri/cfg/keybinds.kdl`, keyd Super-tap) |
 | **Delorean** | ThinkPad Omarchy + overlay (`omarchy-delorean`). Overlay wins; everything else is live Omarchy stock |
 
 Modifier order per letter: Super, Shift, Ctrl, Alt, then the doubles, then all three.
@@ -19,13 +19,13 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 
 ## Letters
 
-| Key | Windows | Borg | Delorean |
+| Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | **A** | | | |
 | Super+A | Quick Settings | — | — |
 | Super+Shift+A | Focus a Windows tip | — | ChatGPT |
 | Super+Ctrl+A | Color filters (if enabled) | — | Audio panel |
-| Super+Shift+Alt+A | — | — | Grok |
+| Super+Shift+Alt+A | — | Grok Bot | Grok |
 | Super+Ctrl+Shift+A | — | — | Pick an AI agent |
 | **B** | | | |
 | Super+B | Focus the tray | Firefox | — (browser is Super+W) |
@@ -113,7 +113,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | **T** | | | |
 | Super+T | Cycle taskbar apps | Toggle floating | VS Code |
 | Super+Shift+T | Cycle taskbar apps, reverse | — | — |
-| Super+Ctrl+T | — | — | Activity (btop) |
+| Super+Ctrl+T | — | Activity (btop) | Activity (btop) |
 | Super+Alt+T | — | — | Toggle floating |
 | Super+Ctrl+Alt+T | — | — | Time as notification |
 | **U** | | | |
@@ -144,7 +144,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 
 ## Super by itself, Space, Return, Tab
 
-| Key | Windows | Borg | Delorean |
+| Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | Super tap / release | Start menu | Launcher (keyd → Super+Space) | Launcher |
 | Super+Space | Input language | Launcher | Omarchy menu |
@@ -168,7 +168,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 
 ## Numbers
 
-| Key | Windows | Borg | Delorean |
+| Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | Super+1…9 | Taskbar app in that slot | Workspace 1–9 | Workspace 1–9 (0 is 10) |
 | Super+0 | Tenth taskbar app | — | Workspace 10 |
@@ -181,11 +181,11 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 
 ## Arrows
 
-Borg grammar: Super = focus, Ctrl = workspace, Alt = monitor, Shift = move,
+Novalis grammar: Super = focus, Ctrl = workspace, Alt = monitor, Shift = move,
 Ctrl+Alt = size. Delorean: Super = focus then next occupied desk, Shift =
 move to adjacent numbered desk, Ctrl = swap on this desk.
 
-| Key | Windows | Borg | Delorean |
+| Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | Super+Left/Right | Snap half-screen | Focus column | Focus, then occupied desk |
 | Super+Up | Maximize | Stacked window, else workspace up | Focus, then occupied desk |
@@ -204,7 +204,7 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 
 ## Minus, Equal, and other punctuation
 
-| Key | Windows | Borg | Delorean |
+| Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | Super+Minus | Magnifier zoom out | Column thinner 10% | Expand window left |
 | Super+Equal | Magnifier zoom in | Column wider 10% | Shrink window left |
@@ -236,7 +236,7 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 
 ## Escape, Delete, mouse, capture
 
-| Key | Windows | Borg | Delorean |
+| Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | Super+Escape | Close Magnifier | Toggle shortcut inhibit | System menu |
 | Super+Shift+Escape | — | niri important-hotkeys overlay | — |
@@ -253,14 +253,14 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 | Super+Ctrl+Print Screen | — | — | OCR to clipboard |
 | Ctrl+Shift+1/2/3 | — | Screenshot area / screen / window | — |
 
-Media and brightness keys on Borg go through Noctalia (volume, mute, mic,
+Media and brightness keys on Novalis go through Noctalia (volume, mute, mic,
 play, next, prev, brightness). Delorean uses Omarchy’s matching helpers.
 
 ---
 
 ## Sources
 
-- Borg live binds: `configs/niri/cfg/keybinds.kdl`, `configs/niri/cfg/misc.kdl` (Alt+Tab), `configs/keyd/default.conf` (Super tap)
+- Novalis live binds: `configs/niri/cfg/keybinds.kdl`, `configs/niri/cfg/misc.kdl` (Alt+Tab), `configs/keyd/default.conf` (Super tap)
 - Delorean overlay: `omarchy-delorean/config/hypr/bindings.lua`, `windows.lua`, `docs/binds.md`
 - Omarchy stock (whatever the overlay did not steal): [Omarchy hotkeys](https://omarchy.org/manual/hotkeys/)
 - Windows 11: [Keyboard shortcuts in Windows](https://support.microsoft.com/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec)

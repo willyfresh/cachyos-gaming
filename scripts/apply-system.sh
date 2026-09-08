@@ -24,4 +24,15 @@ if systemctl list-unit-files systemd-timesyncd.service >/dev/null 2>&1; then
   sudo systemctl enable --now systemd-timesyncd.service
 fi
 
+# Hovercraft nameplate. Pretty hostname is Novalis; /etc/hosts 127.0.1.1
+# must match or sudo and some local TLS break.
+if [[ "$(hostname)" != "Novalis" ]]; then
+  log "setting hostname Borg -> Novalis"
+  sudo hostnamectl set-hostname Novalis
+fi
+if grep -qE '(^|[[:space:]])Borg([[:space:]]|$)' /etc/hosts; then
+  log "rewriting Borg -> Novalis in /etc/hosts"
+  sudo sed -i -E 's/(^|[[:space:]])Borg([[:space:]]|$)/\1Novalis\2/g' /etc/hosts
+fi
+
 log "system configs applied"

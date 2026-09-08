@@ -15,6 +15,10 @@ come off this page.
 | Super+Ctrl+Alt size, Super+drag, windowed fullscreen | you confirm | applied 2026-09-06 |
 | Webapp Chrome login (BGA / Messages / …) | you | sign in once in a webapp |
 | Super-letter app keys (Windows pass) | you | waiting; table in `records/keybinds.md` |
+| Matrix theme + falling-code screensaver | you confirm | applied 2026-09-07 |
+| Rename host to Novalis | you (new login picks it up everywhere) | applied 2026-09-07 |
+| Grok Bot desktop app | you (sign in) | installed; Super+Shift+Alt+A |
+| Super+Ctrl+T floating btop | you confirm | applied 2026-09-07 |
 
 ## Halo Infinite Xbox Live login
 
@@ -92,23 +96,23 @@ Sign in there once. Links out of those windows stay in that Default.
 `scripts/collapse-webapp-profile.sh` is only needed if a second named
 profile appears.
 
-## Homogeny: Borg niri vs Delorean Hyprland
+## Homogeny: Novalis niri vs Delorean Hyprland
 
 Already the same muscle: Super tap / Super+Space launcher, Super+Q close,
 Super+Return terminal, Super+E files, Super+V clipboard, Super+Tab
 overview, Super+Shift+Tab previous desk, Alt+Tab recent windows, Super+K
 cheatsheet, Super+arrows with Shift = move, Super+/- this-column width,
-Super+Ctrl+F windowed fullscreen, Super+Shift+B BGA, Super+D Discord,
-Super+L lock.
+Super+Ctrl+F windowed fullscreen, Super+Ctrl+T btop, Super+Shift+B BGA,
+Super+D Discord, Super+L lock, Super+Shift+Alt+A Grok.
 
-Intentionally **not** copied: Omarchy Super+/- is left-edge resize; Borg
+Intentionally **not** copied: Omarchy Super+/- is left-edge resize; Novalis
 keeps `set-column-width ±10%`. Super+Ctrl+arrows is workspace on niri
 (scroll layout) and swap-neighbor on Hyprland (dwindle). Leave that split.
 
 Still different. Super+D is Discord and Super+L is lock (Super+Alt+L still
 locks too). The rest wait on a Windows Super-letter pass:
 
-| Key | Delorean | Borg today | Notes |
+| Key | Delorean | Novalis today | Notes |
 |-----|----------|------------|-------|
 | Super+T | VS Code | toggle float | `Super+Shift+V` is float/tile focus |
 | Super+W | browser | tabbed column | |
@@ -117,3 +121,27 @@ locks too). The rest wait on a Windows Super-letter pass:
 
 Do not steal those niri defaults until the Windows combos say what they
 should be.
+
+Super+Ctrl+T is now Activity (btop) on both machines. Super+Shift+Alt+A
+is Grok Bot on Novalis and Grok on Delorean.
+
+## Matrix theme, screensaver, hostname
+
+Applied 2026-09-07. Ship name is **Novalis** (Tirant's hovercraft,
+Zion dock pad 4). Palette `Novalis.json` is the same gunmetal +
+`#5CFF6B`. Bar chip is `NOVALIS`. Wallpapers: rain, hull, dock, construct, then
+close rain / code skyline / phone booth / operator core / cockpit /
+pad hero / broadcast depth / blue flower.
+
+Screensaver is `niri-screensaver` with TTE effects `matrix,rain,decrypt`,
+Novalis wordmark, both monitors mirrored. Idle: 150s screensaver, 300s
+lock. Package and hostname applied 2026-09-07.
+
+Chrome webapp cookies stay at `~/.local/share/borg/chrome-webapps` on
+purpose (moving that dir would look logged out).
+
+## Grok Bot desktop app
+
+AUR `grok-bot-bin` 0.43.0 is installed. Super+Shift+Alt+A focuses or
+launches (`scripts/launch-grok-bot.sh`). Sign in with the same Cursor /
+SuperGrok account used on Android and Delorean.

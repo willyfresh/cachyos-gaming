@@ -1,5 +1,8 @@
 # Scratch inbox. Dump obstacles here, then hand the file over.
 # Absorbed items live in records/next.md.
-omarchy: cool to have btop floater on keybind. possible here yeah?
-I've been testing the grok bot and it's been fantastic. let's install it.
-what are my screensaver options? that omarchy one is really cool. especially the matrix falling code phase. what could we do that's like, borg themed? I could always change the whole theme lol.
+important note: we have to slow down a lot. i'm using grokbots to do work and while it's cool, it's eating my supergrok usage it's an expensive upgrade... so...  we're cutting back all over. so new policy: backlog anyting added to this list and when I come knocking, I'll just pick one (maybe two) task from the backlog a day.
+the screensaver freezes on lock screen. does it take a screenshot? is this computer locking automatically? i'm not a fan. screensaver shouldn't lock screen, nor should idle. conversely when i lock (super-l) I want the screensaver to run
+i don't think dropbox is starting automatically.
+more ascii screensaver ideas: flying toasters, 3d pipes, beziers, 3d text (novalis obviously), day xxx (live updating, animate) of 365
+more deep ascii screensaver. xl skull graphic. lrg butterfly on top of skull opening and closing wings. try to be detailed. messages either random from this list or list them: xxx days/years until bex is 18. xxx days/years left of your 40s (50s, 60s as i get older). xx winters left... (what age do I stop snowboarding?) ... when is retirement?. would need my bday, 11-20-84.
+wait. when I type niri-screensaver into Alacritty, it does all the same animations as omarchy!

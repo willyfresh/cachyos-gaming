@@ -65,6 +65,22 @@
         geometry-corner-radius 0
     }
 
+    // Super+Ctrl+T activity monitor. Same job as Omarchy's floating btop.
+    // New floating windows already open centered; this only sizes it.
+    window-rule {
+        match app-id="btop"
+        open-floating true
+        default-column-width { proportion 0.55; }
+        default-window-height { proportion 0.65; }
+    }
+
+    // niri-screensaver: one fullscreen Alacritty per output.
+    window-rule {
+        match app-id="niri-screensaver"
+        open-fullscreen true
+        open-focused true
+    }
+
     // Board Game Arena is a title-less Chrome --app window (launch-webapp.sh),
     // not a PWA (--app-id draws a CSD title bar niri cannot strip).
     window-rule {

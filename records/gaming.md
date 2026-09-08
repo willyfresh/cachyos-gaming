@@ -1,4 +1,4 @@
-# Gaming on Borg
+# Gaming on Novalis
 
 RTX 2060, nvidia-open 610.57.04, niri + noctalia. Drivers were already in place from the CachyOS install (`nvidia-utils`, `lib32-nvidia-utils`, `egl-wayland`).
 

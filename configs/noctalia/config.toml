@@ -5,11 +5,11 @@ font_family = "Liberation Sans"
 [theme]
 mode = "dark"
 source = "custom"
-custom_palette = "Borg"
+custom_palette = "Novalis"
 
 [widget.hostname]
 type = "text"
-text = "BORG"
+text = "NOVALIS"
 font_weight = 700
 color = "primary"
 capsule = true
@@ -41,6 +41,9 @@ start = ["hostname", "workspaces"]
 center = ["clock"]
 end = ["media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "control-center", "session"]
 
+[backdrop]
+enabled = false
+
 [wallpaper]
 enabled = true
 fill_mode = "crop"
@@ -48,24 +51,88 @@ fill_color = "surface"
 directory = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers"
 
 [wallpaper.default]
-path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/1-cube.jpg"
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/1-rain.jpg"
 
 [[wallpaper.favorite]]
-path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/1-cube.jpg"
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/1-rain.jpg"
 theme_mode = "dark"
 palette_source = "custom"
 
 [[wallpaper.favorite]]
-path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/2-alcoves.jpg"
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/2-novalis.jpg"
 theme_mode = "dark"
 palette_source = "custom"
 
 [[wallpaper.favorite]]
-path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/3-charging-station.jpg"
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/3-dock.jpg"
 theme_mode = "dark"
 palette_source = "custom"
 
 [[wallpaper.favorite]]
-path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/4-resistance-is-futile.jpg"
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/4-construct.jpg"
 theme_mode = "dark"
 palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/5-rain-close.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/6-rain-skyline.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/7-rain-booth.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/8-novalis-core.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/9-novalis-cockpit.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/10-novalis-pad.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/11-novalis-broadcast.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[[wallpaper.favorite]]
+path = "/home/willyfresh/Projects/cachyos-gaming/configs/noctalia/wallpapers/12-blue-flower.jpg"
+theme_mode = "dark"
+palette_source = "custom"
+
+[idle]
+behavior_order = ["screensaver", "lock"]
+pre_action_fade_seconds = 0
+
+[idle.behavior.screensaver]
+timeout = 150
+action = "command"
+enabled = true
+command = "niri-screensaver-ctl launch"
+resume_command = "niri-screensaver-ctl kill"
+
+[idle.behavior.lock]
+timeout = 300
+action = "command"
+enabled = true
+command = "/home/willyfresh/.local/bin/lock.sh"
+
+[lockscreen]
+enabled = true
+lock_before_suspend = true
+blurred_desktop = true
+blur_intensity = 0.0
+tint_intensity = 0.12

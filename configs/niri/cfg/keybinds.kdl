@@ -14,7 +14,9 @@ binds {
     Mod+B                               hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
     Mod+Shift+B                         hotkey-overlay-title="Board Game Arena" { spawn "/home/willyfresh/.local/bin/launch-or-focus-webapp.sh" "chrome-boardgamearena.com.*Default" "https://boardgamearena.com/"; }
     Mod+D                               hotkey-overlay-title="Discord" { spawn "/home/willyfresh/.local/bin/launch-discord.sh"; }
-    Mod+L                               hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
+    Mod+CTRL+T                          hotkey-overlay-title="Activity: btop" { spawn "/home/willyfresh/.local/bin/launch-btop.sh"; }
+    Mod+Shift+Alt+A                     hotkey-overlay-title="Grok Bot" { spawn "/home/willyfresh/.local/bin/launch-grok-bot.sh"; }
+    Mod+L                               hotkey-overlay-title="Lock Screen" { spawn "/home/willyfresh/.local/bin/lock.sh"; }
 
     // --- Noctalia ---
     // Super tap also opens the launcher via keyd (tap Super -> Super+Space).
@@ -23,7 +25,7 @@ binds {
     Mod+Shift+Return                    hotkey-overlay-title="Open Wallpaper Selector: noctalia wallpaper toggle" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     Mod+S                               hotkey-overlay-title="Open Control Center: noctalia controlCenter" { spawn-sh "noctalia msg panel-toggle control-center"; }
     Mod+Shift+S                         hotkey-overlay-title="Open Settings: noctalia settings" { spawn-sh "noctalia msg settings-toggle"; }
-    Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
+    Mod+ALT+L                           hotkey-overlay-title="Lock Screen" { spawn "/home/willyfresh/.local/bin/lock.sh"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "noctalia msg panel-toggle session"; }
 
     // Please set the text editor of your choice.

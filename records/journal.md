@@ -190,7 +190,59 @@ A running record of installs and config changes. Package names that should survi
   use that launcher. WebKit wrapper stays in the repo unused.
 - Launcher entries: Gmail, Messages, Maps, Calendar, YouTube Music.
 
+## 2026-09-07 — Novalis
+
+- Hostname is Novalis (Tirant's hovercraft, Zion dock pad 4).
+  `scripts/apply-system.sh` runs `hostnamectl set-hostname Novalis` and
+  rewrites `/etc/hosts`. Needs sudo in a real terminal.
+- Palette file is `configs/noctalia/palettes/Novalis.json` (same gunmetal
+  + `#5CFF6B`). Bar chip is `NOVALIS` and still opens the launcher.
+- Wallpapers: digital rain, hull in the tunnels, Zion dock, construct
+  street. Super+Shift+Return cycles them. Old cube/alcove stills live in
+  `configs/noctalia/archive-borg-wallpapers/`.
+- Screensaver: AUR `niri-screensaver`, TTE effects matrix/rain/decrypt,
+  Novalis wordmark, both monitors mirrored. Idle 150s screensaver, 300s
+  lock. `pkg-add` still needs sudo.
+- Chrome webapp profile stays at `~/.local/share/borg/chrome-webapps`.
+
+## 2026-09-07 — Novalis screensaver sequence + lock
+
+- Custom inner driver (`scripts/novalis-screensaver`): flower grows
+  (pour up) through a thunderstorm, decrypts into the NOVALIS wordmark,
+  flickers, then the outer ASCII peels into a matrix-rain tunnel
+  (`scripts/novalis-tunnel.py`). Loops without the old 8s random cuts.
+- Super+L and idle lock run `scripts/lock.sh`: start the saver, then
+  Noctalia lock with a desktop snapshot (`blurred_desktop`, no blur) so
+  the lock background is the animation.
+
+## 2026-09-07 — more wallpapers
+
+- Added eight stills to the Super+Shift+Return loop: close title-sequence
+  rain, code skyline, phone booth, operator core, cockpit down the
+  tunnel, pad hero, broadcast depth, and the blue flower in the rain
+  (Novalis the poet). Default wallpaper is still digital rain.
+
+## 2026-09-07 — floating btop, Grok Bot, drop BORG chip
+
+- Super+Ctrl+T opens a floating Alacritty running btop (`app-id=btop`,
+  ~55%×65%, centered). Press again while it is focused to close it;
+  otherwise the key focuses the existing window. Script:
+  `scripts/launch-btop.sh`. Same chord as Omarchy Activity.
+- Super+Shift+Alt+A focuses or launches the Grok Bot desktop app
+  (`scripts/launch-grok-bot.sh`). Package is recorded as AUR
+  `grok-bot-bin`; live install still needs
+  `./scripts/pkg-add.sh grok-bot-bin` in a real terminal (sudo). Same
+  chord as Delorean Grok.
+- Bar **Assimilate** dropped the `BORG` chip for a few hours; the
+  Novalis nameplate replaced it the same day.
+
 ## 2026-09-04 — table For Honor
 
 - proton-cachyos-slr/umu did run (`upc.exe` + WebCore + xalia) but no
   window. Killed the leftover tree. Tabled with Halo / BGA.
+
+## 2026-09-07 — installed niri-screensaver grok-bot-bin
+
+- requested: niri-screensaver grok-bot-bin
+- repos (pacman): (none)
+- AUR (paru): niri-screensaver grok-bot-bin

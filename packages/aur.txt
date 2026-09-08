@@ -7,3 +7,10 @@
 
 google-chrome
 visual-studio-code-bin
+
+# Grok Bot desktop app (official Linux .deb). Super+Shift+Alt+A.
+# Live install needs a real terminal: ./scripts/pkg-add.sh grok-bot-bin
+grok-bot-bin
+
+# Falling-code screensaver (TTE). Idle hook is in noctalia config.toml.
+niri-screensaver

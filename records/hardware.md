@@ -1,10 +1,10 @@
-# Hardware — Borg
+# Hardware — Novalis
 
 Captured 2026-09-02 on the first CachyOS niri install.
 
 | | |
 | --- | --- |
-| Hostname | Borg |
+| Hostname | Novalis (was Borg until 2026-09-07) |
 | Distro | CachyOS (rolling), `linux-cachyos` 7.2.2 |
 | Desktop | niri 26.04 + noctalia (`cachyos-niri-noctalia` 1.4.0) |
 | CPU | AMD Ryzen 5 5600X (6c/12t) |

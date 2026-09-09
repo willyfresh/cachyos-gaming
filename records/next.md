@@ -5,6 +5,11 @@ Dump obstacles in that file, then hand it over. This page is the working
 list. Done items move into `journal.md` / `gaming.md` / `hardware.md` and
 come off this page.
 
+**Pace (2026-09-08):** backlog only. Grok Bot work is eating SuperGrok
+quota, so nothing starts until you pick **one, maybe two** items from
+this page. Do not implement a dump just because the inbox was handed
+over.
+
 | Want | Who | Status |
 |------|-----|--------|
 | Halo Infinite Xbox Live login | you | tabled |
@@ -19,6 +24,12 @@ come off this page.
 | Rename host to Novalis | you (new login picks it up everywhere) | applied 2026-09-07 |
 | Grok Bot desktop app | you (sign in) | installed; Super+Shift+Alt+A |
 | Super+Ctrl+T floating btop | you confirm | applied 2026-09-07 |
+| Screensaver vs lock split | you confirm | applied 2026-09-08; Super+L is a normal lock |
+| Dropbox missing | you (sign in) | installed; autostart |
+| ASCII screensaver catalog | you pick | backlog |
+| Deep ASCII: skull + butterfly + countdowns | you pick | timers applied; skull/butterfly backlog |
+| `niri-screensaver` CLI is still Omarchy TTE | you pick | backlog |
+| Super+F maximize on both machines | you confirm (Delorean: `hyprctl reload`) | applied 2026-09-08 |
 
 ## Halo Infinite Xbox Live login
 
@@ -145,3 +156,61 @@ purpose (moving that dir would look logged out).
 AUR `grok-bot-bin` 0.43.0 is installed. Super+Shift+Alt+A focuses or
 launches (`scripts/launch-grok-bot.sh`). Sign in with the same Cursor /
 SuperGrok account used on Android and Delorean.
+
+## Screensaver vs lock split
+
+Applied 2026-09-08, then Super+L dropped the saver the same day.
+
+- Idle 150s: screensaver only. `[idle.behavior.lock]` is off.
+- Super+L / Super+Alt+L: kill any saver, then a normal Noctalia lock
+  (wallpaper + password). niri cannot play a live saver *over* the
+  lock (`ext-session-lock-v1` blanks windows).
+- Lid close / suspend still locks (`lock_before_suspend = true`).
+
+Confirm: wait past 150s with no lock; Super+L should be wallpaper +
+PAM, no animation.
+
+## Dropbox missing
+
+AUR `dropbox`, autostart `dropbox start -i` in
+`configs/niri/cfg/autostart.kdl`. Sign in on first run (tray).
+
+## ASCII screensaver catalog
+
+Day-of-year dropped 2026-09-08 (did not make sense). Still backlog:
+flying toasters, 3D pipes, beziers, real 3D Novalis text. Stock
+`niri-screensaver` in a terminal is still Omarchy TTE.
+
+## Deep ASCII: skull + butterfly + countdowns
+
+Rain never stops. Facts are one line, all caps, decade first, Bex last
+(`YOUR 40S: 8 YEARS | 428 WEEKS | 2995 DAYS`); separators vary.
+Digits scramble 4–7 hits then lock white; after the hold, glyphs
+dissolve down. NOVALIS reveal rotates: touch (first-hit lock), light
+scramble, or top-down drip.
+
+- Bex 18: born **2017-11-07** → 2035-11-07
+- Decades: your **1984-11-20**, currently 40s, then 50s, 60s
+- 65: 2049-11-20
+- 90: 2074-11-20
+- Winters / stop-snowboarding: skipped. Dad is 68 and still going.
+
+Skull + butterfly still backlog.
+
+## `niri-screensaver` CLI is still Omarchy TTE
+
+Typing `niri-screensaver` in Alacritty runs the packaged TTE set, same
+family as Omarchy. Expected until the CLI is pointed at
+`scripts/novalis-screensaver` or the catalog above replaces it.
+
+## Super+F maximize on both machines
+
+Applied 2026-09-08. Super+F toggles maximize on both:
+
+- Novalis: already `maximize-column` (unchanged). Exclusive fullscreen
+  stays Super+Shift+F; windowed fullscreen stays Super+Ctrl+F.
+- Delorean: was Omarchy exclusive fullscreen; now
+  `fullscreen({ mode = "maximized", action = "toggle" })`. Super+Ctrl+F
+  stays windowed fullscreen, Super+Alt+F stays full width, Super+Shift+F
+  stays files. Reload Hyprland on Delorean (`hyprctl reload`) to pick it
+  up.

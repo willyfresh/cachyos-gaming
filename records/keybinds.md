@@ -51,7 +51,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+E | — | — | Emoji picker |
 | Super+Shift+Alt+E | — | — | Thunderbird compose |
 | **F** | | | |
-| Super+F | Feedback Hub | Maximize column | Fullscreen |
+| Super+F | Feedback Hub | Maximize column | Maximize window |
 | Super+Shift+F | — | Exclusive fullscreen | File manager |
 | Super+Ctrl+F | Search PCs on the network | Windowed fullscreen (site chrome off) | Windowed fullscreen (site chrome off) |
 | Super+Alt+F | — | Expand column to leftover width | Full width |

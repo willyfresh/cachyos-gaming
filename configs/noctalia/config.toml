@@ -114,7 +114,7 @@ theme_mode = "dark"
 palette_source = "custom"
 
 [idle]
-behavior_order = ["screensaver", "lock"]
+behavior_order = ["screensaver"]
 pre_action_fade_seconds = 0
 
 [idle.behavior.screensaver]
@@ -127,12 +127,12 @@ resume_command = "niri-screensaver-ctl kill"
 [idle.behavior.lock]
 timeout = 300
 action = "command"
-enabled = true
+enabled = false
 command = "/home/willyfresh/.local/bin/lock.sh"
 
 [lockscreen]
 enabled = true
 lock_before_suspend = true
-blurred_desktop = true
+blurred_desktop = false
 blur_intensity = 0.0
 tint_intensity = 0.12

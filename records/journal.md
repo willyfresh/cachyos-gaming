@@ -246,3 +246,37 @@ A running record of installs and config changes. Package names that should survi
 - requested: niri-screensaver grok-bot-bin
 - repos (pacman): (none)
 - AUR (paru): niri-screensaver grok-bot-bin
+
+## 2026-09-08 — screensaver vs lock split
+
+- Idle is screensaver only (150s). `[idle.behavior.lock]` disabled, so
+  idle never locks.
+- Super+L is a normal lock: `scripts/lock.sh` kills any saver, then
+  Noctalia session lock (wallpaper + password). niri cannot play a live
+  saver over the lock. Lid close / suspend still locks.
+
+## 2026-09-08 — screensaver day-of-year + countdowns
+
+- `scripts/novalis-clock.py` prints one-line facts: until Bex is 18
+  (born 2017-11-07), years left of the current decade (40s now), until
+  65, until 90. Day-of-year was dropped the same day. No snowboarding
+  timer.
+- Rain never stops (`scripts/novalis-rain.py`). A cell scrambles for
+  4–7 rain-head hits (digits cycle 0–9) then locks white. After the
+  hold, locked glyphs dissolve downward into the rain (fact and logo).
+  Flower and tunnel dropped.
+
+## 2026-09-08 — Super+F maximize on both machines
+
+- Novalis Super+F was already `maximize-column`; left it.
+- Delorean overlay: Super+F toggles maximize (`mode = "maximized"`)
+  instead of exclusive fullscreen. Super+Ctrl+F / Super+Alt+F /
+  Super+Shift+F unchanged. Needs `hyprctl reload` on Delorean.
+
+## 2026-09-08 — installed dropbox
+
+- requested: dropbox
+- repos (pacman): (none)
+- AUR (paru): dropbox
+- Autostart: `spawn-at-startup "dropbox" "start" "-i"` in
+  `configs/niri/cfg/autostart.kdl`. Sign in on first run.

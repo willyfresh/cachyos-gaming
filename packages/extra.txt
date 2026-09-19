@@ -28,3 +28,10 @@ discord
 # Optional: leftover GTK4/WebKit BGA wrapper (scripts/board-game-arena).
 # Live BGA is Chrome --app via scripts/launch-webapp.sh.
 webkitgtk-6.0
+
+# Mail
+thunderbird
+
+# Graphics
+inkscape
+gimp

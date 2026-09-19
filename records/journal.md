@@ -266,6 +266,18 @@ A running record of installs and config changes. Package names that should survi
   hold, locked glyphs dissolve downward into the rain (fact and logo).
   Flower and tunnel dropped.
 
+## 2026-09-15 — installed thunderbird inkscape gimp
+
+- requested: thunderbird inkscape gimp
+- repos (pacman): thunderbird inkscape gimp
+- AUR (paru): (none)
+- versions: thunderbird 155.0.1-1.1, inkscape 1.4.4-6.1, gimp 3.2.6-1.1
+- `mirror.krfoss.org` had the suitesparse package but 404'd the
+  `.sig`; pacman aborted instead of trying the next mirror. That
+  Server line is commented in `/etc/pacman.d/cachyos-v3-mirrorlist`
+  and `cachyos-mirrorlist`. Cached thunderbird 154 failed its
+  signature; sync DBs were stale (local 154, mirrors 155).
+
 ## 2026-09-09 — Keychron circle / triangle / square
 
 - Circle / triangle / square were dead: keyd uinput drops F13–F24

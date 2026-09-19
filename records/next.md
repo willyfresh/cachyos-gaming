@@ -31,6 +31,9 @@ over.
 | `niri-screensaver` CLI is still Omarchy TTE | you pick | backlog |
 | Super+F maximize on both machines | you confirm (Delorean: `hyprctl reload`) | applied 2026-09-08 |
 | Keychron V6 special keys | you | applied; X unassigned; mic may become voice |
+| Thunderbird | you (add Gmail + Dreamhost IMAP) | installed |
+| Photoshop-type editor (Photopea is unusable) | you confirm | GIMP installed |
+| Vector editor: is Inkscape the one? | you confirm | Inkscape installed |
 
 ## Halo Infinite Xbox Live login
 
@@ -234,3 +237,28 @@ Windows mode stays. Applied 2026-09-09:
 Script: `scripts/keychron-v6-via.py`. udev:
 `configs/udev/99-keychron-v6-via.rules`. `scripts/apply-system.sh`
 installs both (sudo).
+
+## Thunderbird
+
+Installed (`thunderbird` 155.0.1). Unified inbox for Gmail + Dreamhost
+IMAP. No Gmail category tabs. Not a website. Add accounts when you pick.
+
+## Photoshop-type editor (Photopea is unusable)
+
+Photopea is a browser Photoshop clone; if it is unresponsive here, stay
+native. Pick one:
+
+- **GIMP** — closest FOSS Photoshop (layers, masks, plugins). Repo
+  `gimp`.
+- **Krita** — painting-first, still does photo/layers. Often smoother
+  on a GPU. Repo `krita`.
+
+Neither is Adobe. Wine/Bottles Photoshop is a later, painful option.
+Agent installs whichever you name.
+
+## Vector editor: is Inkscape the one?
+
+For Linux FOSS, **yes**. Illustrator/Affinity have no native Linux
+build. Figma/Penpot are web (same class of problem as Photopea). Boxy
+SVG is simpler and Electron. Inkscape is the one people actually ship
+work in. Install is `./scripts/pkg-add.sh inkscape` if you want it.

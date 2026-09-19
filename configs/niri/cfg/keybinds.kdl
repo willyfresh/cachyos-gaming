@@ -41,8 +41,9 @@ binds {
     XF86AudioMicMute                    allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
     XF86AudioNext                       allow-when-locked=true { spawn-sh "noctalia msg media next"; }
     XF86AudioPrev                       allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
-    XF86AudioPlay                       allow-when-locked=true { spawn-sh "noctalia msg media play"; }
-    XF86AudioPause                      allow-when-locked=true { spawn-sh "noctalia msg media stop"; }
+    XF86AudioPlay                       allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioPause                      allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    Ctrl+Shift+F8                       allow-when-locked=true hotkey-overlay-title="Play/pause (Keychron Fn+F8)" { spawn-sh "noctalia msg media toggle"; }
 
     // ─── Brightness Controls ───
     XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
@@ -209,6 +210,12 @@ binds {
     CTRL+Shift+1                        { screenshot; }
     CTRL+Shift+2                        { screenshot-screen; }
     CTRL+Shift+3                        { screenshot-window; }
+    Print                               hotkey-overlay-title="Screenshot: region (Keychron crop)" { screenshot; }
+    Ctrl+Shift+F1                       hotkey-overlay-title="Keychron light" { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Ctrl+Shift+F2                       hotkey-overlay-title="Notifications (Keychron circle)" { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
+    Ctrl+Shift+F3                       hotkey-overlay-title="Grok Bot (Keychron triangle)" { spawn "/home/willyfresh/.local/bin/launch-grok-bot.sh"; }
+    Ctrl+Shift+F4                       hotkey-overlay-title="Steam / Heroic (Keychron square)" { spawn "/home/willyfresh/.local/bin/launch-steam-heroic.sh"; }
+    Ctrl+Shift+F6                       allow-when-locked=true hotkey-overlay-title="Mic mute (Keychron mic)" { spawn-sh "noctalia msg mic-mute"; }
 
     // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.

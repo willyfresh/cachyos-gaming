@@ -266,6 +266,28 @@ A running record of installs and config changes. Package names that should survi
   hold, locked glyphs dissolve downward into the rain (fact and logo).
   Flower and tunnel dropped.
 
+## 2026-09-09 — Keychron circle / triangle / square
+
+- Circle / triangle / square were dead: keyd uinput drops F13–F24
+  (same as Fn+F8/F18). keyd now maps F13–F17/F20 to Ctrl+Shift+F1–F6.
+  niri: F1 light, F2 notifs, F3 Grok, F4 Steam/Heroic, F6 mic mute.
+  X (F17→Ctrl+Shift+F5) still unassigned.
+
+## 2026-09-09 — Keychron V6 Windows special keys
+
+- Fn+F8 play/pause: Chrome MPRIS needs hardware media-key handling, but
+  HID Play is resume-only. VIA sends F18; keyd turns F18/Play into
+  Ctrl+Shift+F8 (keyd uinput drops F13–F24). niri Ctrl+Shift+F8 =
+  `noctalia msg media toggle`.
+- Fn+F4 six-pack: VIA remaps Win-Fn F4 from Super+E to Super+Space
+  (launcher). Super+E stays files.
+- Knob cluster (crop, mic, light, circle, triangle, square, X): stock
+  Windows layer was Print / none / RGB / empty. VIA writes Print, F20,
+  F13–F17. niri Print = region screenshot, F20 = mic mute, F13 =
+  control center; F14–F17 captured until assigned.
+- `scripts/keychron-v6-via.py` plus udev
+  `configs/udev/99-keychron-v6-via.rules`. apply-system.sh installs.
+
 ## 2026-09-08 — Super+F maximize on both machines
 
 - Novalis Super+F was already `maximize-column`; left it.

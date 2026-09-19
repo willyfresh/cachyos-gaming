@@ -25,24 +25,28 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/launch-discord.sh" \
   "$REPO_ROOT/scripts/launch-btop.sh" \
   "$REPO_ROOT/scripts/launch-grok-bot.sh" \
+  "$REPO_ROOT/scripts/launch-steam-heroic.sh" \
   "$REPO_ROOT/scripts/lock.sh" \
   "$REPO_ROOT/scripts/novalis-screensaver" \
   "$REPO_ROOT/scripts/novalis-tunnel.py" \
   "$REPO_ROOT/scripts/novalis-bloom.py" \
   "$REPO_ROOT/scripts/novalis-clock.py" \
-  "$REPO_ROOT/scripts/novalis-rain.py"
+  "$REPO_ROOT/scripts/novalis-rain.py" \
+  "$REPO_ROOT/scripts/keychron-v6-via.py"
 link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.sh"
 link_path "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" "$HOME/.local/bin/launch-or-focus-webapp.sh"
 link_path "$REPO_ROOT/scripts/collapse-webapp-profile.sh" "$HOME/.local/bin/collapse-webapp-profile.sh"
 link_path "$REPO_ROOT/scripts/launch-discord.sh" "$HOME/.local/bin/launch-discord.sh"
 link_path "$REPO_ROOT/scripts/launch-btop.sh" "$HOME/.local/bin/launch-btop.sh"
 link_path "$REPO_ROOT/scripts/launch-grok-bot.sh" "$HOME/.local/bin/launch-grok-bot.sh"
+link_path "$REPO_ROOT/scripts/launch-steam-heroic.sh" "$HOME/.local/bin/launch-steam-heroic.sh"
 link_path "$REPO_ROOT/scripts/lock.sh" "$HOME/.local/bin/lock.sh"
 link_path "$REPO_ROOT/scripts/novalis-screensaver" "$HOME/.local/bin/novalis-screensaver"
 link_path "$REPO_ROOT/scripts/novalis-tunnel.py" "$HOME/.local/bin/novalis-tunnel.py"
 link_path "$REPO_ROOT/scripts/novalis-bloom.py" "$HOME/.local/bin/novalis-bloom.py"
 link_path "$REPO_ROOT/scripts/novalis-clock.py" "$HOME/.local/bin/novalis-clock.py"
 link_path "$REPO_ROOT/scripts/novalis-rain.py" "$HOME/.local/bin/novalis-rain.py"
+link_path "$REPO_ROOT/scripts/keychron-v6-via.py" "$HOME/.local/bin/keychron-v6-via.py"
 
 if [[ -f "$CONFIGS_DIR/applications/steam.desktop" ]]; then
   link_path "$CONFIGS_DIR/applications/steam.desktop" "$HOME/.local/share/applications/steam.desktop"

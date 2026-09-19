@@ -30,6 +30,7 @@ over.
 | Deep ASCII: skull + butterfly + countdowns | you pick | timers applied; skull/butterfly backlog |
 | `niri-screensaver` CLI is still Omarchy TTE | you pick | backlog |
 | Super+F maximize on both machines | you confirm (Delorean: `hyprctl reload`) | applied 2026-09-08 |
+| Keychron V6 special keys | you | applied; X unassigned; mic may become voice |
 
 ## Halo Infinite Xbox Live login
 
@@ -214,3 +215,22 @@ Applied 2026-09-08. Super+F toggles maximize on both:
   stays windowed fullscreen, Super+Alt+F stays full width, Super+Shift+F
   stays files. Reload Hyprland on Delorean (`hyprctl reload`) to pick it
   up.
+
+## Keychron V6 special keys
+
+Windows mode stays. Applied 2026-09-09:
+
+- **Fn+F4** (six-pack): VIA remaps from Super+E to Super+Space so it
+  opens the launcher. Super+E is still Nautilus.
+- **Fn+F8** play/pause: VIA sends F18; keyd turns that into
+  Ctrl+Shift+F8; niri toggles Noctalia media. HID Play is resume-only
+  and Chrome needs it for MPRIS, so we do not send Play.
+- **Knob cluster:** crop = region screenshot, mic = mute (maybe voice
+  input later), light = control center. Circle / triangle / square / X
+  (F14–F17): circle = notification history, triangle = Grok Bot,
+  square = cycle Steam/Heroic. X still unassigned. Mic stays mute
+  until voice input.
+
+Script: `scripts/keychron-v6-via.py`. udev:
+`configs/udev/99-keychron-v6-via.rules`. `scripts/apply-system.sh`
+installs both (sudo).

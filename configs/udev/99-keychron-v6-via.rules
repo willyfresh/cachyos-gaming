@@ -1,0 +1,2 @@
+# Keychron V6 VIA hidraw (usage page 0xFF60) so users can remap without root.
+KERNEL=="hidraw*", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0361", MODE="0660", GROUP="users", TAG+="uaccess"

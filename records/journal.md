@@ -2,6 +2,13 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-09-22 — Super+Shift+H I S P
+
+- Super+Shift+H Heroic. Super+Shift+I Inkscape. Super+Shift+S Steam
+  (toasts skipped). Super+Shift+P GIMP.
+- Settings stay on Super+I. Monitor power moved to Super+Alt+P.
+  Alt was already the monitor modifier.
+
 ## 2026-09-22 — Super+Shift+D W M L Y O
 
 - Super+Shift+D Discord (`launch-discord.sh`).

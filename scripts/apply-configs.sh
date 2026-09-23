@@ -29,6 +29,7 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" \
   "$REPO_ROOT/scripts/launch-or-focus-app.sh" \
   "$REPO_ROOT/scripts/launch-youtube.sh" \
+  "$REPO_ROOT/scripts/launch-steam.sh" \
   "$REPO_ROOT/scripts/collapse-webapp-profile.sh" \
   "$REPO_ROOT/scripts/launch-discord.sh" \
   "$REPO_ROOT/scripts/launch-btop.sh" \
@@ -45,6 +46,7 @@ link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.
 link_path "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" "$HOME/.local/bin/launch-or-focus-webapp.sh"
 link_path "$REPO_ROOT/scripts/launch-or-focus-app.sh" "$HOME/.local/bin/launch-or-focus-app.sh"
 link_path "$REPO_ROOT/scripts/launch-youtube.sh" "$HOME/.local/bin/launch-youtube.sh"
+link_path "$REPO_ROOT/scripts/launch-steam.sh" "$HOME/.local/bin/launch-steam.sh"
 link_path "$REPO_ROOT/scripts/collapse-webapp-profile.sh" "$HOME/.local/bin/collapse-webapp-profile.sh"
 link_path "$REPO_ROOT/scripts/launch-discord.sh" "$HOME/.local/bin/launch-discord.sh"
 link_path "$REPO_ROOT/scripts/launch-btop.sh" "$HOME/.local/bin/launch-btop.sh"

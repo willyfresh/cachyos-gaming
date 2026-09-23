@@ -54,7 +54,7 @@ Applied 2026-09-22.
 | Key | Job |
 |-----|-----|
 | Super+A | Control center (Super+S still does this too) |
-| Super+I | Noctalia settings (Super+Shift+S still does this too) |
+| Super+I | Noctalia settings |
 | Super+N | Notification history (Keychron circle still does this too) |
 | Super+W | Weather tab of the control center |
 | Super+B | unbound (was Firefox) |
@@ -77,13 +77,19 @@ Tabbed columns stay unbound.
 | Super+Shift+E | Thunderbird |
 | Super+Shift+Alt+E | Thunderbird compose |
 | Super+Shift+G | Gmail |
+| Super+Shift+H | Heroic |
+| Super+Shift+I | Inkscape |
 | Super+Shift+L | Google Maps |
 | Super+Shift+M | Google Messages |
 | Super+Shift+O | LibreOffice |
+| Super+Shift+P | GIMP |
+| Super+Shift+S | Steam |
 | Super+Shift+T | VS Code (Delorean uses bare Super+T; that key still floats) |
 | Super+Shift+W | Chrome (the main browser, not a webapp) |
 | Super+Shift+Y | YouTube Music, then YouTube |
 | Super+Shift+B | Board Game Arena (already) |
+
+Monitor power is Super+Alt+P. Settings stay on Super+I.
 
 Left where they were:
 

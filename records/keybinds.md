@@ -64,10 +64,12 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Ctrl+G | — | — | Google Messages |
 | **H** | | | |
 | Super+H | Voice typing | — | — |
+| Super+Shift+H | — | Heroic | — |
 | Super+Ctrl+H | — | — | Hardware menu |
 | Super+Alt+H | Focus the keyboard (while voice typing) | — | — |
 | **I** | | | |
-| Super+I | Settings | Noctalia settings (same as Super+Shift+S) | — |
+| Super+I | Settings | Noctalia settings | — |
+| Super+Shift+I | — | Inkscape | — |
 | Super+Ctrl+I | — | — | Toggle idle lock |
 | **J** | | | |
 | Super+J | Recall (Copilot+ PCs) | — | Toggle split direction |
@@ -94,7 +96,8 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+O | — | — | Toggle menu bar |
 | **P** | | | |
 | Super+P | Project / displays | — | Pseudo (dwindle stretch) |
-| Super+Shift+P | — | Power off monitors | Google Photos |
+| Super+Shift+P | — | GIMP | Google Photos |
+| Super+Alt+P | — | Power off monitors | — |
 | Super+Ctrl+P | — | — | Power panel |
 | **Q** | | | |
 | Super+Q | Search | Close window | Close window |
@@ -108,7 +111,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+Alt+R | — | — | List reminders |
 | **S** | | | |
 | Super+S | Search | Control center | Scratchpad (empty-aware) |
-| Super+Shift+S | Snipping Tool | Noctalia settings | Park window to scratchpad |
+| Super+Shift+S | Snipping Tool | Steam | Park window to scratchpad |
 | Super+Ctrl+S | — | — | Share (LocalSend) |
 | Super+Alt+S | — | — | Park window to scratchpad |
 | **T** | | | |

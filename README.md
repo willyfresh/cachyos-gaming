@@ -39,6 +39,7 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `scripts/launch-or-focus-app.sh` | Focus a native app by app-id, or launch it |
 | `scripts/launch-discord.sh` | Super+Shift+D: focus Discord, skip the updater splash |
 | `scripts/launch-youtube.sh` | Super+Shift+Y: YouTube Music, then YouTube |
+| `scripts/launch-steam.sh` | Super+Shift+S: focus Steam, skip notification toasts |
 | `scripts/launch-btop.sh` | Super+Ctrl+T: floating btop (focus, or close if focused) |
 | `scripts/launch-grok-bot.sh` | Super+Shift+Alt+A: focus or launch Grok Bot |
 

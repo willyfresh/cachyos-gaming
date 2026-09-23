@@ -16,11 +16,19 @@ if [[ -f "$CONFIGS_DIR/environment.d/gaming.conf" ]]; then
   link_path "$CONFIGS_DIR/environment.d/gaming.conf" "$HOME/.config/environment.d/gaming.conf"
 fi
 
+# Chrome's file dialog. Must be the desktop-named file (niri-portals.conf),
+# which xdg-desktop-portal reads when XDG_CURRENT_DESKTOP=niri.
+mkdir -p "$HOME/.config/xdg-desktop-portal"
+link_path "$CONFIGS_DIR/xdg-desktop-portal/niri-portals.conf" \
+  "$HOME/.config/xdg-desktop-portal/niri-portals.conf"
+
 mkdir -p "$HOME/.local/share/applications"
 mkdir -p "$HOME/.local/bin"
 
 chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" \
+  "$REPO_ROOT/scripts/launch-or-focus-app.sh" \
+  "$REPO_ROOT/scripts/launch-youtube.sh" \
   "$REPO_ROOT/scripts/collapse-webapp-profile.sh" \
   "$REPO_ROOT/scripts/launch-discord.sh" \
   "$REPO_ROOT/scripts/launch-btop.sh" \
@@ -35,6 +43,8 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/keychron-v6-via.py"
 link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.sh"
 link_path "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" "$HOME/.local/bin/launch-or-focus-webapp.sh"
+link_path "$REPO_ROOT/scripts/launch-or-focus-app.sh" "$HOME/.local/bin/launch-or-focus-app.sh"
+link_path "$REPO_ROOT/scripts/launch-youtube.sh" "$HOME/.local/bin/launch-youtube.sh"
 link_path "$REPO_ROOT/scripts/collapse-webapp-profile.sh" "$HOME/.local/bin/collapse-webapp-profile.sh"
 link_path "$REPO_ROOT/scripts/launch-discord.sh" "$HOME/.local/bin/launch-discord.sh"
 link_path "$REPO_ROOT/scripts/launch-btop.sh" "$HOME/.local/bin/launch-btop.sh"
@@ -88,6 +98,8 @@ link_path "$CONFIGS_DIR/applications/google-calendar.desktop" \
   "$HOME/.local/share/applications/Google Calendar.desktop"
 link_path "$CONFIGS_DIR/applications/youtube-music.desktop" \
   "$HOME/.local/share/applications/YouTube Music.desktop"
+link_path "$CONFIGS_DIR/applications/youtube.desktop" \
+  "$HOME/.local/share/applications/YouTube.desktop"
 
 install_desktop "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
   "$HOME/.local/share/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
@@ -95,6 +107,10 @@ if [[ -f "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
   install_desktop "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
     "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
 fi
+
+# tty1 login stays a shell. CachyOS's stock file execs niri; do not
+# put that back. Start the desktop with niri-session (see bash_profile).
+link_path "$CONFIGS_DIR/bash_profile" "$HOME/.bash_profile"
 
 if command -v update-desktop-database >/dev/null 2>&1; then
   update-desktop-database "$HOME/.local/share/applications" >/dev/null 2>&1 || true

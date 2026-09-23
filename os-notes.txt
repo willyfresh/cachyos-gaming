@@ -1,2 +1,3 @@
 # Scratch inbox. Dump obstacles here, then hand the file over.
 # Absorbed items live in records/next.md.
+the ethernet display on the bar doesn't need the text.

@@ -12,6 +12,17 @@
         }
     }
 
+    // Chrome's file dialog is a separate xdg-desktop-portal-gtk window.
+    // Left tiled, it becomes the next column and stays off-screen while
+    // Chrome keeps focus, so the click looks like it did nothing.
+    window-rule {
+        match app-id="xdg-desktop-portal-gtk"
+        open-floating true
+        open-focused true
+        default-column-width { fixed 920; }
+        default-window-height { fixed 640; }
+    }
+
     // Floating Noctalia settings window.
     window-rule {
         match app-id="dev.noctalia.Noctalia"

@@ -22,13 +22,13 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | **A** | | | |
-| Super+A | Quick Settings | — | — |
+| Super+A | Quick Settings | Control center (same as Super+S) | — |
 | Super+Shift+A | Focus a Windows tip | — | ChatGPT |
 | Super+Ctrl+A | Color filters (if enabled) | — | Audio panel |
 | Super+Shift+Alt+A | — | Grok Bot | Grok |
 | Super+Ctrl+Shift+A | — | — | Pick an AI agent |
 | **B** | | | |
-| Super+B | Focus the tray | Firefox | — (browser is Super+W) |
+| Super+B | Focus the tray | — | — (browser is Super+W) |
 | Super+Shift+B | — | Board Game Arena | Board Game Arena |
 | Super+Ctrl+B | — | — | Bluetooth panel |
 | Super+Alt+B | HDR on/off | — | — |
@@ -37,19 +37,19 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+Alt+B | — | — | Battery as notification |
 | **C** | | | |
 | Super+C | Copilot (Search if Copilot is off) | Center column | Copy |
-| Super+Shift+C | — | — | Google Calendar |
+| Super+Shift+C | — | Google Calendar | Google Calendar |
 | Super+Ctrl+C | Color filters (if enabled) | Center visible columns | Capture menu |
 | **D** | | | |
-| Super+D | Show / hide desktop | Discord | Discord |
-| Super+Shift+D | — | — | Docker TUI |
+| Super+D | Show / hide desktop | — | Discord |
+| Super+Shift+D | — | Discord | Docker TUI |
 | Super+Ctrl+D | New virtual desktop | — | Display panel |
 | Super+Alt+D | Date and time on the desktop | — | — |
 | Super+Ctrl+Alt+D | — | — | Calendar panel |
 | **E** | | | |
 | Super+E | File Explorer | Nautilus | Nautilus |
-| Super+Shift+E | — | — | Thunderbird |
+| Super+Shift+E | — | Thunderbird | Thunderbird |
 | Super+Ctrl+E | — | — | Emoji picker |
-| Super+Shift+Alt+E | — | — | Thunderbird compose |
+| Super+Shift+Alt+E | — | Thunderbird compose | Thunderbird compose |
 | **F** | | | |
 | Super+F | Feedback Hub | Maximize column | Maximize window |
 | Super+Shift+F | — | Exclusive fullscreen | File manager |
@@ -58,7 +58,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Alt+F | — | — | File manager in terminal cwd |
 | **G** | | | |
 | Super+G | Xbox Game Bar | — | Toggle window grouping |
-| Super+Shift+G | — | — | Gmail |
+| Super+Shift+G | — | Gmail | Gmail |
 | Super+Alt+G | — | — | Move window out of group |
 | Super+Shift+Alt+G | — | — | WhatsApp |
 | Super+Shift+Ctrl+G | — | — | Google Messages |
@@ -67,7 +67,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+H | — | — | Hardware menu |
 | Super+Alt+H | Focus the keyboard (while voice typing) | — | — |
 | **I** | | | |
-| Super+I | Settings | — | — |
+| Super+I | Settings | Noctalia settings (same as Super+Shift+S) | — |
 | Super+Ctrl+I | — | — | Toggle idle lock |
 | **J** | | | |
 | Super+J | Recall (Copilot+ PCs) | — | Toggle split direction |
@@ -77,19 +77,20 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Alt+K | Mute / unmute mic (supported apps) | — | Tmux keybinds |
 | **L** | | | |
 | Super+L | Lock | Lock | Lock |
+| Super+Shift+L | — | Google Maps | — |
 | Super+Ctrl+L | — | — | Toggle dwindle / scrolling layout |
 | Super+Alt+L | — | Lock (same as Super+L) | — |
 | **M** | | | |
 | Super+M | Minimize all | Maximize to edges | YouTube Music |
-| Super+Shift+M | Restore minimized windows | — | Google Maps |
+| Super+Shift+M | Restore minimized windows | Google Messages | Google Maps |
 | Super+Shift+Alt+M | — | — | Music TUI (cliamp) |
 | **N** | | | |
-| Super+N | Notification center + calendar | — | — |
+| Super+N | Notification center + calendar | Notification history | — |
 | Super+Shift+N | — | — | Neovim |
 | Super+Ctrl+N | — | — | Toggle nightlight |
 | **O** | | | |
 | Super+O | Lock screen rotation | — | LibreOffice |
-| Super+Shift+O | — | — | Pop window out (float and pin) |
+| Super+Shift+O | — | LibreOffice | Pop window out (float and pin) |
 | Super+Ctrl+O | — | — | Toggle menu bar |
 | **P** | | | |
 | Super+P | Project / displays | — | Pseudo (dwindle stretch) |
@@ -112,7 +113,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Alt+S | — | — | Park window to scratchpad |
 | **T** | | | |
 | Super+T | Cycle taskbar apps | Toggle floating | VS Code |
-| Super+Shift+T | Cycle taskbar apps, reverse | — | — |
+| Super+Shift+T | Cycle taskbar apps, reverse | VS Code | — (VS Code is Super+T) |
 | Super+Ctrl+T | — | Activity (btop) | Activity (btop) |
 | Super+Alt+T | — | — | Toggle floating |
 | Super+Ctrl+Alt+T | — | — | Time as notification |
@@ -123,8 +124,8 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+V | — | Focus floating vs tiling | — |
 | Super+Ctrl+V | Sound output / volume mixer | — | Universal paste |
 | **W** | | | |
-| Super+W | Widgets | Tabbed column | Browser |
-| Super+Shift+W | — | — | Omawrite |
+| Super+W | Widgets | Weather | Browser |
+| Super+Shift+W | — | Chrome | Omawrite |
 | Super+Ctrl+W | — | — | Network panel |
 | Super+Ctrl+Alt+W | — | — | Weather as notification |
 | **X** | | | |
@@ -134,7 +135,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Alt+X | — | — | X compose |
 | **Y** | | | |
 | Super+Y | Mixed Reality / desktop | — | — |
-| Super+Shift+Y | — | — | YouTube |
+| Super+Shift+Y | — | YouTube Music, then YouTube | YouTube |
 | **Z** | | | |
 | Super+Z | Snap layouts | — | — |
 | Super+Ctrl+Z | — | — | Zoom in |

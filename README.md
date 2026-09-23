@@ -17,6 +17,8 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | --- | --- |
 | `setup.sh` | Fresh-install bootstrap |
 | `configs/niri` | niri config (live, via symlink) |
+| `configs/xdg-desktop-portal/niri-portals.conf` | Chrome file chooser uses the GTK portal (live, via symlink) |
+| `configs/bash_profile` | tty1 login stays a shell (live `~/.bash_profile`, via symlink). Type `niri-session` to start the desktop |
 | `configs/noctalia` | noctalia-shell config (live, via symlink) |
 | `configs/noctalia/palettes/Novalis.json` | Gunmetal + energy-green palette |
 | `configs/noctalia/wallpapers/` | Rain, ship, dock, construct, blue flower |
@@ -33,8 +35,10 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `os-notes.txt` | Scratch inbox, emptied after triage |
 | `scripts/pkg-add.sh` | Install a package *and* record it |
 | `scripts/launch-webapp.sh` | Title-less Chrome `--app=URL` (profile still under `~/.local/share/borg`) |
-| `scripts/launch-or-focus-webapp.sh` | Focus that window, or launch it |
-| `scripts/launch-discord.sh` | Super+D: focus Discord, skip the updater splash |
+| `scripts/launch-or-focus-webapp.sh` | Focus a title-less webapp, or launch it |
+| `scripts/launch-or-focus-app.sh` | Focus a native app by app-id, or launch it |
+| `scripts/launch-discord.sh` | Super+Shift+D: focus Discord, skip the updater splash |
+| `scripts/launch-youtube.sh` | Super+Shift+Y: YouTube Music, then YouTube |
 | `scripts/launch-btop.sh` | Super+Ctrl+T: floating btop (focus, or close if focused) |
 | `scripts/launch-grok-bot.sh` | Super+Shift+Alt+A: focus or launch Grok Bot |
 
@@ -81,3 +85,4 @@ off `next.md`. The inbox is emptied after that. Same loop as
 2. Create user `willyfresh`, put this repo at `~/Projects/cachyos-gaming`.
 3. `./setup.sh`
 4. Log in on niri and confirm both ASUS VE247 monitors come up (see `records/hardware.md`).
+5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell; type `niri-session` to start the desktop. A bare `niri` never tells systemd the Wayland display, and Chrome's file picker then opens nothing (`xdg-desktop-portal-gtk: cannot open display`). The chooser itself is `configs/xdg-desktop-portal/niri-portals.conf`. Do not `exec` niri-session from `bash_profile`: the wrapper re-reads that file as a login shell and loops.

@@ -2,6 +2,79 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-09-22 — Super+Shift+D W M L Y O
+
+- Super+Shift+D Discord (`launch-discord.sh`).
+- Super+Shift+W focuses the main Chrome (`app-id` google-chrome) or
+  launches it. Webapps stay on their own chords.
+- Super+Shift+M is Google Messages. Maps moved to Super+Shift+L.
+  Super+Shift+Ctrl+G no longer opens Messages.
+- Super+Shift+Y is YouTube Music first. Pressed while Music is focused,
+  it goes to YouTube, and the other way around.
+- Super+Shift+O is LibreOffice (`libreoffice-fresh`).
+
+## 2026-09-22 — Super+Shift+letter apps
+
+- Same Delorean chords, focus or launch: Super+Shift+C Calendar,
+  E Thunderbird, Alt+E compose, G Gmail, Ctrl+G Messages, M Maps,
+  Y YouTube. Super+Shift+B was already Board Game Arena.
+- VS Code is Super+Shift+T. Delorean uses bare Super+T; that key still
+  toggles floating here.
+- YouTube is a title-less Chrome app (`configs/applications/youtube.desktop`).
+  Native apps go through `scripts/launch-or-focus-app.sh`.
+- Left alone: Super+M maximize-to-edges (Delorean's YouTube Music),
+  Super+D unbound (Delorean's Discord), Super+Shift+D unbound
+  (Delorean's Docker), Super+Shift+Return wallpaper
+  (Delorean's Messages).
+
+## 2026-09-22 — Super+A / I / N / W
+
+- Super+A toggles the control center (Super+S still does too).
+- Super+I toggles Noctalia settings (Super+Shift+S still does too).
+- Super+N toggles notification history (Keychron circle still does too).
+- Super+W toggles the weather tab. It used to toggle a tabbed column.
+- Super+B (Firefox) and Super+D (Discord) are unbound. Super+Shift+B
+  is still Board Game Arena.
+- `[weather] enabled = true` in `configs/noctalia/config.toml`.
+
+## 2026-09-22 — tty1 stays a shell
+
+- This morning's `exec niri-session` in `configs/bash_profile` never
+  reached the compositor. `niri-session` re-execs a login shell so it
+  can read `bash_profile`, and that file exec'd `niri-session` again.
+  tty1 sat in that loop (getty and Plymouth were fine). Login on tty3
+  and `niri` from that shell is the session in use now.
+- Auto-start is off. Next tty1 login is a prompt. Start the desktop
+  with `niri-session`, not bare `niri`, so systemd still learns the
+  Wayland display and Chrome's file chooser works.
+- Stopped the stuck tty1 shell (pid 720). Getty is back on tty1.
+  `niri.service` was inactive; the live compositor is the one on tty3.
+
+## 2026-09-22 — Chrome file picker opens nothing
+
+- Clicking "pick a file" in Chrome calls `xdg-desktop-portal`. The GTK
+  backend was crash-looping: `cannot open display`, then
+  `start-limit-hit`. systemd's user environment had no `WAYLAND_DISPLAY`
+  or `DISPLAY` because tty1 runs `exec niri` instead of `niri-session`.
+  `graphical-session.target` was dead, so the GNOME portal would not
+  start either.
+- This session: imported `WAYLAND_DISPLAY=wayland-1` and `DISPLAY=:0`
+  into the user manager and restarted the portal. Did not start
+  `graphical-session.target` (that would launch a second
+  `xwayland-satellite` on top of the one niri already spawned).
+- Next login: `configs/bash_profile` is `exec niri-session`, and
+  `apply-configs.sh` symlinks that over `~/.bash_profile`.
+  `spawn-sh-at-startup` in `configs/niri/cfg/autostart.kdl` imports the
+  same variables if niri is ever started without the session wrapper.
+- File chooser is pinned to the GTK portal in
+  `configs/xdg-desktop-portal/niri-portals.conf`. The stock niri config
+  prefers the GNOME portal, which needs `graphical-session.target` and
+  was failing the request before GTK could draw anything. Screencast
+  stays on the GNOME portal.
+- The GTK dialog was tiling into the next column, unfocused, so it
+  still looked like nothing opened. `rules.kdl` floats it, focuses it,
+  and sizes it 920×640.
+
 ## 2026-09-02 — bootstrap this repo
 
 - Created `~/Projects/cachyos-gaming` and initialized git.

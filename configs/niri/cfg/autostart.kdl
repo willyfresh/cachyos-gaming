@@ -3,3 +3,10 @@
 
     spawn-at-startup "noctalia"
     spawn-at-startup "dropbox" "start" "-i"
+
+    // Chrome's "pick a file" dialog is xdg-desktop-portal, started by
+    // systemd — not by niri. A raw `exec niri` never tells systemd the
+    // Wayland/X11 display, so the GTK portal dies with "cannot open
+    // display" and the click does nothing. niri-session does this import
+    // itself; repeating it here covers a compositor that was not.
+    spawn-sh-at-startup "systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE NIRI_SOCKET && dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE NIRI_SOCKET"

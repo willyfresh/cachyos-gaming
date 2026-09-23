@@ -35,3 +35,6 @@ thunderbird
 # Graphics
 inkscape
 gimp
+
+# Office
+libreoffice-fresh

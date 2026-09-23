@@ -1,0 +1,11 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# tty1 stays a shell. Start the desktop by typing: niri-session
+# Bare `niri` never tells systemd the Wayland display, so Chrome's
+# file chooser opens nothing. Do not exec niri-session from this
+# file: the wrapper re-reads it as a login shell, and an exec here
+# loops forever (tty1 never reaches a prompt or the compositor).

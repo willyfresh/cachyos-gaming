@@ -136,3 +136,8 @@ lock_before_suspend = true
 blurred_desktop = false
 blur_intensity = 0.0
 tint_intensity = 0.12
+
+[weather]
+enabled = true
+refresh_minutes = 30
+unit = "metric"

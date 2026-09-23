@@ -12,6 +12,8 @@ over.
 
 | Want | Who | Status |
 |------|-----|--------|
+| tty1 stays a shell | you confirm next boot | applied 2026-09-22 |
+| Windows Super-letter binds | you confirm | applied 2026-09-22: A I N W; B and D unbound |
 | Halo Infinite Xbox Live login | you | tabled |
 | Board Game Arena freezes in the WebKit window | you | superseded: Chrome --app |
 | Steam menus flash and close | you | accepted / tabled |
@@ -19,7 +21,7 @@ over.
 | For Honor / Ubisoft Connect | you | tabled |
 | Super+Ctrl+Alt size, Super+drag, windowed fullscreen | you confirm | applied 2026-09-06 |
 | Webapp Chrome login (BGA / Messages / …) | you | sign in once in a webapp |
-| Super-letter app keys (Windows pass) | you | waiting; table in `records/keybinds.md` |
+| Super-letter app keys (Windows pass) | you confirm | applied 2026-09-22; Shift+letter apps too |
 | Matrix theme + falling-code screensaver | you confirm | applied 2026-09-07 |
 | Rename host to Novalis | you (new login picks it up everywhere) | applied 2026-09-07 |
 | Grok Bot desktop app | you (sign in) | installed; Super+Shift+Alt+A |
@@ -34,6 +36,63 @@ over.
 | Thunderbird | you (add Gmail + Dreamhost IMAP) | installed |
 | Photoshop-type editor (Photopea is unusable) | you confirm | GIMP installed |
 | Vector editor: is Inkscape the one? | you confirm | Inkscape installed |
+
+## tty1 stays a shell
+
+Applied 2026-09-22. `configs/bash_profile` no longer starts niri.
+Switch to tty1 (Ctrl+Alt+F1), log in, and you get a prompt. The
+desktop is `niri-session` from that prompt. This tty3 session is
+untouched.
+
+Confirm on the next real boot: tty1 shows a login, then a shell,
+and does not sit there spinning.
+
+## Windows Super-letter binds
+
+Applied 2026-09-22.
+
+| Key | Job |
+|-----|-----|
+| Super+A | Control center (Super+S still does this too) |
+| Super+I | Noctalia settings (Super+Shift+S still does this too) |
+| Super+N | Notification history (Keychron circle still does this too) |
+| Super+W | Weather tab of the control center |
+| Super+B | unbound (was Firefox) |
+| Super+D | unbound (was Discord) |
+
+Super+W used to toggle a tabbed column. That action has no key now.
+Weather is enabled in `configs/noctalia/config.toml`. It needs a
+location (Settings → Location) before the forecast fills in.
+
+## Omarchy letters worth absorbing
+
+Applied 2026-09-22. Super+Shift+letter launches and focuses. Same chord
+as Delorean where that key was free. Scratchpad stays on Delorean.
+Tabbed columns stay unbound.
+
+| Key | App |
+|-----|-----|
+| Super+Shift+C | Google Calendar |
+| Super+Shift+D | Discord |
+| Super+Shift+E | Thunderbird |
+| Super+Shift+Alt+E | Thunderbird compose |
+| Super+Shift+G | Gmail |
+| Super+Shift+L | Google Maps |
+| Super+Shift+M | Google Messages |
+| Super+Shift+O | LibreOffice |
+| Super+Shift+T | VS Code (Delorean uses bare Super+T; that key still floats) |
+| Super+Shift+W | Chrome (the main browser, not a webapp) |
+| Super+Shift+Y | YouTube Music, then YouTube |
+| Super+Shift+B | Board Game Arena (already) |
+
+Left where they were:
+
+| Key | Delorean | Novalis |
+|-----|----------|---------|
+| Super+M | YouTube Music | Maximize to edges |
+| Super+D | Discord | unbound; Discord is Super+Shift+D |
+| Super+Shift+Return | Messages | Wallpaper picker |
+| Super+W | Browser | Weather; Chrome is Super+Shift+W |
 
 ## Halo Infinite Xbox Live login
 
@@ -118,24 +177,25 @@ Super+Return terminal, Super+E files, Super+V clipboard, Super+Tab
 overview, Super+Shift+Tab previous desk, Alt+Tab recent windows, Super+K
 cheatsheet, Super+arrows with Shift = move, Super+/- this-column width,
 Super+Ctrl+F windowed fullscreen, Super+Ctrl+T btop, Super+Shift+B BGA,
-Super+D Discord, Super+L lock, Super+Shift+Alt+A Grok.
+Super+Shift+C Calendar, Super+Shift+D Discord, Super+Shift+E Thunderbird,
+Super+Shift+G Gmail, Super+Shift+L Maps, Super+Shift+M Messages,
+Super+Shift+O LibreOffice, Super+Shift+W Chrome, Super+Shift+Y Music then YouTube,
+Super+L lock, Super+Shift+Alt+A Grok.
 
 Intentionally **not** copied: Omarchy Super+/- is left-edge resize; Novalis
 keeps `set-column-width ±10%`. Super+Ctrl+arrows is workspace on niri
 (scroll layout) and swap-neighbor on Hyprland (dwindle). Leave that split.
 
-Still different. Super+D is Discord and Super+L is lock (Super+Alt+L still
-locks too). The rest wait on a Windows Super-letter pass:
+Still different. Super+D is unbound here and Discord on Delorean.
+Super+T floats here; VS Code is Super+Shift+T. Super+L is lock
+(Super+Alt+L still locks too).
 
 | Key | Delorean | Novalis today | Notes |
 |-----|----------|------------|-------|
-| Super+T | VS Code | toggle float | `Super+Shift+V` is float/tile focus |
-| Super+W | browser | tabbed column | |
-| Super+B | (browser is Super+W) | Firefox | |
-| Super+Shift+Return | Messages | wallpaper picker | |
-
-Do not steal those niri defaults until the Windows combos say what they
-should be.
+| Super+T | VS Code | toggle float | VS Code is Super+Shift+T |
+| Super+W | browser | weather | tabbed column has no key |
+| Super+B | (browser is Super+W) | unbound | was Firefox |
+| Super+Shift+Return | Messages | wallpaper picker | Messages is Super+Shift+M |
 
 Super+Ctrl+T is now Activity (btop) on both machines. Super+Shift+Alt+A
 is Grok Bot on Novalis and Grok on Delorean.

@@ -2,6 +2,17 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-09-26 — installed obsidian bitwarden
+
+- requested: obsidian bitwarden
+- repos (pacman): obsidian bitwarden
+- AUR (paru): (none)
+- versions: obsidian 1.13.7-2, bitwarden 2026.3.1-2.1
+- First attempt 404'd `electron43` 43.7.0 because the sync databases
+  were stale. `pacman -Sy` got `electron43` 43.7.5-1 and the install
+  finished. Vault stays at `~/Projects/Obsidian-Vault`. Signed in
+  the same day. The Bitwarden browser extension was left in place.
+
 ## 2026-09-26 — Thunderbird mailboxes and bar network label
 
 - Gmail (`willyfresh@gmail.com`) was already in Thunderbird. Added

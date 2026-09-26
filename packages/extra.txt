@@ -38,3 +38,7 @@ gimp
 
 # Office
 libreoffice-fresh
+
+# Notes and passwords
+obsidian
+bitwarden

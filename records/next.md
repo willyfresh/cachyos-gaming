@@ -33,10 +33,10 @@ over.
 | `niri-screensaver` CLI is still Omarchy TTE | you pick | backlog |
 | Super+F maximize on both machines | you confirm (Delorean: `hyprctl reload`) | applied 2026-09-08 |
 | Keychron V6 special keys | you | applied; X unassigned; mic may become voice |
-| Thunderbird accounts | you (DreamHost passwords) | added 2026-09-26; sign-in left |
+| Thunderbird accounts | you | signed in 2026-09-26 |
 | Bar network: icon only | you confirm | applied 2026-09-26 |
-| Obsidian | you (open the vault) | backlog |
-| Bitwarden desktop | you (sign in) | backlog |
+| Obsidian | you (open the vault) | installed 2026-09-26 |
+| Bitwarden desktop | you | signed in 2026-09-26 |
 | Photoshop-type editor (Photopea is unusable) | you confirm | GIMP installed |
 | Vector editor: is Inkscape the one? | you confirm | Inkscape installed |
 
@@ -334,8 +334,7 @@ accounts. Passwords stay out of git.
 Applied 2026-09-26 in the live profile
 (`~/.config/thunderbird/java9occ.default-release`). Gmail was already
 there. The three DreamHost accounts use normal password auth.
-Thunderbird asks for those passwords on connect. The folder pane is
-the unified inbox.
+Sign-in confirmed the same day. The folder pane is the unified inbox.
 
 ## Bar network label
 
@@ -353,16 +352,15 @@ Applied 2026-09-26 in `configs/noctalia/config.toml`.
 
 ## Obsidian
 
-Not installed. Repo package `obsidian` 1.13.7-2. The vault is already
-at `~/Projects/Obsidian-Vault`. Install is `./scripts/pkg-add.sh obsidian`,
-then open that folder. Nothing in the vault has to move.
+Installed 2026-09-26 (`obsidian` 1.13.7-2). The vault is already at
+`~/Projects/Obsidian-Vault`. Open that folder. Nothing in the vault
+has to move.
 
 ## Bitwarden desktop
 
-Not installed. Repo package `bitwarden` 2026.3.1-2 on cachyos-extra-v3.
-Desktop app; sign in on first launch. The browser extension is a
-separate removal in the browser, and this item leaves it alone until
-you say to take it out.
+Installed 2026-09-26 (`bitwarden` 2026.3.1-2.1, launcher
+`bitwarden-desktop`). Signed in the same day. The browser extension
+is still installed; say so if you want it removed.
 
 ## Photoshop-type editor (Photopea is unusable)
 

@@ -33,7 +33,10 @@ over.
 | `niri-screensaver` CLI is still Omarchy TTE | you pick | backlog |
 | Super+F maximize on both machines | you confirm (Delorean: `hyprctl reload`) | applied 2026-09-08 |
 | Keychron V6 special keys | you | applied; X unassigned; mic may become voice |
-| Thunderbird | you (add Gmail + Dreamhost IMAP) | installed |
+| Thunderbird accounts | you (DreamHost passwords) | added 2026-09-26; sign-in left |
+| Bar network: icon only | you confirm | applied 2026-09-26 |
+| Obsidian | you (open the vault) | backlog |
+| Bitwarden desktop | you (sign in) | backlog |
 | Photoshop-type editor (Photopea is unusable) | you confirm | GIMP installed |
 | Vector editor: is Inkscape the one? | you confirm | Inkscape installed |
 
@@ -306,8 +309,60 @@ installs both (sudo).
 
 ## Thunderbird
 
-Installed (`thunderbird` 155.0.1). Unified inbox for Gmail + Dreamhost
-IMAP. No Gmail category tabs. Not a website. Add accounts when you pick.
+Installed (`thunderbird` 155.0.1). Unified inbox, no Gmail category
+tabs. The app is in. The accounts are not.
+
+2026-09-26: four of your mailboxes, confirmed by you. Client
+contacts under `People/` and `Clients/` stay in the vault.
+
+| Address | Host |
+|---------|------|
+| `willyfresh@gmail.com` | Google |
+| `will@billcompany.net` | DreamHost |
+| `email@willyfresh.com` | DreamHost |
+| `will@willfloyd.com` | DreamHost |
+
+`willyfresh.com` and `willfloyd.com` receive at `mx1`/`mx2.dreamhost.com`.
+`billcompany.net` receives through Mailchannels, with DreamHost still
+in the SPF record. DreamHost IMAP for all three is `imap.dreamhost.com`
+(993, SSL) and SMTP is `smtp.dreamhost.com` (465, SSL). Gmail stays
+on Google's servers.
+
+`tech@willyfresh.com` is the site contact address, not one of these
+accounts. Passwords stay out of git.
+
+Applied 2026-09-26 in the live profile
+(`~/.config/thunderbird/java9occ.default-release`). Gmail was already
+there. The three DreamHost accounts use normal password auth.
+Thunderbird asks for those passwords on connect. The folder pane is
+the unified inbox.
+
+## Bar network label
+
+The ethernet chip on the bar does not need its text. Noctalia's
+network widget prints the interface or SSID because `show_label`
+defaults to true. The glyph stays, and the hover tooltip still has
+the name.
+
+```
+[widget.network]
+show_label = false
+```
+
+Applied 2026-09-26 in `configs/noctalia/config.toml`.
+
+## Obsidian
+
+Not installed. Repo package `obsidian` 1.13.7-2. The vault is already
+at `~/Projects/Obsidian-Vault`. Install is `./scripts/pkg-add.sh obsidian`,
+then open that folder. Nothing in the vault has to move.
+
+## Bitwarden desktop
+
+Not installed. Repo package `bitwarden` 2026.3.1-2 on cachyos-extra-v3.
+Desktop app; sign in on first launch. The browser extension is a
+separate removal in the browser, and this item leaves it alone until
+you say to take it out.
 
 ## Photoshop-type editor (Photopea is unusable)
 

@@ -2,6 +2,17 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-09-26 — Thunderbird mailboxes and bar network label
+
+- Gmail (`willyfresh@gmail.com`) was already in Thunderbird. Added
+  DreamHost IMAP for `will@billcompany.net`, `email@willyfresh.com`,
+  and `will@willfloyd.com` (`imap.dreamhost.com:993`,
+  `smtp.dreamhost.com:465`, normal password). Folder pane is the
+  unified (smart) inbox. Passwords are not stored in git; Thunderbird
+  asks for the three DreamHost passwords on connect.
+- Bar network widget: `show_label = false` in
+  `configs/noctalia/config.toml`. The glyph stays.
+
 ## 2026-09-22 — Super+Shift+H I S P
 
 - Super+Shift+H Heroic. Super+Shift+I Inkscape. Super+Shift+S Steam

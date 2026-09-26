@@ -41,6 +41,9 @@ start = ["hostname", "workspaces"]
 center = ["clock"]
 end = ["media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "control-center", "session"]
 
+[widget.clock]
+format = "{:%a %m-%d  %H:%M}"
+
 [widget.network]
 show_label = false
 

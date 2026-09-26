@@ -2,6 +2,12 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-09-26 — bar clock shows the date
+
+- `[widget.clock] format = "{:%a %m-%d  %H:%M}"` in
+  `configs/noctalia/config.toml`. Abbreviated weekday, numeric
+  month-day, then 24-hour time. Example: `Sat 09-26  14:26`.
+
 ## 2026-09-26 — installed obsidian bitwarden
 
 - requested: obsidian bitwarden

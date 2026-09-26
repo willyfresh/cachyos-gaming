@@ -2,6 +2,12 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-09-26 — overview hot corner off
+
+- niri's top-left hot corner toggled the overview. `gestures {
+  hot-corners { off } }` in `configs/niri/cfg/misc.kdl`. Super+Tab
+  still opens the overview.
+
 ## 2026-09-26 — bar clock shows the date
 
 - `[widget.clock] format = "{:%a %m-%d  %H:%M}"` in

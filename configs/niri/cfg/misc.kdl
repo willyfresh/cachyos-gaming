@@ -33,6 +33,14 @@
        skip-at-startup
     }
 
+    // Top-left of a monitor toggles the overview by default. Super+Tab
+    // still does that. The corner does not.
+    gestures {
+        hot-corners {
+            off
+        }
+    }
+
     // Alt+Tab is the recent-windows switcher. Super+Tab is overview (in keybinds).
     // Listing binds here clears niri's defaults (which also bound Super+Tab).
     recent-windows {

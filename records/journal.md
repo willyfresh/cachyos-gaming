@@ -544,3 +544,9 @@ A running record of installs and config changes. Package names that should survi
   empty. Taken back the same day. hyprsplit is not loaded.
 - Bars are on the bottom of both screens again. Each bar lists the
   workspaces on that screen.
+
+## 2026-10-09 — fall fractal wallpaper
+
+- `configs/hypr/wallpapers/fall-fractal.png` is a Julia set in
+  burgundy, rust, and gold on a near-black field. `wallpaper.py`
+  puts it on the background layer of both screens at Hyprland start.

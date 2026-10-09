@@ -60,6 +60,7 @@ hl.config({
 hl.on("hyprland.start", function()
     hl.exec_cmd("dropbox start -i")
     hl.exec_cmd("sh -c 'pgrep -x waybar >/dev/null || exec waybar'")
+    hl.exec_cmd("python3 /home/willyfresh/Projects/cachyos-gaming/configs/hypr/wallpaper.py")
 end)
 
 -- Dialogs that should not become tiles.

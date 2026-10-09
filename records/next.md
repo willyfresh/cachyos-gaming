@@ -37,6 +37,7 @@ over.
 | Bar network: icon only | you confirm | applied 2026-09-26 |
 | Obsidian | you (open the vault) | installed 2026-09-26 |
 | Bitwarden desktop | you | signed in 2026-09-26 |
+| VLC | you | installed 2026-10-01 |
 | Photoshop-type editor (Photopea is unusable) | you confirm | GIMP installed |
 | Vector editor: is Inkscape the one? | you confirm | Inkscape installed |
 
@@ -361,6 +362,12 @@ has to move.
 Installed 2026-09-26 (`bitwarden` 2026.3.1-2.1, launcher
 `bitwarden-desktop`). Signed in the same day. The browser extension
 is still installed; say so if you want it removed.
+
+## VLC
+
+Installed 2026-10-01 (`vlc` 3.0.23_2-16.1, cachyos-extra-v3).
+`vlc-plugins-all` was already on the machine. No key: Super+V is the
+clipboard and Super+Shift+V switches floating and tiling.
 
 ## Photoshop-type editor (Photopea is unusable)
 

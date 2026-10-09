@@ -42,3 +42,6 @@ libreoffice-fresh
 # Notes and passwords
 obsidian
 bitwarden
+
+# Media
+vlc

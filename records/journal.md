@@ -2,6 +2,15 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-10-01 — installed vlc
+
+- requested: vlc
+- repos (pacman): vlc
+- AUR (paru): (none)
+- versions: vlc 3.0.23_2-16.1
+- `vlc-plugins-all` was already installed. This pull added
+  `vlc-gui-qt` and the Qt5 libraries it needs.
+
 ## 2026-09-26 — overview hot corner off
 
 - niri's top-left hot corner toggled the overview. `gestures {

@@ -6,12 +6,12 @@ Super-key (Windows key) chords on three machines. A combo is listed if
 | Column | Machine |
 |--------|---------|
 | **Windows** | Windows 11, [Microsoft’s list](https://support.microsoft.com/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
-| **Novalis** | This CachyOS niri box (`configs/niri/cfg/keybinds.kdl`, keyd Super-tap) |
+| **Novalis** | This CachyOS niri box (`configs/niri/cfg/keybinds.kdl`) |
 | **Delorean** | ThinkPad Omarchy + overlay (`omarchy-delorean`). Overlay wins; everything else is live Omarchy stock |
 
 Modifier order per letter: Super, Shift, Ctrl, Alt, then the doubles, then all three.
 
-Already the same job: Super tap / Super+Space launcher (Start-adjacent),
+Already the same job: Super+Space launcher (Start-adjacent),
 Super+E files, Super+L lock, Super+V clipboard, Super+D Discord (not
 Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 
@@ -150,7 +150,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
-| Super tap / release | Start menu | Launcher (keyd → Super+Space) | Launcher |
+| Super tap / release | Start menu | does nothing | Launcher |
 | Super+Space | Input language | Launcher | Omarchy menu |
 | Super+Shift+Space | — | — | Toggle top bar |
 | Super+Alt+Space | — | — | Apps menu |
@@ -247,7 +247,7 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 | Ctrl+Alt+Delete | Security screen | Quit niri | Close all windows |
 | Super+Ctrl+Delete | — | — | Toggle laptop panel |
 | Super+Ctrl+Alt+Delete | — | — | Toggle laptop mirror |
-| Super+Left mouse | — | Move window (after keyd sees the mouse) | Drag window |
+| Super+Left mouse | — | Move window | Drag window |
 | Super+Right mouse | — | Resize window | Resize window |
 | Super+scroll | — | Focus columns (vertical = left/right) | Scroll workspaces |
 | Super+Ctrl+Alt+scroll | — | Column width (up bigger, down smaller) | — |
@@ -264,7 +264,7 @@ play, next, prev, brightness). Delorean uses Omarchy’s matching helpers.
 
 ## Sources
 
-- Novalis live binds: `configs/niri/cfg/keybinds.kdl`, `configs/niri/cfg/misc.kdl` (Alt+Tab), `configs/keyd/default.conf` (Super tap)
+- Novalis live binds: `configs/niri/cfg/keybinds.kdl`, `configs/niri/cfg/misc.kdl` (Alt+Tab), `configs/keyd/default.conf` (Keychron media and knob)
 - Delorean overlay: `omarchy-delorean/config/hypr/bindings.lua`, `windows.lua`, `docs/binds.md`
 - Omarchy stock (whatever the overlay did not steal): [Omarchy hotkeys](https://omarchy.org/manual/hotkeys/)
 - Windows 11: [Keyboard shortcuts in Windows](https://support.microsoft.com/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec)

@@ -40,6 +40,8 @@ over.
 | VLC | you | installed 2026-10-01 |
 | Photoshop-type editor (Photopea is unusable) | you confirm | GIMP installed |
 | Vector editor: is Inkscape the one? | you confirm | Inkscape installed |
+| Switch to tiling windows | — | dropped: niri only scrolls |
+| Super alone does nothing | you confirm | applied 2026-10-07 |
 
 ## tty1 stays a shell
 
@@ -162,12 +164,10 @@ Applied this round. Confirm:
   bigger, down = smaller; tilt left/right still thinner/wider). Super+/-
   stays the keyboard version. If +/- still feels wrong, the column is
   maximized or on a preset (`Super+R`), not the action.
-- Super+hold, then left-drag: moves the window. keyd now sees the
-  Glorious Model D / Keychron pointer so Super+click is a hold, not a
-  launcher tap. ~200ms Super-hold without a tap does not open the
-  launcher. niri has no extra delay on the drag itself (pixel threshold
-  only). If the pointer dies, drop the mouse IDs from
-  `configs/keyd/default.conf` and rerun `scripts/apply-system.sh`.
+- Super+hold, then left-drag: moves the window. As of 2026-10-07 keyd
+  does not remap Super and does not grab the mouse, so the compositor
+  sees a normal modifier. niri has no extra delay on the drag itself
+  (pixel threshold only).
 - Super+Ctrl+F on a website: the page goes fullscreen *inside* the niri
   tile (browser chrome gone). Super+Shift+F is still exclusive
   fullscreen. Super+Alt+F took the old expand-column bind.
@@ -182,7 +182,7 @@ profile appears.
 
 ## Homogeny: Novalis niri vs Delorean Hyprland
 
-Already the same muscle: Super tap / Super+Space launcher, Super+Q close,
+Already the same muscle: Super+Space launcher, Super+Q close,
 Super+Return terminal, Super+E files, Super+V clipboard, Super+Tab
 overview, Super+Shift+Tab previous desk, Alt+Tab recent windows, Super+K
 cheatsheet, Super+arrows with Shift = move, Super+/- this-column width,
@@ -388,3 +388,20 @@ For Linux FOSS, **yes**. Illustrator/Affinity have no native Linux
 build. Figma/Penpot are web (same class of problem as Photopea). Boxy
 SVG is simpler and Electron. Inkscape is the one people actually ship
 work in. Install is `./scripts/pkg-add.sh inkscape` if you want it.
+
+## Switch to tiling windows
+
+Dropped 2026-10-07. niri has no layout besides the scrolling strip.
+A lone window opening full, then both shrinking to half, would need a
+watcher. Left the strip alone. Noctalia settings and btop still float.
+Delorean can still toggle one desk to dwindle with Super+Ctrl+L.
+
+## Super alone does nothing
+
+Applied 2026-10-07 on Novalis. keyd no longer turns a short Super
+press into Super+Space, and it no longer grabs the mouse. Super+Space
+still opens the launcher. The bar chip still opens it. The Keychron
+F-key maps stay.
+
+Delorean still opens the menu on Super release. That note is on
+`omarchy-delorean/docs/next.md`.

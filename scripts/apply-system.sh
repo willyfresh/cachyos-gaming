@@ -16,7 +16,7 @@ if [[ -f "$KEYD_SRC" ]]; then
   sudo install -m644 "$KEYD_SRC" "$KEYD_DEST"
   sudo systemctl enable --now keyd.service
   sudo systemctl restart keyd.service
-  log "keyd is active (Super tap -> launcher)"
+  log "keyd is active (Keychron media and knob; Super alone does nothing)"
 fi
 
 UDEV_SRC="$CONFIGS_DIR/udev/99-keychron-v6-via.rules"

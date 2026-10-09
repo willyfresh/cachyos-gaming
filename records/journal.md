@@ -2,6 +2,15 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-10-07 — Super alone does nothing
+
+- keyd no longer maps a Super tap to Super+Space, and it no longer
+  grabs the mouse. Super+Space is still the launcher. Keychron media
+  and knob maps are unchanged. Delorean was left alone.
+- A half-width default for new windows was tried the same day and
+  taken back. niri stays on the scrolling strip. Noctalia settings
+  and btop still float. Board Game Arena still opens maximized.
+
 ## 2026-10-07 — Nautilus bookmarks for household shares
 
 - Installed `gvfs-smb` 1.60.3-3. Pacman also upgraded `gvfs` from

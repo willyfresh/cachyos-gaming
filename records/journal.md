@@ -2,6 +2,14 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-10-09 — installed kitty
+
+- requested: kitty
+- repos (pacman): kitty 0.49.2-1.1
+- Concord image previews use the terminal graphics protocol. Alacritty
+  falls back to block characters. Run `concord` inside kitty.
+  Super+Return stays Alacritty.
+
 ## 2026-10-08 — installed the terminal apps
 
 - requested: superfile concord lynx neovim caligula neomutt valvefm steam-tui

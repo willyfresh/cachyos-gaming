@@ -419,6 +419,9 @@ games that need it. Run `steamcmd` once before the first `steam-tui`.
 Super+Shift+D stays the Electron Discord app. Delorean was not
 installed.
 
+kitty 0.49.2-1.1 is installed for Concord images. Run `concord` inside
+kitty. Super+Return stays Alacritty.
+
 ## Super alone does nothing
 
 Applied 2026-10-07 on Novalis. keyd no longer turns a short Super

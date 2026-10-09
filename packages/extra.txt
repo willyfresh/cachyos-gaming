@@ -55,3 +55,6 @@ lynx
 neovim
 caligula
 neomutt
+
+# Concord images. Super+Return stays Alacritty.
+kitty

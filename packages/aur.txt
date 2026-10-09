@@ -18,3 +18,7 @@ niri-screensaver
 # Official Dropbox daemon. Autostart: dropbox start -i (niri spawn-at-startup).
 # Live install needs a real terminal: ./scripts/pkg-add.sh dropbox
 dropbox
+
+# Terminal Discord client and Steam library. steam-tui depends on steamcmd.
+concord-bin
+steam-tui

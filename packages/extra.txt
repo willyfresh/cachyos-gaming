@@ -48,3 +48,10 @@ vlc
 
 # Nautilus Samba bookmarks (FloydServices shares)
 gvfs-smb
+
+# Terminal apps. No keybinds yet.
+superfile
+lynx
+neovim
+caligula
+neomutt

@@ -41,6 +41,7 @@ over.
 | Photoshop-type editor (Photopea is unusable) | you confirm | GIMP installed |
 | Vector editor: is Inkscape the one? | you confirm | Inkscape installed |
 | Switch to tiling windows | — | dropped: niri only scrolls |
+| Terminal apps, mouse optional | you | installed 2026-10-08, no keys |
 | Super alone does nothing | you confirm | applied 2026-10-07 |
 
 ## tty1 stays a shell
@@ -395,6 +396,28 @@ Dropped 2026-10-07. niri has no layout besides the scrolling strip.
 A lone window opening full, then both shrinking to half, would need a
 watcher. Left the strip alone. Noctalia settings and btop still float.
 Delorean can still toggle one desk to dwindle with Super+Ctrl+L.
+
+## Terminal apps, leave the mouse
+
+Installed 2026-10-08. No key yet. Nautilus, Chrome, Thunderbird,
+Discord, and Steam stay until you say one of these replaces it.
+
+| App | Command | Version |
+|-----|---------|---------|
+| superfile | `spf` | 1.6.0-1.1 |
+| concord | `concord` | 2.6.1 (`concord-bin`) |
+| lynx | `lynx` | 2.9.3-1.1 |
+| neovim | `nvim` | 0.12.5-1.1 |
+| caligula | `caligula` | 0.5.0-1.1 |
+| neomutt | `neomutt` | 1:20260616-1.1 |
+| valvefm | `valvefm` | 0.1.8, `/usr/local/bin` |
+| steam-tui | `steam-tui` | 0.3.0b-6 |
+
+valvefm is not packaged. The TUI-only binary's sha256 matched the
+v0.1.8 release. steam-tui still starts the real Steam client for
+games that need it. Run `steamcmd` once before the first `steam-tui`.
+Super+Shift+D stays the Electron Discord app. Delorean was not
+installed.
 
 ## Super alone does nothing
 

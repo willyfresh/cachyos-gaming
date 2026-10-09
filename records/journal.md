@@ -2,6 +2,22 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-10-08 — installed the terminal apps
+
+- requested: superfile concord lynx neovim caligula neomutt valvefm steam-tui
+- repos (pacman): superfile 1.6.0-1.1, lynx 2.9.3-1.1, neovim 0.12.5-1.1,
+  caligula 0.5.0-1.1, neomutt 1:20260616-1.1
+- AUR (paru): concord-bin 2.6.1-1, steam-tui 0.3.0b-6
+- steam-tui pulled `steamcmd` latest-7. Run `steamcmd` once before the
+  first `steam-tui`. `rustup` 1.29.1-1.1 stayed behind as an explicit
+  package from the build.
+- valvefm 0.1.8 is the TUI-only GitHub binary at `/usr/local/bin/valvefm`.
+  sha256 `ae3cf99eb759a268031b66ed3b12d25465bd85e7221ddec07ec9ee15b6496703`.
+- The first pacman attempt 404'd `libutf8proc` 2.11.3-1.1. A database
+  sync moved it to 2.12.0-1.1 and the install went through.
+- No keybinds. Commands: `spf`, `concord`, `lynx`, `nvim`, `caligula`,
+  `neomutt`, `valvefm`, `steam-tui`.
+
 ## 2026-10-07 — Super alone does nothing
 
 - keyd no longer maps a Super tap to Super+Space, and it no longer

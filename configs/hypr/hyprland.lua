@@ -1,4 +1,4 @@
--- Hyprland on Novalis. Dwindle only.
+-- Hyprland on Novalis. Dwindle only. The bar is Waybar (configs/waybar).
 -- Launcher, lock screen, clipboard, and control center stay on niri.
 -- From the tty prompt type: start-hyprland
 -- Super+Shift+Q quits back to that prompt.
@@ -59,6 +59,7 @@ hl.config({
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("dropbox start -i")
+    hl.exec_cmd("sh -c 'pgrep -x waybar >/dev/null || exec waybar'")
 end)
 
 -- Dialogs that should not become tiles.
@@ -77,6 +78,7 @@ hl.window_rule({
 
 -- Apps. Same scripts as niri. They ask niri which window to focus, miss,
 -- and launch a new one while niri is not running.
+hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("alacritty"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())

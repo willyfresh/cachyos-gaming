@@ -20,6 +20,7 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `configs/xdg-desktop-portal/niri-portals.conf` | Chrome file chooser uses the GTK portal under niri (live, via symlink) |
 | `configs/xdg-desktop-portal/hyprland-portals.conf` | Same GTK file chooser when the desktop is Hyprland |
 | `configs/hypr/hyprland.lua` | Hyprland dwindle config (live file symlink). Does not start Noctalia |
+| `configs/waybar` | Hyprland bar (live, via symlink). Stock Waybar, bottom of both screens |
 | `scripts/install-hyprland.sh` | From the tty prompt: install Hyprland and link that config |
 | `configs/bash_profile` | tty1 login stays a shell (live `~/.bash_profile`, via symlink). Type `niri` or `start-hyprland` |
 | `configs/noctalia` | noctalia-shell config (live, via symlink) |
@@ -89,4 +90,4 @@ off `next.md`. The inbox is emptied after that. Same loop as
 2. Create user `willyfresh`, put this repo at `~/Projects/cachyos-gaming`.
 3. `./setup.sh`
 4. Log in on niri and confirm both ASUS VE247 monitors come up (see `records/hardware.md`).
-5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell. Type `niri` for that desktop. For dwindle, run `./scripts/install-hyprland.sh` once from the prompt, then type `start-hyprland`. Noctalia stays on niri. Do not run both compositors at once, and do not `exec` either command from `bash_profile`.
+5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell. Type `niri` for that desktop. For dwindle, run `./scripts/install-hyprland.sh` once from the prompt, then type `start-hyprland`. Waybar starts with Hyprland. Noctalia stays on niri. Do not run both compositors at once, and do not `exec` either command from `bash_profile`.

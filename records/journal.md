@@ -492,3 +492,55 @@ A running record of installs and config changes. Package names that should survi
 - portal: configs/xdg-desktop-portal/hyprland-portals.conf
 - from the tty prompt type start-hyprland. type niri for the other session.
 - Super+Shift+Q quits Hyprland. Do not run both compositors at once.
+
+## 2026-10-09 — Hyprland bar
+
+- waybar 0.15.0-3.1, recorded in `packages/extra.txt`. playerctl came
+  along as a dependency.
+- config: `configs/waybar`, linked at `~/.config/waybar`. Starts with
+  Hyprland. Bottom of both VE247s, 36px, windows leave that strip
+  (`reserved` bottom 36).
+- Novalis colors. Left: `NOVALIS`, then that screen's workspace
+  numbers. Center: `Fri 10-09  14:32`. Right: the playing track, tray,
+  network icon, bluetooth, volume. Click a number to show that
+  workspace. Click the track to pause. Click the volume to mute.
+  Scroll the volume.
+- No bluetooth adapter, so that chip stays hidden. The hostname chip
+  does not open a launcher. Launcher, lock, clipboard, and control
+  center stay on niri.
+
+## 2026-10-09 — Hyprland monitors match the desk
+
+- Auto layout had HDMI-A-1 (`C5LMQS118094`) on the left and DP-1
+  (`K1LMQS100417`) on the right. That is the reverse of the desk, and
+  of `configs/niri/cfg/display.kdl`.
+- `configs/hypr/hyprland.lua` now places DP-1 at 0,0 and HDMI-A-1 at
+  1920,0, matched by serial.
+
+## 2026-10-09 — transparent bar, focus by opacity
+
+- Waybar has no plate and no green edge. Text and icons sit on the
+  background. The current workspace number is green.
+- Window borders are off (`border_size = 0`). The focused window is
+  solid. Any other window is 70% opaque. A fullscreen window stays
+  solid.
+
+## 2026-10-09 — stock Waybar, Fuzzel launcher
+
+- The custom bar stopped. `configs/waybar` is the package default
+  (`/etc/xdg/waybar`), with Hyprland modules where the default names
+  Sway. Scratchpad, the media script, and the power menu are left out.
+  They need files this install does not have.
+- Super+Space runs `fuzzel`. `otf-font-awesome` supplies the stock icons.
+- The bar sits on the bottom of the right screen only (`HDMI-A-1`).
+  The left screen has no bar.
+- The bar lists workspaces 1–10 from both screens. A workspace still
+  belongs to one monitor.
+
+## 2026-10-09 — each screen has its own workspaces
+
+- Tried hyprsplit so each monitor would have workspaces 1–10. It moved
+  both open windows onto the left screen and left the right screen
+  empty. Taken back the same day. hyprsplit is not loaded.
+- Bars are on the bottom of both screens again. Each bar lists the
+  workspaces on that screen.

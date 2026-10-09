@@ -20,7 +20,7 @@ need_cmd pacman
 
 journal_append "Hyprland config beside niri" "$(cat <<'EOF'
 - packages: hyprland, xdg-desktop-portal-hyprland
-- config: configs/hypr/hyprland.lua (dwindle). Noctalia is not started.
+- config: configs/hypr/hyprland.lua (dwindle) and configs/waybar. Noctalia is not started.
 - portal: configs/xdg-desktop-portal/hyprland-portals.conf
 - from the tty prompt type start-hyprland. type niri for the other session.
 - Super+Shift+Q quits Hyprland. Do not run both compositors at once.
@@ -29,7 +29,7 @@ EOF
 
 cat <<'EOF'
 
-Hyprland is installed. Launcher, lock screen,
+Hyprland is installed. Waybar is the bar. Launcher, lock screen,
 clipboard, and control center stay on niri.
 
 From this prompt, type:

@@ -27,6 +27,7 @@ link_path "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf" \
 
 # The file, not the directory, so Hyprland's runtime files stay out of the repo.
 link_path "$CONFIGS_DIR/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"
+link_path "$CONFIGS_DIR/waybar" "$HOME/.config/waybar"
 
 mkdir -p "$HOME/.local/share/applications"
 mkdir -p "$HOME/.local/bin"

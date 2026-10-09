@@ -21,6 +21,12 @@ fi
 mkdir -p "$HOME/.config/xdg-desktop-portal"
 link_path "$CONFIGS_DIR/xdg-desktop-portal/niri-portals.conf" \
   "$HOME/.config/xdg-desktop-portal/niri-portals.conf"
+# Hyprland reads this when XDG_CURRENT_DESKTOP=Hyprland. The niri file stays.
+link_path "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf" \
+  "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
+
+# The file, not the directory, so Hyprland's runtime files stay out of the repo.
+link_path "$CONFIGS_DIR/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"
 
 mkdir -p "$HOME/.local/share/applications"
 mkdir -p "$HOME/.local/bin"
@@ -111,7 +117,7 @@ if [[ -f "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
 fi
 
 # tty1 login stays a shell. CachyOS's stock file execs niri; do not
-# put that back. Start the desktop with niri-session (see bash_profile).
+# put that back. Type niri or start-hyprland (see bash_profile).
 link_path "$CONFIGS_DIR/bash_profile" "$HOME/.bash_profile"
 
 if command -v update-desktop-database >/dev/null 2>&1; then

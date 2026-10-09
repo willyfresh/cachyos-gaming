@@ -17,8 +17,11 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | --- | --- |
 | `setup.sh` | Fresh-install bootstrap |
 | `configs/niri` | niri config (live, via symlink) |
-| `configs/xdg-desktop-portal/niri-portals.conf` | Chrome file chooser uses the GTK portal (live, via symlink) |
-| `configs/bash_profile` | tty1 login stays a shell (live `~/.bash_profile`, via symlink). Type `niri-session` to start the desktop |
+| `configs/xdg-desktop-portal/niri-portals.conf` | Chrome file chooser uses the GTK portal under niri (live, via symlink) |
+| `configs/xdg-desktop-portal/hyprland-portals.conf` | Same GTK file chooser when the desktop is Hyprland |
+| `configs/hypr/hyprland.lua` | Hyprland dwindle config (live file symlink). Does not start Noctalia |
+| `scripts/install-hyprland.sh` | From the tty prompt: install Hyprland and link that config |
+| `configs/bash_profile` | tty1 login stays a shell (live `~/.bash_profile`, via symlink). Type `niri` or `start-hyprland` |
 | `configs/noctalia` | noctalia-shell config (live, via symlink) |
 | `configs/noctalia/palettes/Novalis.json` | Gunmetal + energy-green palette |
 | `configs/noctalia/wallpapers/` | Rain, ship, dock, construct, blue flower |
@@ -86,4 +89,4 @@ off `next.md`. The inbox is emptied after that. Same loop as
 2. Create user `willyfresh`, put this repo at `~/Projects/cachyos-gaming`.
 3. `./setup.sh`
 4. Log in on niri and confirm both ASUS VE247 monitors come up (see `records/hardware.md`).
-5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell; type `niri-session` to start the desktop. A bare `niri` never tells systemd the Wayland display, and Chrome's file picker then opens nothing (`xdg-desktop-portal-gtk: cannot open display`). The chooser itself is `configs/xdg-desktop-portal/niri-portals.conf`. Do not `exec` niri-session from `bash_profile`: the wrapper re-reads that file as a login shell and loops.
+5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell. Type `niri` for that desktop. For dwindle, run `./scripts/install-hyprland.sh` once from the prompt, then type `start-hyprland`. Noctalia stays on niri. Do not run both compositors at once, and do not `exec` either command from `bash_profile`.

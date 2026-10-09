@@ -9,6 +9,9 @@ pull_path "$HOME/.config/niri" "$CONFIGS_DIR/niri"
 pull_path "$HOME/.config/noctalia" "$CONFIGS_DIR/noctalia"
 pull_path "$HOME/.config/xdg-desktop-portal/niri-portals.conf" \
   "$CONFIGS_DIR/xdg-desktop-portal/niri-portals.conf"
+pull_path "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf" \
+  "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf"
+pull_path "$HOME/.config/hypr/hyprland.lua" "$CONFIGS_DIR/hypr/hyprland.lua"
 pull_path "$HOME/.bash_profile" "$CONFIGS_DIR/bash_profile"
 
 log "configs pulled into $CONFIGS_DIR"

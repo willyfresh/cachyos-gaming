@@ -478,3 +478,17 @@ A running record of installs and config changes. Package names that should survi
 - AUR (paru): dropbox
 - Autostart: `spawn-at-startup "dropbox" "start" "-i"` in
   `configs/niri/cfg/autostart.kdl`. Sign in on first run.
+
+## 2026-10-09 — installed hyprland xdg-desktop-portal-hyprland
+
+- requested: hyprland xdg-desktop-portal-hyprland
+- repos (pacman): hyprland xdg-desktop-portal-hyprland
+- AUR (paru): (none)
+
+## 2026-10-09 — Hyprland config beside niri
+
+- packages: hyprland, xdg-desktop-portal-hyprland
+- config: configs/hypr/hyprland.lua (dwindle). Noctalia is not started.
+- portal: configs/xdg-desktop-portal/hyprland-portals.conf
+- from the tty prompt type start-hyprland. type niri for the other session.
+- Super+Shift+Q quits Hyprland. Do not run both compositors at once.

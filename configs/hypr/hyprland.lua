@@ -135,8 +135,21 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
+-- Each screen has its own workspaces 1–10.
+-- Left (DP-1) is ids 1–10. Right (HDMI-A-1) is ids 11–20.
+-- Super+number follows whichever screen is focused.
+-- persistent_workspaces stays off, so an empty number is not pinned.
+local hypr_dir = "/home/willyfresh/Projects/cachyos-gaming/configs/hypr"
+package.path = package.path .. ";" .. hypr_dir .. "/?.lua;" .. hypr_dir .. "/?/init.lua"
+local hs = require("hyprsplit")
+hs.config({
+    num_workspaces = 10,
+    persistent_workspaces = false,
+})
+hs.monitor_priority({ "DP-1", "HDMI-A-1" })
+
 for i = 1, 10 do
     local key = i % 10
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = true }))
+    hl.bind(mainMod .. " + " .. key, hs.dsp.focus({ workspace = i }))
+    hl.bind(mainMod .. " + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = true }))
 end

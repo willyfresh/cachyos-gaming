@@ -1,0 +1,3 @@
+Vendored from https://github.com/shezdy/hyprsplit
+Commit: 6b00b677d8905fb38779c91e12d6294e0e586a44
+License: GPL-3.0. The Lua library only. init.lua is what Hyprland loads.

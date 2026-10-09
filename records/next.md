@@ -43,6 +43,18 @@ over.
 | Switch to tiling windows | — | dropped: niri only scrolls |
 | Terminal apps, mouse optional | you | installed 2026-10-08, no keys |
 | Super alone does nothing | you confirm | applied 2026-10-07 |
+| Hyprland bar | you confirm | applied 2026-10-09 |
+
+## Hyprland bar
+
+Applied 2026-10-09, reset to the stock Waybar the same day. Bottom
+of both screens. Each screen has its own workspaces 1–10, and a
+bar lists a number only while that workspace has a window.
+Super+Space opens Fuzzel. The Novalis chip is gone. Next pass can
+move this toward the Omarchy bar.
+
+The chip does not open a launcher. Launcher, lock, clipboard, and
+control center stay on niri. Super+Shift+Q still quits.
 
 ## tty1 stays a shell
 

@@ -550,3 +550,14 @@ A running record of installs and config changes. Package names that should survi
 - `configs/hypr/wallpapers/fall-fractal.png` is a Julia set in
   burgundy, rust, and gold on a near-black field. `wallpaper.py`
   puts it on the background layer of both screens at Hyprland start.
+
+## 2026-10-09 — separate workspace pools, occupied numbers only
+
+- hyprsplit again (`configs/hypr/hyprsplit`, commit 6b00b677). Each
+  screen has workspaces 1–10. Left DP-1 is ids 1–10. Right HDMI-A-1
+  is ids 11–20. Super+number follows the focused screen.
+- YouTube was moved to the right screen's 1 (id 11) before the split
+  loaded, so it stayed on HDMI. The terminal stayed on the left
+  screen's 2.
+- Bars stay on the bottom of both screens. A number is drawn only
+  while that workspace has a window. Empty workspaces are not pinned.

@@ -2,6 +2,14 @@
 
 A running record of installs and config changes. Package names that should survive a reinstall also live in `packages/extra.txt`. Config diffs live in git.
 
+## 2026-10-07 — Nautilus bookmarks for household shares
+
+- Installed `gvfs-smb` 1.60.3-3. Pacman also upgraded `gvfs` from
+  1.60.2-4 to 1.60.3-3. Recorded in `packages/extra.txt`.
+- `~/.config/gtk-3.0/bookmarks` now has Will, Ally, Bexley, and Conway
+  on `smb://10.82.64.4/`. Guest mount and a directory listing succeeded
+  for each share. Conway's share is empty.
+
 ## 2026-10-01 — installed vlc
 
 - requested: vlc

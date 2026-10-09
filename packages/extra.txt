@@ -45,3 +45,6 @@ bitwarden
 
 # Media
 vlc
+
+# Nautilus Samba bookmarks (FloydServices shares)
+gvfs-smb

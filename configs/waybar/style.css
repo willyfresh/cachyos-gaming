@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
+    background-color: transparent;
     border-top: 3px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
     transition-property: background-color;
@@ -25,13 +25,9 @@ window#waybar.solo {
 }
 */
 
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
+window#waybar.termite,
 window#waybar.chromium {
-    background-color: #000000;
-    border: none;
+    background-color: transparent;
 }
 
 button {

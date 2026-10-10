@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
-"""Fall fractal behind every Hyprland screen. One process, background layer."""
+"""Fractal wallpaper behind every Hyprland screen. One process, background layer.
+
+The picture is chosen by ~/.local/state/hypr/wallpaper (fall, greens, sky,
+relaxing). Super+Shift+Return writes that file and restarts this process.
+"""
 
 import fcntl
+import os
 import sys
 from pathlib import Path
 
@@ -12,8 +17,29 @@ gi.require_version("Gdk", "3.0")
 gi.require_version("GtkLayerShell", "0.1")
 from gi.repository import Gdk, GdkPixbuf, Gtk, GtkLayerShell
 
-IMAGE = Path(__file__).resolve().parent / "wallpapers" / "fall-fractal.png"
+WALLPAPERS = Path(__file__).resolve().parent / "wallpapers"
+NAMES = {
+    "fall": "fall-fractal.png",
+    "greens": "greens-fractal.png",
+    "sky": "sky-fractal.png",
+    "relaxing": "relaxing-fractal.png",
+}
+STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "hypr" / "wallpaper"
 LOCK = Path("/tmp/hypr-fall-wallpaper.lock")
+
+
+def chosen_image():
+    name = "fall"
+    try:
+        picked = STATE.read_text(encoding="utf-8").strip()
+    except OSError:
+        picked = ""
+    if picked in NAMES:
+        name = picked
+    path = WALLPAPERS / NAMES[name]
+    if not path.is_file():
+        path = WALLPAPERS / NAMES["fall"]
+    return path
 
 
 def already_running():
@@ -28,11 +54,11 @@ def already_running():
 
 
 class Wall(Gtk.Window):
-    def __init__(self, monitor):
+    def __init__(self, monitor, image):
         super().__init__()
         geo = monitor.get_geometry()
         pix = GdkPixbuf.Pixbuf.new_from_file_at_scale(
-            str(IMAGE), geo.width, geo.height, False
+            str(image), geo.width, geo.height, False
         )
         self.add(Gtk.Image.new_from_pixbuf(pix))
         GtkLayerShell.init_for_window(self)
@@ -53,9 +79,10 @@ class Wall(Gtk.Window):
 def main():
     if already_running():
         return
+    image = chosen_image()
     display = Gdk.Display.get_default()
     for i in range(display.get_n_monitors()):
-        Wall(display.get_monitor(i)).show_all()
+        Wall(display.get_monitor(i), image).show_all()
     Gtk.main()
 
 

@@ -44,17 +44,85 @@ over.
 | Terminal apps, mouse optional | you | installed 2026-10-08, no keys |
 | Super alone does nothing | you confirm | applied 2026-10-07 |
 | Hyprland bar | you confirm | applied 2026-10-09 |
+| Waybar, second pass | you pick | backlog |
+| croft instead of neovim | you pick | backlog |
+| Keychron keys on Hyprland | you | backlog |
+| Login keyring stays locked | you | backlog |
 
 ## Hyprland bar
 
 Applied 2026-10-09, reset to the stock Waybar the same day. Bottom
 of both screens. Each screen has its own workspaces 1–10, and a
 bar lists a number only while that workspace has a window.
-Super+Space opens Fuzzel. The Novalis chip is gone. Next pass can
-move this toward the Omarchy bar.
+Super+Space opens Fuzzel. Super+K opens the key list.
+Super+Shift+Return opens the fractal wallpaper colors. The bar
+plate is transparent. The Novalis chip is gone. The bar does not
+print a key-mode name. Next pass can move this toward the Omarchy bar.
 
 The chip does not open a launcher. Launcher, lock, clipboard, and
 control center stay on niri. Super+Shift+Q still quits.
+
+## Waybar, second pass
+
+Backlog 2026-10-09. The live session is Hyprland. Nothing here
+starts until you pick it.
+
+The gray line along the top of the bar is `border-top` in
+`configs/waybar/style.css`. Take that off.
+
+Drop `hyprland/language` and `power-profiles-daemon`. The power
+menu is defined and is not on the bar. Battery, a second battery,
+and backlight are stock leftovers on a desktop and can go in the
+same pass.
+
+The eye is `idle_inhibitor`. The open eye means the screen will
+not idle. The slashed eye means idle is allowed. A click swaps them.
+
+The clock shows the time. A click swaps it for the date alone
+(`format-alt` is `{:%Y-%m-%d}`). Show both at once, the way the
+niri clock does: abbreviated weekday, month-day, 24-hour time
+(`{:%a %m-%d  %H:%M}`).
+
+On the bar now: workspaces, the focused window, MPD, the eye,
+volume, network (the address, not the niri icon), power profile,
+CPU, memory, temperature, backlight, num lock and caps lock,
+language, battery, clock, tray.
+
+The niri bar has the Novalis chip, workspaces, that clock, media,
+tray, notifications, clipboard, the network icon, bluetooth,
+volume, the control center, and the session menu. Weather is the
+control-center weather tab, not its own chip. Once language and
+power are gone, the open seats are notifications, clipboard,
+bluetooth, a weather chip, and media that follows the player that
+is actually running. MPD may only say disconnected.
+
+## croft instead of neovim
+
+Backlog. [croft](https://codeberg.org/vitali87/croft) is a VS
+Code-style terminal editor: explorer, editor, and a terminal pane.
+It is not in the CachyOS repos. The only `croft` package hit is
+Mycroft's `mimic1`. Neovim stays until croft is installed and you
+say it replaces it. No key.
+
+Fuzzel opens Neovim and Superfile in Alacritty as of 2026-10-09.
+
+## Keychron keys on Hyprland
+
+Backlog. keyd is running, and it already maps these keys.
+
+The volume keys and the knob cluster are already mapped. niri
+sends volume to Noctalia, and it binds Ctrl+Shift+F1–F6 and F8
+to the knob and Fn+F8. Hyprland has none of those binds. Noctalia
+is not running in this session, so the knob and the volume keys
+do nothing here.
+
+## Login keyring stays locked
+
+Backlog. gnome-keyring is running. Hyprland is started by typing
+`start-hyprland` at the tty, so the login password never unlocks
+the keyring. The first program that needs a secret asks to open
+it. That is the "didn't open the keychain" dialog. Leave it until
+you want the tty login to unlock the keyring.
 
 ## tty1 stays a shell
 

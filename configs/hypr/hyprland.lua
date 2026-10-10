@@ -130,7 +130,47 @@ hl.bind(mainMod .. " + SHIFT + ALT + down",  hl.dsp.window.move({ monitor = "dow
 
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(mainMod .. " + CTRL + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+
+-- Same width step as niri: 10% of the screen, not Omarchy's left-edge resize.
+local function resize_by(x_sign, y_sign)
+    return function()
+        local mon = hl.get_active_monitor()
+        if mon == nil then
+            return
+        end
+        hl.dispatch(hl.dsp.window.resize({
+            x = math.floor(mon.width * 0.10) * x_sign,
+            y = math.floor(mon.height * 0.10) * y_sign,
+            relative = true,
+        }))
+    end
+end
+
+hl.bind(mainMod .. " + minus", resize_by(-1, 0))
+hl.bind(mainMod .. " + equal", resize_by(1, 0))
+hl.bind(mainMod .. " + SHIFT + minus", resize_by(0, -1))
+hl.bind(mainMod .. " + SHIFT + equal", resize_by(0, 1))
+
+-- Alt stays held in the normal keymap. No submap, so the bar never
+-- labels the mode, and a quick tap cannot leave the keys stuck.
+local function cycle_window(prev)
+    return function()
+        if prev then
+            hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
+        else
+            hl.dispatch(hl.dsp.window.cycle_next())
+        end
+        hl.dispatch(hl.dsp.window.bring_to_top())
+    end
+end
+
+hl.bind("ALT + TAB", cycle_window(false))
+hl.bind("ALT + SHIFT + TAB", cycle_window(true))
+
+hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(bin .. "/hypr-cheatsheet.sh"))
+hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd(bin .. "/hypr-wallpaper.sh"))
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
@@ -153,3 +193,5 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key, hs.dsp.focus({ workspace = i }))
     hl.bind(mainMod .. " + SHIFT + " .. key, hs.dsp.window.move({ workspace = i, follow = true }))
 end
+
+hl.bind(mainMod .. " + SHIFT + TAB", hs.dsp.focus({ workspace = "e-1" }))

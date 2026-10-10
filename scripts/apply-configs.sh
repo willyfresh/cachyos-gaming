@@ -28,6 +28,7 @@ link_path "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf" \
 # The file, not the directory, so Hyprland's runtime files stay out of the repo.
 link_path "$CONFIGS_DIR/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"
 link_path "$CONFIGS_DIR/waybar" "$HOME/.config/waybar"
+link_path "$CONFIGS_DIR/fuzzel" "$HOME/.config/fuzzel"
 
 mkdir -p "$HOME/.local/share/applications"
 mkdir -p "$HOME/.local/bin"
@@ -60,6 +61,8 @@ link_path "$REPO_ROOT/scripts/launch-btop.sh" "$HOME/.local/bin/launch-btop.sh"
 link_path "$REPO_ROOT/scripts/launch-grok-bot.sh" "$HOME/.local/bin/launch-grok-bot.sh"
 link_path "$REPO_ROOT/scripts/launch-steam-heroic.sh" "$HOME/.local/bin/launch-steam-heroic.sh"
 link_path "$REPO_ROOT/scripts/lock.sh" "$HOME/.local/bin/lock.sh"
+link_path "$REPO_ROOT/scripts/hypr-cheatsheet.sh" "$HOME/.local/bin/hypr-cheatsheet.sh"
+link_path "$REPO_ROOT/scripts/hypr-wallpaper.sh" "$HOME/.local/bin/hypr-wallpaper.sh"
 link_path "$REPO_ROOT/scripts/novalis-screensaver" "$HOME/.local/bin/novalis-screensaver"
 link_path "$REPO_ROOT/scripts/novalis-tunnel.py" "$HOME/.local/bin/novalis-tunnel.py"
 link_path "$REPO_ROOT/scripts/novalis-bloom.py" "$HOME/.local/bin/novalis-bloom.py"
@@ -109,6 +112,8 @@ link_path "$CONFIGS_DIR/applications/youtube-music.desktop" \
   "$HOME/.local/share/applications/YouTube Music.desktop"
 link_path "$CONFIGS_DIR/applications/youtube.desktop" \
   "$HOME/.local/share/applications/YouTube.desktop"
+link_path "$CONFIGS_DIR/applications/superfile.desktop" \
+  "$HOME/.local/share/applications/superfile.desktop"
 
 install_desktop "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
   "$HOME/.local/share/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"

@@ -561,3 +561,65 @@ A running record of installs and config changes. Package names that should survi
   screen's 2.
 - Bars stay on the bottom of both screens. A number is drawn only
   while that workspace has a window. Empty workspaces are not pinned.
+
+## 2026-10-09 — transparent bar, shared keys
+
+- Waybar's plate is fully transparent. The stock module colors stay.
+  A focused Chrome or terminal window no longer paints the bar black.
+- Super+K opens a searchable key list in Fuzzel. Noctalia stays off,
+  so this is not the niri cheatsheet panel.
+- Also shared with niri: Super+/- resizes by 10% of the screen,
+  Super+Shift+/- changes height, Super+Ctrl+F maximizes,
+  Super+Shift+Tab goes to the previous workspace on this screen,
+  and Alt+Tab cycles windows while Alt is held.
+
+## 2026-10-09 — Alt+Tab no longer labels the bar
+
+- Waybar's stock hyprland/submap module prints the active key mode.
+  Alt+Tab entered a mode named alt-tab. A quick tap let Alt go before
+  that mode was listening for the release, so the session stayed in
+  the mode and the bar kept saying alt-tab.
+- Alt+Tab and Alt+Shift+Tab are ordinary binds now. The submap module
+  is not on the bar. `hyprctl submap` reports default.
+
+## 2026-10-09 — fall wallpaper, closer and brighter
+
+- Replaced `configs/hypr/wallpapers/fall-fractal.png`. It is 3840x2160,
+  cropped into the curled fronds of a Julia set. Crimson, pumpkin, and
+  gold fill the frame. The near-black field is gone. `wallpaper.py`
+  still scales it onto both screens. Restarted that process so the new
+  file is the one on the background layer.
+
+## 2026-10-09 — fractal wallpaper colors
+
+- No redraw. The fall picture was recolored into three more files
+  beside it: greens (pine through mint), sky (sky blue to white), and
+  relaxing (slate, sage, and sand).
+- Super+Shift+Return opens the list in Fuzzel, same chord as niri's
+  wallpaper picker. Noctalia stays off. The choice is stored in
+  `~/.local/state/hypr/wallpaper`. Fall stays up until one is picked.
+
+## 2026-10-09 — Fuzzel opens terminal apps in Alacritty
+
+- Neovim's desktop entry is `Terminal=true`. Fuzzel's terminal command
+  stays empty unless `$TERMINAL` is set, and this Hyprland session does
+  not set it. Fuzzel then execs `nvim` with stdin on `/dev/null`, so
+  picking Neovim in the launcher does nothing.
+- `configs/fuzzel/fuzzel.ini` sets `terminal=alacritty -e`. Live path is
+  `~/.config/fuzzel`.
+- Superfile had no desktop entry, so the launcher could not list it.
+  `configs/applications/superfile.desktop` runs `spf` in that same
+  terminal.
+
+## 2026-10-09 — triaged the Hyprland notes
+
+- Inbox emptied into `records/next.md`. Nothing in the dump was
+  started.
+- croft instead of neovim. Waybar: drop the top border, language,
+  and the power profile. The clock should show the date and the
+  time together. The eye is the idle inhibitor.
+- The Keychron knob and volume keys do nothing on Hyprland. Those
+  binds live on niri and call Noctalia. keyd is already running
+  and already maps the keys.
+- The keyring prompt is the tty login. gnome-keyring is running,
+  and the login password never unlocks it.

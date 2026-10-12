@@ -108,10 +108,10 @@ hl.bind("CTRL + SHIFT + F3", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
 hl.bind("CTRL + SHIFT + F4", hl.dsp.exec_cmd(bin .. "/launch-steam-heroic.sh"))
 
 -- Dwindle. Super+F keeps the gaps (maximize). Super+Shift+F covers the screen.
+-- Super+Up/Down is bound after hyprsplit: focus that way, then the
+-- previous or next workspace on this screen.
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
@@ -130,8 +130,34 @@ hl.bind(mainMod .. " + SHIFT + ALT + down",  hl.dsp.window.move({ monitor = "dow
 
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + CTRL + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+
+-- Super+Shift+V: focus a window of the other kind on this workspace.
+hl.bind(mainMod .. " + SHIFT + V", function()
+    local active = hl.get_active_window()
+    if active == nil or active.workspace == nil then
+        return
+    end
+    local want_float = not active.floating
+    for _, other in ipairs(hl.get_windows() or {}) do
+        local ws = other.workspace
+        if other.address ~= active.address and other.mapped and not other.hidden
+            and other.floating == want_float and ws and ws.id == active.workspace.id then
+            hl.dispatch(hl.dsp.focus({ window = "address:" .. other.address }))
+            return
+        end
+    end
+end)
+
+-- Turn the screens off. The delay lets the key go up first, so the
+-- keypress itself does not wake them again. Any later key turns them on.
+hl.bind(mainMod .. " + ALT + P", function()
+    hl.timer(function()
+        hl.dispatch(hl.dsp.dpms({ action = "disable" }))
+    end, { timeout = 500, type = "oneshot" })
+end)
 
 -- Same width step as niri: 10% of the screen, not Omarchy's left-edge resize.
 local function resize_by(x_sign, y_sign)
@@ -152,6 +178,10 @@ hl.bind(mainMod .. " + minus", resize_by(-1, 0))
 hl.bind(mainMod .. " + equal", resize_by(1, 0))
 hl.bind(mainMod .. " + SHIFT + minus", resize_by(0, -1))
 hl.bind(mainMod .. " + SHIFT + equal", resize_by(0, 1))
+hl.bind(mainMod .. " + CTRL + ALT + left", resize_by(-1, 0))
+hl.bind(mainMod .. " + CTRL + ALT + right", resize_by(1, 0))
+hl.bind(mainMod .. " + CTRL + ALT + up", resize_by(0, -1))
+hl.bind(mainMod .. " + CTRL + ALT + down", resize_by(0, 1))
 
 -- Alt stays held in the normal keymap. No submap, so the bar never
 -- labels the mode, and a quick tap cannot leave the keys stuck.
@@ -195,3 +225,86 @@ for i = 1, 10 do
 end
 
 hl.bind(mainMod .. " + SHIFT + TAB", hs.dsp.focus({ workspace = "e-1" }))
+
+-- Super+Up/Down moves focus. Hyprland wraps at the edge, so a second
+-- window would bounce forever. A window counts as further up or down
+-- only when its center is that way. The top window's Up, and the
+-- bottom window's Down, go to the previous or next occupied workspace
+-- on this screen. Left and right stay on this workspace.
+local function window_center(window)
+    local at = window.at
+    local size = window.size
+    local x, y, w, h = 0, 0, 0, 0
+    if type(at) == "table" then
+        x = at.x or at[1] or 0
+        y = at.y or at[2] or 0
+    end
+    if type(size) == "table" then
+        w = size.x or size.w or size[1] or 0
+        h = size.y or size.h or size[2] or 0
+    end
+    return x + w / 2, y + h / 2
+end
+
+local function has_window_that_way(active, direction)
+    local ws = active.workspace
+    if ws == nil or ws.id == nil then
+        return false
+    end
+    local _, ay = window_center(active)
+    for _, other in ipairs(hl.get_windows() or {}) do
+        if other.address ~= active.address and other.mapped and not other.hidden then
+            local other_ws = other.workspace
+            if other_ws and other_ws.id == ws.id then
+                local _, oy = window_center(other)
+                if direction == "up" and oy < ay - 1 then
+                    return true
+                elseif direction == "down" and oy > ay + 1 then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+
+local function focus_or_workspace(direction, workspace_sel)
+    return function()
+        local ws = hl.get_active_workspace()
+        if ws and ws.special then
+            return
+        end
+        local active = hl.get_active_window()
+        if active and has_window_that_way(active, direction) then
+            hl.dispatch(hl.dsp.focus({ direction = direction }))
+            return
+        end
+        hs.dsp.focus({ workspace = workspace_sel })()
+    end
+end
+
+hl.bind(mainMod .. " + up", focus_or_workspace("up", "e-1"))
+hl.bind(mainMod .. " + down", focus_or_workspace("down", "e+1"))
+
+-- Super+Ctrl+arrows always change workspace, the way niri does.
+-- Left and Up are the previous occupied desk. Right and Down are the next.
+local function focus_workspace_rel(sel)
+    return function()
+        hs.dsp.focus({ workspace = sel })()
+    end
+end
+
+local function move_to_workspace_rel(sel)
+    return function()
+        hs.dsp.window.move({ workspace = sel, follow = true })()
+    end
+end
+
+hl.bind(mainMod .. " + CTRL + left", focus_workspace_rel("e-1"))
+hl.bind(mainMod .. " + CTRL + right", focus_workspace_rel("e+1"))
+hl.bind(mainMod .. " + CTRL + up", focus_workspace_rel("e-1"))
+hl.bind(mainMod .. " + CTRL + down", focus_workspace_rel("e+1"))
+hl.bind(mainMod .. " + SHIFT + CTRL + left", move_to_workspace_rel("e-1"))
+hl.bind(mainMod .. " + SHIFT + CTRL + right", move_to_workspace_rel("e+1"))
+hl.bind(mainMod .. " + SHIFT + CTRL + up", move_to_workspace_rel("e-1"))
+hl.bind(mainMod .. " + SHIFT + CTRL + down", move_to_workspace_rel("e+1"))

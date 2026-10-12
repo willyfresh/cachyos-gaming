@@ -154,6 +154,9 @@ function hyprsplit.get_workspace_string(workspace_str)
                 table.insert(valid_workspaces, ws)
             end
         end
+        table.sort(valid_workspaces, function(a, b)
+            return a.id < b.id
+        end)
 
         local active_ws_index = -1
         for index, ws in ipairs(valid_workspaces) do

@@ -50,6 +50,17 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/lock.sh" \
   "$REPO_ROOT/scripts/hypr-clipboard.sh" \
   "$REPO_ROOT/scripts/hypr-notifications.sh" \
+  "$REPO_ROOT/scripts/waybar-weather.py" \
+  "$REPO_ROOT/scripts/waybar-disk.py" \
+  "$REPO_ROOT/scripts/waybar-temp.py" \
+  "$REPO_ROOT/scripts/waybar-gpu.py" \
+  "$REPO_ROOT/scripts/waybar-cpu.py" \
+  "$REPO_ROOT/scripts/waybar-mem.py" \
+  "$REPO_ROOT/scripts/waybar-media.py" \
+  "$REPO_ROOT/scripts/waybar-ws.py" \
+  "$REPO_ROOT/scripts/waybar-locks.py" \
+  "$REPO_ROOT/scripts/waybar-updates.py" \
+  "$REPO_ROOT/scripts/waybar-calendar.py" \
   "$REPO_ROOT/scripts/novalis-screensaver" \
   "$REPO_ROOT/scripts/novalis-tunnel.py" \
   "$REPO_ROOT/scripts/novalis-bloom.py" \
@@ -71,6 +82,17 @@ link_path "$REPO_ROOT/scripts/hypr-cheatsheet.sh" "$HOME/.local/bin/hypr-cheatsh
 link_path "$REPO_ROOT/scripts/hypr-wallpaper.sh" "$HOME/.local/bin/hypr-wallpaper.sh"
 link_path "$REPO_ROOT/scripts/hypr-clipboard.sh" "$HOME/.local/bin/hypr-clipboard.sh"
 link_path "$REPO_ROOT/scripts/hypr-notifications.sh" "$HOME/.local/bin/hypr-notifications.sh"
+link_path "$REPO_ROOT/scripts/waybar-weather.py" "$HOME/.local/bin/waybar-weather.py"
+link_path "$REPO_ROOT/scripts/waybar-disk.py" "$HOME/.local/bin/waybar-disk.py"
+link_path "$REPO_ROOT/scripts/waybar-temp.py" "$HOME/.local/bin/waybar-temp.py"
+link_path "$REPO_ROOT/scripts/waybar-gpu.py" "$HOME/.local/bin/waybar-gpu.py"
+link_path "$REPO_ROOT/scripts/waybar-cpu.py" "$HOME/.local/bin/waybar-cpu.py"
+link_path "$REPO_ROOT/scripts/waybar-mem.py" "$HOME/.local/bin/waybar-mem.py"
+link_path "$REPO_ROOT/scripts/waybar-media.py" "$HOME/.local/bin/waybar-media.py"
+link_path "$REPO_ROOT/scripts/waybar-ws.py" "$HOME/.local/bin/waybar-ws.py"
+link_path "$REPO_ROOT/scripts/waybar-locks.py" "$HOME/.local/bin/waybar-locks.py"
+link_path "$REPO_ROOT/scripts/waybar-updates.py" "$HOME/.local/bin/waybar-updates.py"
+link_path "$REPO_ROOT/scripts/waybar-calendar.py" "$HOME/.local/bin/waybar-calendar.py"
 link_path "$REPO_ROOT/scripts/novalis-screensaver" "$HOME/.local/bin/novalis-screensaver"
 link_path "$REPO_ROOT/scripts/novalis-tunnel.py" "$HOME/.local/bin/novalis-tunnel.py"
 link_path "$REPO_ROOT/scripts/novalis-bloom.py" "$HOME/.local/bin/novalis-bloom.py"

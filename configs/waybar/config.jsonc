@@ -9,27 +9,25 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"
+        "group/workspaces"
     ],
     "modules-center": [
-        "hyprland/window"
     ],
     "modules-right": [
-        "mpd",
         "idle_inhibitor",
-        "pulseaudio",
-        "network",
-        "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
-        "backlight",
-        "keyboard-state",
-        "hyprland/language",
-        "battery",
-        "battery#bat2",
+        "custom/locks",
+        "tray",
         "clock",
-        "tray"
+        "custom/weather",
+        "pulseaudio",
+        "privacy",
+        "custom/media",
+        "custom/cpu",
+        "custom/mem",
+        "custom/disk",
+        "custom/gpu",
+        "custom/updates",
+        "network"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -48,36 +46,84 @@
     //         "default": ""
     //     }
     // },
-    // Each bar lists the workspaces on that screen. A button exists
-    // only while that workspace has a window (see style.css .empty).
-    // The right screen's real ids are 11–20. Show them as 1–10.
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "10": "10",
-            "11": "1",
-            "12": "2",
-            "13": "3",
-            "14": "4",
-            "15": "5",
-            "16": "6",
-            "17": "7",
-            "18": "8",
-            "19": "9",
-            "20": "10"
-        },
-        "all-outputs": false,
-        "on-click": "activate",
-        "sort-by-number": true
+    // Each bar lists that screen's workspaces, shown as 1–10.
+    // Waybar's own click still sends the old workspace dispatch, which
+    // Hyprland 0.56 ignores, so these chips focus the workspace themselves.
+    // A number is hidden until that workspace has a window.
+    "group/workspaces": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/ws1",
+            "custom/ws2",
+            "custom/ws3",
+            "custom/ws4",
+            "custom/ws5",
+            "custom/ws6",
+            "custom/ws7",
+            "custom/ws8",
+            "custom/ws9",
+            "custom/ws10"
+        ]
+    },
+    "custom/ws1": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 1",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 1 focus"
+    },
+    "custom/ws2": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 2",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 2 focus"
+    },
+    "custom/ws3": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 3",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 3 focus"
+    },
+    "custom/ws4": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 4",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 4 focus"
+    },
+    "custom/ws5": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 5",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 5 focus"
+    },
+    "custom/ws6": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 6",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 6 focus"
+    },
+    "custom/ws7": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 7",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 7 focus"
+    },
+    "custom/ws8": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 8",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 8 focus"
+    },
+    "custom/ws9": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 9",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 9 focus"
+    },
+    "custom/ws10": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 10",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 10 focus"
     },
     "keyboard-state": {
         "numlock": true,
@@ -125,7 +171,7 @@
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "idle_inhibitor": {
-        "format": "{icon}",
+        "format": "<span size='16384'>{icon}</span>",
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -140,9 +186,83 @@
         // }
     },
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%a %m-%d  %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<span font_family='MesloLGS Nerd Font Mono'><small>{calendar}</small></span>",
+        "on-click": "$HOME/.local/bin/waybar-calendar.py",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#5CFF6B'><b>{}</b></span>",
+                "weekdays": "<span color='#5CFF6B'><b>{}</b></span>",
+                "days": "<span color='#C8D4C8'>{}</span>",
+                "today": "<span color='#0A0D0B' bgcolor='#5CFF6B'><b>{}</b></span>"
+            }
+        }
+    },
+    "custom/locks": {
+        "exec": "$HOME/.local/bin/waybar-locks.py",
+        "return-type": "json",
+        "interval": 1,
+        "hide-empty-text": true,
+        "tooltip": true
+    },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 16,
+        "transition-duration": 250,
+        "ignore-monitor": true,
+        "modules": [
+            { "type": "screenshare", "tooltip": true },
+            { "type": "audio-in", "tooltip": true }
+        ]
+    },
+    "custom/updates": {
+        "exec": "$HOME/.local/bin/waybar-updates.py",
+        "return-type": "json",
+        "interval": 1800,
+        "hide-empty-text": true,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-updates.py detail"
+    },
+    "custom/weather": {
+        "exec": "$HOME/.local/bin/waybar-weather.py",
+        "return-type": "json",
+        "interval": 900,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-weather.py detail"
+    },
+    "custom/media": {
+        "exec": "$HOME/.local/bin/waybar-media.py",
+        "exec-if": "playerctl status",
+        "return-type": "json",
+        "interval": 2,
+        "on-click": "$HOME/.local/bin/waybar-media.py toggle"
+    },
+    "custom/cpu": {
+        "exec": "$HOME/.local/bin/waybar-cpu.py",
+        "return-type": "json",
+        "interval": 2,
+        "tooltip": true
+    },
+    "custom/mem": {
+        "exec": "$HOME/.local/bin/waybar-mem.py",
+        "return-type": "json",
+        "interval": 2,
+        "tooltip": true
+    },
+    "custom/disk": {
+        "exec": "$HOME/.local/bin/waybar-disk.py",
+        "return-type": "json",
+        "interval": 5,
+        "signal": 1,
+        "on-click": "$HOME/.local/bin/waybar-disk.py next",
+        "tooltip": true
+    },
+    "custom/gpu": {
+        "exec": "$HOME/.local/bin/waybar-gpu.py",
+        "return-type": "json",
+        "interval": 5,
+        "tooltip": true
     },
     "cpu": {
         "format": "{usage}% ",
@@ -152,10 +272,10 @@
         "format": "{}% "
     },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        // No thermal_zone on this board. k10temp Tctl lives here.
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+        "input-filename": "temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
@@ -195,19 +315,19 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "interval": 2,
+        "format-wifi": "{ipaddr}  ↓{bandwidthDownBits:>} ↑{bandwidthUpBits:>} ",
+        "format-ethernet": "{ipaddr}  ↓{bandwidthDownBits:>} ↑{bandwidthUpBits:>} ",
+        "tooltip-format": "{ifname} via {gwaddr}\n↓{bandwidthDownBits:>}  ↑{bandwidthUpBits:>}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "Disconnected ⚠"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format": "{volume}% <span size='16384'>{icon}</span> {format_source}",
+        "format-bluetooth": "{volume}% <span size='16384'>{icon}</span> {format_source}",
+        "format-bluetooth-muted": "<span size='16384'> {icon}</span> {format_source}",
+        "format-muted": "<span size='16384'></span> {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -220,18 +340,6 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
         "format" : "⏻ ",

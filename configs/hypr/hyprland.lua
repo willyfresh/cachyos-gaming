@@ -107,6 +107,22 @@ hl.bind(mainMod .. " + SHIFT + ALT + A", hl.dsp.exec_cmd(bin .. "/launch-grok-bo
 hl.bind("CTRL + SHIFT + F3", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
 hl.bind("CTRL + SHIFT + F4", hl.dsp.exec_cmd(bin .. "/launch-steam-heroic.sh"))
 
+-- Media keys. keyd turns the Keychron knob and Fn+F8 into the Ctrl+Shift
+-- chords. Noctalia is not running here, so these talk to PipeWire and
+-- playerctl directly. The screens have no backlight, so brightness stays unbound.
+local media = { locked = true }
+local media_repeat = { locked = true, repeating = true }
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), media_repeat)
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), media_repeat)
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), media)
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), media)
+hl.bind("CTRL + SHIFT + F6", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), media)
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), media)
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), media)
+hl.bind("CTRL + SHIFT + F8", hl.dsp.exec_cmd("playerctl play-pause"), media)
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), media)
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), media)
+
 -- Dwindle. Super+F keeps the gaps (maximize). Super+Shift+F covers the screen.
 -- Super+Up/Down is bound after hyprsplit: focus that way, then the
 -- previous or next workspace on this screen.

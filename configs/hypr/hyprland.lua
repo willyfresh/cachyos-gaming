@@ -32,8 +32,8 @@ hl.monitor({
 hl.config({
     general = {
         layout      = "dwindle",
-        gaps_in     = 5,
-        gaps_out    = 10,
+        gaps_in     = 2,
+        gaps_out    = 4,
         border_size = 0,
     },
     dwindle = {

@@ -44,9 +44,9 @@ over.
 | Terminal apps, mouse optional | you | installed 2026-10-08, no keys |
 | Super alone does nothing | you confirm | applied 2026-10-07 |
 | Hyprland bar | you confirm | applied 2026-10-09 |
-| Waybar, second pass | you pick | backlog |
+| Waybar, second pass | you confirm | applied 2026-10-12 |
 | croft instead of neovim | you pick | backlog |
-| Keychron keys on Hyprland | you | backlog |
+| Keychron keys on Hyprland | you confirm | volume, mic, and play applied 2026-10-12; panels still open nothing |
 | Login keyring stays locked | you | backlog |
 
 ## Hyprland bar
@@ -64,37 +64,11 @@ control center stay on niri. Super+Shift+Q still quits.
 
 ## Waybar, second pass
 
-Backlog 2026-10-09. The live session is Hyprland. Nothing here
-starts until you pick it.
-
-The gray line along the top of the bar is `border-top` in
-`configs/waybar/style.css`. Take that off.
-
-Drop `hyprland/language` and `power-profiles-daemon`. The power
-menu is defined and is not on the bar. Battery, a second battery,
-and backlight are stock leftovers on a desktop and can go in the
-same pass.
-
-The eye is `idle_inhibitor`. The open eye means the screen will
-not idle. The slashed eye means idle is allowed. A click swaps them.
-
-The clock shows the time. A click swaps it for the date alone
-(`format-alt` is `{:%Y-%m-%d}`). Show both at once, the way the
-niri clock does: abbreviated weekday, month-day, 24-hour time
-(`{:%a %m-%d  %H:%M}`).
-
-On the bar now: workspaces, the focused window, MPD, the eye,
-volume, network (the address, not the niri icon), power profile,
-CPU, memory, temperature, backlight, num lock and caps lock,
-language, battery, clock, tray.
-
-The niri bar has the Novalis chip, workspaces, that clock, media,
-tray, notifications, clipboard, the network icon, bluetooth,
-volume, the control center, and the session menu. Weather is the
-control-center weather tab, not its own chip. Once language and
-power are gone, the open seats are notifications, clipboard,
-bluetooth, a weather chip, and media that follows the player that
-is actually running. MPD may only say disconnected.
+Applied 2026-10-12. The gray top border is gone. Language, power
+profile, battery, and backlight are off the bar. The clock shows
+`Sat 10-12  14:26` and a click no longer swaps it for the date.
+The eye stays. Weather sits beside the clock in °F, and the
+tooltip has the condition plus today's high and low. The place comes from the public IP.
 
 ## croft instead of neovim
 
@@ -108,13 +82,25 @@ Fuzzel opens Neovim and Superfile in Alacritty as of 2026-10-09.
 
 ## Keychron keys on Hyprland
 
-Backlog. keyd is running, and it already maps these keys.
+keyd is shared. Applied 2026-10-12 for the keys that have a
+Hyprland action: volume up, down, and mute; mic mute
+(Ctrl+Shift+F6); play/pause (Ctrl+Shift+F8 and the media key);
+next and previous track.
 
-The volume keys and the knob cluster are already mapped. niri
-sends volume to Noctalia, and it binds Ctrl+Shift+F1–F6 and F8
-to the knob and Fn+F8. Hyprland has none of those binds. Noctalia
-is not running in this session, so the knob and the volume keys
-do nothing here.
+Applied 2026-10-12 for the shell pieces that have a Hyprland program:
+
+- Circle (Ctrl+Shift+F2) and Super+N open mako history in Fuzzel.
+- Super+V opens cliphist in Fuzzel.
+- Super+L locks with hyprlock. hypridle locks after 10 minutes.
+
+Still nothing to open:
+
+- Light (Ctrl+Shift+F1) was the control center.
+- X (Ctrl+Shift+F5) was unbound on niri too.
+- Weather and settings have no Hyprland app.
+
+Brightness has no backlight on these screens.
+Screenshots need grim and slurp, which are not installed.
 
 ## Login keyring stays locked
 

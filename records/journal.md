@@ -623,3 +623,129 @@ A running record of installs and config changes. Package names that should survi
   and already maps the keys.
 - The keyring prompt is the tty login. gnome-keyring is running,
   and the login password never unlocks it.
+
+## 2026-10-12 — Super+Up/Down continues onto the next workspace
+
+- Super+Up and Super+Down still move focus in the dwindle tree.
+  When that focus does not change, Up goes to the previous occupied
+  workspace on this screen and Down goes to the next one.
+- Super+Left/Right stay on this workspace. Super+Shift+arrows still
+  move the window inside the tree.
+- hyprsplit sorts the occupied workspaces by id before e+1 and e-1,
+  so those steps follow the numbers on the bar.
+- Hyprland wraps focus at the edge, so two windows made Up/Down
+  bounce and never leave. Up from the top window, and Down from the
+  bottom window, now go to the workspace. A window further that way
+  is one whose center is above or below.
+
+## 2026-10-12 — niri media keys on Hyprland
+
+- Volume, mute, mic mute, play/pause, next, and previous now talk
+  to PipeWire and playerctl. The Keychron mic is Ctrl+Shift+F6 and
+  play is Ctrl+Shift+F8. Noctalia stays off.
+- Super+Ctrl+arrows change workspace on this screen. Shift adds
+  the window and follows. Super+Ctrl+Alt+arrows resize by the same
+  10% as Super+/-.
+- Super+M maximizes. Super+Shift+V focuses a floating window, or
+  a tiled one. Super+Alt+P turns the screens off.
+- Still unbound: control center, notifications, weather, settings,
+  clipboard history, and lock. Those were Noctalia panels. Brightness
+  has no backlight here. Screenshots are not installed.
+
+## 2026-10-12 — mako, cliphist, hyprlock, hypridle
+
+- Omarchy used mako until Quattro replaced it with the Omarchy shell.
+  mako is the notifier here. Popups sit at the top right. Super+N and
+  Ctrl+Shift+F2 open the history in Fuzzel.
+- cliphist watches text and images. Super+V picks one in Fuzzel and
+  copies it back.
+- Super+L and Super+Alt+L run hyprlock. The background is a blurred
+  shot of the desktop. The clock uses the bar's date format.
+- hypridle locks after 10 minutes, turns the screens off after 15,
+  and locks before sleep. The niri screensaver is unchanged and
+  still does not lock.
+- niri's lock.sh still calls Noctalia. This session does not.
+
+## 2026-10-12 — Waybar second pass, plus weather
+
+- The gray line along the top of the bar is gone.
+- Language, power profile, battery, and backlight are off the bar.
+  This machine has no battery and no backlight.
+- The clock shows the weekday, the month-day, and the 24-hour time
+  together. A click no longer replaces that with the date alone.
+- The eye is still the idle inhibitor.
+- A weather chip sits beside the clock. Open-Meteo, degrees Celsius,
+  cached for 30 minutes. The tooltip shows the city, the condition,
+  and today's high and low. The city comes from the public IP.
+- Right side order, same day: eye, tray, volume, weather, clock,
+  CPU, memory, temperature, then the network address with no mask.
+  MPD is off the bar. Nothing is running MPD.
+- Temperature was blank because Waybar looks for a thermal zone and
+  this board has none. The chip now reads k10temp Tctl.
+- One temperature chip. A click cycles CPU, TB1, and TB2.
+- One disk chip. A click cycles root, TB1, and TB2. Root is the
+  default. TB2 shows as not mounted.
+- GPU chip is temperature and busy percent for the RTX 2060.
+- Now playing follows playerctl. The old chip was MPD, and MPD is
+  not running, so YouTube Music never appeared. A click pauses.
+- Temperatures on the bar are Fahrenheit: the CPU and NVMe chip,
+  the GPU chip, and the weather chip. 176°F is the hot warning.
+  The letter F is not shown.
+- Right side, later the same day: eye, tray, clock, CPU, memory,
+  temperature, volume, now playing, weather, disk, GPU, network.
+- Corrected the same day. Weather belongs left of volume, not the
+  system temperature. Order is eye, tray, clock, weather, volume,
+  now playing, CPU, memory, disk, GPU, network.
+- Every chip on that side is the weather plate: black `#0A0D0B`,
+  green `#5CFF6B`.
+- CPU is percent, the microchip icon, then Tctl in Fahrenheit.
+  Disk is still one drive at a time, root first, click to cycle.
+  The chip is percent, a drive icon, then that drive's temperature.
+  Root (sda) has no sensor, so the right side is a dash. TB1 and
+  TB2 do. TB2 is still unmounted.
+- Memory has no temperature sensor on this board. The chip is the
+  percent and a memory icon.
+- GPU is percent, an expansion-card icon, then Fahrenheit. Font
+  Awesome has no GPU glyph, so that one comes from MesloLGS Nerd
+  Font, which is last in the bar's font list.
+- Meter text follows temperature: green under 140°, yellow-green
+  `#D6E04A` from 140° through 174°, red `#FF4B4B` at 175° and up.
+  A percent of 90 or more is red even when the part is cool.
+  Memory and the root disk have no temperature, so they use the
+  percent alone: yellow-green from 70, red from 90.
+  The separate temperature chip is off the bar.
+- Workspace chips use the same black plate and green numbers. The
+  one in use has a green underline. A click focuses that workspace.
+  Waybar 0.15 still sends `dispatch workspace`, which Hyprland 0.56
+  ignores, so the chips call `hl.dsp.focus` themselves. Each screen
+  still shows its own occupied numbers as 1–10.
+- Window gaps are 2px between windows and 4px around the screen.
+  They were 5 and 10. Waybar chip spacing is unchanged.
+- Wallpaper picker is Super+Shift+Return. Fall, Greens, Sky, Relaxing.
+- The window title is off the bar. The center is empty.
+- Added to the right side: Num/Caps when a lock is on, a privacy
+  icon while the mic or a screen share is in use, a pending-update
+  count, and up/down speed beside the IP. Hovering the clock shows
+  the month. Clicking it opens that month in Fuzzel. Clicking the
+  update count lists the packages. Locks come from Hyprland's main
+  keyboard, which is keyd, so the input group is not required.
+- CPU, memory, disk, and GPU numbers are three-wide monospace
+  fields, so the chips stop shuffling as the digits change. Each
+  network speed is padded to nine characters, which covers a
+  gigabit link. The GPU card icon gets two Meslo spaces before the
+  temperature, because one ordinary space sits under the glyph.
+- Now playing grows to the whole title. `&`, `<`, and `>` in a
+  title are escaped. The bar font list adds Noto Sans, Noto Sans
+  CJK JP, Noto Music, Noto Symbols, and Noto Color Emoji.
+- Num/Caps moved to just after the eye. Num Lock uses the numeric
+  icon and Caps Lock uses the caps-lock key. The chip is hidden
+  when both are off.
+- The bar face is MesloLGS Nerd Font Mono, the same face as the
+  bandwidth figures. Noto stays behind it for characters Meslo
+  does not have. Font Awesome 7 Free Solid covers a few icons
+  Meslo does not ship.
+- Bar font size went from 13px to 17px, about 3pt. The bar stays
+  30px tall. 17px was too tall, then 15px, so the text is 14px.
+  Eye, Num/Caps, the weather condition, the volume icon, and the
+  GPU card are drawn at 16pt. Memory is the RAM-stick glyph.
+  Disk is the hard-drive platter. Those two stay at the text size.

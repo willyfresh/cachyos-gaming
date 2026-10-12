@@ -60,6 +60,10 @@ hl.config({
 hl.on("hyprland.start", function()
     hl.exec_cmd("dropbox start -i")
     hl.exec_cmd("sh -c 'pgrep -x waybar >/dev/null || exec waybar'")
+    hl.exec_cmd("sh -c 'pgrep -x mako >/dev/null || exec mako'")
+    hl.exec_cmd("sh -c 'pgrep -x hypridle >/dev/null || exec hypridle'")
+    hl.exec_cmd("sh -c 'pgrep -a wl-paste | grep -q \"type text\" || exec wl-paste --type text --watch cliphist store'")
+    hl.exec_cmd("sh -c 'pgrep -a wl-paste | grep -q \"type image\" || exec wl-paste --type image --watch cliphist store'")
     hl.exec_cmd("python3 /home/willyfresh/Projects/cachyos-gaming/configs/hypr/wallpaper.py")
 end)
 
@@ -80,6 +84,11 @@ hl.window_rule({
 -- Apps. Same scripts as niri. They ask niri which window to focus, miss,
 -- and launch a new one while niri is not running.
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("fuzzel"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(bin .. "/hypr-clipboard.sh"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
+hl.bind("CTRL + SHIFT + F2", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("alacritty"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())

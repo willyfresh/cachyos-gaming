@@ -1,0 +1,18 @@
+# Novalis colors. Popups only. History is Super+N and Ctrl+Shift+F2.
+font=Roboto 13
+background-color=#0A0D0B
+text-color=#C8D4C8
+border-color=#5CFF6B
+border-size=2
+border-radius=0
+width=380
+height=140
+padding=12
+margin=12
+anchor=top-right
+layer=overlay
+default-timeout=5000
+max-visible=4
+history=1
+max-history=20
+icons=1

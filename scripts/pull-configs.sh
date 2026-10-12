@@ -12,6 +12,9 @@ pull_path "$HOME/.config/xdg-desktop-portal/niri-portals.conf" \
 pull_path "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf" \
   "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf"
 pull_path "$HOME/.config/hypr/hyprland.lua" "$CONFIGS_DIR/hypr/hyprland.lua"
+pull_path "$HOME/.config/hypr/hyprlock.conf" "$CONFIGS_DIR/hypr/hyprlock.conf"
+pull_path "$HOME/.config/hypr/hypridle.conf" "$CONFIGS_DIR/hypr/hypridle.conf"
+pull_path "$HOME/.config/mako/config" "$CONFIGS_DIR/mako/config"
 pull_path "$HOME/.config/waybar" "$CONFIGS_DIR/waybar"
 pull_path "$HOME/.bash_profile" "$CONFIGS_DIR/bash_profile"
 

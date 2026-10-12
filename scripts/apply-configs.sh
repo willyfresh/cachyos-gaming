@@ -27,6 +27,10 @@ link_path "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf" \
 
 # The file, not the directory, so Hyprland's runtime files stay out of the repo.
 link_path "$CONFIGS_DIR/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"
+link_path "$CONFIGS_DIR/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
+link_path "$CONFIGS_DIR/hypr/hypridle.conf" "$HOME/.config/hypr/hypridle.conf"
+mkdir -p "$HOME/.config/mako"
+link_path "$CONFIGS_DIR/mako/config" "$HOME/.config/mako/config"
 link_path "$CONFIGS_DIR/waybar" "$HOME/.config/waybar"
 link_path "$CONFIGS_DIR/fuzzel" "$HOME/.config/fuzzel"
 
@@ -44,6 +48,8 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/launch-grok-bot.sh" \
   "$REPO_ROOT/scripts/launch-steam-heroic.sh" \
   "$REPO_ROOT/scripts/lock.sh" \
+  "$REPO_ROOT/scripts/hypr-clipboard.sh" \
+  "$REPO_ROOT/scripts/hypr-notifications.sh" \
   "$REPO_ROOT/scripts/novalis-screensaver" \
   "$REPO_ROOT/scripts/novalis-tunnel.py" \
   "$REPO_ROOT/scripts/novalis-bloom.py" \
@@ -63,6 +69,8 @@ link_path "$REPO_ROOT/scripts/launch-steam-heroic.sh" "$HOME/.local/bin/launch-s
 link_path "$REPO_ROOT/scripts/lock.sh" "$HOME/.local/bin/lock.sh"
 link_path "$REPO_ROOT/scripts/hypr-cheatsheet.sh" "$HOME/.local/bin/hypr-cheatsheet.sh"
 link_path "$REPO_ROOT/scripts/hypr-wallpaper.sh" "$HOME/.local/bin/hypr-wallpaper.sh"
+link_path "$REPO_ROOT/scripts/hypr-clipboard.sh" "$HOME/.local/bin/hypr-clipboard.sh"
+link_path "$REPO_ROOT/scripts/hypr-notifications.sh" "$HOME/.local/bin/hypr-notifications.sh"
 link_path "$REPO_ROOT/scripts/novalis-screensaver" "$HOME/.local/bin/novalis-screensaver"
 link_path "$REPO_ROOT/scripts/novalis-tunnel.py" "$HOME/.local/bin/novalis-tunnel.py"
 link_path "$REPO_ROOT/scripts/novalis-bloom.py" "$HOME/.local/bin/novalis-bloom.py"

@@ -220,6 +220,7 @@
         "exec": "$HOME/.local/bin/waybar-updates.py",
         "return-type": "json",
         "interval": 1800,
+        "signal": 2,
         "hide-empty-text": true,
         "tooltip": true,
         "on-click": "$HOME/.local/bin/waybar-updates.py detail"

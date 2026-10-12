@@ -749,3 +749,8 @@ A running record of installs and config changes. Package names that should survi
   Eye, Num/Caps, the weather condition, the volume icon, and the
   GPU card are drawn at 16pt. Memory is the RAM-stick glyph.
   Disk is the hard-drive platter. Those two stay at the text size.
+- Clicking the update count lists the packages in Fuzzel. The first
+  line opens Alacritty and runs `sudo pacman -Syu`. Choosing one
+  package runs `sudo pacman -Sy` for that package and its
+  dependencies. That list is repo packages only. AUR packages are
+  not in the count.

@@ -55,4 +55,15 @@ if grep -qE '(^|[[:space:]])Borg([[:space:]]|$)' /etc/hosts; then
   sudo sed -i -E 's/(^|[[:space:]])Borg([[:space:]]|$)/\1Novalis\2/g' /etc/hosts
 fi
 
+# After a kernel update, refuse a quiet reboot if the Limine menu names
+# a file that is not on /boot. The hook runs after limine-mkinitcpio.
+LIMINE_CHECK="$REPO_ROOT/scripts/check-limine-boot.sh"
+LIMINE_HOOK_SRC="$CONFIGS_DIR/pacman/hooks/99-limine-boot-files.hook"
+if [[ -f "$LIMINE_CHECK" && -f "$LIMINE_HOOK_SRC" ]]; then
+  log "installing Limine boot-file check"
+  sudo install -m755 "$LIMINE_CHECK" /usr/local/bin/check-limine-boot.sh
+  sudo install -d /etc/pacman.d/hooks
+  sudo install -m644 "$LIMINE_HOOK_SRC" /etc/pacman.d/hooks/99-limine-boot-files.hook
+fi
+
 log "system configs applied"

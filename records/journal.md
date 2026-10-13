@@ -599,6 +599,21 @@ A running record of installs and config changes. Package names that should survi
   wallpaper picker. Noctalia stays off. The choice is stored in
   `~/.local/state/hypr/wallpaper`. Fall stays up until one is picked.
 
+## 2026-10-12 — Limine menu no longer names the missing initramfs
+
+- The 2026-10-12 update of limine-entry-tool writes the initramfs under
+  `/boot/<machine-id>/<kernel>/initramfs` and stops leaving
+  `initramfs-linux-cachyos.img`. The menu's first lines still named
+  those files. A live ISO added the hashed entries that actually boot.
+- `/boot/limine.conf` now keeps only those hashed entries. The CachyOS
+  entry carries `comment: machine-id=b86a0f2b3c2040cfa953e5858a0e8cc6`
+  so the next update edits that entry. Default boot is the LTS kernel
+  this session is running. Backup:
+  `/boot/limine.conf.bak-before-img-fix`.
+- `scripts/check-limine-boot.sh` checks every `boot():` path, including
+  its BLAKE2b hash. Pacman runs it from
+  `/etc/pacman.d/hooks/99-limine-boot-files.hook` after a kernel update.
+
 ## 2026-10-09 — Fuzzel opens terminal apps in Alacritty
 
 - Neovim's desktop entry is `Terminal=true`. Fuzzel's terminal command
@@ -754,3 +769,13 @@ A running record of installs and config changes. Package names that should survi
   package runs `sudo pacman -Sy` for that package and its
   dependencies. That list is repo packages only. AUR packages are
   not in the count.
+
+## 2026-10-12 — workspace 2 missing from the bar
+
+- The workspace chips read a cache written by one long-lived listener.
+  That listener was still subscribed to the previous Hyprland, so the
+  cache never learned that workspace 2 had a window. The bar kept
+  drawing only the workspace that had been active when the socket died.
+- The listener now follows the Hyprland that is running, and exits
+  when that socket goes away so the bar can start a new one. A chip
+  restarts the listener if it is not running.

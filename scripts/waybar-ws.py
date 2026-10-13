@@ -47,13 +47,30 @@ def runtime_dir() -> Path:
     return Path(os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"))
 
 
+def live_signature() -> str:
+    """The Hyprland that is running now, not the one this process inherited.
+
+    The listener outlives a compositor restart. A saved signature keeps
+    it subscribed to a dead socket, and the chips then hide every
+    workspace except the one that was active when the socket died.
+    """
+    root = runtime_dir() / "hypr"
+    if not root.is_dir():
+        return ""
+    found = [p for p in root.iterdir() if (p / ".socket2.sock").exists()]
+    if not found:
+        return ""
+    found.sort(key=lambda p: (p / ".socket2.sock").stat().st_mtime, reverse=True)
+    return found[0].name
+
+
 def signature() -> str:
+    if os.environ.get("WAYBAR_WS_LIVE") == "1":
+        return live_signature()
     sig = os.environ.get("HYPRLAND_INSTANCE_SIGNATURE", "")
     if sig:
         return sig
-    root = runtime_dir() / "hypr"
-    found = [p.name for p in root.glob("*") if (p / ".socket2.sock").exists()]
-    return found[0] if len(found) == 1 else ""
+    return live_signature()
 
 
 def hyprctl(*args: str) -> str:
@@ -135,6 +152,8 @@ def want_refresh(line: str) -> bool:
 
 
 def listen() -> None:
+    # This process is long-lived. Follow whichever Hyprland is up.
+    os.environ["WAYBAR_WS_LIVE"] = "1"
     CACHE.parent.mkdir(parents=True, exist_ok=True)
     lock = LOCK.open("a+")
     try:
@@ -142,10 +161,15 @@ def listen() -> None:
     except BlockingIOError:
         return
     try:
-        write_cache(snapshot())
-        sock_path = runtime_dir() / "hypr" / signature() / ".socket2.sock"
         while True:
+            sig = live_signature()
+            sock_path = runtime_dir() / "hypr" / sig / ".socket2.sock" if sig else None
+            if sock_path is None or not sock_path.exists():
+                # The compositor is gone. Drop the lock so the next
+                # bar can start a listener on the new socket.
+                return
             try:
+                write_cache(snapshot())
                 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
                     sock.connect(str(sock_path))
                     with sock.makefile() as stream:
@@ -153,11 +177,9 @@ def listen() -> None:
                             if want_refresh(line):
                                 write_cache(snapshot())
             except OSError:
+                if not sock_path.exists():
+                    return
                 time.sleep(1)
-                try:
-                    write_cache(snapshot())
-                except (OSError, subprocess.CalledProcessError, json.JSONDecodeError):
-                    pass
     finally:
         fcntl.flock(lock, fcntl.LOCK_UN)
         lock.close()
@@ -183,9 +205,13 @@ def ensure_listener() -> None:
         return
     LOG.parent.mkdir(parents=True, exist_ok=True)
     log = LOG.open("ab")
+    env = os.environ.copy()
+    env["WAYBAR_WS_LIVE"] = "1"
+    env.pop("HYPRLAND_INSTANCE_SIGNATURE", None)
     subprocess.Popen(
         [sys.executable, str(Path(__file__).resolve()), "listen"],
         start_new_session=True,
+        env=env,
         stdin=subprocess.DEVNULL,
         stdout=log,
         stderr=subprocess.STDOUT,
@@ -232,7 +258,7 @@ def follow(local: int) -> None:
                 print(line, flush=True)
                 last = line
             seen = mtime
-        if mtime is None:
+        if mtime is None or not listener_running():
             ensure_listener()
         time.sleep(0.2)
 

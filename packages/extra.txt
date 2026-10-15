@@ -67,3 +67,4 @@ xdg-desktop-portal-hyprland
 waybar
 fuzzel
 otf-font-awesome
+tmux

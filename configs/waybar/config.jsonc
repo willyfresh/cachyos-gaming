@@ -9,24 +9,24 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "group/workspaces"
+        "group/workspaces",
+        "custom/media"
     ],
     "modules-center": [
+        "clock"
     ],
     "modules-right": [
         "idle_inhibitor",
         "custom/locks",
         "tray",
-        "clock",
         "custom/weather",
         "pulseaudio",
         "privacy",
-        "custom/media",
+        "custom/updates",
         "custom/cpu",
         "custom/mem",
-        "custom/disk",
         "custom/gpu",
-        "custom/updates",
+        "custom/disk",
         "network"
     ],
     // Modules configuration
@@ -243,27 +243,31 @@
         "exec": "$HOME/.local/bin/waybar-cpu.py",
         "return-type": "json",
         "interval": 2,
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-devices.py"
     },
     "custom/mem": {
         "exec": "$HOME/.local/bin/waybar-mem.py",
         "return-type": "json",
         "interval": 2,
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-devices.py"
     },
     "custom/disk": {
         "exec": "$HOME/.local/bin/waybar-disk.py",
         "return-type": "json",
         "interval": 5,
         "signal": 1,
-        "on-click": "$HOME/.local/bin/waybar-disk.py next",
+        "on-click": "$HOME/.local/bin/waybar-devices.py",
+        "on-click-right": "$HOME/.local/bin/waybar-disk.py next",
         "tooltip": true
     },
     "custom/gpu": {
         "exec": "$HOME/.local/bin/waybar-gpu.py",
         "return-type": "json",
         "interval": 5,
-        "tooltip": true
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-devices.py"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -317,11 +321,12 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "interval": 2,
-        "format-wifi": "{ipaddr}  ↓{bandwidthDownBits:>} ↑{bandwidthUpBits:>} ",
-        "format-ethernet": "{ipaddr}  ↓{bandwidthDownBits:>} ↑{bandwidthUpBits:>} ",
+        "format-wifi": "{ipaddr} ",
+        "format-ethernet": "{ipaddr} ",
         "tooltip-format": "{ifname} via {gwaddr}\n↓{bandwidthDownBits:>}  ↑{bandwidthUpBits:>}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "$HOME/.local/bin/waybar-devices.py"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

@@ -1,0 +1,4 @@
+# Image attachments. The desktop entry opens neomutt inside kitty.
+# Open an image from the attachment list. It stays up until Enter.
+# Other types still use /etc/mailcap.
+set mailcap_path = "~/.config/neomutt/mailcap:/etc/mailcap"

@@ -3,7 +3,9 @@
 
 checkupdates is slow, so the bar runs this every half hour. A click
 lists the saved packages in Fuzzel. The first line upgrades every
-repo package. Any other line upgrades that one package.
+repo package. Any other line upgrades that one package. A row ends
+in "reboot *" when that package is unused until the next boot. The
+first line says that too when any row does.
 """
 
 from __future__ import annotations
@@ -21,6 +23,21 @@ CACHE = Path.home() / ".cache" / "novalis" / "waybar-updates.txt"
 ICON = "\uf019"
 # Waybar custom/updates "signal": this number. SIGRTMIN+N refreshes the chip.
 SIGNAL = 2
+# Appended in the Fuzzel list. The chip stays the count and the download icon.
+REBOOT_MARK = "  reboot *"
+# The new package is not in use until the next boot. Headers, the Limine
+# hook, and linux-firmware-whence (the license list) are not in this set.
+REBOOT_NAMES = {
+    "linux-cachyos",
+    "linux-cachyos-lts",
+    "linux-cachyos-nvidia-open",
+    "linux-cachyos-lts-nvidia-open",
+    "nvidia-utils",
+    "lib32-nvidia-utils",
+    "amd-ucode",
+    "intel-ucode",
+    "limine",
+}
 
 
 def package_of(line: str) -> str | None:
@@ -32,6 +49,19 @@ def package_of(line: str) -> str | None:
 
 def names(lines: list[str]) -> list[str]:
     return [name for line in lines if (name := package_of(line))]
+
+
+def needs_reboot(name: str) -> bool:
+    if name in REBOOT_NAMES:
+        return True
+    return name.startswith("linux-firmware") and name != "linux-firmware-whence"
+
+
+def show_line(line: str) -> str:
+    name = package_of(line)
+    if name and needs_reboot(name):
+        return line + REBOOT_MARK
+    return line
 
 
 def read_cache() -> list[str] | None:
@@ -71,9 +101,12 @@ def emit(lines: list[str]) -> None:
     }, ensure_ascii=False), flush=True)
 
 
-def update_label(count: int) -> str:
+def update_label(count: int, *, reboot: bool = False) -> str:
     noun = "package" if count == 1 else "packages"
-    return f"→  Update all {count} {noun}"
+    label = f"→  Update all {count} {noun}"
+    if reboot:
+        label += REBOOT_MARK
+    return label
 
 
 def launch(pacman_cmd: str, title: str) -> None:
@@ -103,8 +136,10 @@ def detail() -> None:
     lines = read_cache()
     if lines is None:
         lines = fetch() or []
+    reboot = any(needs_reboot(name) for name in names(lines))
+    label = update_label(len(names(lines)), reboot=reboot) if lines else ""
     if lines:
-        body = update_label(len(names(lines))) + "\n" + "\n".join(lines)
+        body = label + "\n" + "\n".join(show_line(line) for line in lines)
     else:
         body = "No pending updates"
     chosen = subprocess.run(
@@ -114,7 +149,7 @@ def detail() -> None:
             "--prompt",
             "Updates  ",
             "--width",
-            "72",
+            "80",
             "--lines",
             "20",
         ],
@@ -125,13 +160,16 @@ def detail() -> None:
     ).stdout.strip()
     if not lines or not chosen:
         return
-    if chosen == update_label(len(names(lines))):
+    if chosen == label:
         launch("sudo pacman -Syu", "Update")
         return
     # The menu line has to be one we printed. -Sy refreshes the
     # databases, because checkupdates does not update the system copy,
     # then upgrades this package and its dependencies.
-    name = package_of(chosen) if chosen in lines else None
+    # The menu shows the checkupdates line plus a reboot mark. The
+    # mark is not part of the cached line, so strip it before matching.
+    raw = chosen.removesuffix(REBOOT_MARK)
+    name = package_of(raw) if raw in lines else None
     if name:
         launch(f"sudo pacman -Sy -- {shlex.quote(name)}", f"Update {name}")
 

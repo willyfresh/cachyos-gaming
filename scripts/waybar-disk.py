@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One disk on the bar. Click cycles. Root is first."""
+"""One disk on the bar. Right click cycles. Root is first."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from waybar_level import digits, level
+from waybar_level import bare, face, level
 
 # md-harddisk shows the platter. fa-hdd draws as a plain box.
 ICON = "\U000f02ca"
@@ -93,18 +93,19 @@ def show(disks: list[dict], index: int) -> None:
         return
     disk = disks[index % len(disks)]
     temp = disk_temp_f(disk.get("dev") or "")
-    temp_s = digits(temp, "°")
+    pct: int | None = None
     if disk["mount"]:
         used, total = usage(disk["mount"])
         pct = round(100 * used / total) if total else 0
-        where = disk["mount"]
-        tip = f"{disk['name']}\n{where}\n{gb(used)} / {gb(total)}"
-        if temp is None:
-            tip += "\nNo temperature sensor"
-        emit(f"{digits(pct, '%')} {ICON} {temp_s}", tip, temp, pct)
-        return
-    tip = f"{disk['name']}\nnot mounted\n{gb(disk['size'])}"
-    emit(f"{digits(None, '%')} {ICON} {temp_s}", tip, temp, None)
+        tip = f"{disk['name']}\n{disk['mount']}\n{gb(used)} / {gb(total)}"
+    else:
+        tip = f"{disk['name']}\nnot mounted\n{gb(disk['size'])}"
+    if temp is None:
+        tip += "\nNo temperature sensor"
+    else:
+        tip += f"\n{temp}°"
+    value, suffix = face(temp, pct)
+    emit(f"{bare(value, suffix)} {ICON}", tip, temp, pct)
 
 
 def read_index(count: int) -> int:

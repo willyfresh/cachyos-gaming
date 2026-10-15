@@ -9,7 +9,6 @@ mkdir -p "$HOME/.config"
 
 link_path "$CONFIGS_DIR/niri" "$HOME/.config/niri"
 link_path "$CONFIGS_DIR/noctalia" "$HOME/.config/noctalia"
-link_path "$CONFIGS_DIR/niri-screensaver" "$HOME/.config/niri-screensaver"
 
 if [[ -f "$CONFIGS_DIR/environment.d/gaming.conf" ]]; then
   mkdir -p "$HOME/.config/environment.d"
@@ -56,17 +55,14 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/waybar-gpu.py" \
   "$REPO_ROOT/scripts/waybar-cpu.py" \
   "$REPO_ROOT/scripts/waybar-mem.py" \
+  "$REPO_ROOT/scripts/waybar-devices.py" \
   "$REPO_ROOT/scripts/waybar-media.py" \
   "$REPO_ROOT/scripts/waybar-ws.py" \
   "$REPO_ROOT/scripts/waybar-locks.py" \
   "$REPO_ROOT/scripts/waybar-updates.py" \
   "$REPO_ROOT/scripts/waybar-calendar.py" \
-  "$REPO_ROOT/scripts/novalis-screensaver" \
-  "$REPO_ROOT/scripts/novalis-tunnel.py" \
-  "$REPO_ROOT/scripts/novalis-bloom.py" \
-  "$REPO_ROOT/scripts/novalis-clock.py" \
-  "$REPO_ROOT/scripts/novalis-rain.py" \
-  "$REPO_ROOT/scripts/keychron-v6-via.py"
+  "$REPO_ROOT/scripts/keychron-v6-via.py" \
+  "$REPO_ROOT/scripts/neomutt-icat.sh"
 link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.sh"
 link_path "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" "$HOME/.local/bin/launch-or-focus-webapp.sh"
 link_path "$REPO_ROOT/scripts/launch-or-focus-app.sh" "$HOME/.local/bin/launch-or-focus-app.sh"
@@ -88,16 +84,12 @@ link_path "$REPO_ROOT/scripts/waybar-temp.py" "$HOME/.local/bin/waybar-temp.py"
 link_path "$REPO_ROOT/scripts/waybar-gpu.py" "$HOME/.local/bin/waybar-gpu.py"
 link_path "$REPO_ROOT/scripts/waybar-cpu.py" "$HOME/.local/bin/waybar-cpu.py"
 link_path "$REPO_ROOT/scripts/waybar-mem.py" "$HOME/.local/bin/waybar-mem.py"
+link_path "$REPO_ROOT/scripts/waybar-devices.py" "$HOME/.local/bin/waybar-devices.py"
 link_path "$REPO_ROOT/scripts/waybar-media.py" "$HOME/.local/bin/waybar-media.py"
 link_path "$REPO_ROOT/scripts/waybar-ws.py" "$HOME/.local/bin/waybar-ws.py"
 link_path "$REPO_ROOT/scripts/waybar-locks.py" "$HOME/.local/bin/waybar-locks.py"
 link_path "$REPO_ROOT/scripts/waybar-updates.py" "$HOME/.local/bin/waybar-updates.py"
 link_path "$REPO_ROOT/scripts/waybar-calendar.py" "$HOME/.local/bin/waybar-calendar.py"
-link_path "$REPO_ROOT/scripts/novalis-screensaver" "$HOME/.local/bin/novalis-screensaver"
-link_path "$REPO_ROOT/scripts/novalis-tunnel.py" "$HOME/.local/bin/novalis-tunnel.py"
-link_path "$REPO_ROOT/scripts/novalis-bloom.py" "$HOME/.local/bin/novalis-bloom.py"
-link_path "$REPO_ROOT/scripts/novalis-clock.py" "$HOME/.local/bin/novalis-clock.py"
-link_path "$REPO_ROOT/scripts/novalis-rain.py" "$HOME/.local/bin/novalis-rain.py"
 link_path "$REPO_ROOT/scripts/keychron-v6-via.py" "$HOME/.local/bin/keychron-v6-via.py"
 
 if [[ -f "$CONFIGS_DIR/applications/steam.desktop" ]]; then
@@ -144,6 +136,14 @@ link_path "$CONFIGS_DIR/applications/youtube.desktop" \
   "$HOME/.local/share/applications/YouTube.desktop"
 link_path "$CONFIGS_DIR/applications/superfile.desktop" \
   "$HOME/.local/share/applications/superfile.desktop"
+link_path "$CONFIGS_DIR/applications/concord.desktop" \
+  "$HOME/.local/share/applications/concord.desktop"
+link_path "$CONFIGS_DIR/applications/neomutt.desktop" \
+  "$HOME/.local/share/applications/neomutt.desktop"
+mkdir -p "$HOME/.config/neomutt"
+link_path "$CONFIGS_DIR/neomutt/neomuttrc" "$HOME/.config/neomutt/neomuttrc"
+link_path "$CONFIGS_DIR/neomutt/mailcap" "$HOME/.config/neomutt/mailcap"
+link_path "$REPO_ROOT/scripts/neomutt-icat.sh" "$HOME/.local/bin/neomutt-icat.sh"
 
 install_desktop "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
   "$HOME/.local/share/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"

@@ -34,7 +34,13 @@ hl.config({
         layout      = "dwindle",
         gaps_in     = 2,
         gaps_out    = 4,
-        border_size = 0,
+        -- 2px stays on every window so focus does not resize them.
+        -- Only the focused one is drawn. Unfocused is fully transparent.
+        border_size = 2,
+        col = {
+            active_border   = "rgba(5cff6bff)",
+            inactive_border = "rgba(00000000)",
+        },
     },
     dwindle = {
         preserve_split = true,
@@ -44,7 +50,7 @@ hl.config({
         shadow = {
             enabled = false,
         },
-        -- Focus is opacity. A fullscreen window stays solid.
+        -- Unfocused windows are also dimmer. A fullscreen window stays solid.
         active_opacity     = 1.0,
         inactive_opacity   = 0.7,
         fullscreen_opacity = 1.0,

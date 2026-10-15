@@ -779,3 +779,103 @@ A running record of installs and config changes. Package names that should survi
 - The listener now follows the Hyprland that is running, and exits
   when that socket goes away so the bar can start a new one. A chip
   restarts the listener if it is not running.
+
+## 2026-10-14 — Fuzzel colors, reboot marks, LazyVim
+
+- Fuzzel is the Novalis palette in `configs/fuzzel/fuzzel.ini`.
+  Background `#0A0D0B` is near black with a green cast, not
+  `#000000`. Text is `#C8D4C8`. The border, prompt, and typed match
+  are `#5CFF6B`. The selected row is that green with `#07100A`
+  text. Square corners, 2px border, Meslo at 14px.
+  `fuzzel --check-config` passed.
+- The bottom bar was already that plate and that green. The
+  `#64727D` rules in `configs/waybar/style.css` are leftover stock.
+  A later block overrides them for the modules on the bar.
+- The updates chip is unchanged. In the Fuzzel list, a row ends in
+  `reboot` when the package is unused until the next boot: the
+  CachyOS kernels, their NVIDIA modules, `nvidia-utils`,
+  `linux-firmware` (not `linux-firmware-whence`), microcode, and
+  `limine`. Of the 26 cached updates, only `limine` is marked.
+- LazyVim's starter is `~/.config/nvim` (the git remote was
+  removed). Plugin sync finished. Mason installed `tree-sitter-cli`
+  and `stylua`. No key. Super+Return stays Alacritty.
+- tmux did not install. `./scripts/pkg-add.sh tmux` needs a sudo
+  password, and this session has no prompt for one.
+
+## 2026-10-14 — green border on the focused window
+
+- Hyprland `border_size` is 2. The focused border is `#5CFF6B`.
+  Unfocused borders are `rgba(00000000)`, so they are not drawn.
+  The 2px stays on every window and focus does not resize them.
+  Unfocused windows stay at 70% opacity.
+- Applied with `hyprctl eval` while autoreload was off, so hyprsplit
+  did not move the open windows.
+- Fuzzel 1.15 cannot paint one dmenu row a different color. The
+  reboot mark stays the same color as the rest of the line.
+
+## 2026-10-14 — installed tmux
+
+- requested: tmux
+- repos (pacman): tmux
+- AUR (paru): (none)
+
+## 2026-10-14 — reboot star on the update list
+
+- A package that needs a reboot ends in `reboot *`. The first line,
+  "Update all", says `reboot *` when any package in the list does.
+  The chip is unchanged.
+
+## 2026-10-14 — image TUIs open in kitty
+
+- Fuzzel's terminal stays Alacritty. Super+Return stays Alacritty.
+  superfile, concord, and neomutt have desktop entries that run
+  kitty directly (`Terminal=false`), so Fuzzel does not wrap them.
+- Neomutt image attachments go through `scripts/neomutt-icat.sh`.
+  The picture stays until Enter. Other types still use `/etc/mailcap`.
+- lynx, neovim, caligula, valvefm, and steam-tui do not draw images.
+
+## 2026-10-14 — screensavers removed
+
+- Idle no longer launches a saver. Noctalia's screensaver behavior
+  is gone. The niri window rule for it is gone.
+- Removed `configs/niri-screensaver` and the Novalis saver scripts
+  (`novalis-screensaver`, tunnel, bloom, clock, rain).
+- Super+L is still the Noctalia lock. Hyprland still locks at 10
+  minutes and blanks the screens at 15. Lid close still locks.
+- `niri-screensaver` removed from `packages/aur.txt`. The
+  installed package is still on the machine. `paru -Rns niri-screensaver`
+  needs a sudo password this session cannot type. Until then the
+  launcher entry and the `niri-screensaver` command still exist.
+  Idle does not call them.
+
+## 2026-10-14 — temperatures off the bar
+
+- CPU, disk, and GPU chips show a percent. The temperature is off
+  the bar. Memory was already a percent.
+- At 175°F that chip shows the temperature instead, in red. A
+  percent of 90 or more is still red. 140°F through 174°F stays a
+  percent and turns yellow-green.
+- Left click on CPU, memory, disk, or GPU opens every device value
+  in Fuzzel. Right click on the disk chip still cycles root, TB1,
+  and TB2.
+
+## 2026-10-14 — network chip is the address
+
+- The network chip shows the address and the link icon. Upload and
+  download speeds are off the chip. Hover still shows both speeds.
+
+## 2026-10-14 — bar order
+
+- Now playing sits at the end of the left side, after the workspace
+  numbers. The clock is in the center.
+- On the right, the update count is just before the CPU chip. The
+  GPU chip is just before the disk chip.
+
+## 2026-10-15 — network on the device list
+
+- Clicking the network chip opens the same device list as CPU,
+  memory, disk, and GPU. The list adds the link name, address,
+  gateway, and a short up and down sample.
+- The meter chips no longer reserve three digits. Now playing,
+  language, and keyboard-state no longer have a CSS minimum width.
+- The GPU chip no longer keeps spaces after the card icon.

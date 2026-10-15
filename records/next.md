@@ -22,15 +22,15 @@ over.
 | Super+Ctrl+Alt size, Super+drag, windowed fullscreen | you confirm | applied 2026-09-06 |
 | Webapp Chrome login (BGA / Messages / …) | you | sign in once in a webapp |
 | Super-letter app keys (Windows pass) | you confirm | applied 2026-09-22; Shift+letter apps too |
-| Matrix theme + falling-code screensaver | you confirm | applied 2026-09-07 |
+| Matrix theme + falling-code screensaver | — | theme kept; screensaver removed 2026-10-14 |
 | Rename host to Novalis | you (new login picks it up everywhere) | applied 2026-09-07 |
 | Grok Bot desktop app | you (sign in) | installed; Super+Shift+Alt+A |
 | Super+Ctrl+T floating btop | you confirm | applied 2026-09-07 |
 | Screensaver vs lock split | you confirm | applied 2026-09-08; Super+L is a normal lock |
 | Dropbox missing | you (sign in) | installed; autostart |
-| ASCII screensaver catalog | you pick | backlog |
-| Deep ASCII: skull + butterfly + countdowns | you pick | timers applied; skull/butterfly backlog |
-| `niri-screensaver` CLI is still Omarchy TTE | you pick | backlog |
+| ASCII screensaver catalog | — | removed 2026-10-14 |
+| Deep ASCII: skull + butterfly + countdowns | — | removed 2026-10-14 |
+| `niri-screensaver` CLI is still Omarchy TTE | — | removed 2026-10-14 |
 | Super+F maximize on both machines | you confirm (Delorean: `hyprctl reload`) | applied 2026-09-08 |
 | Keychron V6 special keys | you | applied; X unassigned; mic may become voice |
 | Thunderbird accounts | you | signed in 2026-09-26 |
@@ -45,9 +45,115 @@ over.
 | Super alone does nothing | you confirm | applied 2026-10-07 |
 | Hyprland bar | you confirm | applied 2026-10-09 |
 | Waybar, second pass | you confirm | applied 2026-10-12 |
-| croft instead of neovim | you pick | backlog |
+| croft instead of neovim | — | superseded 2026-10-14: LazyVim |
 | Keychron keys on Hyprland | you confirm | volume, mic, and play applied 2026-10-12; panels still open nothing |
 | Login keyring stays locked | you | backlog |
+| Active window green border | you confirm | applied 2026-10-14 |
+| Quieter Hyprland animations | you pick | backlog |
+| LazyVim and tmux | you | applied 2026-10-14 |
+| Image TUIs open in kitty | you confirm | applied 2026-10-14 |
+| Update needs a restart | you confirm | applied 2026-10-14, mark on the Fuzzel row |
+| Fuzzel matches Novalis | you confirm | applied 2026-10-14 |
+| Kitty opens maximized | you | answered: kitty remembered it |
+
+## Active window green border
+
+Applied 2026-10-14. Hyprland draws a 2px border. The focused window
+is `#5CFF6B`. Unfocused borders are fully transparent, so they show
+no edge. The 2px stays reserved on every window, so focus does not
+resize them. Unfocused windows are still 70% opaque.
+
+Fuzzel cannot color one update row. A list is one text color. The
+`reboot` word stays on the line.
+
+## Quieter Hyprland animations
+
+Backlog. Nothing in `hyprland.lua` sets an animation, so Hyprland
+0.56 is on its defaults. Windows scale in (`popin`) and workspaces
+slide. `hl.animation()` takes a leaf, and speed is in tenths of a
+second (1 is 100ms).
+
+- Off. `leaf = "global"` disabled. Windows appear, workspaces cut.
+- Fade only. Disable `windows` and `workspaces`. Opacity still eases.
+- Shorter. Keep the motion, drop the speed toward 1.
+- Different motion. `windows` styles are `slide`, `popin`, and
+  `gnomed`. Pop-in is the loud one.
+
+Niri's set is separate and already short (200ms). This note is the
+Hyprland session.
+
+## LazyVim and tmux
+
+LazyVim applied 2026-10-14. The starter is `~/.config/nvim`, cloned
+from https://github.com/LazyVim/starter with `.git` removed. It is
+not a pacman package and it is not in this repo. Plugins are
+synced. Mason installed `tree-sitter-cli` and `stylua`. `nvim` is
+that config. No key. Super+Return stays Alacritty. VS Code extras
+are still off. `:LazyExtras` is where those get turned on.
+
+tmux 3.8-1.1 is installed. `packages/extra.txt` has it. No key.
+
+## Image TUIs open in kitty
+
+Applied 2026-10-14. Fuzzel's terminal stays Alacritty. Super+Return
+stays Alacritty. The three that draw pictures have desktop entries
+whose Exec is kitty, and `Terminal=false`, so Fuzzel does not wrap
+them again.
+
+- superfile: `kitty --class superfile -e spf`
+- concord: `kitty --class concord -e concord`
+- neomutt: `kitty --class neomutt -e neomutt`
+
+Neomutt's mailcap sends an image attachment to `neomutt-icat.sh`.
+The picture stays until Enter, because neomutt clears the screen
+when the viewer returns. It does not pop an image up on every
+message. Other attachment types still use `/etc/mailcap`.
+
+lynx, neovim, caligula, valvefm, and steam-tui do not draw images.
+yazi is not installed. LazyVim's image plugins are still off.
+
+## Update needs a restart
+
+Applied 2026-10-14. The chip is still the count and the download
+icon. In the Fuzzel list, a row ends in `reboot *` when that package
+is unused until the next boot. The "update all" line says `reboot *`
+when any row does.
+
+Marked: `linux-cachyos`, `linux-cachyos-lts`, the matching
+`linux-cachyos-nvidia-open` packages, `nvidia-utils`,
+`lib32-nvidia-utils`, `linux-firmware` and its splits,
+`amd-ucode`, `intel-ucode`, and `limine`. Not marked: kernel
+headers, `linux-firmware-whence`, and the Limine hook. Restarting
+services after a library update is still unmarked.
+
+## Fuzzel matches Novalis
+
+Applied 2026-10-14 in `configs/fuzzel/fuzzel.ini`. The background is
+`#0A0D0B`, near black with a green cast, not `#000000`. Text is
+`#C8D4C8`. The border, the prompt, and a typed match are `#5CFF6B`.
+The selected row is that green with `#07100A` text. Square corners,
+2px border, Meslo at 14px.
+
+The bottom bar on both screens was already that plate and that
+green. `style.css` still has stock `#64727D` rules, and a later
+block in the same file overrides them for the modules that are
+actually on the bar. Fuzzel was the window still on Solarized cream.
+
+## Kitty opens maximized
+
+Answered 2026-10-14. Nothing in this repo fullscreen's kitty.
+`~/.config/kitty` is empty, and Hyprland has no kitty rule.
+
+Kitty remembers the OS window state. `~/.cache/kitty/main.json`
+says `"window-state": "maximized"`, and the live window has
+`fullscreenClient` set, which means kitty asked. A lone dwindle
+window already fills the screen minus the 4px gap and the bar, so
+maximized and "only window" look the same until a second window
+opens. Chrome and VS Code on an empty workspace are that same size
+with the flag off.
+
+Super+F once clears the remembered maximize. `remember_window_size no`
+in a kitty config would stop it coming back. Not applied.
 
 ## Hyprland bar
 
@@ -72,7 +178,9 @@ tooltip has the condition plus today's high and low. The place comes from the pu
 
 ## croft instead of neovim
 
-Backlog. [croft](https://codeberg.org/vitali87/croft) is a VS
+Superseded 2026-10-14. The editor is LazyVim. See above.
+
+[croft](https://codeberg.org/vitali87/croft) is a VS
 Code-style terminal editor: explorer, editor, and a terminal pane.
 It is not in the CachyOS repos. The only `croft` package hit is
 Mycroft's `mimic1`. Neovim stays until croft is installed and you
@@ -285,9 +393,8 @@ Zion dock pad 4). Palette `Novalis.json` is the same gunmetal +
 close rain / code skyline / phone booth / operator core / cockpit /
 pad hero / broadcast depth / blue flower.
 
-Screensaver is `niri-screensaver` with TTE effects `matrix,rain,decrypt`,
-Novalis wordmark, both monitors mirrored. Idle: 150s screensaver, 300s
-lock. Package and hostname applied 2026-09-07.
+The falling-code screensaver was removed 2026-10-14. Hostname and
+palette stayed.
 
 Chrome webapp cookies stay at `~/.local/share/borg/chrome-webapps` on
 purpose (moving that dir would look logged out).
@@ -300,16 +407,9 @@ SuperGrok account used on Android and Delorean.
 
 ## Screensaver vs lock split
 
-Applied 2026-09-08, then Super+L dropped the saver the same day.
-
-- Idle 150s: screensaver only. `[idle.behavior.lock]` is off.
-- Super+L / Super+Alt+L: kill any saver, then a normal Noctalia lock
-  (wallpaper + password). niri cannot play a live saver *over* the
-  lock (`ext-session-lock-v1` blanks windows).
-- Lid close / suspend still locks (`lock_before_suspend = true`).
-
-Confirm: wait past 150s with no lock; Super+L should be wallpaper +
-PAM, no animation.
+Removed 2026-10-14. Nothing idle-launches a saver. Super+L is still
+the Noctalia lock. On Hyprland, hypridle still locks at 10 minutes
+and turns the screens off at 15. Lid close still locks.
 
 ## Dropbox missing
 
@@ -318,31 +418,8 @@ AUR `dropbox`, autostart `dropbox start -i` in
 
 ## ASCII screensaver catalog
 
-Day-of-year dropped 2026-09-08 (did not make sense). Still backlog:
-flying toasters, 3D pipes, beziers, real 3D Novalis text. Stock
-`niri-screensaver` in a terminal is still Omarchy TTE.
-
-## Deep ASCII: skull + butterfly + countdowns
-
-Rain never stops. Facts are one line, all caps, decade first, Bex last
-(`YOUR 40S: 8 YEARS | 428 WEEKS | 2995 DAYS`); separators vary.
-Digits scramble 4–7 hits then lock white; after the hold, glyphs
-dissolve down. NOVALIS reveal rotates: touch (first-hit lock), light
-scramble, or top-down drip.
-
-- Bex 18: born **2017-11-07** → 2035-11-07
-- Decades: your **1984-11-20**, currently 40s, then 50s, 60s
-- 65: 2049-11-20
-- 90: 2074-11-20
-- Winters / stop-snowboarding: skipped. Dad is 68 and still going.
-
-Skull + butterfly still backlog.
-
-## `niri-screensaver` CLI is still Omarchy TTE
-
-Typing `niri-screensaver` in Alacritty runs the packaged TTE set, same
-family as Omarchy. Expected until the CLI is pointed at
-`scripts/novalis-screensaver` or the catalog above replaces it.
+Removed 2026-10-14 with the rest of the savers. The catalog, the
+rain, the countdowns, and the skull and butterfly are gone.
 
 ## Super+F maximize on both machines
 

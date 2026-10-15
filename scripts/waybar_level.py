@@ -12,13 +12,18 @@ HOT_PERCENT = 90
 WARM_PERCENT = 70
 
 
-# Three cells covers a percent (0–100) and a Fahrenheit reading.
-# Normal peaks stay under 999. The bar face is monospace, so a 1
-# stays as wide as an 8 without a second font.
+# The device list still pads to three cells so the columns line up.
+# The bar uses bare() and does not reserve that width.
 
 
 def digits(value: int | None, suffix: str, width: int = 3) -> str:
     body = f"{'—':>{width}}" if value is None else f"{value:{width}d}"
+    return f"{body}{suffix}"
+
+
+def bare(value: int | None, suffix: str) -> str:
+    """Bar text. No reserved columns, so the chip is only as wide as the number."""
+    body = "—" if value is None else str(value)
     return f"{body}{suffix}"
 
 
@@ -34,3 +39,10 @@ def level(temp_f: int | None, percent: int | None) -> str:
     if percent is not None and percent >= WARM_PERCENT:
         return "warm"
     return "cold"
+
+
+def face(temp_f: int | None, percent: int | None) -> tuple[int | None, str]:
+    """Bar number. Degrees replace the percent only when the part is hot."""
+    if temp_f is not None and temp_f >= HOT_F:
+        return temp_f, "°"
+    return percent, "%"

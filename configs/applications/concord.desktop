@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Concord
+GenericName=Discord client
+Comment=Terminal Discord client
+TryExec=concord
+# Pictures use the kitty graphics protocol. Alacritty draws blocks.
+Exec=kitty --class concord -e concord
+Terminal=false
+Icon=discord
+Categories=Network;InstantMessaging;
+Keywords=concord;discord;chat;terminal;
+StartupNotify=false

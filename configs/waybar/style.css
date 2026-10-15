@@ -264,7 +264,6 @@ label:focus {
 #custom-media {
     background-color: #66cc99;
     color: #2a5c45;
-    min-width: 100px;
 }
 
 #custom-media.custom-spotify {
@@ -327,7 +326,6 @@ label:focus {
     color: #740864;
     padding: 0 5px;
     margin: 0 5px;
-    min-width: 16px;
 }
 
 #keyboard-state {
@@ -335,7 +333,6 @@ label:focus {
     color: #000000;
     padding: 0 0px;
     margin: 0 5px;
-    min-width: 16px;
 }
 
 #keyboard-state > label {
@@ -375,8 +372,10 @@ label:focus {
     background-color: #0069d4;
 }
 
-/* Right side matches the weather chip. Meter text follows temperature.
-   A percent near 100 turns red even when the part is still cool. */
+/* Right side matches the weather chip. A meter shows a percent.
+   At 175°F that number becomes the temperature and turns red.
+   A percent of 90 or more is red even when the part is still cool.
+   140°F through 174°F stays a percent and turns yellow-green. */
 #idle_inhibitor,
 #idle_inhibitor.activated,
 #tray,

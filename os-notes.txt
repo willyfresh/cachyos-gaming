@@ -1,8 +1,2 @@
 # Scratch inbox. Dump obstacles here, then hand the file over.
 # Absorbed items live in records/next.md.
-I miss the border color on the active window. let's put that green in like 2px back on.
-Let's change the window animations. they are too much. what are my options?
-let's install all the tui. the vim will be lazyvim, because we can enable a bunch of things to make it more like vscode, let's also get neomutt to try it out, let's also get tmux installed as well.
-any tui that displays images should open in kitty, if it doesn't already. superfile, concord, neomutt. are there others?
-i love the updates menu. I would like an indicator if the update requires a restart.
-I can't remember the name of the program we're using to show the menu, the weather, keybinds, etc but i'd like that program to be styled to match the rest of the computer.

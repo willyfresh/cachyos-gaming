@@ -120,15 +120,8 @@ theme_mode = "dark"
 palette_source = "custom"
 
 [idle]
-behavior_order = ["screensaver"]
+behavior_order = []
 pre_action_fade_seconds = 0
-
-[idle.behavior.screensaver]
-timeout = 150
-action = "command"
-enabled = true
-command = "niri-screensaver-ctl launch"
-resume_command = "niri-screensaver-ctl kill"
 
 [idle.behavior.lock]
 timeout = 300

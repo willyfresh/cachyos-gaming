@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from waybar_level import digits, level
+from waybar_level import bare, face, level
 
 # fa-memory is a RAM stick. md-memory draws as a chip, same idea as the CPU.
 ICON = "\uefc5"
@@ -26,8 +26,9 @@ def mem_percent() -> int:
 
 def main() -> None:
     percent = mem_percent()
+    value, suffix = face(None, percent)
     print(json.dumps({
-        "text": f"{digits(percent, '%')} {ICON}",
+        "text": f"{bare(value, suffix)} {ICON}",
         "tooltip": "Memory\nNo temperature sensor on these modules",
         "class": level(None, percent),
     }, ensure_ascii=False), flush=True)

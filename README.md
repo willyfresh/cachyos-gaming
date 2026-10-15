@@ -26,7 +26,6 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `configs/noctalia` | noctalia-shell config (live, via symlink) |
 | `configs/noctalia/palettes/Novalis.json` | Gunmetal + energy-green palette |
 | `configs/noctalia/wallpapers/` | Rain, ship, dock, construct, blue flower |
-| `configs/niri-screensaver` | Falling-code screensaver (TTE Matrix) |
 | `configs/keyd` | Keychron media and knob keys (`/etc/keyd/default.conf`). Super alone does nothing |
 | `packages/extra.txt` | Extra **repo** packages (pacman), including `paru` |
 | `packages/aur.txt` | Extra **AUR** packages (`google-chrome`, `visual-studio-code-bin`, …) |

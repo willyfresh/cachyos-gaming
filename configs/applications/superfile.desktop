@@ -4,8 +4,9 @@ Name=Superfile
 GenericName=File manager
 Comment=Terminal file manager
 TryExec=spf
-Exec=spf
-Terminal=true
+# Fuzzel's terminal is Alacritty, which cannot draw image previews.
+Exec=kitty --class superfile -e spf
+Terminal=false
 Icon=system-file-manager
 Categories=System;FileManager;
 Keywords=spf;files;terminal;

@@ -4,7 +4,7 @@
 # when that window closes. A dedicated user-data-dir keeps cookies on disk.
 # Do not attach to the running Super+B browser — a second process is required
 # so --user-data-dir / --app actually take effect.
-# Never use --app-id: real PWAs draw a CSD title bar niri cannot strip.
+# Never use --app-id: real PWAs draw a CSD title bar the compositor cannot strip.
 set -euo pipefail
 
 if (($# < 1)); then

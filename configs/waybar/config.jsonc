@@ -13,16 +13,16 @@
         "custom/media"
     ],
     "modules-center": [
-        "clock"
+        "idle_inhibitor",
+        "clock",
+        "custom/locks"
     ],
     "modules-right": [
-        "idle_inhibitor",
-        "custom/locks",
+        "custom/updates",
         "tray",
         "custom/weather",
         "pulseaudio",
         "privacy",
-        "custom/updates",
         "custom/cpu",
         "custom/mem",
         "custom/gpu",

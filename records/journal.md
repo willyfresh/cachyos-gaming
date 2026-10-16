@@ -928,3 +928,9 @@ A running record of installs and config changes. Package names that should survi
   launch kitty themselves so their window class stays theirs.
 - `configs/kitty/kitty.conf` sets `remember_window_size no`, so a
   new kitty does not reopen maximized. Alacritty stays installed.
+
+## 2026-10-16 — bar order
+
+- The eye is the first chip in the center, before the clock. Caps
+  and Num Lock are the last chip in the center, after the clock.
+- The update count is the first chip on the right.

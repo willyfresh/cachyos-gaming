@@ -4,8 +4,7 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# tty1 stays a shell. Start a compositor by typing its name:
-#   niri
+# tty1 stays a shell. Start Hyprland by typing:
 #   start-hyprland
-# Do not exec either from this file. A session wrapper that re-reads
+# Do not exec it from this file. A session wrapper that re-reads
 # this file as a login shell would loop, and the prompt would never return.

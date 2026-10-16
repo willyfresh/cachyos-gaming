@@ -56,6 +56,7 @@ over.
 | Fuzzel matches Novalis | you confirm | applied 2026-10-14 |
 | Kitty opens maximized | you | answered: kitty remembered it |
 | Noctalia | — | removed 2026-10-15 |
+| niri | — | removed 2026-10-15 |
 | Mango | you | later |
 
 ## Active window green border
@@ -167,8 +168,8 @@ Super+Shift+Return opens the fractal wallpaper colors. The bar
 plate is transparent. The Novalis chip is gone. The bar does not
 print a key-mode name. Next pass can move this toward the Omarchy bar.
 
-The chip does not open a launcher. Launcher, lock, clipboard, and
-control center stay on niri. Super+Shift+Q still quits.
+Lock is hyprlock. The clipboard is a Fuzzel list. Super+Shift+Q
+still quits.
 
 ## Waybar, second pass
 
@@ -222,10 +223,10 @@ you want the tty login to unlock the keyring.
 
 ## tty1 stays a shell
 
-Applied 2026-09-22. `configs/bash_profile` no longer starts niri.
-Switch to tty1 (Ctrl+Alt+F1), log in, and you get a prompt. The
-desktop is `niri-session` from that prompt. This tty3 session is
-untouched.
+Applied 2026-09-22. `configs/bash_profile` does not start a
+compositor. Switch to tty1 (Ctrl+Alt+F1), log in, and you get a
+prompt. Type `start-hyprland` from that prompt. niri was removed
+2026-10-15.
 
 Confirm on the next real boot: tty1 shows a login, then a shell,
 and does not sit there spinning.
@@ -416,7 +417,7 @@ off at 15. Lid close still locks.
 ## Dropbox missing
 
 AUR `dropbox`, autostart `dropbox start -i` in
-`configs/niri/cfg/autostart.kdl`. Sign in on first run (tray).
+`configs/hypr/hyprland.lua`. Sign in on first run (tray).
 
 ## ASCII screensaver catalog
 
@@ -442,7 +443,7 @@ Windows mode stays. Applied 2026-09-09:
 - **Fn+F4** (six-pack): VIA remaps from Super+E to Super+Space so it
   opens the launcher. Super+E is still Nautilus.
 - **Fn+F8** play/pause: VIA sends F18; keyd turns that into
-  Ctrl+Shift+F8; both sessions send that to playerctl. HID Play is resume-only
+  Ctrl+Shift+F8; Hyprland sends that to playerctl. HID Play is resume-only
   and Chrome needs it for MPRIS, so we do not send Play.
 - **Knob cluster:** crop = region screenshot, mic = mute (maybe voice
   input later). The light key was the Noctalia control center and is

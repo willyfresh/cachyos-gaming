@@ -7,19 +7,14 @@ source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib.sh"
 
 mkdir -p "$HOME/.config"
 
-link_path "$CONFIGS_DIR/niri" "$HOME/.config/niri"
-
 if [[ -f "$CONFIGS_DIR/environment.d/gaming.conf" ]]; then
   mkdir -p "$HOME/.config/environment.d"
   link_path "$CONFIGS_DIR/environment.d/gaming.conf" "$HOME/.config/environment.d/gaming.conf"
 fi
 
-# Chrome's file dialog. Must be the desktop-named file (niri-portals.conf),
-# which xdg-desktop-portal reads when XDG_CURRENT_DESKTOP=niri.
+# Chrome's file dialog. xdg-desktop-portal reads this file when
+# XDG_CURRENT_DESKTOP=Hyprland.
 mkdir -p "$HOME/.config/xdg-desktop-portal"
-link_path "$CONFIGS_DIR/xdg-desktop-portal/niri-portals.conf" \
-  "$HOME/.config/xdg-desktop-portal/niri-portals.conf"
-# Hyprland reads this when XDG_CURRENT_DESKTOP=Hyprland. The niri file stays.
 link_path "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf" \
   "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
 
@@ -45,7 +40,6 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/launch-btop.sh" \
   "$REPO_ROOT/scripts/launch-grok-bot.sh" \
   "$REPO_ROOT/scripts/launch-steam-heroic.sh" \
-  "$REPO_ROOT/scripts/lock.sh" \
   "$REPO_ROOT/scripts/hypr-clipboard.sh" \
   "$REPO_ROOT/scripts/hypr-notifications.sh" \
   "$REPO_ROOT/scripts/waybar-weather.py" \
@@ -72,7 +66,6 @@ link_path "$REPO_ROOT/scripts/launch-discord.sh" "$HOME/.local/bin/launch-discor
 link_path "$REPO_ROOT/scripts/launch-btop.sh" "$HOME/.local/bin/launch-btop.sh"
 link_path "$REPO_ROOT/scripts/launch-grok-bot.sh" "$HOME/.local/bin/launch-grok-bot.sh"
 link_path "$REPO_ROOT/scripts/launch-steam-heroic.sh" "$HOME/.local/bin/launch-steam-heroic.sh"
-link_path "$REPO_ROOT/scripts/lock.sh" "$HOME/.local/bin/lock.sh"
 link_path "$REPO_ROOT/scripts/hypr-cheatsheet.sh" "$HOME/.local/bin/hypr-cheatsheet.sh"
 link_path "$REPO_ROOT/scripts/hypr-wallpaper.sh" "$HOME/.local/bin/hypr-wallpaper.sh"
 link_path "$REPO_ROOT/scripts/hypr-clipboard.sh" "$HOME/.local/bin/hypr-clipboard.sh"
@@ -151,8 +144,8 @@ if [[ -f "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
     "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
 fi
 
-# tty1 login stays a shell. CachyOS's stock file execs niri; do not
-# put that back. Type niri or start-hyprland (see bash_profile).
+# tty1 login stays a shell. CachyOS's stock file execs a compositor; do not
+# put that back. Type start-hyprland (see bash_profile).
 link_path "$CONFIGS_DIR/bash_profile" "$HOME/.bash_profile"
 
 if command -v update-desktop-database >/dev/null 2>&1; then

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Bootstrap this CachyOS niri setup after a reinstall.
+# Bootstrap this CachyOS Hyprland setup after a reinstall.
 #
 # Usage:
 #   ./setup.sh                 # install extra + AUR packages and apply configs
@@ -15,7 +15,7 @@ source "$REPO_ROOT/scripts/lib.sh"
 
 usage() {
   cat <<'EOF'
-Bootstrap cachyos-gaming on a CachyOS niri install.
+Bootstrap cachyos-gaming on a CachyOS install.
 
   ./setup.sh                 install extra + AUR packages and apply configs
   ./setup.sh --packages-only install packages/extra.txt and packages/aur.txt

@@ -12,7 +12,7 @@ visual-studio-code-bin
 # Live install needs a real terminal: ./scripts/pkg-add.sh grok-bot-bin
 grok-bot-bin
 
-# Official Dropbox daemon. Autostart: dropbox start -i (niri spawn-at-startup).
+# Official Dropbox daemon. Autostart: dropbox start -i (hyprland.lua).
 # Live install needs a real terminal: ./scripts/pkg-add.sh dropbox
 dropbox
 

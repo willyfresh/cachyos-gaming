@@ -895,3 +895,21 @@ A running record of installs and config changes. Package names that should survi
   and then `sudo pacman -Rns noctalia`. This session cannot type
   the sudo password.
 - Mango is a later idea. Nothing was installed.
+
+## 2026-10-15 — niri removed
+
+- The niri config, the stock snapshot, the niri portal file, and
+  `scripts/lock.sh` are gone. The live `~/.config/niri` link is gone.
+- Hyprland is the session. App keys focus an open window with
+  hyprctl. Dropbox, Waybar, mako, hypridle, and the wallpaper still
+  start from `hyprland.lua`. tty1 stays a shell. Type `start-hyprland`.
+- `niri`, `noctalia`, and `cachyos-niri-noctalia` are still installed.
+  Do not remove the metapackage with `-Rns`. That would also take
+  packages Hyprland still uses, such as the GTK portal and the
+  keyring, when nothing else requires them. The removal is
+  `sudo pacman -R cachyos-niri-noctalia` and then
+  `sudo pacman -Rns noctalia niri`. `xwayland-satellite` is only
+  required by the metapackage, so it stays until
+  `sudo pacman -Rns xwayland-satellite`. Hyprland has its own
+  Xwayland. This session cannot type the sudo password.
+- Mango was not installed.

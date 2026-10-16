@@ -2,8 +2,8 @@
 """Board Game Arena as a chrome-less WebKit window.
 
 Chrome PWAs always draw their own title bar and, when the page is out of
-scope, a gray custom tab bar (title + URL + close). niri cannot strip
-client-side decorations from those windows. This wrapper is just the
+scope, a gray custom tab bar (title + URL + close). The compositor cannot
+strip client-side decorations from those windows. This wrapper is just the
 page: no title bar, no URL bar, no browser chrome.
 """
 
@@ -74,7 +74,7 @@ class BoardGameArena(Gtk.Application):
         window = Gtk.ApplicationWindow(application=self)
         window.set_title("Board Game Arena")
         window.set_default_size(1280, 800)
-        # Empty titlebar so GTK does not draw CSD; niri also has prefer-no-csd.
+        # Empty titlebar so GTK does not draw client-side decorations.
         window.set_titlebar(Gtk.Box())
         window.set_decorated(False)
         window.set_child(webview)

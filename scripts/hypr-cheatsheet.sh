@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Super+K. A searchable list of this session's keys, same job as the
-# niri cheatsheet and Omarchy's omarchy-menu-keybindings. Picking a
-# line does not run it.
+# Super+K. A searchable list of this session's keys, same job as
+# Omarchy's omarchy-menu-keybindings. Picking a line does not run it.
 set -euo pipefail
 
 cat <<'EOF' | fuzzel --dmenu --prompt "Keys  " --placeholder "search" --width 72 --lines 18

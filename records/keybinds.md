@@ -6,7 +6,7 @@ Super-key (Windows key) chords on three machines. A combo is listed if
 | Column | Machine |
 |--------|---------|
 | **Windows** | Windows 11, [Microsoft’s list](https://support.microsoft.com/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
-| **Novalis** | This CachyOS niri box (`configs/niri/cfg/keybinds.kdl`) |
+| **Novalis** | This CachyOS Hyprland box (`configs/hypr/hyprland.lua`) |
 | **Delorean** | ThinkPad Omarchy + overlay (`omarchy-delorean`). Overlay wins; everything else is live Omarchy stock |
 
 Modifier order per letter: Super, Shift, Ctrl, Alt, then the doubles, then all three.
@@ -36,9 +36,9 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+Shift+B | Wake a blank/black screen | — | — |
 | Super+Ctrl+Alt+B | — | — | Battery as notification |
 | **C** | | | |
-| Super+C | Copilot (Search if Copilot is off) | Center column | Copy |
+| Super+C | Copilot (Search if Copilot is off) | — | Copy |
 | Super+Shift+C | — | Google Calendar | Google Calendar |
-| Super+Ctrl+C | Color filters (if enabled) | Center visible columns | Capture menu |
+| Super+Ctrl+C | Color filters (if enabled) | — | Capture menu |
 | **D** | | | |
 | Super+D | Show / hide desktop | — | Discord |
 | Super+Shift+D | — | Discord | Docker TUI |
@@ -51,10 +51,10 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+E | — | — | Emoji picker |
 | Super+Shift+Alt+E | — | Thunderbird compose | Thunderbird compose |
 | **F** | | | |
-| Super+F | Feedback Hub | Maximize column | Maximize window |
-| Super+Shift+F | — | Exclusive fullscreen | File manager |
-| Super+Ctrl+F | Search PCs on the network | Windowed fullscreen (site chrome off) | Windowed fullscreen (site chrome off) |
-| Super+Alt+F | — | Expand column to leftover width | Full width |
+| Super+F | Feedback Hub | Maximize, keep the gaps | Maximize window |
+| Super+Shift+F | — | Cover the screen | File manager |
+| Super+Ctrl+F | Search PCs on the network | Maximize, keep the gaps | Windowed fullscreen (site chrome off) |
+| Super+Alt+F | — | — | Full width |
 | Super+Shift+Alt+F | — | — | File manager in terminal cwd |
 | **G** | | | |
 | Super+G | Xbox Game Bar | — | Toggle window grouping |
@@ -83,7 +83,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+L | — | — | Toggle dwindle / scrolling layout |
 | Super+Alt+L | — | Lock (same as Super+L) | — |
 | **M** | | | |
-| Super+M | Minimize all | Maximize to edges | YouTube Music |
+| Super+M | Minimize all | Maximize, keep the gaps | YouTube Music |
 | Super+Shift+M | Restore minimized windows | Google Messages | Google Maps |
 | Super+Shift+Alt+M | — | — | Music TUI (cliamp) |
 | **N** | | | |
@@ -104,10 +104,10 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Q | — | Quit Hyprland | — |
 | Super+Ctrl+Q | Quick Assist | — | Calculator |
 | **R** | | | |
-| Super+R | Run | Preset column width | — (unbound on purpose) |
-| Super+Shift+R | — | Preset column width, reverse | — |
-| Super+Ctrl+R | — | Reset window height | Set a reminder |
-| Super+Ctrl+Shift+R | — | Preset window height | Clear all reminders |
+| Super+R | Run | — | — (unbound on purpose) |
+| Super+Shift+R | — | — | — |
+| Super+Ctrl+R | — | — | Set a reminder |
+| Super+Ctrl+Shift+R | — | — | Clear all reminders |
 | Super+Ctrl+Alt+R | — | — | List reminders |
 | **S** | | | |
 | Super+S | Search | — | Scratchpad (empty-aware) |
@@ -160,13 +160,13 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Return | — | Wallpaper picker (Hyprland) | Google Messages |
 | Super+Alt+Return | — | — | Tmux terminal |
 | Super+Ctrl+Return | Narrator | — | Herdr |
-| Super+Tab | Task View | Overview | Mirador overview |
+| Super+Tab | Task View | — | Mirador overview |
 | Super+Shift+Tab | — | Previous workspace | Previous occupied desk |
 | Super+Ctrl+Tab | — | — | Former workspace |
 | Super+Alt+Tab | — | — | Cycle windows in a group |
 | Super+Alt+Shift+Tab | — | — | Cycle group, reverse |
-| Alt+Tab | MRU windows | niri recent-windows | MRU across desks |
-| Alt+Shift+Tab | MRU, reverse | recent-windows, reverse | MRU, reverse |
+| Alt+Tab | MRU windows | Next window | MRU across desks |
+| Alt+Shift+Tab | MRU, reverse | Previous window | MRU, reverse |
 
 ---
 
@@ -175,8 +175,8 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | Super+1…9 | Taskbar app in that slot | Workspace 1–9 | Workspace 1–9 (0 is 10) |
-| Super+0 | Tenth taskbar app | — | Workspace 10 |
-| Super+Shift+1…9 | New instance of that taskbar app | Move column to workspace 1–9 | Move window to that workspace |
+| Super+0 | Tenth taskbar app | Workspace 10 | Workspace 10 |
+| Super+Shift+1…9 | New instance of that taskbar app | Move window to workspace 1–9 | Move window to that workspace |
 | Super+Shift+Alt+1…9 | — | — | Move window, do not follow |
 | Super+Ctrl+1…9 | Last window of that taskbar app | — | Toggle nth bar panel |
 | Super+Alt+1…5 | Jumplist for that taskbar app | — | Window N in a group |
@@ -191,18 +191,18 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
-| Super+Left/Right | Snap half-screen | Focus column | Focus, then occupied desk |
-| Super+Up | Maximize | Stacked window, else workspace up | Focus, then occupied desk |
-| Super+Down | Restore / minimize | Stacked window, else workspace down | Focus, then occupied desk |
-| Super+Shift+Left/Right | Move window to monitor | Move column | Move window to adjacent desk 1–10 |
-| Super+Shift+Up/Down | Maximize / restore vertically | Move window, or to workspace | Move window to adjacent desk 1–10 |
-| Super+Ctrl+arrows | Switch virtual desktop (L/R) | Focus workspace | Swap with neighbor |
-| Super+Alt+Left/Right/Up/Down | Snap top/bottom (Alt+Up/Down) | Focus monitor | Move into group that way |
-| Super+Shift+Ctrl+arrows | — | Move column to workspace | — |
-| Super+Shift+Alt+arrows | — | Move column to monitor | Move workspace to monitor |
-| Super+Ctrl+Alt+Left/Right | — | Column thinner / wider 10% | — |
-| Super+Ctrl+Alt+Up/Down | — | Window shorter / taller 10% | — |
-| Super+Shift+Ctrl+Alt+arrows | — | Move workspace to monitor | — |
+| Super+Left/Right | Snap half-screen | Focus that way | Focus, then occupied desk |
+| Super+Up | Maximize | Focus up, or previous workspace | Focus, then occupied desk |
+| Super+Down | Restore / minimize | Focus down, or next workspace | Focus, then occupied desk |
+| Super+Shift+Left/Right | Move window to monitor | Move the window that way | Move window to adjacent desk 1–10 |
+| Super+Shift+Up/Down | Maximize / restore vertically | Move the window that way | Move window to adjacent desk 1–10 |
+| Super+Ctrl+arrows | Switch virtual desktop (L/R) | Previous or next workspace on this screen | Swap with neighbor |
+| Super+Alt+Left/Right/Up/Down | Snap top/bottom (Alt+Up/Down) | Focus the monitor that way | Move into group that way |
+| Super+Shift+Ctrl+arrows | — | Move the window to that workspace | — |
+| Super+Shift+Alt+arrows | — | Move the window to that monitor | Move workspace to monitor |
+| Super+Ctrl+Alt+Left/Right | — | Window 10% narrower / wider | — |
+| Super+Ctrl+Alt+Up/Down | — | Window 10% shorter / taller | — |
+| Super+Shift+Ctrl+Alt+arrows | — | — | — |
 
 ---
 
@@ -210,25 +210,25 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
-| Super+Minus | Magnifier zoom out | Column thinner 10% | Expand window left |
-| Super+Equal | Magnifier zoom in | Column wider 10% | Shrink window left |
+| Super+Minus | Magnifier zoom out | Window 10% narrower | Expand window left |
+| Super+Equal | Magnifier zoom in | Window 10% wider | Shrink window left |
 | Super+Shift+Minus | — | Window shorter 10% | Shrink window up |
 | Super+Shift+Equal | — | Window taller 10% | Expand window down |
 | Super+Alt+Minus/Equal | — | — | Same resize, smaller step |
 | Super+Ctrl+Minus/Equal | — | — | Same resize, bigger step |
-| Super+Comma | Peek desktop | Consume window into column | Dismiss latest notification |
+| Super+Comma | Peek desktop | — | Dismiss latest notification |
 | Super+Shift+Comma | — | — | Dismiss all notifications |
 | Super+Ctrl+Comma | — | — | Silence notifications |
 | Super+Alt+Comma | — | — | Invoke latest notification |
-| Super+Period | Emoji panel | Expel window from column | Toggle clickpad |
+| Super+Period | Emoji panel | — | Toggle clickpad |
 | Super+Ctrl+Period | — | — | Transcode media |
-| Super+[ / Super+] | — | Consume or expel left / right | Webcam overlay smaller / larger (Alt+[ / ]) |
+| Super+[ / Super+] | — | — | Webcam overlay smaller / larger (Alt+[ / ]) |
 | Super+/ | IME reconversion | — | Next monitor scale |
 | Super+Alt+/ | — | — | Previous monitor scale |
 | Super+Shift+/ | — | — | 1Password |
-| Super+Home | Minimize everyone else | Focus first column | Restore saved window width |
-| Super+End | — | Focus last column | — |
-| Super+Ctrl+Home/End | — | Move column to first / last | — |
+| Super+Home | Minimize everyone else | — | Restore saved window width |
+| Super+End | — | — | — |
+| Super+Ctrl+Home/End | — | — | — |
 | Super+Alt+Home | — | — | Save window width |
 | Super+Grave | — | — | Toggle scratchpad (with Super+S) |
 | Super+Shift+Grave | — | — | Park to scratchpad |
@@ -242,20 +242,20 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
-| Super+Escape | Close Magnifier | Toggle shortcut inhibit | System menu |
-| Super+Shift+Escape | — | niri important-hotkeys overlay | — |
-| Ctrl+Alt+Delete | Security screen | Quit niri | Close all windows |
+| Super+Escape | Close Magnifier | — | System menu |
+| Super+Shift+Escape | — | — | — |
+| Ctrl+Alt+Delete | Security screen | Quit Hyprland | Close all windows |
 | Super+Ctrl+Delete | — | — | Toggle laptop panel |
 | Super+Ctrl+Alt+Delete | — | — | Toggle laptop mirror |
 | Super+Left mouse | — | Move window | Drag window |
 | Super+Right mouse | — | Resize window | Resize window |
-| Super+scroll | — | Focus columns (vertical = left/right) | Scroll workspaces |
-| Super+Ctrl+Alt+scroll | — | Column width (up bigger, down smaller) | — |
+| Super+scroll | — | — | Scroll workspaces |
+| Super+Ctrl+Alt+scroll | — | — | — |
 | Print Screen | Snipping Tool | — | Screenshot |
 | Alt+Print Screen | Active-window screenshot | — | Screenrecord |
 | Super+Print Screen | Save screenshot | — | Color picker |
 | Super+Ctrl+Print Screen | — | — | OCR to clipboard |
-| Ctrl+Shift+1/2/3 | — | Screenshot area / screen / window | — |
+| Ctrl+Shift+1/2/3 | — | — | — |
 
 Media keys on Novalis use PipeWire and playerctl (volume, mute, mic,
 play, next, prev). The screens have no backlight, so brightness is
@@ -265,7 +265,7 @@ unbound. Delorean uses Omarchy’s matching helpers.
 
 ## Sources
 
-- Novalis live binds: `configs/niri/cfg/keybinds.kdl`, `configs/niri/cfg/misc.kdl` (Alt+Tab), `configs/keyd/default.conf` (Keychron media and knob)
+- Novalis live binds: `configs/hypr/hyprland.lua`, `configs/keyd/default.conf` (Keychron media and knob)
 - Delorean overlay: `omarchy-delorean/config/hypr/bindings.lua`, `windows.lua`, `docs/binds.md`
 - Omarchy stock (whatever the overlay did not steal): [Omarchy hotkeys](https://omarchy.org/manual/hotkeys/)
 - Windows 11: [Keyboard shortcuts in Windows](https://support.microsoft.com/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec)

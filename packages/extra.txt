@@ -1,4 +1,4 @@
-# Extra packages from CachyOS/Arch repos, on top of a stock niri install.
+# Extra packages from CachyOS/Arch repos, on top of the CachyOS install.
 # One package per line. Blank lines and comments are ignored.
 #
 # Prefer:  ./scripts/pkg-add.sh steam lutris
@@ -59,7 +59,7 @@ neomutt
 # Concord images. Super+Return stays Alacritty.
 kitty
 
-# Hyprland session beside niri.
+# Hyprland session.
 hyprland
 xdg-desktop-portal-hyprland
 

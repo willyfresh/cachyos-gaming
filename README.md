@@ -1,6 +1,6 @@
 # cachyos-gaming
 
-Dotfiles and rebuild notes for **Hyprland on CachyOS** (hostname: Novalis). niri is still installed.
+Dotfiles and rebuild notes for **Hyprland on CachyOS** (hostname: Novalis).
 
 If this machine is wiped, install CachyOS again, clone or copy this repo, then run:
 
@@ -9,20 +9,18 @@ cd ~/Projects/cachyos-gaming
 ./setup.sh
 ```
 
-That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (via paru), then points `~/.config/niri` at the copy in this repo.
+That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (via paru), then points `~/.config` at the copies in this repo.
 
 ## Layout
 
 | Path | What it is |
 | --- | --- |
 | `setup.sh` | Fresh-install bootstrap |
-| `configs/niri` | niri config (live, via symlink) |
-| `configs/xdg-desktop-portal/niri-portals.conf` | Chrome file chooser uses the GTK portal under niri (live, via symlink) |
-| `configs/xdg-desktop-portal/hyprland-portals.conf` | Same GTK file chooser when the desktop is Hyprland |
+| `configs/xdg-desktop-portal/hyprland-portals.conf` | GTK file chooser when the desktop is Hyprland |
 | `configs/hypr/hyprland.lua` | Hyprland dwindle config (live file symlink) |
 | `configs/waybar` | Hyprland bar (live, via symlink). Bottom of both screens |
 | `scripts/install-hyprland.sh` | From the tty prompt: install Hyprland and link that config |
-| `configs/bash_profile` | tty1 login stays a shell (live `~/.bash_profile`, via symlink). Type `niri` or `start-hyprland` |
+| `configs/bash_profile` | tty1 login stays a shell (live `~/.bash_profile`, via symlink). Type `start-hyprland` |
 | `configs/hypr/wallpapers/` | Fractal wallpapers. Super+Shift+Return picks one |
 | `configs/keyd` | Keychron media and knob keys (`/etc/keyd/default.conf`). Super alone does nothing |
 | `packages/extra.txt` | Extra **repo** packages (pacman), including `paru` |
@@ -37,7 +35,7 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `scripts/pkg-add.sh` | Install a package *and* record it |
 | `scripts/launch-webapp.sh` | Title-less Chrome `--app=URL` (profile still under `~/.local/share/borg`) |
 | `scripts/launch-or-focus-webapp.sh` | Focus a title-less webapp, or launch it |
-| `scripts/launch-or-focus-app.sh` | Focus a native app by app-id, or launch it |
+| `scripts/launch-or-focus-app.sh` | Focus a native app by window class, or launch it |
 | `scripts/launch-discord.sh` | Super+Shift+D: focus Discord, skip the updater splash |
 | `scripts/launch-youtube.sh` | Super+Shift+Y: YouTube Music, then YouTube |
 | `scripts/launch-steam.sh` | Super+Shift+S: focus Steam, skip notification toasts |
@@ -84,5 +82,5 @@ off `next.md`. The inbox is emptied after that. Same loop as
 1. Install CachyOS with NVIDIA open drivers (this box is an RTX 2060).
 2. Create user `willyfresh`, put this repo at `~/Projects/cachyos-gaming`.
 3. `./setup.sh`
-4. Log in on niri and confirm both ASUS VE247 monitors come up (see `records/hardware.md`).
-5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell. Type `start-hyprland` for dwindle, or `niri` for the other session. Waybar starts with Hyprland. Do not run both compositors at once, and do not `exec` either command from `bash_profile`.
+4. Confirm both ASUS VE247 monitors come up (see `records/hardware.md`).
+5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell. Type `start-hyprland`. Waybar starts with Hyprland. Do not `exec` that command from `bash_profile`.

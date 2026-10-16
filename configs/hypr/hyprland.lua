@@ -13,7 +13,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- HYPRLAND_NO_SD_VARS is set. Do not start hyprland-session.target
 -- by hand. Noctalia is not part of this session.
 
--- Same places as niri. Auto layout puts the HDMI panel on the left.
+-- Auto layout puts the HDMI panel on the left, so the serial pin stays.
 -- Left: DP-1, serial K1LMQS100417. Right: HDMI-A-1, serial C5LMQS118094.
 hl.monitor({
     output   = "desc:Ancor Communications Inc VE247 K1LMQS100417",
@@ -86,8 +86,7 @@ hl.window_rule({
     center = true,
 })
 
--- Apps. Same scripts as niri. They ask niri which window to focus, miss,
--- and launch a new one while niri is not running.
+-- Apps. An open window is focused. A miss launches a new one.
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(bin .. "/hypr-clipboard.sh"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
@@ -189,7 +188,7 @@ hl.bind(mainMod .. " + ALT + P", function()
     end, { timeout = 500, type = "oneshot" })
 end)
 
--- Same width step as niri: 10% of the screen, not Omarchy's left-edge resize.
+-- 10% of the screen, not Omarchy's left-edge resize.
 local function resize_by(x_sign, y_sign)
     return function()
         local mon = hl.get_active_monitor()
@@ -316,7 +315,7 @@ end
 hl.bind(mainMod .. " + up", focus_or_workspace("up", "e-1"))
 hl.bind(mainMod .. " + down", focus_or_workspace("down", "e+1"))
 
--- Super+Ctrl+arrows always change workspace, the way niri does.
+-- Super+Ctrl+arrows always change workspace on this screen.
 -- Left and Up are the previous occupied desk. Right and Down are the next.
 local function focus_workspace_rel(sel)
     return function()

@@ -3,7 +3,7 @@
 
 Windows mode stays on. Writes:
   Fn+F4  -> Super+Space (launcher), Super+E stays files
-  Fn+F8  -> F18 (niri media toggle; Chrome steals Play)
+  Fn+F8  -> F18 (media toggle; Chrome steals Play)
   side cluster (crop/mic/light/circle/triangle/square/X)
          -> Print, F20 (mic mute), F13-F17
 

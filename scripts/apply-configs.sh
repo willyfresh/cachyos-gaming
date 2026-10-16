@@ -55,7 +55,9 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/waybar-ws.py" \
   "$REPO_ROOT/scripts/waybar-locks.py" \
   "$REPO_ROOT/scripts/waybar-updates.py" \
+  "$REPO_ROOT/scripts/waybar-notifications.py" \
   "$REPO_ROOT/scripts/waybar-calendar.py" \
+  "$REPO_ROOT/scripts/waybar-clock.py" \
   "$REPO_ROOT/scripts/keychron-v6-via.py" \
   "$REPO_ROOT/scripts/neomutt-icat.sh"
 link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.sh"
@@ -83,7 +85,9 @@ link_path "$REPO_ROOT/scripts/waybar-media.py" "$HOME/.local/bin/waybar-media.py
 link_path "$REPO_ROOT/scripts/waybar-ws.py" "$HOME/.local/bin/waybar-ws.py"
 link_path "$REPO_ROOT/scripts/waybar-locks.py" "$HOME/.local/bin/waybar-locks.py"
 link_path "$REPO_ROOT/scripts/waybar-updates.py" "$HOME/.local/bin/waybar-updates.py"
+link_path "$REPO_ROOT/scripts/waybar-notifications.py" "$HOME/.local/bin/waybar-notifications.py"
 link_path "$REPO_ROOT/scripts/waybar-calendar.py" "$HOME/.local/bin/waybar-calendar.py"
+link_path "$REPO_ROOT/scripts/waybar-clock.py" "$HOME/.local/bin/waybar-clock.py"
 link_path "$REPO_ROOT/scripts/keychron-v6-via.py" "$HOME/.local/bin/keychron-v6-via.py"
 
 if [[ -f "$CONFIGS_DIR/applications/steam.desktop" ]]; then

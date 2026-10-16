@@ -66,6 +66,7 @@ xdg-desktop-portal-hyprland
 # Bar and launcher for that session.
 waybar
 fuzzel
+mako
 otf-font-awesome
 tmux
 yazi

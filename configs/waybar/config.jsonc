@@ -15,10 +15,12 @@
     "modules-center": [
         "custom/locks",
         "idle_inhibitor",
-        "clock",
+        "custom/clock",
+        "clock#date",
         "custom/weather"
     ],
     "modules-right": [
+        "custom/notifications",
         "custom/updates",
         "tray",
         "pulseaudio",
@@ -185,8 +187,17 @@
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
-    "clock": {
-        "format": "{:%a %m-%d  %H:%M}",
+    "custom/clock": {
+        "exec": "$HOME/.local/bin/waybar-clock.py",
+        "return-type": "json",
+        "interval": 1,
+        "signal": 4,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-clock.py menu",
+        "on-click-right": "$HOME/.local/bin/waybar-clock.py next"
+    },
+    "clock#date": {
+        "format": "{:%a, %b %d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<span font_family='MesloLGS Nerd Font Mono'><small>{calendar}</small></span>",
         "on-click": "$HOME/.local/bin/waybar-calendar.py",
         "calendar": {
@@ -215,6 +226,14 @@
             { "type": "screenshare", "tooltip": true },
             { "type": "audio-in", "tooltip": true }
         ]
+    },
+    "custom/notifications": {
+        "exec": "$HOME/.local/bin/waybar-notifications.py",
+        "return-type": "json",
+        "interval": 1,
+        "hide-empty-text": true,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-notifications.py open"
     },
     "custom/updates": {
         "exec": "$HOME/.local/bin/waybar-updates.py",

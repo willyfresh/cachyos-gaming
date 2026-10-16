@@ -86,6 +86,7 @@ button:hover {
 }
 
 #clock,
+#custom-clock,
 #battery,
 #cpu,
 #memory,
@@ -126,7 +127,8 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
+#clock,
+#custom-clock {
     background-color: #64727D;
 }
 
@@ -380,6 +382,7 @@ label:focus {
 #idle_inhibitor.activated,
 #tray,
 #clock,
+#custom-clock,
 #custom-locks,
 #custom-weather,
 #pulseaudio,
@@ -398,6 +401,7 @@ label:focus {
 #custom-mem,
 #custom-disk,
 #custom-gpu,
+#custom-notifications,
 #custom-updates,
 #network,
 #network.disconnected,
@@ -410,9 +414,11 @@ label:focus {
 #pulseaudio:hover,
 #idle_inhibitor:hover,
 #clock:hover,
+#custom-clock:hover,
 #custom-locks:hover,
 #custom-weather:hover,
 #privacy:hover,
+#custom-notifications:hover,
 #custom-updates:hover,
 #custom-media:hover,
 #custom-cpu:hover,

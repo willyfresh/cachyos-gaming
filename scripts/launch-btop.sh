@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Super+Ctrl+T: floating btop. Focus if it exists, close if it is already
-# focused, otherwise spawn Alacritty with app-id "btop".
+# focused, otherwise spawn kitty with app-id "btop".
 set -euo pipefail
 
 id=""
@@ -27,4 +27,4 @@ if [[ -n ${id:-} ]]; then
   exec hyprctl dispatch "hl.dsp.focus({ window = \"address:${id}\" })"
 fi
 
-exec setsid alacritty --class btop --title btop -e btop
+exec setsid kitty --class btop --title btop -e btop

@@ -91,17 +91,17 @@ LazyVim applied 2026-10-14. The starter is `~/.config/nvim`, cloned
 from https://github.com/LazyVim/starter with `.git` removed. It is
 not a pacman package and it is not in this repo. Plugins are
 synced. Mason installed `tree-sitter-cli` and `stylua`. `nvim` is
-that config. No key. Super+Return stays Alacritty. VS Code extras
+that config. No key. Super+Return opens kitty. VS Code extras
 are still off. `:LazyExtras` is where those get turned on.
 
 tmux 3.8-1.1 is installed. `packages/extra.txt` has it. No key.
 
 ## Image TUIs open in kitty
 
-Applied 2026-10-14. Fuzzel's terminal stays Alacritty. Super+Return
-stays Alacritty. The three that draw pictures have desktop entries
-whose Exec is kitty, and `Terminal=false`, so Fuzzel does not wrap
-them again.
+Applied 2026-10-14 for the three picture apps. As of 2026-10-15,
+Fuzzel's terminal is kitty and Super+Return opens kitty. Those three
+still launch kitty themselves, with `Terminal=false`, so the window
+class stays theirs.
 
 - superfile: `kitty --class superfile -e spf`
 - concord: `kitty --class concord -e concord`
@@ -113,7 +113,8 @@ when the viewer returns. It does not pop an image up on every
 message. Other attachment types still use `/etc/mailcap`.
 
 lynx, neovim, caligula, valvefm, and steam-tui do not draw images.
-yazi is not installed. LazyVim's image plugins are still off.
+yazi 26.9.1-2.1 is installed. Its desktop entry is `Terminal=true`,
+so Fuzzel opens it in kitty. LazyVim's image plugins are still off.
 
 ## Update needs a restart
 
@@ -144,8 +145,8 @@ actually on the bar. Fuzzel was the window still on Solarized cream.
 
 ## Kitty opens maximized
 
-Answered 2026-10-14. Nothing in this repo fullscreen's kitty.
-`~/.config/kitty` is empty, and Hyprland has no kitty rule.
+Answered 2026-10-14. Nothing in this repo fullscreen's kitty,
+and Hyprland has no kitty rule.
 
 Kitty remembers the OS window state. `~/.cache/kitty/main.json`
 says `"window-state": "maximized"`, and the live window has
@@ -155,8 +156,9 @@ maximized and "only window" look the same until a second window
 opens. Chrome and VS Code on an empty workspace are that same size
 with the flag off.
 
-Super+F once clears the remembered maximize. `remember_window_size no`
-in a kitty config would stop it coming back. Not applied.
+Applied 2026-10-15. `configs/kitty/kitty.conf` sets
+`remember_window_size no`, linked at `~/.config/kitty/kitty.conf`.
+A new kitty no longer reopens maximized.
 
 ## Hyprland bar
 
@@ -189,7 +191,8 @@ It is not in the CachyOS repos. The only `croft` package hit is
 Mycroft's `mimic1`. Neovim stays until croft is installed and you
 say it replaces it. No key.
 
-Fuzzel opens Neovim and Superfile in Alacritty as of 2026-10-09.
+Fuzzel opened Neovim and Superfile in Alacritty as of 2026-10-09.
+Superseded 2026-10-15: Fuzzel's terminal is kitty.
 
 ## Keychron keys on Hyprland
 
@@ -558,8 +561,8 @@ games that need it. Run `steamcmd` once before the first `steam-tui`.
 Super+Shift+D stays the Electron Discord app. Delorean was not
 installed.
 
-kitty 0.49.2-1.1 is installed for Concord images. Run `concord` inside
-kitty. Super+Return stays Alacritty.
+kitty 0.49.2-1.1 is the everyday terminal. Super+Return opens it,
+and Fuzzel uses it for `Terminal=true` apps.
 
 ## Super alone does nothing
 

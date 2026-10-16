@@ -125,7 +125,7 @@ echo
 read -r -p "Press Enter to close. "
 """
     subprocess.Popen(
-        ["alacritty", "--class", "update", "--title", title, "-e", "bash", "-lc", command],
+        ["kitty", "--class", "update", "--title", title, "-e", "bash", "-lc", command],
         start_new_session=True,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,

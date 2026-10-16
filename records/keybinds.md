@@ -156,7 +156,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Alt+Space | — | — | Apps menu |
 | Super+Ctrl+Space | Previous input | — | Cycle wallpaper |
 | Super+Ctrl+Shift+Space | — | — | Pick theme |
-| Super+Return | — | Alacritty | Terminal |
+| Super+Return | — | kitty | Terminal |
 | Super+Shift+Return | — | Wallpaper picker (Hyprland) | Google Messages |
 | Super+Alt+Return | — | — | Tmux terminal |
 | Super+Ctrl+Return | Narrator | — | Herdr |

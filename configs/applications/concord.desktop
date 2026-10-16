@@ -4,7 +4,7 @@ Name=Concord
 GenericName=Discord client
 Comment=Terminal Discord client
 TryExec=concord
-# Pictures use the kitty graphics protocol. Alacritty draws blocks.
+# Own window class. Pictures use the kitty graphics protocol.
 Exec=kitty --class concord -e concord
 Terminal=false
 Icon=discord

@@ -913,3 +913,18 @@ A running record of installs and config changes. Package names that should survi
   `sudo pacman -Rns xwayland-satellite`. Hyprland has its own
   Xwayland. This session cannot type the sudo password.
 - Mango was not installed.
+
+## 2026-10-15 — installed yazi
+
+- requested: yazi
+- repos (pacman): yazi
+- AUR (paru): (none)
+
+## 2026-10-15 — kitty is the terminal
+
+- Super+Return opens kitty. Fuzzel's `terminal` is `kitty -e`.
+  The session exports `TERMINAL=kitty`.
+- btop and the update window open in kitty. The picture apps still
+  launch kitty themselves so their window class stays theirs.
+- `configs/kitty/kitty.conf` sets `remember_window_size no`, so a
+  new kitty does not reopen maximized. Alacritty stays installed.

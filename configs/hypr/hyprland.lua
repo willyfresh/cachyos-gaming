@@ -8,6 +8,7 @@ local quit = "command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("TERMINAL", "kitty")
 
 -- Hyprland imports WAYLAND_DISPLAY into the user manager unless
 -- HYPRLAND_NO_SD_VARS is set. Do not start hyprland-session.target
@@ -93,7 +94,7 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
 hl.bind("CTRL + SHIFT + F2", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("alacritty"))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(quit))

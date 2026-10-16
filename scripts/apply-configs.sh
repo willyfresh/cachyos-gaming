@@ -26,6 +26,8 @@ mkdir -p "$HOME/.config/mako"
 link_path "$CONFIGS_DIR/mako/config" "$HOME/.config/mako/config"
 link_path "$CONFIGS_DIR/waybar" "$HOME/.config/waybar"
 link_path "$CONFIGS_DIR/fuzzel" "$HOME/.config/fuzzel"
+mkdir -p "$HOME/.config/kitty"
+link_path "$CONFIGS_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 
 mkdir -p "$HOME/.local/share/applications"
 mkdir -p "$HOME/.local/bin"

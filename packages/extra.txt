@@ -56,7 +56,7 @@ neovim
 caligula
 neomutt
 
-# Concord images. Super+Return stays Alacritty.
+# Everyday terminal. Super+Return and Fuzzel.
 kitty
 
 # Hyprland session.
@@ -68,3 +68,4 @@ waybar
 fuzzel
 otf-font-awesome
 tmux
+yazi

@@ -1,2 +1,9 @@
 # Scratch inbox. Dump obstacles here, then hand the file over.
 # Absorbed items live in records/next.md.
+Act as an expert Linux systems administrator and rice consultant. I am on Arch/CachyOS using Hyprland. I have an existing riced setup that I need to completely refactor. 
+
+My goals for this refactor are:
+1. Standardize and organize all of my active configuration files into a centralized 'dotfiles' repository using Git and GNU Stow for clean symlinking.
+2. Replace my current lock screen and SDDM login settings with a coordinated Matrix universe theme featuring green falling digital rain code as the background.
+
+Keep your answers highly concise, optimized for a Linux CLI terminal interface, and provide direct copy-pasteable commands, refactoring file structures, or config snippets.

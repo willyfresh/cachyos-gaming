@@ -13,14 +13,14 @@
         "custom/media"
     ],
     "modules-center": [
+        "custom/locks",
         "idle_inhibitor",
         "clock",
-        "custom/locks"
+        "custom/weather"
     ],
     "modules-right": [
         "custom/updates",
         "tray",
-        "custom/weather",
         "pulseaudio",
         "privacy",
         "custom/cpu",
@@ -229,8 +229,10 @@
         "exec": "$HOME/.local/bin/waybar-weather.py",
         "return-type": "json",
         "interval": 900,
+        "signal": 3,
         "tooltip": true,
-        "on-click": "$HOME/.local/bin/waybar-weather.py detail"
+        "on-click": "$HOME/.local/bin/waybar-weather.py detail",
+        "on-click-right": "$HOME/.local/bin/waybar-weather.py next"
     },
     "custom/media": {
         "exec": "$HOME/.local/bin/waybar-media.py",

@@ -127,7 +127,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+V | — | Focus floating vs tiling | — |
 | Super+Ctrl+V | Sound output / volume mixer | — | Universal paste |
 | **W** | | | |
-| Super+W | Widgets | — | Browser |
+| Super+W | Widgets | Weather | Browser |
 | Super+Shift+W | — | Chrome | Omawrite |
 | Super+Ctrl+W | — | — | Network panel |
 | Super+Ctrl+Alt+W | — | — | Weather as notification |

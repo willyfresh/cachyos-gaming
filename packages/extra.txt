@@ -69,3 +69,5 @@ fuzzel
 otf-font-awesome
 tmux
 yazi
+hyprlock
+hypridle

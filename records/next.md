@@ -58,6 +58,52 @@ over.
 | Noctalia | — | removed 2026-10-15 |
 | niri | — | removed 2026-10-15 |
 | Mango | you | later |
+| Stow layout | you pick | backlog |
+| Matrix rain on the lock and on SDDM | you pick | hyprlock and hypridle installed 2026-10-16; rain and SDDM still backlog |
+
+## Stow layout
+
+Backlog, from the 2026-10-16 inbox prompt. Nothing was moved.
+
+This repo is already the dotfiles repo. `./setup.sh` installs the
+package lists, and `scripts/apply-configs.sh` symlinks the live
+files. `hyprland.lua` is linked as one file so Hyprland's runtime
+files stay out of the repo. Scripts go to `~/.local/bin`. Desktop
+entries go to `~/.local/share/applications`.
+`scripts/apply-system.sh` copies keyd, udev, and the Limine hook
+into `/etc` with sudo. GNU Stow is not installed. A Stow tree would
+replace those two scripts. The current links already come back from
+`./setup.sh`.
+
+## Matrix rain on the lock and on SDDM
+
+hyprlock 0.9.6-3.1 and hypridle 0.1.8-2.1 are installed. The lock
+stays the blurred screenshot. Rain and SDDM are still backlog.
+
+The prompt asks for green falling-code rain on the lock screen and
+on the SDDM login.
+
+SDDM 0.21.0-8 is installed. `sddm.service` is disabled and inactive.
+`/etc/sddm.conf` is an empty `[Autologin]` section. The themes on
+disk are elarun, maldives, and maya. tty1 stays a shell. Type
+`start-hyprland`. A greeter theme stays unseen until SDDM is the
+display manager. Turning SDDM on replaces that tty login.
+
+The lock file is `configs/hypr/hyprlock.conf`: Novalis green, a
+blurred screenshot, and the bar's date format. Super+L and
+Super+Alt+L call `hyprlock`. `hyprland.lua` starts `hypridle`,
+which is set to lock at 10 minutes and blank the screens at 15.
+Both are in `packages/extra.txt`. Super+L runs hyprlock.
+hyprlock paints its own background, so the desktop wallpaper does
+not show on the lock. The background path takes a still image.
+
+The falling-code screensaver was removed 2026-10-14. This prompt
+leaves idle savers off.
+
+When you want one of these built:
+
+- Point the hyprlock background at a rain still.
+- Enable SDDM with a rain greeter. That becomes the login.
 
 ## Active window green border
 
@@ -179,7 +225,9 @@ Applied 2026-10-12. The gray top border is gone. Language, power
 profile, battery, and backlight are off the bar. The clock shows
 `Sat 10-12  14:26` and a click no longer swaps it for the date.
 The eye stays. Weather sits beside the clock in °F, and the
-tooltip has the condition plus today's high and low. The place comes from the public IP.
+tooltip has the condition plus today's high and low. As of 2026-10-16
+the place is no longer the public IP. Right click cycles Citrus
+Heights, Sugar Bowl, Nevada City, Tahoe, and San Francisco.
 
 ## croft instead of neovim
 
@@ -243,11 +291,11 @@ Applied 2026-09-22.
 | Super+A | unbound (was the Noctalia control center) |
 | Super+I | unbound (was Noctalia settings) |
 | Super+N | Notification history (Keychron circle still does this too) |
-| Super+W | unbound (was the Noctalia weather tab) |
+| Super+W | Weather Fuzzel (was the Noctalia weather tab) |
 | Super+B | unbound (was Firefox) |
 | Super+D | unbound (was Discord) |
 
-Super+W used to toggle a tabbed column. That action has no key now.
+Super+W opens the weather Fuzzel. It used to toggle a tabbed column.
 The Noctalia control center, settings, and weather tab were removed
 2026-10-15. Weather on the bar is the Waybar chip.
 

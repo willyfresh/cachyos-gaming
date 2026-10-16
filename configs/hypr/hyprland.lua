@@ -114,6 +114,7 @@ hl.bind(mainMod .. " + SHIFT + O", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^gimp' setsid gimp]]))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(bin .. "/launch-steam.sh"))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^[Cc]ode$' code]]))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(bin .. "/waybar-weather.py detail"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^google-chrome$' setsid google-chrome-stable]]))
 hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.exec_cmd(bin .. "/launch-youtube.sh"))
 hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(bin .. "/launch-btop.sh"))

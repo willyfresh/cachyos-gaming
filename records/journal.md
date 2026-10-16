@@ -934,3 +934,31 @@ A running record of installs and config changes. Package names that should survi
 - The eye is the first chip in the center, before the clock. Caps
   and Num Lock are the last chip in the center, after the clock.
 - The update count is the first chip on the right.
+
+## 2026-10-16 — installed hyprlock hypridle
+
+- requested: hyprlock hypridle
+- repos (pacman): hyprlock 0.9.6-3.1, hypridle 0.1.8-2.1
+- AUR (paru): (none)
+- The blurred screenshot lock in `configs/hypr/hyprlock.conf` is unchanged.
+  hypridle is running. It locks at 10 minutes and blanks the screens at 15.
+
+## 2026-10-16 — weather places
+
+- The weather chip uses five fixed places. Right click cycles
+  Citrus Heights, Sugar Bowl, Nevada City, Tahoe, and San Francisco.
+  It starts at Citrus Heights.
+- Hover is still that place's condition, temperature, high, and low.
+- Left click and Super+W open that place's week in Fuzzel. The other
+  places are lines under it: city, condition, temperature, feels-like,
+  and "See forecast" on the right. Choosing one opens that week the
+  same way. The window fits the list. The chip stays on the place
+  right-click selected. Chrome stays on Super+Shift+W.
+- Sugar Bowl is the Norden resort. Tahoe is the lake.
+- Each Fuzzel row is padded out to the menu's 78 characters.
+
+## 2026-10-16 — center chips
+
+- Caps and Num Lock are the first chip in the center. The eye and
+  the clock follow. Weather is the last chip in the center.
+- The right side starts with the update count, then the tray.

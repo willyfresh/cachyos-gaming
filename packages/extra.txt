@@ -71,3 +71,4 @@ tmux
 yazi
 hyprlock
 hypridle
+nvtop

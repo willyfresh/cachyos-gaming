@@ -957,8 +957,44 @@ A running record of installs and config changes. Package names that should survi
 - Sugar Bowl is the Norden resort. Tahoe is the lake.
 - Each Fuzzel row is padded out to the menu's 78 characters.
 
+## 2026-10-16 — CPU chip
+
+- k10temp Tctl is connected. The chip shows that temperature only
+  above 175°F. Below that, the number is usage from `/proc/stat`.
+- The usage sample stores idle, total, and the last percent. The
+  reader unpacked every field into idle and total, failed, and
+  drew 0%. It now reads the first two fields. A refresh on the
+  other screen in the same moment reuses that percent.
+
+## 2026-10-16 — device list
+
+- The device menu lists the 12 logical-processor percentages on one
+  line labeled Cores. The first percent sits in the percent column.
+  Package temperature stays on the CPU line. There is no per-core
+  temperature. Memory's size and the network address sit one space
+  further right so they meet that same column.
+- Memory shows used and total. The modules have no name without
+  root, and no temperature.
+- GPU is above the drives. The card name is at the end of the line.
+  The drive section is headed "Drives". Each row ends with the
+  disk model.
+- Network order is address, down and up, adapter, then via.
+- The window shrinks to the list.
+- Super+Escape opens that menu. Left click on the chips still does too.
+- Return opens a tool. CPU, cores, and memory open a tiled btop.
+  Super+Ctrl+T opens its own tiled btop. A mounted drive opens
+  yazi at that mount. TB2 does nothing while it is unmounted.
+  The GPU opens a tiled nvtop. A connected network opens its
+  gateway in the browser. A down link opens a tiled nmtui.
+
 ## 2026-10-16 — center chips
 
 - Caps and Num Lock are the first chip in the center. The eye and
   the clock follow. Weather is the last chip in the center.
 - The right side starts with the update count, then the tray.
+
+## 2026-10-16 — installed nvtop
+
+- requested: nvtop
+- repos (pacman): nvtop
+- AUR (paru): (none)

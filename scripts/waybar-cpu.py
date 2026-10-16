@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -13,6 +14,9 @@ from waybar_level import bare, face, level
 ICON = "\uf2db"
 CPU = Path("/sys/devices/pci0000:00/0000:00:18.3/hwmon")
 SAMPLE = Path.home() / ".cache" / "novalis" / "cpu-sample"
+# The other screen's chip runs a few milliseconds later. Reuse the
+# percent this one just stored instead of measuring that gap.
+MIN_GAP = 0.5
 
 
 def cpu_percent(*, store: bool = True) -> int:
@@ -20,20 +24,40 @@ def cpu_percent(*, store: bool = True) -> int:
     nums = [int(n) for n in parts[1:]]
     idle = nums[3] + nums[4]
     total = sum(nums)
+    now = time.monotonic()
     percent = 0
+    prev = None
+    prev_percent = None
+    prev_stamp = None
     try:
-        prev_idle, prev_total = (int(n) for n in SAMPLE.read_text().split())
+        # The saved line is idle, total, last percent, then a timestamp.
+        # Only the first two are counters.
+        fields = SAMPLE.read_text().split()
+        prev = (int(fields[0]), int(fields[1]))
+        if len(fields) >= 3:
+            prev_percent = int(fields[2])
+        if len(fields) >= 4:
+            prev_stamp = float(fields[3])
+    except (OSError, ValueError, IndexError):
+        prev = None
+    if (
+        store
+        and prev_stamp is not None
+        and prev_percent is not None
+        and now - prev_stamp < MIN_GAP
+    ):
+        return prev_percent
+    if prev is not None:
+        prev_idle, prev_total = prev
         delta = total - prev_total
         if delta > 0:
             percent = round(100 * (delta - (idle - prev_idle)) / delta)
             percent = max(0, min(100, percent))
-    except (OSError, ValueError):
-        pass
     # The device list peeks without storing, so the bar's next sample
     # still covers the whole interval.
     if store:
         SAMPLE.parent.mkdir(parents=True, exist_ok=True)
-        SAMPLE.write_text(f"{idle} {total} {percent}")
+        SAMPLE.write_text(f"{idle} {total} {percent} {now:.3f}")
     return percent
 
 

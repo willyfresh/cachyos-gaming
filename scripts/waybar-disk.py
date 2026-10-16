@@ -43,33 +43,33 @@ def disk_temp_f(dev: str) -> int | None:
 
 def lsblk() -> list[dict]:
     raw = subprocess.check_output(
-        ["lsblk", "-J", "-b", "-o", "NAME,LABEL,TYPE,SIZE,MOUNTPOINTS"],
+        ["lsblk", "-J", "-b", "-o", "NAME,LABEL,TYPE,SIZE,MOUNTPOINTS,MODEL"],
         text=True,
     )
     disks: list[dict] = []
 
-    def walk(nodes: list[dict]) -> None:
+    def walk(nodes: list[dict], model: str = "") -> None:
         for node in nodes:
-            walk(node.get("children") or [])
+            here = (node.get("model") or "").strip() or model
+            walk(node.get("children") or [], here)
             if node.get("type") != "part":
                 continue
             mounts = [m for m in (node.get("mountpoints") or []) if m]
             label = (node.get("label") or "").strip()
             dev = node.get("name") or ""
+            item = {
+                "mount": mounts[0] if mounts else None,
+                "size": int(node["size"]),
+                "dev": dev,
+                "model": here,
+            }
             if "/" in mounts:
-                disks.append({
-                    "name": "root",
-                    "mount": "/",
-                    "size": int(node["size"]),
-                    "dev": dev,
-                })
+                item["name"] = "root"
+                item["mount"] = "/"
+                disks.append(item)
             elif label:
-                disks.append({
-                    "name": label,
-                    "mount": mounts[0] if mounts else None,
-                    "size": int(node["size"]),
-                    "dev": dev,
-                })
+                item["name"] = label
+                disks.append(item)
 
     walk(json.loads(raw).get("blockdevices") or [])
     disks.sort(key=lambda d: (d["name"] != "root", d["name"]))

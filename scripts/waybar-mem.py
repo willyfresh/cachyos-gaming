@@ -14,22 +14,33 @@ from waybar_level import bare, face, level
 ICON = "\uefc5"
 
 
-def mem_percent() -> int:
+def mem_bytes() -> tuple[int, int]:
+    """Used and total, in bytes. These modules do not expose a temperature."""
     info: dict[str, int] = {}
     for line in Path("/proc/meminfo").read_text().splitlines():
         key, val = line.split(":", 1)
         info[key] = int(val.strip().split()[0])
-    total = info["MemTotal"]
-    avail = info["MemAvailable"]
-    return round(100 * (total - avail) / total)
+    total = info["MemTotal"] * 1024
+    used = (info["MemTotal"] - info["MemAvailable"]) * 1024
+    return used, total
+
+
+def mem_percent() -> int:
+    used, total = mem_bytes()
+    return round(100 * used / total) if total else 0
+
+
+def gb(n: int) -> str:
+    return f"{n / (1024 ** 3):.0f}G"
 
 
 def main() -> None:
     percent = mem_percent()
+    used, total = mem_bytes()
     value, suffix = face(None, percent)
     print(json.dumps({
         "text": f"{bare(value, suffix)} {ICON}",
-        "tooltip": "Memory\nNo temperature sensor on these modules",
+        "tooltip": f"Memory\n{gb(used)} / {gb(total)}",
         "class": level(None, percent),
     }, ensure_ascii=False), flush=True)
 

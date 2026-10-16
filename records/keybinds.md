@@ -242,7 +242,7 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
-| Super+Escape | Close Magnifier | — | System menu |
+| Super+Escape | Close Magnifier | Devices | System menu |
 | Super+Shift+Escape | — | — | — |
 | Ctrl+Alt+Delete | Security screen | Quit Hyprland | Close all windows |
 | Super+Ctrl+Delete | — | — | Toggle laptop panel |

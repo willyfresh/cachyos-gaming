@@ -6,7 +6,7 @@ Captured 2026-09-02 on the first CachyOS niri install.
 | --- | --- |
 | Hostname | Novalis (was Borg until 2026-09-07) |
 | Distro | CachyOS (rolling), `linux-cachyos` 7.2.2 |
-| Desktop | niri 26.04 + noctalia (`cachyos-niri-noctalia` 1.4.0) |
+| Desktop | Hyprland, live. niri is still installed. Noctalia removed 2026-10-15 |
 | CPU | AMD Ryzen 5 5600X (6c/12t) |
 | RAM | 32 GiB |
 | GPU | NVIDIA GeForce RTX 2060 (TU106), driver 610.57.04 (`nvidia-open`) |

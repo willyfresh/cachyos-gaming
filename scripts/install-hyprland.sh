@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Install Hyprland beside niri. Run this from the tty prompt.
 #
-# It does not start Hyprland, does not start Noctalia, and does not
-# change how login works. After it finishes, type: start-hyprland
+# It does not start Hyprland and does not change how login works.
+# After it finishes, type: start-hyprland
 
 set -euo pipefail
 # shellcheck source=lib.sh
@@ -20,7 +20,7 @@ need_cmd pacman
 
 journal_append "Hyprland config beside niri" "$(cat <<'EOF'
 - packages: hyprland, xdg-desktop-portal-hyprland
-- config: configs/hypr/hyprland.lua (dwindle) and configs/waybar. Noctalia is not started.
+- config: configs/hypr/hyprland.lua (dwindle) and configs/waybar.
 - portal: configs/xdg-desktop-portal/hyprland-portals.conf
 - from the tty prompt type start-hyprland. type niri for the other session.
 - Super+Shift+Q quits Hyprland. Do not run both compositors at once.

@@ -879,3 +879,19 @@ A running record of installs and config changes. Package names that should survi
 - The meter chips no longer reserve three digits. Now playing,
   language, and keyboard-state no longer have a CSS minimum width.
 - The GPU chip no longer keeps spaces after the card icon.
+
+## 2026-10-15 — Noctalia removed
+
+- The shell config, its plugins list, and the live
+  `~/.config/noctalia` link are gone. niri no longer starts it.
+- Super+L is hyprlock. hypridle still locks at 10 minutes and blanks
+  the screens at 15.
+- niri's old shell keys now use Fuzzel, the clipboard list, and
+  PipeWire. Control center, settings, and the weather tab are
+  unbound. The screens have no backlight.
+- `noctalia` and the `cachyos-niri-noctalia` metapackage are still
+  installed. Removing the metapackage with `-Rns` would also take
+  niri. The safe removal is `sudo pacman -R cachyos-niri-noctalia`
+  and then `sudo pacman -Rns noctalia`. This session cannot type
+  the sudo password.
+- Mango is a later idea. Nothing was installed.

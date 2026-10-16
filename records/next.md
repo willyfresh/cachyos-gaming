@@ -55,6 +55,8 @@ over.
 | Update needs a restart | you confirm | applied 2026-10-14, mark on the Fuzzel row |
 | Fuzzel matches Novalis | you confirm | applied 2026-10-14 |
 | Kitty opens maximized | you | answered: kitty remembered it |
+| Noctalia | — | removed 2026-10-15 |
+| Mango | you | later |
 
 ## Active window green border
 
@@ -234,16 +236,16 @@ Applied 2026-09-22.
 
 | Key | Job |
 |-----|-----|
-| Super+A | Control center (Super+S still does this too) |
-| Super+I | Noctalia settings |
+| Super+A | unbound (was the Noctalia control center) |
+| Super+I | unbound (was Noctalia settings) |
 | Super+N | Notification history (Keychron circle still does this too) |
-| Super+W | Weather tab of the control center |
+| Super+W | unbound (was the Noctalia weather tab) |
 | Super+B | unbound (was Firefox) |
 | Super+D | unbound (was Discord) |
 
 Super+W used to toggle a tabbed column. That action has no key now.
-Weather is enabled in `configs/noctalia/config.toml`. It needs a
-location (Settings → Location) before the forecast fills in.
+The Noctalia control center, settings, and weather tab were removed
+2026-10-15. Weather on the bar is the Waybar chip.
 
 ## Omarchy letters worth absorbing
 
@@ -407,9 +409,9 @@ SuperGrok account used on Android and Delorean.
 
 ## Screensaver vs lock split
 
-Removed 2026-10-14. Nothing idle-launches a saver. Super+L is still
-the Noctalia lock. On Hyprland, hypridle still locks at 10 minutes
-and turns the screens off at 15. Lid close still locks.
+Removed 2026-10-14. Nothing idle-launches a saver. Super+L is
+hyprlock. hypridle still locks at 10 minutes and turns the screens
+off at 15. Lid close still locks.
 
 ## Dropbox missing
 
@@ -440,10 +442,11 @@ Windows mode stays. Applied 2026-09-09:
 - **Fn+F4** (six-pack): VIA remaps from Super+E to Super+Space so it
   opens the launcher. Super+E is still Nautilus.
 - **Fn+F8** play/pause: VIA sends F18; keyd turns that into
-  Ctrl+Shift+F8; niri toggles Noctalia media. HID Play is resume-only
+  Ctrl+Shift+F8; both sessions send that to playerctl. HID Play is resume-only
   and Chrome needs it for MPRIS, so we do not send Play.
 - **Knob cluster:** crop = region screenshot, mic = mute (maybe voice
-  input later), light = control center. Circle / triangle / square / X
+  input later). The light key was the Noctalia control center and is
+  unbound. Circle / triangle / square / X
   (F14–F17): circle = notification history, triangle = Grok Bot,
   square = cycle Steam/Heroic. X still unassigned. Mic stays mute
   until voice input.
@@ -483,17 +486,9 @@ Sign-in confirmed the same day. The folder pane is the unified inbox.
 
 ## Bar network label
 
-The ethernet chip on the bar does not need its text. Noctalia's
-network widget prints the interface or SSID because `show_label`
-defaults to true. The glyph stays, and the hover tooltip still has
-the name.
-
-```
-[widget.network]
-show_label = false
-```
-
-Applied 2026-09-26 in `configs/noctalia/config.toml`.
+The ethernet chip on the bar does not need its text. That widget
+lived in Noctalia, which was removed 2026-10-15. The Waybar network
+chip shows the address.
 
 ## Obsidian
 
@@ -537,7 +532,7 @@ work in. Install is `./scripts/pkg-add.sh inkscape` if you want it.
 
 Dropped 2026-10-07. niri has no layout besides the scrolling strip.
 A lone window opening full, then both shrinking to half, would need a
-watcher. Left the strip alone. Noctalia settings and btop still float.
+watcher. Left the strip alone. btop still floats.
 Delorean can still toggle one desk to dwindle with Super+Ctrl+L.
 
 ## Terminal apps, leave the mouse

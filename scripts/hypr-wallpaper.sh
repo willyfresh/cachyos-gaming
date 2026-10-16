@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Super+Shift+Return. Pick a color of the fractal wallpaper.
-# Same chord as niri's wallpaper picker. This one does not start Noctalia.
+# Super+Shift+Return. Pick a color from configs/hypr/wallpapers.
 set -euo pipefail
 
 state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/hypr"

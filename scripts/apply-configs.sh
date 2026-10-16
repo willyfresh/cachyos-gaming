@@ -8,7 +8,6 @@ source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib.sh"
 mkdir -p "$HOME/.config"
 
 link_path "$CONFIGS_DIR/niri" "$HOME/.config/niri"
-link_path "$CONFIGS_DIR/noctalia" "$HOME/.config/noctalia"
 
 if [[ -f "$CONFIGS_DIR/environment.d/gaming.conf" ]]; then
   mkdir -p "$HOME/.config/environment.d"
@@ -158,15 +157,6 @@ link_path "$CONFIGS_DIR/bash_profile" "$HOME/.bash_profile"
 
 if command -v update-desktop-database >/dev/null 2>&1; then
   update-desktop-database "$HOME/.local/share/applications" >/dev/null 2>&1 || true
-fi
-
-plugins_file="$PACKAGES_DIR/noctalia-plugins.txt"
-if command -v noctalia >/dev/null 2>&1 && [[ -f "$plugins_file" ]]; then
-  while read -r plugin; do
-    [[ -n "$plugin" ]] || continue
-    log "enabling noctalia plugin: $plugin"
-    noctalia msg plugins enable "$plugin" >/dev/null || warn "could not enable $plugin"
-  done < <(read_pkg_list "$plugins_file")
 fi
 
 log "configs applied"

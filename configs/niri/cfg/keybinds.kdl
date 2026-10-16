@@ -3,11 +3,8 @@ binds {
     // ────────────── Keybindings ──────────────
     // https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
 
-    // ─── noctalia-shell keybinds ───
-    // https://docs.noctalia.dev/getting-started/keybinds/
-
     Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
-    Mod+K                               hotkey-overlay-title="Keybind cheatsheet" { spawn "noctalia" "msg" "panel-toggle" "kenn/keybind-cheatsheet:cheatsheet"; }
+    Mod+K                               hotkey-overlay-title="Keybind cheatsheet" { spawn "/home/willyfresh/.local/bin/hypr-cheatsheet.sh"; }
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
@@ -30,19 +27,12 @@ binds {
     Mod+Shift+Alt+A                     hotkey-overlay-title="Grok Bot" { spawn "/home/willyfresh/.local/bin/launch-grok-bot.sh"; }
     Mod+L                               hotkey-overlay-title="Lock Screen" { spawn "/home/willyfresh/.local/bin/lock.sh"; }
 
-    // --- Noctalia ---
-    // Super alone does nothing. Super+Space opens the launcher.
-    Mod+Space                           hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
-    Mod+V                               hotkey-overlay-title="Clipboard history: noctalia clipboard" { spawn-sh "noctalia msg panel-toggle clipboard"; }
-    Mod+Shift+Return                    hotkey-overlay-title="Open Wallpaper Selector: noctalia wallpaper toggle" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
-    Mod+S                               hotkey-overlay-title="Open Control Center: noctalia controlCenter" { spawn-sh "noctalia msg panel-toggle control-center"; }
-    Mod+A                               hotkey-overlay-title="Control center" { spawn-sh "noctalia msg panel-toggle control-center"; }
-    Mod+I                               hotkey-overlay-title="Settings" { spawn-sh "noctalia msg settings-toggle"; }
+    // Super alone does nothing. Super+Space opens Fuzzel.
+    Mod+Space                           hotkey-overlay-title="Launcher" { spawn "fuzzel"; }
+    Mod+V                               hotkey-overlay-title="Clipboard history" { spawn "/home/willyfresh/.local/bin/hypr-clipboard.sh"; }
     Mod+Shift+S                         hotkey-overlay-title="Steam" { spawn "/home/willyfresh/.local/bin/launch-steam.sh"; }
-    Mod+N                               hotkey-overlay-title="Notifications" { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
-    Mod+W                               hotkey-overlay-title="Weather" { spawn-sh "noctalia msg panel-toggle control-center weather"; }
+    Mod+N                               hotkey-overlay-title="Notifications" { spawn "/home/willyfresh/.local/bin/hypr-notifications.sh"; }
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen" { spawn "/home/willyfresh/.local/bin/lock.sh"; }
-    Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "noctalia msg panel-toggle session"; }
 
     // Please set the text editor of your choice.
     // Mod+Shift+E                               hotkey-overlay-title="Open Text Editor: Zed" { spawn "zed"; }
@@ -51,19 +41,15 @@ binds {
     Mod+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
 
     // ─── Media Controls ───
-    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
-    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
-    XF86AudioMute                       allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
-    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
-    XF86AudioNext                       allow-when-locked=true { spawn-sh "noctalia msg media next"; }
-    XF86AudioPrev                       allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
-    XF86AudioPlay                       allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
-    XF86AudioPause                      allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
-    Ctrl+Shift+F8                       allow-when-locked=true hotkey-overlay-title="Play/pause (Keychron Fn+F8)" { spawn-sh "noctalia msg media toggle"; }
-
-    // ─── Brightness Controls ───
-    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
-    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"; }
+    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"; }
+    XF86AudioMute                       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioNext                       allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPrev                       allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioPlay                       allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioPause                      allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    Ctrl+Shift+F8                       allow-when-locked=true hotkey-overlay-title="Play/pause (Keychron Fn+F8)" { spawn-sh "playerctl play-pause"; }
 
     // ─── Window / workspace / monitor / size ───
     // Super+arrows focus. Ctrl = workspace, Alt = monitor, Shift = move.
@@ -226,11 +212,10 @@ binds {
     CTRL+Shift+2                        { screenshot-screen; }
     CTRL+Shift+3                        { screenshot-window; }
     Print                               hotkey-overlay-title="Screenshot: region (Keychron crop)" { screenshot; }
-    Ctrl+Shift+F1                       hotkey-overlay-title="Keychron light" { spawn-sh "noctalia msg panel-toggle control-center"; }
-    Ctrl+Shift+F2                       hotkey-overlay-title="Notifications (Keychron circle)" { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
+    Ctrl+Shift+F2                       hotkey-overlay-title="Notifications (Keychron circle)" { spawn "/home/willyfresh/.local/bin/hypr-notifications.sh"; }
     Ctrl+Shift+F3                       hotkey-overlay-title="Grok Bot (Keychron triangle)" { spawn "/home/willyfresh/.local/bin/launch-grok-bot.sh"; }
     Ctrl+Shift+F4                       hotkey-overlay-title="Steam / Heroic (Keychron square)" { spawn "/home/willyfresh/.local/bin/launch-steam-heroic.sh"; }
-    Ctrl+Shift+F6                       allow-when-locked=true hotkey-overlay-title="Mic mute (Keychron mic)" { spawn-sh "noctalia msg mic-mute"; }
+    Ctrl+Shift+F6                       allow-when-locked=true hotkey-overlay-title="Mic mute (Keychron mic)" { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.

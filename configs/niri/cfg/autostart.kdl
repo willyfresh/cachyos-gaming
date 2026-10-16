@@ -1,7 +1,6 @@
 // ────────────── Startup Applications ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
-    spawn-at-startup "noctalia"
     spawn-at-startup "dropbox" "start" "-i"
 
     // Chrome's "pick a file" dialog is xdg-desktop-portal, started by

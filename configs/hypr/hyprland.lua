@@ -1,5 +1,4 @@
 -- Hyprland on Novalis. Dwindle only. The bar is Waybar (configs/waybar).
--- Launcher, lock screen, clipboard, and control center stay on niri.
 -- From the tty prompt type: start-hyprland
 -- Super+Shift+Q quits back to that prompt.
 
@@ -12,7 +11,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 
 -- Hyprland imports WAYLAND_DISPLAY into the user manager unless
 -- HYPRLAND_NO_SD_VARS is set. Do not start hyprland-session.target
--- by hand, and do not start noctalia.
+-- by hand. Noctalia is not part of this session.
 
 -- Same places as niri. Auto layout puts the HDMI panel on the left.
 -- Left: DP-1, serial K1LMQS100417. Right: HDMI-A-1, serial C5LMQS118094.
@@ -123,8 +122,8 @@ hl.bind("CTRL + SHIFT + F3", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
 hl.bind("CTRL + SHIFT + F4", hl.dsp.exec_cmd(bin .. "/launch-steam-heroic.sh"))
 
 -- Media keys. keyd turns the Keychron knob and Fn+F8 into the Ctrl+Shift
--- chords. Noctalia is not running here, so these talk to PipeWire and
--- playerctl directly. The screens have no backlight, so brightness stays unbound.
+-- chords. These talk to PipeWire and playerctl directly. The screens
+-- have no backlight, so brightness stays unbound.
 local media = { locked = true }
 local media_repeat = { locked = true, repeating = true }
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), media_repeat)

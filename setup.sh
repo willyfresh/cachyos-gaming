@@ -22,8 +22,8 @@ Bootstrap cachyos-gaming on a CachyOS niri install.
   ./setup.sh --configs-only  symlink configs/ into ~/.config
   ./setup.sh -h              show this help
 
-Assumes CachyOS was installed with the niri + noctalia desktop. This script
-does not reinstall the base system — only extras and your configs.
+Assumes a CachyOS install. This script does not reinstall the base
+system — only extras and your configs.
 
 To add packages later:  ./scripts/pkg-add.sh <packages...>
 EOF

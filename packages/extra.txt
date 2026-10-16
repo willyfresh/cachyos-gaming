@@ -59,7 +59,7 @@ neomutt
 # Concord images. Super+Return stays Alacritty.
 kitty
 
-# Hyprland session beside niri. Noctalia stays on niri.
+# Hyprland session beside niri.
 hyprland
 xdg-desktop-portal-hyprland
 

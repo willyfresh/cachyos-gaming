@@ -1,15 +1,15 @@
 # cachyos-gaming
 
-Dotfiles and rebuild notes for **niri on CachyOS** (hostname: Novalis).
+Dotfiles and rebuild notes for **Hyprland on CachyOS** (hostname: Novalis). niri is still installed.
 
-If this machine is wiped, install CachyOS again with the niri + noctalia desktop, clone or copy this repo, then run:
+If this machine is wiped, install CachyOS again, clone or copy this repo, then run:
 
 ```bash
 cd ~/Projects/cachyos-gaming
 ./setup.sh
 ```
 
-That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (via paru), then points `~/.config/niri` and `~/.config/noctalia` at the copies in this repo.
+That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (via paru), then points `~/.config/niri` at the copy in this repo.
 
 ## Layout
 
@@ -19,13 +19,11 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `configs/niri` | niri config (live, via symlink) |
 | `configs/xdg-desktop-portal/niri-portals.conf` | Chrome file chooser uses the GTK portal under niri (live, via symlink) |
 | `configs/xdg-desktop-portal/hyprland-portals.conf` | Same GTK file chooser when the desktop is Hyprland |
-| `configs/hypr/hyprland.lua` | Hyprland dwindle config (live file symlink). Does not start Noctalia |
-| `configs/waybar` | Hyprland bar (live, via symlink). Stock Waybar, bottom of both screens |
+| `configs/hypr/hyprland.lua` | Hyprland dwindle config (live file symlink) |
+| `configs/waybar` | Hyprland bar (live, via symlink). Bottom of both screens |
 | `scripts/install-hyprland.sh` | From the tty prompt: install Hyprland and link that config |
 | `configs/bash_profile` | tty1 login stays a shell (live `~/.bash_profile`, via symlink). Type `niri` or `start-hyprland` |
-| `configs/noctalia` | noctalia-shell config (live, via symlink) |
-| `configs/noctalia/palettes/Novalis.json` | Gunmetal + energy-green palette |
-| `configs/noctalia/wallpapers/` | Rain, ship, dock, construct, blue flower |
+| `configs/hypr/wallpapers/` | Fractal wallpapers. Super+Shift+Return picks one |
 | `configs/keyd` | Keychron media and knob keys (`/etc/keyd/default.conf`). Super alone does nothing |
 | `packages/extra.txt` | Extra **repo** packages (pacman), including `paru` |
 | `packages/aur.txt` | Extra **AUR** packages (`google-chrome`, `visual-studio-code-bin`, …) |
@@ -56,12 +54,10 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 
 Repo packages go through pacman into `packages/extra.txt`. Anything not in a sync database is treated as AUR, installed with paru, and recorded in `packages/aur.txt`.
 
-**Edit niri / noctalia:** change files under `configs/`. They are the live configs. Commit when it feels right.
+**Edit configs:** change files under `configs/`. The linked ones are live. Commit when it feels right.
 
 **Wallpapers:** Super+Shift+Return opens the picker. Files live in
-`configs/noctalia/wallpapers/` (rain, ship, dock, construct, blue flower,
-and the extra rain/ship stills). Old Borg stills are in
-`configs/noctalia/archive-borg-wallpapers/`.
+`configs/hypr/wallpapers/`.
 
 **OS notes:** dump obstacles and wants in `os-notes.txt` (plain text, no
 structure). Hand the file over; they get triaged into `records/next.md`.
@@ -85,8 +81,8 @@ off `next.md`. The inbox is emptied after that. Same loop as
 
 ## Start-over checklist
 
-1. Install CachyOS, niri + noctalia desktop, NVIDIA open drivers (this box is an RTX 2060).
+1. Install CachyOS with NVIDIA open drivers (this box is an RTX 2060).
 2. Create user `willyfresh`, put this repo at `~/Projects/cachyos-gaming`.
 3. `./setup.sh`
 4. Log in on niri and confirm both ASUS VE247 monitors come up (see `records/hardware.md`).
-5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell. Type `niri` for that desktop. For dwindle, run `./scripts/install-hyprland.sh` once from the prompt, then type `start-hyprland`. Waybar starts with Hyprland. Noctalia stays on niri. Do not run both compositors at once, and do not `exec` either command from `bash_profile`.
+5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell. Type `start-hyprland` for dwindle, or `niri` for the other session. Waybar starts with Hyprland. Do not run both compositors at once, and do not `exec` either command from `bash_profile`.

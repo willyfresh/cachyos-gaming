@@ -22,7 +22,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | **A** | | | |
-| Super+A | Quick Settings | Control center (same as Super+S) | — |
+| Super+A | Quick Settings | — | — |
 | Super+Shift+A | Focus a Windows tip | — | ChatGPT |
 | Super+Ctrl+A | Color filters (if enabled) | — | Audio panel |
 | Super+Shift+Alt+A | — | Grok Bot | Grok |
@@ -68,7 +68,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+H | — | — | Hardware menu |
 | Super+Alt+H | Focus the keyboard (while voice typing) | — | — |
 | **I** | | | |
-| Super+I | Settings | Noctalia settings | — |
+| Super+I | Settings | — | — |
 | Super+Shift+I | — | Inkscape | — |
 | Super+Ctrl+I | — | — | Toggle idle lock |
 | **J** | | | |
@@ -101,7 +101,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+P | — | — | Power panel |
 | **Q** | | | |
 | Super+Q | Search | Close window | Close window |
-| Super+Shift+Q | — | Session menu | — |
+| Super+Shift+Q | — | Quit Hyprland | — |
 | Super+Ctrl+Q | Quick Assist | — | Calculator |
 | **R** | | | |
 | Super+R | Run | Preset column width | — (unbound on purpose) |
@@ -110,7 +110,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+Shift+R | — | Preset window height | Clear all reminders |
 | Super+Ctrl+Alt+R | — | — | List reminders |
 | **S** | | | |
-| Super+S | Search | Control center | Scratchpad (empty-aware) |
+| Super+S | Search | — | Scratchpad (empty-aware) |
 | Super+Shift+S | Snipping Tool | Steam | Park window to scratchpad |
 | Super+Ctrl+S | — | — | Share (LocalSend) |
 | Super+Alt+S | — | — | Park window to scratchpad |
@@ -127,7 +127,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+V | — | Focus floating vs tiling | — |
 | Super+Ctrl+V | Sound output / volume mixer | — | Universal paste |
 | **W** | | | |
-| Super+W | Widgets | Weather | Browser |
+| Super+W | Widgets | — | Browser |
 | Super+Shift+W | — | Chrome | Omawrite |
 | Super+Ctrl+W | — | — | Network panel |
 | Super+Ctrl+Alt+W | — | — | Weather as notification |
@@ -157,7 +157,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+Space | Previous input | — | Cycle wallpaper |
 | Super+Ctrl+Shift+Space | — | — | Pick theme |
 | Super+Return | — | Alacritty | Terminal |
-| Super+Shift+Return | — | Wallpaper picker | Google Messages |
+| Super+Shift+Return | — | Wallpaper picker (Hyprland) | Google Messages |
 | Super+Alt+Return | — | — | Tmux terminal |
 | Super+Ctrl+Return | Narrator | — | Herdr |
 | Super+Tab | Task View | Overview | Mirador overview |
@@ -257,8 +257,9 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 | Super+Ctrl+Print Screen | — | — | OCR to clipboard |
 | Ctrl+Shift+1/2/3 | — | Screenshot area / screen / window | — |
 
-Media and brightness keys on Novalis go through Noctalia (volume, mute, mic,
-play, next, prev, brightness). Delorean uses Omarchy’s matching helpers.
+Media keys on Novalis use PipeWire and playerctl (volume, mute, mic,
+play, next, prev). The screens have no backlight, so brightness is
+unbound. Delorean uses Omarchy’s matching helpers.
 
 ---
 

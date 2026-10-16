@@ -6,7 +6,6 @@ set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib.sh"
 
 pull_path "$HOME/.config/niri" "$CONFIGS_DIR/niri"
-pull_path "$HOME/.config/noctalia" "$CONFIGS_DIR/noctalia"
 pull_path "$HOME/.config/xdg-desktop-portal/niri-portals.conf" \
   "$CONFIGS_DIR/xdg-desktop-portal/niri-portals.conf"
 pull_path "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf" \

@@ -23,14 +23,6 @@
         default-window-height { fixed 640; }
     }
 
-    // Floating Noctalia settings window.
-    window-rule {
-        match app-id="dev.noctalia.Noctalia"
-        open-floating true
-        default-column-width { fixed 1080; }
-        default-window-height { fixed 920; }
-    }
-
     // Steam menus are X11 child windows (empty title). clip-to-geometry plus
     // focus-follows-mouse makes them flash and vanish on niri/xwayland-satellite.
     window-rule {
@@ -112,15 +104,4 @@
         min-height 1
     }
 
-    layer-rule {
-        match namespace="^noctalia-wallpaper"
-        place-within-backdrop true
-    }
 
-    layer-rule {
-        match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
-        background-effect {
-          xray false
-          // blur false
-        }
-    }

@@ -1030,3 +1030,35 @@ A running record of installs and config changes. Package names that should survi
 - requested: grim slurp
 - repos (pacman): grim slurp
 - AUR (paru): (none)
+
+## 2026-10-16 — fast fade, slow slide
+
+- Window opacity uses `fadeIn` and `fadeOut` at speed 1, so 100ms.
+  The `gnomed` shade stays at 300ms.
+- Workspace changes use `slidevert`. The desk stays solid and still
+  slides a full screen height over 300ms.
+- The dim on an unfocused window is unchanged.
+- Applied with `hyprctl eval` while autoreload was off.
+
+## 2026-10-16 — gnomed windows, vertical workspace slide
+
+- Windows open and close with `gnomed`: a horizontal line through
+  the middle opens up and down. Closing reverses it.
+- Workspace changes use `slidefadevert`. The desk slides a full
+  screen height and fades.
+- Both take 300ms. Moving a tile stays a plain move.
+- Applied with `hyprctl eval` while autoreload was off.
+
+## 2026-10-16 — Super+E opens yazi
+
+- Super+E focuses an open yazi, or starts one in kitty.
+  The window class is `yazi`, so a screenshot opened in yazi
+  is left alone.
+- Nautilus is no longer on that key.
+
+## 2026-10-16 — empty workspace on Shift+Up/Down
+
+- Super+Shift+Up/Down still moves the window inside the workspace.
+  At the top or bottom it steps one workspace number on this screen.
+  That number can be empty. The step stops at 1 and at 10.
+- Super+Up/Down still goes to the previous or next occupied workspace.

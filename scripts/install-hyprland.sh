@@ -36,7 +36,7 @@ From this prompt, type:
 
   start-hyprland
 
-Super+Return opens kitty. Super+E opens Nautilus.
+Super+Return opens kitty. Super+E opens yazi.
 Super+Shift+letter opens the apps.
 Super+arrows move focus. Super+Shift+arrows move the window.
 Super+Shift+Q quits back to this prompt.

@@ -88,7 +88,8 @@ shell. Type `start-hyprland`.
 Applied 2026-10-16 from `os-notes.txt`.
 
 - Super+Shift+Up/Down moves the window. At the top or bottom it
-  carries the window onto the previous or next workspace.
+  carries the window onto the neighboring workspace, including an
+  empty one.
 - Super+Alt+arrows and every Super+Ctrl+arrow chord are unbound.
   Resize stays on Super+/-.
 - Ctrl+Shift+F2 is unbound. The Keychron circle sends Super+N
@@ -130,16 +131,19 @@ Fuzzel cannot color one update row. A list is one text color. The
 
 ## Quieter Hyprland animations
 
-Backlog. Nothing in `hyprland.lua` sets an animation, so Hyprland
-0.56 is on its defaults. Windows scale in (`popin`) and workspaces
-slide. `hl.animation()` takes a leaf, and speed is in tenths of a
-second (1 is 100ms).
+Trying, 2026-10-16. Windows open and close with `gnomed` at speed 3
+(300ms). Their opacity uses `fadeIn` and `fadeOut` at speed 1
+(100ms). Workspace changes use `slidevert` at speed 3: a full-height
+slide that stays solid. Tile moves stay a plain move. The dim on an
+unfocused window is a separate fade and stays slow.
+`hl.animation()` takes a leaf, and speed is in tenths of a second.
 
 - Off. `leaf = "global"` disabled. Windows appear, workspaces cut.
 - Fade only. Disable `windows` and `workspaces`. Opacity still eases.
 - Shorter. Keep the motion, drop the speed toward 1.
 - Different motion. `windows` styles are `slide`, `popin`, and
-  `gnomed`. Pop-in is the loud one.
+  `gnomed`. Pop-in is the loud one. Workspace `slidefadevert` slides
+  the full screen height and fades.
 
 Niri's set is separate and already short (200ms). This note is the
 Hyprland session.
@@ -504,7 +508,7 @@ Applied 2026-09-08. Super+F toggles maximize on both:
 Windows mode stays. Applied 2026-09-09:
 
 - **Fn+F4** (six-pack): VIA remaps from Super+E to Super+Space so it
-  opens the launcher. Super+E is still Nautilus.
+  opens the launcher. Super+E stayed the files key.
 - **Fn+F8** play/pause: VIA sends F18; keyd turns that into
   Ctrl+Shift+F8; Hyprland sends that to playerctl. HID Play is resume-only
   and Chrome needs it for MPRIS, so we do not send Play.

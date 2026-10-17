@@ -63,6 +63,21 @@ hl.config({
     },
 })
 
+-- Speed is tenths of a second. A window opens from a horizontal line
+-- through its middle and closes back to that line. Its opacity finishes
+-- in 100ms, so the shade is already solid while it is still opening.
+-- A workspace change slides the full screen height and is solid the
+-- whole way. Tile moves stay a plain move, so they do not squash.
+-- The dim when a window loses focus is a separate fade and stays slow.
+hl.animation({ leaf = "windows",       enabled = true, speed = 3, bezier = "default" })
+hl.animation({ leaf = "windowsIn",     enabled = true, speed = 3, bezier = "default", style = "gnomed" })
+hl.animation({ leaf = "windowsOut",    enabled = true, speed = 3, bezier = "default", style = "gnomed" })
+hl.animation({ leaf = "fadeIn",        enabled = true, speed = 1, bezier = "default" })
+hl.animation({ leaf = "fadeOut",       enabled = true, speed = 1, bezier = "default" })
+hl.animation({ leaf = "workspaces",    enabled = true, speed = 3, bezier = "default", style = "slidevert" })
+hl.animation({ leaf = "workspacesIn",  enabled = true, speed = 3, bezier = "default", style = "slidevert" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 3, bezier = "default", style = "slidevert" })
+
 hl.on("hyprland.start", function()
     hl.exec_cmd("dropbox start -i")
     hl.exec_cmd("sh -c 'pgrep -x waybar >/dev/null || exec waybar'")
@@ -87,7 +102,7 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus"))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^yazi$' setsid kitty --class yazi --title yazi -e yazi]]))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(quit))
@@ -150,7 +165,9 @@ hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh scree
 
 -- Dwindle. Super+F keeps the gaps (maximize). Super+Ctrl+F2 covers
 -- the screen. Super+Up/Down and Super+Shift+Up/Down are bound after
--- hyprsplit: at the edge they go to the previous or next workspace.
+-- hyprsplit. At the edge, Up/Down go to an occupied workspace.
+-- Shift+Up/Down carry the window onto the neighboring number,
+-- including an empty one.
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 
@@ -295,7 +312,10 @@ hl.bind(mainMod .. " + up", focus_or_workspace("up", "e-1"))
 hl.bind(mainMod .. " + down", focus_or_workspace("down", "e+1"))
 
 -- Super+Shift+Up/Down moves the window that way. At the top or bottom
--- window it carries the window onto the previous or next workspace.
+-- window it carries the window one workspace number on this screen.
+-- That number can be empty. The step stops at 1 and at 10.
+-- "+1" and "-1" are hyprsplit's neighboring numbers. "e+1" would
+-- skip any number that has no windows.
 local function move_or_workspace(direction, workspace_sel)
     return function()
         local ws = hl.get_active_workspace()
@@ -311,5 +331,5 @@ local function move_or_workspace(direction, workspace_sel)
     end
 end
 
-hl.bind(mainMod .. " + SHIFT + up", move_or_workspace("up", "e-1"))
-hl.bind(mainMod .. " + SHIFT + down", move_or_workspace("down", "e+1"))
+hl.bind(mainMod .. " + SHIFT + up", move_or_workspace("up", "-1"))
+hl.bind(mainMod .. " + SHIFT + down", move_or_workspace("down", "+1"))

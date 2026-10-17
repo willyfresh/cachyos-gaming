@@ -47,7 +47,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Alt+D | Date and time on the desktop | — | — |
 | Super+Ctrl+Alt+D | — | — | Calendar panel |
 | **E** | | | |
-| Super+E | File Explorer | Nautilus | Nautilus |
+| Super+E | File Explorer | Yazi | Nautilus |
 | Super+Shift+E | — | Thunderbird | Thunderbird |
 | Super+Ctrl+E | — | — | Emoji picker |
 | Super+Shift+Alt+E | — | — | Thunderbird compose |
@@ -194,20 +194,22 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 
 ## Arrows
 
-Novalis: Super focuses, and Up/Down at the edge change workspace on this
-screen. Shift moves, and Shift+Up/Down at the edge carry the window onto
-that workspace. Left and right stay on this workspace. Ctrl+arrow,
-Alt+arrow, and Ctrl+Alt+arrow are unbound. Size is Super+/- .
+Novalis: Super focuses, and Up/Down at the edge change to the previous
+or next occupied workspace on this screen. Shift moves, and Shift+Up/Down
+at the edge carry the window onto the neighboring workspace number,
+including an empty one. The step stops at 1 and at 10. Left and right
+stay on this workspace. Ctrl+arrow, Alt+arrow, and Ctrl+Alt+arrow are
+unbound. Size is Super+/- .
 Delorean: Super = focus then next occupied desk, Shift = move to adjacent
 numbered desk, Ctrl = swap on this desk.
 
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
 | Super+Left/Right | Snap half-screen | Focus that way | Focus, then occupied desk |
-| Super+Up | Maximize | Focus up, or previous workspace | Focus, then occupied desk |
-| Super+Down | Restore / minimize | Focus down, or next workspace | Focus, then occupied desk |
+| Super+Up | Maximize | Focus up, or previous occupied workspace | Focus, then occupied desk |
+| Super+Down | Restore / minimize | Focus down, or next occupied workspace | Focus, then occupied desk |
 | Super+Shift+Left/Right | Move window to monitor | Move the window that way | Move window to adjacent desk 1–10 |
-| Super+Shift+Up/Down | Maximize / restore vertically | Move that way, or onto the previous/next workspace | Move window to adjacent desk 1–10 |
+| Super+Shift+Up/Down | Maximize / restore vertically | Move that way, or onto the neighboring workspace | Move window to adjacent desk 1–10 |
 | Super+Ctrl+arrows | Switch virtual desktop (L/R) | — | Swap with neighbor |
 | Super+Alt+Left/Right/Up/Down | Snap top/bottom (Alt+Up/Down) | — | Move into group that way |
 | Super+Shift+Ctrl+arrows | — | — | — |

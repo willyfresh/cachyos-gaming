@@ -11,7 +11,7 @@ Super+V                     Clipboard history
 Super+N                     Notification history
 Super+L                     Lock screen
 Super+Return                Terminal
-Super+E                     Files
+Super+E                     Yazi
 Super+Q / Alt+F4            Close window
 Super+Shift+Q               Quit Hyprland
 Super+T                     Float or tile
@@ -28,8 +28,8 @@ Super+Left/Right            Focus that way
 Super+Up                    Focus up. At the top window, previous workspace
 Super+Down                  Focus down. At the bottom window, next workspace
 Super+Shift+Left/Right      Move the window that way
-Super+Shift+Up              Move up. At the top, previous workspace
-Super+Shift+Down            Move down. At the bottom, next workspace
+Super+Shift+Up              Move up. At the top, previous workspace, even if empty
+Super+Shift+Down            Move down. At the bottom, next workspace, even if empty
 Super+1…0                   This screen's workspace
 Super+Shift+1…0             Move the window to that workspace
 Super+Shift+Tab             Previous workspace on this screen

@@ -1008,6 +1008,17 @@ A running record of installs and config changes. Package names that should survi
   cancels the region.
 - Packages: grim 1.5.0-2.1 and slurp 1.5.0-2.1, via `./scripts/pkg-add.sh`.
 
+## 2026-10-16 — keybind pass
+
+- Super+Shift+Up/Down carries the window onto the previous or next
+  workspace when it is already the top or bottom window.
+- Removed Super+Alt+arrows and the Super+Ctrl+arrow chords.
+  Ctrl+Shift+F2 is unbound. The circle key sends Super+N.
+- App chords: Music/YouTube, Neovim/VS Code, Thunderbird compose,
+  Lynx, Grok Bot/Grok, btop/nvtop, Obsidian, Concord. Alt+F4
+  closes the window. Cover-the-screen is Super+Ctrl+F2.
+- VLC is still unbound.
+
 ## 2026-10-16 — screenshot opens in yazi
 
 - Clicking the screenshot notification opens that file in yazi.

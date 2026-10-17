@@ -61,6 +61,7 @@ over.
 | Stow layout | you pick | backlog |
 | Matrix rain on the lock and on SDDM | — | cancelled 2026-10-16 |
 | Screenshots | you confirm | applied 2026-10-16 |
+| Keybind pass | you confirm | applied 2026-10-16; VLC still open |
 
 ## Stow layout
 
@@ -81,6 +82,30 @@ replace those two scripts. The current links already come back from
 Cancelled 2026-10-16. The lock stays the blurred screenshot in
 `configs/hypr/hyprlock.conf`. SDDM stays disabled. tty1 stays a
 shell. Type `start-hyprland`.
+
+## Keybind pass
+
+Applied 2026-10-16 from `os-notes.txt`.
+
+- Super+Shift+Up/Down moves the window. At the top or bottom it
+  carries the window onto the previous or next workspace.
+- Super+Alt+arrows and every Super+Ctrl+arrow chord are unbound.
+  Resize stays on Super+/-.
+- Ctrl+Shift+F2 is unbound. The Keychron circle sends Super+N
+  once keyd is reloaded.
+- Super+Shift+Y is YouTube Music. Super+Shift+Ctrl+Y is YouTube.
+- Super+Shift+V is Neovim. Super+Shift+Ctrl+V is VS Code.
+- Thunderbird compose moved from Super+Shift+Alt+E to
+  Super+Shift+Ctrl+E.
+- Super+Shift+Ctrl+W is Lynx.
+- Super+Shift+A is Grok Bot. Super+Shift+Ctrl+A is the Grok CLI.
+  Super+Shift+Alt+A is unbound. The triangle key still opens Grok Bot.
+- Cover-the-screen moved from Super+Shift+F to Super+Ctrl+F2.
+- Alt+F4 closes the window, same as Super+Q.
+- Super+Shift+T is btop. Super+Shift+Ctrl+T is nvtop.
+  Super+Ctrl+T is still btop.
+- Super+Shift+Ctrl+O is Obsidian. Super+Shift+Ctrl+D is Concord.
+- VLC has no chord yet.
 
 ## Screenshots
 

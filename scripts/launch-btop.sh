@@ -1,15 +1,28 @@
 #!/usr/bin/env bash
-# Super+Ctrl+T: tiled btop. Focus it if it is already open, close it if
-# it is already focused, otherwise spawn kitty.
+# Super+Ctrl+T and Super+Shift+T: tiled btop. Super+Shift+Ctrl+T: nvtop.
+# Focus it if it is already open, close it if it is already focused,
+# otherwise spawn kitty. The menu's *-tile class is left alone.
+# usage: launch-btop.sh [btop|nvtop]
 set -euo pipefail
+
+app="${1:-btop}"
+case "$app" in
+  btop|nvtop) ;;
+  *)
+    echo "usage: $0 [btop|nvtop]" >&2
+    exit 1
+    ;;
+esac
 
 id=""
 focused=""
-eval "$(python3 - <<'PY' || true
-import json, subprocess, sys
+eval "$(app="$app" python3 - <<'PY' || true
+import json, os, subprocess, sys
 
+app = os.environ["app"]
+wanted = {app, app + "-key"}
 windows = json.loads(subprocess.check_output(["hyprctl", "clients", "-j"], text=True))
-matches = [w for w in windows if (w.get("class") or "") in {"btop", "btop-key"}]
+matches = [w for w in windows if (w.get("class") or "") in wanted]
 if not matches:
     sys.exit(1)
 
@@ -27,4 +40,4 @@ if [[ -n ${id:-} ]]; then
   exec hyprctl dispatch "hl.dsp.focus({ window = \"address:${id}\" })"
 fi
 
-exec setsid kitty --class btop-key --title btop -e btop
+exec setsid kitty --class "${app}-key" --title "$app" -e "$app"

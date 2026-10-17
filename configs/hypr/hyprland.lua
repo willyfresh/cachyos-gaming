@@ -84,35 +84,43 @@ hl.window_rule({
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(bin .. "/hypr-clipboard.sh"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
-hl.bind("CTRL + SHIFT + F2", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(quit))
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(quit))
 
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
+hl.bind(mainMod .. " + SHIFT + CTRL + A", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^grok-cli$' setsid kitty --class grok-cli --title grok -e /home/willyfresh/.grok/bin/grok]]))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bin .. "/launch-or-focus-webapp.sh 'chrome-boardgamearena.com.*Default' 'https://boardgamearena.com/'"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(bin .. "/launch-or-focus-webapp.sh 'chrome-calendar.google.com.*Default' 'https://calendar.google.com/'"))
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(bin .. "/launch-discord.sh"))
+hl.bind(mainMod .. " + SHIFT + CTRL + D", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^concord$' setsid kitty --class concord --title concord -e concord]]))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^(thunderbird|org\.mozilla\.Thunderbird)$' thunderbird]]))
-hl.bind(mainMod .. " + SHIFT + ALT + E", hl.dsp.exec_cmd("thunderbird -compose"))
+hl.bind(mainMod .. " + SHIFT + CTRL + E", hl.dsp.exec_cmd("thunderbird -compose"))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd(bin .. "/launch-or-focus-webapp.sh 'chrome-mail.google.com.*Default' 'https://mail.google.com/'"))
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(bin .. "/launch-or-focus-app.sh heroic setsid heroic"))
 hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(bin .. "/launch-or-focus-app.sh inkscape setsid inkscape"))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(bin .. "/launch-or-focus-webapp.sh 'chrome-maps.google.com.*Default' 'https://maps.google.com/'"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd(bin .. "/launch-or-focus-webapp.sh 'chrome-messages.google.com.*Default' 'https://messages.google.com/web/conversations'"))
 hl.bind(mainMod .. " + SHIFT + O", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^(libreoffice|soffice)' setsid libreoffice]]))
+hl.bind(mainMod .. " + SHIFT + CTRL + O", hl.dsp.exec_cmd(bin .. "/launch-or-focus-app.sh obsidian setsid obsidian"))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^gimp' setsid gimp]]))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(bin .. "/launch-steam.sh"))
-hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^[Cc]ode$' code]]))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(bin .. "/launch-btop.sh"))
+hl.bind(mainMod .. " + SHIFT + CTRL + T", hl.dsp.exec_cmd(bin .. "/launch-btop.sh nvtop"))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^nvim$' setsid kitty --class nvim --title nvim -e nvim]]))
+hl.bind(mainMod .. " + SHIFT + CTRL + V", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^[Cc]ode$' code]]))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(bin .. "/waybar-weather.py detail"))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(bin .. "/waybar-devices.py"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^google-chrome$' setsid google-chrome-stable]]))
-hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.exec_cmd(bin .. "/launch-youtube.sh"))
+hl.bind(mainMod .. " + SHIFT + CTRL + W", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^lynx$' setsid kitty --class lynx --title lynx -e lynx]]))
+hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.exec_cmd(bin .. "/launch-youtube.sh music"))
+hl.bind(mainMod .. " + SHIFT + CTRL + Y", hl.dsp.exec_cmd(bin .. "/launch-youtube.sh youtube"))
 hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(bin .. "/launch-btop.sh"))
-hl.bind(mainMod .. " + SHIFT + ALT + A", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
 hl.bind("CTRL + SHIFT + F3", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
 hl.bind("CTRL + SHIFT + F4", hl.dsp.exec_cmd(bin .. "/launch-steam-heroic.sh"))
 
@@ -140,49 +148,20 @@ hl.bind("ALT + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh window"))
 hl.bind("Sys_Req", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh window"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh screen"))
 
--- Dwindle. Super+F keeps the gaps (maximize). Super+Shift+F covers the screen.
--- Super+Up/Down is bound after hyprsplit: focus that way, then the
--- previous or next workspace on this screen.
+-- Dwindle. Super+F keeps the gaps (maximize). Super+Ctrl+F2 covers
+-- the screen. Super+Up/Down and Super+Shift+Up/Down are bound after
+-- hyprsplit: at the edge they go to the previous or next workspace.
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
-
-hl.bind(mainMod .. " + ALT + left",  hl.dsp.focus({ monitor = "left" }))
-hl.bind(mainMod .. " + ALT + right", hl.dsp.focus({ monitor = "right" }))
-hl.bind(mainMod .. " + ALT + up",    hl.dsp.focus({ monitor = "up" }))
-hl.bind(mainMod .. " + ALT + down",  hl.dsp.focus({ monitor = "down" }))
-
-hl.bind(mainMod .. " + SHIFT + ALT + left",  hl.dsp.window.move({ monitor = "left", follow = true }))
-hl.bind(mainMod .. " + SHIFT + ALT + right", hl.dsp.window.move({ monitor = "right", follow = true }))
-hl.bind(mainMod .. " + SHIFT + ALT + up",    hl.dsp.window.move({ monitor = "up", follow = true }))
-hl.bind(mainMod .. " + SHIFT + ALT + down",  hl.dsp.window.move({ monitor = "down", follow = true }))
 
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + CTRL + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
-
--- Super+Shift+V: focus a window of the other kind on this workspace.
-hl.bind(mainMod .. " + SHIFT + V", function()
-    local active = hl.get_active_window()
-    if active == nil or active.workspace == nil then
-        return
-    end
-    local want_float = not active.floating
-    for _, other in ipairs(hl.get_windows() or {}) do
-        local ws = other.workspace
-        if other.address ~= active.address and other.mapped and not other.hidden
-            and other.floating == want_float and ws and ws.id == active.workspace.id then
-            hl.dispatch(hl.dsp.focus({ window = "address:" .. other.address }))
-            return
-        end
-    end
-end)
+hl.bind(mainMod .. " + CTRL + F2", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 -- Turn the screens off. The delay lets the key go up first, so the
 -- keypress itself does not wake them again. Any later key turns them on.
@@ -211,10 +190,6 @@ hl.bind(mainMod .. " + minus", resize_by(-1, 0))
 hl.bind(mainMod .. " + equal", resize_by(1, 0))
 hl.bind(mainMod .. " + SHIFT + minus", resize_by(0, -1))
 hl.bind(mainMod .. " + SHIFT + equal", resize_by(0, 1))
-hl.bind(mainMod .. " + CTRL + ALT + left", resize_by(-1, 0))
-hl.bind(mainMod .. " + CTRL + ALT + right", resize_by(1, 0))
-hl.bind(mainMod .. " + CTRL + ALT + up", resize_by(0, -1))
-hl.bind(mainMod .. " + CTRL + ALT + down", resize_by(0, 1))
 
 -- Alt stays held in the normal keymap. No submap, so the bar never
 -- labels the mode, and a quick tap cannot leave the keys stuck.
@@ -319,25 +294,22 @@ end
 hl.bind(mainMod .. " + up", focus_or_workspace("up", "e-1"))
 hl.bind(mainMod .. " + down", focus_or_workspace("down", "e+1"))
 
--- Super+Ctrl+arrows always change workspace on this screen.
--- Left and Up are the previous occupied desk. Right and Down are the next.
-local function focus_workspace_rel(sel)
+-- Super+Shift+Up/Down moves the window that way. At the top or bottom
+-- window it carries the window onto the previous or next workspace.
+local function move_or_workspace(direction, workspace_sel)
     return function()
-        hs.dsp.focus({ workspace = sel })()
+        local ws = hl.get_active_workspace()
+        if ws and ws.special then
+            return
+        end
+        local active = hl.get_active_window()
+        if active and has_window_that_way(active, direction) then
+            hl.dispatch(hl.dsp.window.move({ direction = direction }))
+            return
+        end
+        hs.dsp.window.move({ workspace = workspace_sel, follow = true })()
     end
 end
 
-local function move_to_workspace_rel(sel)
-    return function()
-        hs.dsp.window.move({ workspace = sel, follow = true })()
-    end
-end
-
-hl.bind(mainMod .. " + CTRL + left", focus_workspace_rel("e-1"))
-hl.bind(mainMod .. " + CTRL + right", focus_workspace_rel("e+1"))
-hl.bind(mainMod .. " + CTRL + up", focus_workspace_rel("e-1"))
-hl.bind(mainMod .. " + CTRL + down", focus_workspace_rel("e+1"))
-hl.bind(mainMod .. " + SHIFT + CTRL + left", move_to_workspace_rel("e-1"))
-hl.bind(mainMod .. " + SHIFT + CTRL + right", move_to_workspace_rel("e+1"))
-hl.bind(mainMod .. " + SHIFT + CTRL + up", move_to_workspace_rel("e-1"))
-hl.bind(mainMod .. " + SHIFT + CTRL + down", move_to_workspace_rel("e+1"))
+hl.bind(mainMod .. " + SHIFT + up", move_or_workspace("up", "e-1"))
+hl.bind(mainMod .. " + SHIFT + down", move_or_workspace("down", "e+1"))

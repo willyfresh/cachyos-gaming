@@ -23,10 +23,10 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 |-----|---------|------|----------|
 | **A** | | | |
 | Super+A | Quick Settings | — | — |
-| Super+Shift+A | Focus a Windows tip | — | ChatGPT |
+| Super+Shift+A | Focus a Windows tip | Grok Bot | ChatGPT |
 | Super+Ctrl+A | Color filters (if enabled) | — | Audio panel |
-| Super+Shift+Alt+A | — | Grok Bot | Grok |
-| Super+Ctrl+Shift+A | — | — | Pick an AI agent |
+| Super+Shift+Alt+A | — | — | Grok |
+| Super+Ctrl+Shift+A | — | Grok | Pick an AI agent |
 | **B** | | | |
 | Super+B | Focus the tray | — | — (browser is Super+W) |
 | Super+Shift+B | — | Board Game Arena | Board Game Arena |
@@ -42,6 +42,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | **D** | | | |
 | Super+D | Show / hide desktop | — | Discord |
 | Super+Shift+D | — | Discord | Docker TUI |
+| Super+Shift+Ctrl+D | — | Concord | — |
 | Super+Ctrl+D | New virtual desktop | — | Display panel |
 | Super+Alt+D | Date and time on the desktop | — | — |
 | Super+Ctrl+Alt+D | — | — | Calendar panel |
@@ -49,11 +50,13 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+E | File Explorer | Nautilus | Nautilus |
 | Super+Shift+E | — | Thunderbird | Thunderbird |
 | Super+Ctrl+E | — | — | Emoji picker |
-| Super+Shift+Alt+E | — | Thunderbird compose | Thunderbird compose |
+| Super+Shift+Alt+E | — | — | Thunderbird compose |
+| Super+Shift+Ctrl+E | — | Thunderbird compose | — |
 | **F** | | | |
 | Super+F | Feedback Hub | Maximize, keep the gaps | Maximize window |
-| Super+Shift+F | — | Cover the screen | File manager |
+| Super+Shift+F | — | — | File manager |
 | Super+Ctrl+F | Search PCs on the network | Maximize, keep the gaps | Windowed fullscreen (site chrome off) |
+| Super+Ctrl+F2 | — | Cover the screen | — |
 | Super+Alt+F | — | — | Full width |
 | Super+Shift+Alt+F | — | — | File manager in terminal cwd |
 | **G** | | | |
@@ -93,6 +96,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | **O** | | | |
 | Super+O | Lock screen rotation | — | LibreOffice |
 | Super+Shift+O | — | LibreOffice | Pop window out (float and pin) |
+| Super+Shift+Ctrl+O | — | Obsidian | — |
 | Super+Ctrl+O | — | — | Toggle menu bar |
 | **P** | | | |
 | Super+P | Project / displays | — | Pseudo (dwindle stretch) |
@@ -101,6 +105,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+P | — | — | Power panel |
 | **Q** | | | |
 | Super+Q | Search | Close window | Close window |
+| Alt+F4 | Close window | Close window | — |
 | Super+Shift+Q | — | Quit Hyprland | — |
 | Super+Ctrl+Q | Quick Assist | — | Calculator |
 | **R** | | | |
@@ -116,7 +121,8 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Alt+S | — | — | Park window to scratchpad |
 | **T** | | | |
 | Super+T | Cycle taskbar apps | Toggle floating | VS Code |
-| Super+Shift+T | Cycle taskbar apps, reverse | VS Code | — (VS Code is Super+T) |
+| Super+Shift+T | Cycle taskbar apps, reverse | btop | — (VS Code is Super+T) |
+| Super+Shift+Ctrl+T | — | nvtop | — |
 | Super+Ctrl+T | — | Activity (btop) | Activity (btop) |
 | Super+Alt+T | — | — | Toggle floating |
 | Super+Ctrl+Alt+T | — | — | Time as notification |
@@ -124,11 +130,13 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+U | Accessibility settings | — | — |
 | **V** | | | |
 | Super+V | Clipboard history | Clipboard history | Clipboard history |
-| Super+Shift+V | — | Focus floating vs tiling | — |
+| Super+Shift+V | — | Neovim | — |
+| Super+Shift+Ctrl+V | — | VS Code | — |
 | Super+Ctrl+V | Sound output / volume mixer | — | Universal paste |
 | **W** | | | |
 | Super+W | Widgets | Weather | Browser |
 | Super+Shift+W | — | Chrome | Omawrite |
+| Super+Shift+Ctrl+W | — | Lynx | — |
 | Super+Ctrl+W | — | — | Network panel |
 | Super+Ctrl+Alt+W | — | — | Weather as notification |
 | **X** | | | |
@@ -138,7 +146,8 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Alt+X | — | — | X compose |
 | **Y** | | | |
 | Super+Y | Mixed Reality / desktop | — | — |
-| Super+Shift+Y | — | YouTube Music, then YouTube | YouTube |
+| Super+Shift+Y | — | YouTube Music | YouTube |
+| Super+Shift+Ctrl+Y | — | YouTube | — |
 | **Z** | | | |
 | Super+Z | Snap layouts | — | — |
 | Super+Ctrl+Z | — | — | Zoom in |
@@ -185,9 +194,12 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 
 ## Arrows
 
-Novalis grammar: Super = focus, Ctrl = workspace, Alt = monitor, Shift = move,
-Ctrl+Alt = size. Delorean: Super = focus then next occupied desk, Shift =
-move to adjacent numbered desk, Ctrl = swap on this desk.
+Novalis: Super focuses, and Up/Down at the edge change workspace on this
+screen. Shift moves, and Shift+Up/Down at the edge carry the window onto
+that workspace. Left and right stay on this workspace. Ctrl+arrow,
+Alt+arrow, and Ctrl+Alt+arrow are unbound. Size is Super+/- .
+Delorean: Super = focus then next occupied desk, Shift = move to adjacent
+numbered desk, Ctrl = swap on this desk.
 
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
@@ -195,13 +207,13 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 | Super+Up | Maximize | Focus up, or previous workspace | Focus, then occupied desk |
 | Super+Down | Restore / minimize | Focus down, or next workspace | Focus, then occupied desk |
 | Super+Shift+Left/Right | Move window to monitor | Move the window that way | Move window to adjacent desk 1–10 |
-| Super+Shift+Up/Down | Maximize / restore vertically | Move the window that way | Move window to adjacent desk 1–10 |
-| Super+Ctrl+arrows | Switch virtual desktop (L/R) | Previous or next workspace on this screen | Swap with neighbor |
-| Super+Alt+Left/Right/Up/Down | Snap top/bottom (Alt+Up/Down) | Focus the monitor that way | Move into group that way |
-| Super+Shift+Ctrl+arrows | — | Move the window to that workspace | — |
-| Super+Shift+Alt+arrows | — | Move the window to that monitor | Move workspace to monitor |
-| Super+Ctrl+Alt+Left/Right | — | Window 10% narrower / wider | — |
-| Super+Ctrl+Alt+Up/Down | — | Window 10% shorter / taller | — |
+| Super+Shift+Up/Down | Maximize / restore vertically | Move that way, or onto the previous/next workspace | Move window to adjacent desk 1–10 |
+| Super+Ctrl+arrows | Switch virtual desktop (L/R) | — | Swap with neighbor |
+| Super+Alt+Left/Right/Up/Down | Snap top/bottom (Alt+Up/Down) | — | Move into group that way |
+| Super+Shift+Ctrl+arrows | — | — | — |
+| Super+Shift+Alt+arrows | — | — | Move workspace to monitor |
+| Super+Ctrl+Alt+Left/Right | — | — | — |
+| Super+Ctrl+Alt+Up/Down | — | — | — |
 | Super+Shift+Ctrl+Alt+arrows | — | — | — |
 
 ---

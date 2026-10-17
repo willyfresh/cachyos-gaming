@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Super+Shift+Alt+A: focus Grok Bot, or launch it.
+# Super+Shift+A and the Keychron triangle: focus Grok Bot, or launch it.
 set -euo pipefail
 
 id="$(python3 - <<'PY' || true

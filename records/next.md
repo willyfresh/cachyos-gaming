@@ -46,8 +46,8 @@ over.
 | Hyprland bar | you confirm | applied 2026-10-09 |
 | Waybar, second pass | you confirm | applied 2026-10-12 |
 | croft instead of neovim | — | superseded 2026-10-14: LazyVim |
-| Keychron keys on Hyprland | you confirm | volume, mic, and play applied 2026-10-12; panels still open nothing |
-| Login keyring stays locked | you | backlog |
+| Keychron keys on Hyprland | you confirm | volume, mic, and play applied 2026-10-12; crop screenshots; light and X still open nothing |
+| Login keyring stays locked | — | cancelled 2026-10-16 |
 | Active window green border | you confirm | applied 2026-10-14 |
 | Quieter Hyprland animations | you pick | backlog |
 | LazyVim and tmux | you | applied 2026-10-14 |
@@ -59,7 +59,8 @@ over.
 | niri | — | removed 2026-10-15 |
 | Mango | you | later |
 | Stow layout | you pick | backlog |
-| Matrix rain on the lock and on SDDM | you pick | hyprlock and hypridle installed 2026-10-16; rain and SDDM still backlog |
+| Matrix rain on the lock and on SDDM | — | cancelled 2026-10-16 |
+| Screenshots | you confirm | applied 2026-10-16 |
 
 ## Stow layout
 
@@ -77,33 +78,20 @@ replace those two scripts. The current links already come back from
 
 ## Matrix rain on the lock and on SDDM
 
-hyprlock 0.9.6-3.1 and hypridle 0.1.8-2.1 are installed. The lock
-stays the blurred screenshot. Rain and SDDM are still backlog.
+Cancelled 2026-10-16. The lock stays the blurred screenshot in
+`configs/hypr/hyprlock.conf`. SDDM stays disabled. tty1 stays a
+shell. Type `start-hyprland`.
 
-The prompt asks for green falling-code rain on the lock screen and
-on the SDDM login.
+## Screenshots
 
-SDDM 0.21.0-8 is installed. `sddm.service` is disabled and inactive.
-`/etc/sddm.conf` is an empty `[Autologin]` section. The themes on
-disk are elarun, maldives, and maya. tty1 stays a shell. Type
-`start-hyprland`. A greeter theme stays unseen until SDDM is the
-display manager. Turning SDDM on replaces that tty login.
-
-The lock file is `configs/hypr/hyprlock.conf`: Novalis green, a
-blurred screenshot, and the bar's date format. Super+L and
-Super+Alt+L call `hyprlock`. `hyprland.lua` starts `hypridle`,
-which is set to lock at 10 minutes and blank the screens at 15.
-Both are in `packages/extra.txt`. Super+L runs hyprlock.
-hyprlock paints its own background, so the desktop wallpaper does
-not show on the lock. The background path takes a still image.
-
-The falling-code screensaver was removed 2026-10-14. This prompt
-leaves idle savers off.
-
-When you want one of these built:
-
-- Point the hyprlock background at a rain still.
-- Enable SDDM with a rain greeter. That becomes the login.
+Applied 2026-10-16. `scripts/hypr-screenshot.sh` copies the shot
+and saves it under `~/Pictures/Screenshots`. Print, and the
+Keychron crop key, drag a region. Escape or a click without a
+drag cancels. Alt+Print grabs the focused window (that chord
+arrives as Sys_Req, and both names are bound). Super+Print grabs
+both screens. The region border is Novalis green. Click the
+notification, or pick it in the Fuzzel list, and yazi opens on
+that file.
 
 ## Active window green border
 
@@ -262,15 +250,14 @@ Still nothing to open:
 - Weather and settings have no Hyprland app.
 
 Brightness has no backlight on these screens.
-Screenshots need grim and slurp, which are not installed.
+The crop key sends Print, which takes a region screenshot.
 
 ## Login keyring stays locked
 
-Backlog. gnome-keyring is running. Hyprland is started by typing
-`start-hyprland` at the tty, so the login password never unlocks
-the keyring. The first program that needs a secret asks to open
-it. That is the "didn't open the keychain" dialog. Leave it until
-you want the tty login to unlock the keyring.
+Cancelled 2026-10-16. gnome-keyring is running. Hyprland is started
+by typing `start-hyprland` at the tty, so the login password never
+unlocks the keyring. The first program that needs a secret still
+asks to open it. Leave that dialog.
 
 ## tty1 stays a shell
 

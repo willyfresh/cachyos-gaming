@@ -63,4 +63,7 @@ Mic / Ctrl+Shift+F6         Mute the microphone
 Play / Ctrl+Shift+F8        Play or pause
 Ctrl+Shift+F2               Notification history
 Media next / previous       Next or previous track
+Print / crop                Screenshot a region
+Alt+Print                   Screenshot the window
+Super+Print                 Screenshot both screens
 EOF

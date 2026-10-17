@@ -132,6 +132,14 @@ hl.bind("CTRL + SHIFT + F8", hl.dsp.exec_cmd("playerctl play-pause"), media)
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), media)
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), media)
 
+-- Print is the key and the Keychron crop key. Alt+Print arrives as
+-- Sys_Req on this layout, so both names grab the focused window.
+-- Super+Print is both screens. The script copies and saves.
+hl.bind("Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh region"))
+hl.bind("ALT + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh window"))
+hl.bind("Sys_Req", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh window"))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh screen"))
+
 -- Dwindle. Super+F keeps the gaps (maximize). Super+Shift+F covers the screen.
 -- Super+Up/Down is bound after hyprsplit: focus that way, then the
 -- previous or next workspace on this screen.

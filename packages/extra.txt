@@ -73,3 +73,5 @@ yazi
 hyprlock
 hypridle
 nvtop
+grim
+slurp

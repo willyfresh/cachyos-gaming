@@ -998,3 +998,24 @@ A running record of installs and config changes. Package names that should survi
 - requested: nvtop
 - repos (pacman): nvtop
 - AUR (paru): (none)
+
+## 2026-10-16 — screenshots
+
+- Print and the Keychron crop key drag a region. Alt+Print grabs
+  the focused window. Super+Print grabs both screens.
+- `scripts/hypr-screenshot.sh` copies the image and saves it under
+  `~/Pictures/Screenshots`. Escape, or a click without a drag,
+  cancels the region.
+- Packages: grim 1.5.0-2.1 and slurp 1.5.0-2.1, via `./scripts/pkg-add.sh`.
+
+## 2026-10-16 — screenshot opens in yazi
+
+- Clicking the screenshot notification opens that file in yazi.
+  Super+N does the same, including after the popup has expired.
+  The popup stays up for 15 seconds.
+
+## 2026-10-16 — installed grim slurp
+
+- requested: grim slurp
+- repos (pacman): grim slurp
+- AUR (paru): (none)

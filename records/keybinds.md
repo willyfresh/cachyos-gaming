@@ -251,15 +251,18 @@ move to adjacent numbered desk, Ctrl = swap on this desk.
 | Super+Right mouse | — | Resize window | Resize window |
 | Super+scroll | — | — | Scroll workspaces |
 | Super+Ctrl+Alt+scroll | — | — | — |
-| Print Screen | Snipping Tool | — | Screenshot |
-| Alt+Print Screen | Active-window screenshot | — | Screenrecord |
-| Super+Print Screen | Save screenshot | — | Color picker |
+| Print Screen | Snipping Tool | Region, copy and save | Screenshot |
+| Alt+Print Screen | Active-window screenshot | Focused window, copy and save | Screenrecord |
+| Super+Print Screen | Save screenshot | Both screens, copy and save | Color picker |
 | Super+Ctrl+Print Screen | — | — | OCR to clipboard |
 | Ctrl+Shift+1/2/3 | — | — | — |
 
 Media keys on Novalis use PipeWire and playerctl (volume, mute, mic,
 play, next, prev). The screens have no backlight, so brightness is
-unbound. Delorean uses Omarchy’s matching helpers.
+unbound. Print, Alt+Print, and Super+Print copy a shot and save it
+under `~/Pictures/Screenshots` (region, focused window, both
+screens). The Keychron crop key sends Print. Delorean uses
+Omarchy’s matching helpers.
 
 ---
 

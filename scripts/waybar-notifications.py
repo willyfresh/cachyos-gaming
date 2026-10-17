@@ -3,9 +3,10 @@
 
 The count is notifications still on screen plus the history. A click
 opens the same Fuzzel list as Super+N. Picking a line invokes its
-action when it is still on screen, or opens a link in the text.
-Clear notifications dismisses what is up and restarts mako, which is
-the only way this version drops its history.
+action when it is still on screen, or opens a link in the text. A
+screenshot line opens that file in yazi. Clear notifications
+dismisses what is up and restarts mako, which is the only way this
+version drops its history.
 """
 
 from __future__ import annotations
@@ -14,6 +15,7 @@ import json
 import re
 import subprocess
 import time
+from pathlib import Path
 
 ICON = "\uf0f3"  # fa-bell
 CLEAR = "Clear notifications"
@@ -54,6 +56,28 @@ def actions_of(note: dict) -> list[tuple[str, str]]:
     if isinstance(raw, list) and len(raw) % 2 == 0 and all(isinstance(item, str) for item in raw):
         return [(raw[index], raw[index + 1] or raw[index]) for index in range(0, len(raw), 2)]
     return []
+
+
+def screenshot_file(note: dict) -> str | None:
+    """Path from a screenshot notification, when the body names one."""
+    if str(note.get("app_name") or "") != "Screenshot":
+        return None
+    found = None
+    for line in str(note.get("body") or "").splitlines():
+        path = line.strip()
+        if path.startswith("/") and path.endswith(".png"):
+            found = path
+    return found
+
+
+def open_screenshot(path: str) -> None:
+    script = Path(__file__).resolve().parent / "hypr-screenshot.sh"
+    subprocess.Popen(
+        [str(script), "open", path],
+        start_new_session=True,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
 
 
 def first_url(note: dict) -> str | None:
@@ -180,6 +204,12 @@ def open_menu() -> None:
         clear_notifications()
         return
     if match is None:
+        return
+    shot = screenshot_file(match)
+    if shot is not None:
+        open_screenshot(shot)
+        if match.get("_live"):
+            subprocess.run(["makoctl", "dismiss", "-n", str(match["id"])], check=False)
         return
     action = pick_action(match)
     if action is not None:

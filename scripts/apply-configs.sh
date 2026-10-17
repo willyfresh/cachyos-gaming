@@ -44,6 +44,7 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/launch-steam-heroic.sh" \
   "$REPO_ROOT/scripts/hypr-clipboard.sh" \
   "$REPO_ROOT/scripts/hypr-notifications.sh" \
+  "$REPO_ROOT/scripts/hypr-screenshot.sh" \
   "$REPO_ROOT/scripts/waybar-weather.py" \
   "$REPO_ROOT/scripts/waybar-disk.py" \
   "$REPO_ROOT/scripts/waybar-temp.py" \
@@ -74,6 +75,7 @@ link_path "$REPO_ROOT/scripts/hypr-cheatsheet.sh" "$HOME/.local/bin/hypr-cheatsh
 link_path "$REPO_ROOT/scripts/hypr-wallpaper.sh" "$HOME/.local/bin/hypr-wallpaper.sh"
 link_path "$REPO_ROOT/scripts/hypr-clipboard.sh" "$HOME/.local/bin/hypr-clipboard.sh"
 link_path "$REPO_ROOT/scripts/hypr-notifications.sh" "$HOME/.local/bin/hypr-notifications.sh"
+link_path "$REPO_ROOT/scripts/hypr-screenshot.sh" "$HOME/.local/bin/hypr-screenshot.sh"
 link_path "$REPO_ROOT/scripts/waybar-weather.py" "$HOME/.local/bin/waybar-weather.py"
 link_path "$REPO_ROOT/scripts/waybar-disk.py" "$HOME/.local/bin/waybar-disk.py"
 link_path "$REPO_ROOT/scripts/waybar-temp.py" "$HOME/.local/bin/waybar-temp.py"

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Superfile
+GenericName=File manager
+Comment=Terminal file manager
+TryExec=spf
+# Own window class, so a second Superfile focuses this one.
+Exec=kitty --class superfile -e spf
+Terminal=false
+Icon=system-file-manager
+Categories=System;FileManager;
+Keywords=spf;files;terminal;
+StartupNotify=false

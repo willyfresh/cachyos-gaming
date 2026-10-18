@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Gmail
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://mail.google.com/
+Terminal=false
+Type=Application
+Icon=mail-client
+StartupNotify=true
+StartupWMClass=chrome-mail.google.com-Default
+Categories=Network;Email;

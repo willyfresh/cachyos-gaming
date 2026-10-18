@@ -1,0 +1,15 @@
+# AUR packages. Installed with paru after packages/extra.txt.
+# One name per line. Blank lines and comments are ignored.
+# ./scripts/pkg-add.sh installs a package and appends it here.
+
+# Apps
+google-chrome
+# Official Microsoft build. The repo package `code` is Code OSS.
+visual-studio-code-bin
+grok-bot-bin
+dropbox
+
+# Terminal
+concord-bin
+# paru also installs steamcmd. Run `steamcmd`, log in, then quit.
+steam-tui

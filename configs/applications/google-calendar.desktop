@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Calendar
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://calendar.google.com/
+Terminal=false
+Type=Application
+Icon=x-office-calendar
+StartupNotify=true
+StartupWMClass=chrome-calendar.google.com-Default
+Categories=Office;Calendar;

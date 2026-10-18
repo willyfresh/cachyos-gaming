@@ -1,0 +1,3 @@
+# Scratch inbox. Dump obstacles here, then hand the file over.
+# Open items go on records/next.md. Finished items leave that page.
+

@@ -1,0 +1,35 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/initcpio/*
+Target = usr/lib/firmware/*
+Target = usr/lib/modules/*/extramodules/
+Target = usr/src/*/dkms.conf
+Target = usr/lib/systemd/systemd
+Target = usr/bin/cryptsetup
+Target = usr/bin/lvm
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/modules.builtin
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = mkinitcpio
+Target = mkinitcpio-git
+Target = limine
+Target = limine-entry-tool
+Target = linux
+Target = linux-cachyos
+Target = linux-cachyos-lts
+
+[Action]
+Description = Checking Limine menu files are on /boot...
+When = PostTransaction
+Exec = /usr/local/bin/check-limine-boot.sh

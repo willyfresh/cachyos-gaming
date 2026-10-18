@@ -1,0 +1,496 @@
+* {
+    /* One face for the bar. Noto only supplies glyphs Meslo lacks
+       (CJK, musical notation, symbols, emoji). Font Awesome Solid
+       covers a few private-use icons Meslo does not ship. */
+    font-family: "MesloLGS Nerd Font Mono", "Noto Sans", "Noto Sans CJK JP", "Noto Music", "Noto Sans Symbols 2", "Noto Sans Symbols", "Noto Color Emoji", "Font Awesome 7 Free Solid", sans-serif;
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite,
+window#waybar.chromium {
+    background-color: transparent;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #a37800;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused, #workspaces button.active {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+/* No number until a window is actually on that workspace. */
+#workspaces button.empty {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    font-size: 0;
+    color: transparent;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#clock,
+#custom-clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#custom-weather,
+#custom-media,
+#custom-temp,
+#custom-disk,
+#custom-gpu,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    color: #ffffff;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock,
+#custom-clock {
+    background-color: #64727D;
+}
+
+#custom-weather {
+    background-color: #0A0D0B;
+    color: #5CFF6B;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#custom-media.paused {
+    background-color: #51a37a;
+}
+
+#custom-temp {
+    background-color: #f0932b;
+}
+
+#custom-temp.critical {
+    background-color: #eb4d4b;
+}
+
+#custom-disk {
+    background-color: #4b6584;
+}
+
+#custom-gpu {
+    background-color: #0A0D0B;
+    color: #5CFF6B;
+}
+
+#custom-gpu.critical {
+    background-color: #eb4d4b;
+    color: #ffffff;
+}
+
+#battery {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#battery.charging, #battery.plugged {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+#memory {
+    background-color: #9b59b6;
+}
+
+#disk {
+    background-color: #964B00;
+}
+
+#backlight {
+    background-color: #90b1b1;
+}
+
+#network {
+    background-color: #2980b9;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio {
+    background-color: #f1c40f;
+    color: #000000;
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+}
+
+#wireplumber {
+    background-color: #fff0f5;
+    color: #000000;
+}
+
+#wireplumber.muted {
+    background-color: #f53c3c;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature {
+    background-color: #f0932b;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 5px;
+    margin: 0 5px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #cf5700;
+}
+
+#privacy-item.audio-in {
+    background-color: #1ca000;
+}
+
+#privacy-item.audio-out {
+    background-color: #0069d4;
+}
+
+/* Right side matches the weather chip. A meter shows a percent.
+   At 175°F that number becomes the temperature and turns red.
+   A percent of 90 or more is red even when the part is still cool.
+   140°F through 174°F stays a percent and turns yellow-green. */
+#idle_inhibitor,
+#idle_inhibitor.activated,
+#tray,
+#clock,
+#custom-clock,
+#custom-locks,
+#custom-weather,
+#pulseaudio,
+#pulseaudio.muted,
+#privacy,
+#privacy-item,
+#privacy-item.screenshare,
+#privacy-item.audio-in,
+#privacy-item.audio-out,
+#custom-media,
+#custom-media.paused,
+#custom-media.playing,
+#custom-media.custom-spotify,
+#custom-media.custom-vlc,
+#custom-cpu,
+#custom-mem,
+#custom-disk,
+#custom-gpu,
+#custom-notifications,
+#custom-updates,
+#network,
+#network.disconnected,
+#network.linked {
+    padding: 0 10px;
+    background-color: #0A0D0B;
+    color: #5CFF6B;
+}
+
+#pulseaudio:hover,
+#idle_inhibitor:hover,
+#clock:hover,
+#custom-clock:hover,
+#custom-locks:hover,
+#custom-weather:hover,
+#privacy:hover,
+#custom-notifications:hover,
+#custom-updates:hover,
+#custom-media:hover,
+#custom-cpu:hover,
+#custom-mem:hover,
+#custom-disk:hover,
+#custom-gpu:hover,
+#network:hover {
+    background-color: #0A0D0B;
+    color: #5CFF6B;
+}
+
+#custom-cpu.warm,
+#custom-mem.warm,
+#custom-disk.warm,
+#custom-gpu.warm {
+    color: #D6E04A;
+}
+
+#custom-cpu.hot,
+#custom-mem.hot,
+#custom-disk.hot,
+#custom-gpu.hot {
+    color: #FF4B4B;
+}
+
+/* Workspace numbers use the same plate. The one in use keeps a green
+   underline so it can be told apart. */
+#group-workspaces {
+    background: transparent;
+    padding: 0;
+    margin: 0 4px 0 0;
+}
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5,
+#custom-ws6,
+#custom-ws7,
+#custom-ws8,
+#custom-ws9,
+#custom-ws10 {
+    padding: 0 5px;
+    margin: 0;
+    background-color: #0A0D0B;
+    color: #5CFF6B;
+}
+
+#custom-ws1.active,
+#custom-ws2.active,
+#custom-ws3.active,
+#custom-ws4.active,
+#custom-ws5.active,
+#custom-ws6.active,
+#custom-ws7.active,
+#custom-ws8.active,
+#custom-ws9.active,
+#custom-ws10.active {
+    box-shadow: inset 0 -3px #5CFF6B;
+}
+
+#custom-ws1:hover,
+#custom-ws2:hover,
+#custom-ws3:hover,
+#custom-ws4:hover,
+#custom-ws5:hover,
+#custom-ws6:hover,
+#custom-ws7:hover,
+#custom-ws8:hover,
+#custom-ws9:hover,
+#custom-ws10:hover {
+    background-color: #0A0D0B;
+    color: #5CFF6B;
+}

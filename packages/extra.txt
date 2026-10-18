@@ -1,0 +1,65 @@
+# Repo packages on top of the CachyOS install.
+# One name per line. Blank lines and comments are ignored.
+# ./scripts/pkg-add.sh installs a package and appends it here.
+
+# Tools
+paru
+
+# Session
+hyprland
+xdg-desktop-portal-hyprland
+waybar
+fuzzel
+mako
+cliphist
+hyprpolkitagent
+wl-clip-persist
+hyprlock
+hypridle
+grim
+slurp
+tesseract-data-eng
+otf-font-awesome
+keyd
+
+# Terminal
+kitty
+yazi
+swayimg
+neovim
+tmux
+nvtop
+superfile
+lynx
+caligula
+neomutt
+zathura
+zathura-pdf-mupdf
+
+# Apps
+discord
+thunderbird
+obsidian
+bitwarden
+vlc
+inkscape
+gimp
+libreoffice-fresh
+
+# Gaming
+cachyos-gaming-meta
+steam
+heroic-games-launcher-bin
+mangohud
+lib32-mangohud
+gamescope
+goverlay
+# Distro package. Skip Wine's own mono installer.
+wine-mono
+
+# Shares
+gvfs-smb
+
+# Dev
+nodejs
+npm

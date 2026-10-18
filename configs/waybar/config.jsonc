@@ -1,0 +1,383 @@
+// Stock Waybar config. Sway module names are the Hyprland ones so this
+// compositor can show workspaces. Scratchpad, the media script, and the
+// power menu file are not part of this install, so those modules are off.
+{
+    // "layer": "top", // Waybar at top layer
+    "position": "bottom",
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "group/workspaces",
+        "custom/media"
+    ],
+    "modules-center": [
+        "custom/locks",
+        "idle_inhibitor",
+        "custom/clock",
+        "clock#date",
+        "custom/weather"
+    ],
+    "modules-right": [
+        "custom/notifications",
+        "custom/updates",
+        "tray",
+        "pulseaudio",
+        "privacy",
+        "custom/cpu",
+        "custom/mem",
+        "custom/gpu",
+        "custom/disk",
+        "network"
+    ],
+    // Modules configuration
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+    // Each bar lists that screen's workspaces, shown as 1–10.
+    // Waybar's own click still sends the old workspace dispatch, which
+    // Hyprland 0.56 ignores, so these chips focus the workspace themselves.
+    // A number is hidden until that workspace has a window.
+    "group/workspaces": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/ws1",
+            "custom/ws2",
+            "custom/ws3",
+            "custom/ws4",
+            "custom/ws5",
+            "custom/ws6",
+            "custom/ws7",
+            "custom/ws8",
+            "custom/ws9",
+            "custom/ws10"
+        ]
+    },
+    "custom/ws1": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 1",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 1 focus"
+    },
+    "custom/ws2": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 2",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 2 focus"
+    },
+    "custom/ws3": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 3",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 3 focus"
+    },
+    "custom/ws4": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 4",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 4 focus"
+    },
+    "custom/ws5": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 5",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 5 focus"
+    },
+    "custom/ws6": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 6",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 6 focus"
+    },
+    "custom/ws7": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 7",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 7 focus"
+    },
+    "custom/ws8": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 8",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 8 focus"
+    },
+    "custom/ws9": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 9",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 9 focus"
+    },
+    "custom/ws10": {
+        "exec": "$HOME/.local/bin/waybar-ws.py 10",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-ws.py 10 focus"
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "<span size='16384'>{icon}</span>",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10,
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "custom/clock": {
+        "exec": "$HOME/.local/bin/waybar-clock.py",
+        "return-type": "json",
+        "interval": 1,
+        "signal": 4,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-clock.py menu",
+        "on-click-right": "$HOME/.local/bin/waybar-clock.py next"
+    },
+    "clock#date": {
+        "format": "{:%a, %b %d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<span font_family='MesloLGS Nerd Font Mono'><small>{calendar}</small></span>",
+        "on-click": "$HOME/.local/bin/waybar-calendar.py",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#5CFF6B'><b>{}</b></span>",
+                "weekdays": "<span color='#5CFF6B'><b>{}</b></span>",
+                "days": "<span color='#C8D4C8'>{}</span>",
+                "today": "<span color='#0A0D0B' bgcolor='#5CFF6B'><b>{}</b></span>"
+            }
+        }
+    },
+    "custom/locks": {
+        "exec": "$HOME/.local/bin/waybar-locks.py",
+        "return-type": "json",
+        "interval": 1,
+        "hide-empty-text": true,
+        "tooltip": true
+    },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 16,
+        "transition-duration": 250,
+        "ignore-monitor": true,
+        "modules": [
+            { "type": "screenshare", "tooltip": true },
+            { "type": "audio-in", "tooltip": true }
+        ]
+    },
+    "custom/notifications": {
+        "exec": "$HOME/.local/bin/waybar-notifications.py",
+        "return-type": "json",
+        "interval": 1,
+        "hide-empty-text": true,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-notifications.py open"
+    },
+    "custom/updates": {
+        "exec": "$HOME/.local/bin/waybar-updates.py",
+        "return-type": "json",
+        "interval": 1800,
+        "signal": 2,
+        "hide-empty-text": true,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-updates.py detail"
+    },
+    "custom/weather": {
+        "exec": "$HOME/.local/bin/waybar-weather.py",
+        "return-type": "json",
+        "interval": 900,
+        "signal": 3,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-weather.py detail",
+        "on-click-right": "$HOME/.local/bin/waybar-weather.py next"
+    },
+    "custom/media": {
+        "exec": "$HOME/.local/bin/waybar-media.py",
+        "exec-if": "playerctl status",
+        "return-type": "json",
+        "interval": 2,
+        "on-click": "$HOME/.local/bin/waybar-media.py toggle"
+    },
+    "custom/cpu": {
+        "exec": "$HOME/.local/bin/waybar-cpu.py",
+        "return-type": "json",
+        "interval": 2,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-devices.py"
+    },
+    "custom/mem": {
+        "exec": "$HOME/.local/bin/waybar-mem.py",
+        "return-type": "json",
+        "interval": 2,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-devices.py"
+    },
+    "custom/disk": {
+        "exec": "$HOME/.local/bin/waybar-disk.py",
+        "return-type": "json",
+        "interval": 5,
+        "signal": 1,
+        "on-click": "$HOME/.local/bin/waybar-devices.py",
+        "on-click-right": "$HOME/.local/bin/waybar-disk.py next",
+        "tooltip": true
+    },
+    "custom/gpu": {
+        "exec": "$HOME/.local/bin/waybar-gpu.py",
+        "return-type": "json",
+        "interval": 5,
+        "tooltip": true,
+        "on-click": "$HOME/.local/bin/waybar-devices.py"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // No thermal_zone on this board. k10temp Tctl lives here.
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+        "input-filename": "temp1_input",
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "interval": 2,
+        "format-wifi": "{ipaddr} ",
+        "format-ethernet": "{ipaddr} ",
+        "tooltip-format": "{ifname} via {gwaddr}\n↓{bandwidthDownBits:>}  ↑{bandwidthUpBits:>}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "$HOME/.local/bin/waybar-devices.py"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% <span size='16384'>{icon}</span> {format_source}",
+        "format-bluetooth": "{volume}% <span size='16384'>{icon}</span> {format_source}",
+        "format-bluetooth-muted": "<span size='16384'> {icon}</span> {format_source}",
+        "format-muted": "<span size='16384'></span> {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}

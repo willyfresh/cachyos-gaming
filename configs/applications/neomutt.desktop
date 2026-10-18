@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Neomutt
+GenericName=Mail
+Comment=Terminal mail client
+TryExec=neomutt
+# Image attachments are drawn with kitty's icat.
+Exec=kitty --class neomutt -e neomutt
+Terminal=false
+Icon=mail-client
+Categories=Network;Email;
+Keywords=neomutt;mail;email;terminal;
+StartupNotify=false

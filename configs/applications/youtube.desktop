@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=YouTube
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://www.youtube.com/
+Terminal=false
+Type=Application
+Icon=video-x-generic
+StartupNotify=true
+StartupWMClass=chrome-www.youtube.com-Default
+Categories=Network;Video;

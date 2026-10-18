@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Maps
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://maps.google.com/
+Terminal=false
+Type=Application
+Icon=maps
+StartupNotify=true
+StartupWMClass=chrome-maps.google.com-Default
+Categories=Network;Geography;

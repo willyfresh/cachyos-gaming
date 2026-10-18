@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Messages
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://messages.google.com/web/conversations
+Terminal=false
+Type=Application
+Icon=chat
+StartupNotify=true
+StartupWMClass=chrome-messages.google.com__web_conversations-Default
+Categories=Network;InstantMessaging;

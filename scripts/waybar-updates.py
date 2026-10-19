@@ -3,15 +3,18 @@
 
 checkupdates and paru -Qua are slow, so the bar runs this every half
 hour. A click lists the saved packages in Fuzzel. The first line
-upgrades every package. Any other line upgrades that one package. A
-row ends in "reboot *" when that package is unused until the next
-boot. An AUR row ends in "aur" before that. The first line says
-reboot when any row does.
+upgrades every package. When some of those wait until the next boot,
+the next line upgrades the rest. Any other line upgrades that one
+package. Each row shows the download size when it is known. A row
+ends in "reboot *" when that package is unused until the next boot.
+An AUR row ends in "aur" before that. The first line says reboot
+when any row does.
 """
 
 from __future__ import annotations
 
 import json
+import os
 import re
 import shlex
 import shutil
@@ -52,8 +55,8 @@ def package_of(line: str) -> str | None:
     return None
 
 
-def names(entries: list[tuple[str, str]]) -> list[str]:
-    return [name for _, line in entries if (name := package_of(line))]
+def names(entries: list[tuple[str, str, int | None]]) -> list[str]:
+    return [name for _, line, _size in entries if (name := package_of(line))]
 
 
 def needs_reboot(name: str) -> bool:
@@ -62,8 +65,22 @@ def needs_reboot(name: str) -> bool:
     return name.startswith("linux-firmware") and name != "linux-firmware-whence"
 
 
-def show_line(kind: str, line: str) -> str:
+def format_size(nbytes: int) -> str:
+    size = float(nbytes)
+    for unit in ("B", "KiB", "MiB", "GiB"):
+        if unit == "B":
+            if size < 1024:
+                return f"{int(size)} B"
+        elif size < 1024 or unit == "GiB":
+            return f"{size:.2f} {unit}"
+        size /= 1024
+    return f"{size:.2f} GiB"
+
+
+def show_line(kind: str, line: str, size: int | None) -> str:
     shown = line
+    if size is not None:
+        shown += "   " + format_size(size)
     if kind == "aur":
         shown += AUR_MARK
     name = package_of(line)
@@ -72,23 +89,27 @@ def show_line(kind: str, line: str) -> str:
     return shown
 
 
-def strip_marks(chosen: str) -> str:
-    return chosen.removesuffix(REBOOT_MARK).removesuffix(AUR_MARK)
-
-
-def parse_cached(line: str) -> tuple[str, str] | None:
+def parse_cached(line: str) -> tuple[str, str, int | None] | None:
     # Older caches are plain checkupdates lines, all from the repos.
+    # The saved form is kind, download size in bytes, then the line.
+    size: int | None = None
     if line.startswith(("aur\t", "repo\t")):
-        kind, rest = line.split("\t", 1)
-        rest = rest.strip()
+        parts = line.split("\t")
+        kind = parts[0]
+        if len(parts) >= 3:
+            if parts[1].isdigit():
+                size = int(parts[1])
+            rest = parts[2].strip()
+        else:
+            rest = parts[1].strip()
     else:
         kind, rest = "repo", line.strip()
     if rest and package_of(rest):
-        return kind, rest
+        return kind, rest, size
     return None
 
 
-def read_cache() -> list[tuple[str, str]] | None:
+def read_cache() -> list[tuple[str, str, int | None]] | None:
     try:
         text = CACHE.read_text()
     except OSError:
@@ -96,15 +117,81 @@ def read_cache() -> list[tuple[str, str]] | None:
     return [entry for line in text.splitlines() if (entry := parse_cached(line))]
 
 
-def write_cache(entries: list[tuple[str, str]]) -> None:
+def write_cache(entries: list[tuple[str, str, int | None]]) -> None:
     CACHE.parent.mkdir(parents=True, exist_ok=True)
-    body = "\n".join(f"{kind}\t{line}" for kind, line in entries)
+    rows = []
+    for kind, line, size in entries:
+        size_field = "" if size is None else str(size)
+        rows.append(f"{kind}\t{size_field}\t{line}")
+    body = "\n".join(rows)
     tmp = CACHE.with_suffix(".txt.tmp")
     tmp.write_text(body + ("\n" if body else ""))
     tmp.replace(CACHE)
 
 
-def fetch() -> list[tuple[str, str]] | None:
+def checkup_db() -> Path:
+    custom = os.environ.get("CHECKUPDATES_DB")
+    if custom:
+        return Path(custom)
+    tmp = os.environ.get("TMPDIR", "/tmp")
+    return Path(tmp) / f"checkup-db-{os.getuid()}"
+
+
+def repo_download_sizes(package_names: list[str]) -> dict[str, int]:
+    # checkupdates syncs a temporary db and leaves the system db alone.
+    # %s is that package's download size in bytes.
+    db = checkup_db()
+    if not package_names or not (db / "sync").is_dir():
+        return {}
+    proc = subprocess.run(
+        [
+            "pacman",
+            "--dbpath",
+            str(db),
+            "-Sp",
+            "--print-format",
+            "%n %s",
+            "--",
+            *package_names,
+        ],
+        text=True,
+        capture_output=True,
+        timeout=30,
+        check=False,
+    )
+    found: dict[str, int] = {}
+    if proc.returncode != 0:
+        return found
+    for row in proc.stdout.splitlines():
+        part = row.split()
+        if len(part) == 2 and part[1].isdigit():
+            found[part[0]] = int(part[1])
+    return found
+
+
+def attach_sizes(
+    entries: list[tuple[str, str, int | None]],
+) -> list[tuple[str, str, int | None]]:
+    missing = [
+        name
+        for kind, line, size in entries
+        if kind == "repo" and size is None and (name := package_of(line))
+    ]
+    if not missing:
+        return entries
+    found = repo_download_sizes(missing)
+    if not found:
+        return entries
+    updated: list[tuple[str, str, int | None]] = []
+    for kind, line, size in entries:
+        name = package_of(line)
+        if size is None and name in found:
+            size = found[name]
+        updated.append((kind, line, size))
+    return updated
+
+
+def fetch() -> list[tuple[str, str, int | None]] | None:
     # The two queries both talk to the network. Overlap them.
     repo_proc = subprocess.Popen(
         ["checkupdates", "--nocolor"],
@@ -144,21 +231,22 @@ def fetch() -> list[tuple[str, str]] | None:
         return None
     if aur is None:
         previous = read_cache() or []
-        aur = [line for kind, line in previous if kind == "aur"]
+        aur = [line for kind, line, _size in previous if kind == "aur"]
 
-    entries: list[tuple[str, str]] = []
+    entries: list[tuple[str, str, int | None]] = []
     seen: set[str] = set()
     for kind, line in [("repo", line) for line in repo] + [("aur", line) for line in aur]:
         name = package_of(line)
         if not name or name in seen:
             continue
         seen.add(name)
-        entries.append((kind, line))
+        entries.append((kind, line, None))
+    entries = attach_sizes(entries)
     write_cache(entries)
     return entries
 
 
-def emit(entries: list[tuple[str, str]]) -> None:
+def emit(entries: list[tuple[str, str, int | None]]) -> None:
     if not entries:
         print(json.dumps({"text": "", "tooltip": "No pending updates"}), flush=True)
         return
@@ -172,12 +260,30 @@ def emit(entries: list[tuple[str, str]]) -> None:
     }, ensure_ascii=False), flush=True)
 
 
-def update_label(count: int, *, reboot: bool = False) -> str:
+def update_label(
+    count: int,
+    size: int | None,
+    *,
+    reboot: bool = False,
+    no_reboot: bool = False,
+) -> str:
     noun = "package" if count == 1 else "packages"
-    label = f"→  Update all {count} {noun}"
-    if reboot:
+    if no_reboot:
+        label = f"→  Update all {count} {noun}, no reboot"
+    else:
+        label = f"→  Update all {count} {noun}"
+    if size is not None:
+        label += "   " + format_size(size)
+    if reboot and not no_reboot:
         label += REBOOT_MARK
     return label
+
+
+def known_size(rows: list[tuple[str, str, int | None]]) -> int | None:
+    sizes = [size for _kind, _line, size in rows if size is not None]
+    if not sizes:
+        return None
+    return sum(sizes)
 
 
 def launch(command: str, title: str) -> None:
@@ -217,16 +323,65 @@ def upgrade_command(kind: str, name: str | None) -> str | None:
     return f"sudo pacman -Sy -- {shlex.quote(name)}"
 
 
+def upgrade_safe(entries: list[tuple[str, str, int | None]]) -> str | None:
+    # Leave out packages that are unused until the next boot, and do
+    # not let one of them arrive as a dependency of the rest.
+    keep: list[tuple[str, str]] = []
+    ignore = set(REBOOT_NAMES)
+    for _kind, line, _size in entries:
+        name = package_of(line)
+        if not name:
+            continue
+        if needs_reboot(name):
+            ignore.add(name)
+            continue
+        keep.append((_kind, name))
+    if not keep:
+        return None
+    quoted = " ".join(shlex.quote(name) for _kind, name in keep)
+    ignore_flags = " ".join(f"--ignore {shlex.quote(name)}" for name in sorted(ignore))
+    if any(kind == "aur" for kind, _name in keep):
+        return f"paru -S --skipreview --removemake --sudoloop {ignore_flags} -- {quoted}"
+    return f"sudo pacman -Sy {ignore_flags} -- {quoted}"
+
+
+def menu_lines(
+    entries: list[tuple[str, str, int | None]],
+) -> tuple[list[str], dict[str, tuple]]:
+    safe = [
+        row
+        for row in entries
+        if (name := package_of(row[1])) and not needs_reboot(name)
+    ]
+    reboot = any(needs_reboot(name) for name in names(entries))
+    lines: list[str] = []
+    actions: dict[str, tuple] = {}
+    if entries:
+        all_label = update_label(len(names(entries)), known_size(entries), reboot=reboot)
+        lines.append(all_label)
+        actions[all_label] = ("all",)
+        if safe and len(safe) < len(entries):
+            safe_label = update_label(len(safe), known_size(safe), no_reboot=True)
+            lines.append(safe_label)
+            actions[safe_label] = ("safe",)
+    for kind, line, size in entries:
+        shown = show_line(kind, line, size)
+        lines.append(shown)
+        actions[shown] = ("one", kind, line)
+    return lines, actions
+
+
 def detail() -> None:
     entries = read_cache()
     if entries is None:
         entries = fetch() or []
-    reboot = any(needs_reboot(name) for name in names(entries))
-    label = update_label(len(names(entries)), reboot=reboot) if entries else ""
-    if entries:
-        body = label + "\n" + "\n".join(show_line(kind, line) for kind, line in entries)
     else:
-        body = "No pending updates"
+        sized = attach_sizes(entries)
+        if sized != entries:
+            entries = sized
+            write_cache(entries)
+    lines, actions = menu_lines(entries)
+    body = "\n".join(lines) if lines else "No pending updates"
     chosen = subprocess.run(
         [
             "fuzzel",
@@ -234,7 +389,7 @@ def detail() -> None:
             "--prompt",
             "Updates  ",
             "--width",
-            "80",
+            "96",
             "--lines",
             MENU_LINES,
         ],
@@ -245,20 +400,22 @@ def detail() -> None:
     ).stdout.strip()
     if not entries or not chosen:
         return
-    if chosen == label:
+    action = actions.get(chosen)
+    if action is None:
+        return
+    if action[0] == "all":
         command = upgrade_command("repo", None)
-        if command:
-            launch(command, "Update")
-        return
-    raw = strip_marks(chosen)
-    match = next(((kind, line) for kind, line in entries if line == raw), None)
-    if match is None:
-        return
-    kind, line = match
-    name = package_of(line)
-    command = upgrade_command(kind, name)
-    if command and name:
-        launch(command, f"Update {name}")
+        title = "Update"
+    elif action[0] == "safe":
+        command = upgrade_safe(entries)
+        title = "Update"
+    else:
+        _tag, kind, line = action
+        name = package_of(line)
+        command = upgrade_command(kind, name)
+        title = f"Update {name}" if name else "Update"
+    if command:
+        launch(command, title)
 
 
 def main() -> None:

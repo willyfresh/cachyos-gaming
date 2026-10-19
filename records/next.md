@@ -43,4 +43,5 @@ no backlight.
 ## Update list
 
 A row ends in `reboot *` when that package is unused until the next
-boot. Restarting a service after a library update is still unmarked.
+boot. The list can update the other pending packages without those.
+Restarting a service after a library update is still unmarked.

@@ -69,7 +69,8 @@ the newest copy first, then wipe, delete, and delete-query. A picture is
 stored once. The UTF-16 text Chrome offers beside it is skipped.
 
 Fuzzel 1.15 cannot color a single row. An update that needs a reboot is
-marked `reboot *`.
+marked `reboot *`. The updates list can install every other pending
+package without those. Each row shows the download size when it is known.
 
 Alt+Tab walks windows in the order you used them, on both screens, and
 switches when Alt is released. Alt+Shift+Tab goes the other way. Alt+Esc

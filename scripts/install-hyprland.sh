@@ -23,7 +23,7 @@ journal_append "Hyprland config" "$(cat <<'EOF'
 - config: configs/hypr/hyprland.lua (dwindle) and configs/waybar.
 - portal: configs/xdg-desktop-portal/hyprland-portals.conf
 - from the tty prompt type start-hyprland.
-- Super+Shift+Q quits Hyprland.
+- Ctrl+Alt+Delete opens the session list. Super+Shift+Q is unbound.
 EOF
 )"
 
@@ -39,7 +39,7 @@ From this prompt, type:
 Super+Return opens kitty. Super+E opens yazi.
 Super+Shift+letter opens the apps.
 Super+arrows move focus. Super+Shift+arrows move the window.
-Super+Shift+Q quits back to this prompt.
+Ctrl+Alt+Delete opens lock, quit, reboot, and shut down.
 
 If the screen is stuck, press Ctrl+Alt+F2 and log in there.
 EOF

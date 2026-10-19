@@ -59,6 +59,7 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/hypr-notifications.sh" \
   "$REPO_ROOT/scripts/hypr-screenshot.sh" \
   "$REPO_ROOT/scripts/hypr-switcher.py" \
+  "$REPO_ROOT/scripts/hypr-session.sh" \
   "$REPO_ROOT/scripts/waybar-weather.py" \
   "$REPO_ROOT/scripts/waybar-disk.py" \
   "$REPO_ROOT/scripts/waybar-temp.py" \
@@ -92,6 +93,7 @@ link_path "$REPO_ROOT/scripts/hypr-clipboard-store.sh" "$HOME/.local/bin/hypr-cl
 link_path "$REPO_ROOT/scripts/hypr-notifications.sh" "$HOME/.local/bin/hypr-notifications.sh"
 link_path "$REPO_ROOT/scripts/hypr-screenshot.sh" "$HOME/.local/bin/hypr-screenshot.sh"
 link_path "$REPO_ROOT/scripts/hypr-switcher.py" "$HOME/.local/bin/hypr-switcher.py"
+link_path "$REPO_ROOT/scripts/hypr-session.sh" "$HOME/.local/bin/hypr-session.sh"
 link_path "$REPO_ROOT/scripts/waybar-weather.py" "$HOME/.local/bin/waybar-weather.py"
 link_path "$REPO_ROOT/scripts/waybar-disk.py" "$HOME/.local/bin/waybar-disk.py"
 link_path "$REPO_ROOT/scripts/waybar-temp.py" "$HOME/.local/bin/waybar-temp.py"

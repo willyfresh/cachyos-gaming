@@ -106,7 +106,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | **Q** | | | |
 | Super+Q | Search | Close window | Close window |
 | Alt+F4 | Close window | Close window | — |
-| Super+Shift+Q | — | Quit Hyprland | — |
+| Super+Shift+Q | — | — | — |
 | Super+Ctrl+Q | Quick Assist | — | Calculator |
 | **R** | | | |
 | Super+R | Run | — | — (unbound on purpose) |
@@ -258,7 +258,7 @@ numbered desk, Ctrl = swap on this desk.
 |-----|---------|------|----------|
 | Super+Escape | Close Magnifier | Devices | System menu |
 | Super+Shift+Escape | — | — | — |
-| Ctrl+Alt+Delete | Security screen | Quit Hyprland | Close all windows |
+| Ctrl+Alt+Delete | Security screen | Session menu | Close all windows |
 | Super+Ctrl+Delete | — | — | Toggle laptop panel |
 | Super+Ctrl+Alt+Delete | — | — | Toggle laptop mirror |
 | Super+Left mouse | — | Move window | Drag window |

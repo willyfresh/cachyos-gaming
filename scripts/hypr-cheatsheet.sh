@@ -13,7 +13,7 @@ Super+L                     Lock screen
 Super+Return                Terminal
 Super+E                     Yazi
 Super+Q / Alt+F4            Close window
-Super+Shift+Q               Quit Hyprland
+Ctrl+Alt+Delete             Session: lock, quit, reboot, shut down
 Super+T                     Float or tile
 Super+F                     Maximize, keep the gaps
 Super+Ctrl+F                Maximize, keep the gaps

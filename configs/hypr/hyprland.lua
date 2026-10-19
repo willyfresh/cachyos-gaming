@@ -1,10 +1,9 @@
 -- Hyprland on Novalis. Dwindle only. The bar is Waybar (configs/waybar).
 -- From the tty prompt type: start-hyprland
--- Super+Shift+Q quits back to that prompt.
+-- Ctrl+Alt+Delete opens the session list. Super+Shift+Q is unbound.
 
 local mainMod = "SUPER"
 local bin = "/home/willyfresh/.local/bin"
-local quit = "command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
@@ -109,8 +108,7 @@ hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^yazi$' setsid kitty --class yazi --title yazi -e yazi]]))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.close())
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(quit))
-hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(quit))
+hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(bin .. "/hypr-session.sh"))
 
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
 hl.bind(mainMod .. " + SHIFT + CTRL + A", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^grok-cli$' setsid kitty --class grok-cli --title grok -e /home/willyfresh/.grok/bin/grok]]))

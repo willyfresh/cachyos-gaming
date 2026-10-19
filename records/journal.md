@@ -13,6 +13,10 @@ tty1 stays a shell. Type `start-hyprland`. Do not exec that from
 `bash_profile`. SDDM is installed and disabled. Turning it on replaces
 the tty login.
 
+Ctrl+Alt+Delete opens the session list: lock, quit back to the tty,
+reboot, or shut down. It does not quit on its own. Escape cancels.
+Lock is the first row. Super+Shift+Q is unbound.
+
 niri and Noctalia were removed 2026-10-15. Leave them out. If
 `cachyos-niri-noctalia` shows up again, do not remove it with
 `pacman -Rns`: that also tries to remove the GTK portal, gnome-keyring,

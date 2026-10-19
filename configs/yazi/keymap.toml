@@ -1,0 +1,9 @@
+#:schema https://yazi-rs.github.io/schemas/keymap.json
+
+# g then a opens the hovered directory in the Grok CLI.
+# A file uses its parent. Other g-chords stay as Yazi ships them.
+
+[mgr]
+prepend_keymap = [
+	{ on = [ "g", "a" ], run = "shell --orphan -- /home/willyfresh/Projects/cachyos-gaming/scripts/yazi-open-grok.sh %h", desc = "Go to Grok" },
+]

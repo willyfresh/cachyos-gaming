@@ -30,6 +30,7 @@ mkdir -p "$HOME/.config/kitty"
 link_path "$CONFIGS_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 mkdir -p "$HOME/.config/yazi"
 link_path "$CONFIGS_DIR/yazi/yazi.toml" "$HOME/.config/yazi/yazi.toml"
+link_path "$CONFIGS_DIR/yazi/keymap.toml" "$HOME/.config/yazi/keymap.toml"
 # Neovim state stays in ~/.local/share/nvim and ~/.local/state/nvim.
 link_path "$CONFIGS_DIR/nvim" "$HOME/.config/nvim"
 link_path "$CONFIGS_DIR/mimeapps.list" "$HOME/.config/mimeapps.list"
@@ -51,6 +52,7 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/launch-discord.sh" \
   "$REPO_ROOT/scripts/launch-btop.sh" \
   "$REPO_ROOT/scripts/launch-grok-bot.sh" \
+  "$REPO_ROOT/scripts/yazi-open-grok.sh" \
   "$REPO_ROOT/scripts/launch-steam-heroic.sh" \
   "$REPO_ROOT/scripts/hypr-clipboard.sh" \
   "$REPO_ROOT/scripts/hypr-clipboard-store.sh" \

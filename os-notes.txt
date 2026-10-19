@@ -1,3 +1,9 @@
 # Scratch inbox. Dump obstacles here, then hand the file over.
 # Open items go on records/next.md. Finished items leave that page.
 
+triangle button should show updates, square button should show devices menu. circle still shows notifications. any other binds to these menus can be removed.
+the microphone button, should do system-wide dictation or speech to text, whatever. press once to record, any key to stop. add ctrl to make it stay on until ctrl is released.
+add to super-scroll: shift moves window.
+there are double programs in the programs menu. can we get rid of duplicates?
+i'd like to reorder the keybind menu. su-k first, su-space, su-tab, alt-tab, ct-al-del, any singular buttons, all the su-* window movement combos (scrolling and arrows right?) then the rest of the su-* buttons in alpha order, the su-sh-* and su-sh-ct-* together in alpha order, then the rest, i guess?? and why not make selecting one perform the keystrokes for you?
+

@@ -32,11 +32,13 @@ Super+Shift+Up              Move up. At the top, previous workspace, even if emp
 Super+Shift+Down            Move down. At the bottom, next workspace, even if empty
 Super+1…0                   This screen's workspace
 Super+Shift+1…0             Move the window to that workspace
+Super+Tab                   Every window, by screen. Esc closes
 Super+Shift+Tab             Previous workspace on this screen
 Super+scroll down           Next occupied workspace on this screen
 Super+scroll up             Previous occupied workspace on this screen
-Alt+Tab                     Next window
-Alt+Shift+Tab               Previous window
+Alt+Tab                     Recent windows. Release Alt to switch
+Alt+Shift+Tab               Recent windows, the other way
+Alt+Esc                     Cancel that switch
 Super+Ctrl+T                btop
 Super+Shift+T               btop
 Super+Shift+Ctrl+T          nvtop

@@ -67,6 +67,13 @@ stored once. The UTF-16 text Chrome offers beside it is skipped.
 Fuzzel 1.15 cannot color a single row. An update that needs a reboot is
 marked `reboot *`.
 
+Alt+Tab walks windows in the order you used them, on both screens, and
+switches when Alt is released. Alt+Shift+Tab goes the other way. Alt+Esc
+cancels. Super+Tab lists every window by screen and stays up until you
+pick one or press Esc. Super+Shift+Tab is still the previous workspace.
+Alt+Tab is not a submap. Super+Tab uses one named `taskview` so the
+arrows work, and Waybar does not show that name.
+
 ## Packages
 
 Repo names go in `packages/extra.txt`. AUR names go in `packages/aur.txt`.

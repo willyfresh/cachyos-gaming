@@ -89,6 +89,7 @@ hl.on("hyprland.start", function()
     -- Inkscape crashes if its private SVG clipboard type is persisted.
     hl.exec_cmd([[sh -c 'pgrep -x wl-clip-persist >/dev/null || exec wl-clip-persist --clipboard regular --all-mime-type-regex "(?i)^(?!image/x-inkscape-svg).+"']])
     hl.exec_cmd("python3 /home/willyfresh/Projects/cachyos-gaming/configs/hypr/wallpaper.py")
+    hl.exec_cmd("sh -c 'pgrep -f \"[h]ypr-switcher.py\" >/dev/null || exec " .. bin .. "/hypr-switcher.py'")
 end)
 
 -- Dialogs that should not become tiles.
@@ -210,21 +211,92 @@ hl.bind(mainMod .. " + equal", resize_by(1, 0))
 hl.bind(mainMod .. " + SHIFT + minus", resize_by(0, -1))
 hl.bind(mainMod .. " + SHIFT + equal", resize_by(0, 1))
 
--- Alt stays held in the normal keymap. No submap, so the bar never
--- labels the mode, and a quick tap cannot leave the keys stuck.
-local function cycle_window(prev)
-    return function()
-        if prev then
-            hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
-        else
-            hl.dispatch(hl.dsp.window.cycle_next())
+-- Alt+Tab is the Windows switcher. The list is frozen in the order
+-- you used the windows, and the window changes when Alt is released.
+-- No submap here: a quick tap used to stick one, and the bar printed
+-- the name. Super+Tab stays up, so that one is a submap. Arrows and
+-- Esc work, and Waybar does not show the name.
+local alt_open = false
+local alt_cool = 0
+local task_ready = false
+
+local function switcher(cmd)
+    hl.dispatch(hl.dsp.event("switcher>>" .. cmd))
+end
+
+local function alt_held()
+    return hl.is_key_down("Alt_L") or hl.is_key_down("Alt_R")
+end
+
+hl.timer(function()
+    if alt_cool > 0 then
+        alt_cool = alt_cool - 1
+    end
+    if alt_open and not alt_held() then
+        alt_open = false
+        alt_cool = 3
+        switcher("alt-up")
+    end
+    -- The Super+Tab that opened Task View is still down. Ignore it
+    -- until it is released, or the submap would close immediately.
+    if not task_ready and hl.get_current_submap() == "taskview" then
+        if not (hl.is_key_down("Super_L") or hl.is_key_down("Super_R")) then
+            task_ready = true
         end
-        hl.dispatch(hl.dsp.window.bring_to_top())
+    end
+end, { timeout = 30, type = "repeat" })
+
+local function alt_step(cmd)
+    return function()
+        if alt_cool > 0 then
+            return
+        end
+        alt_open = true
+        switcher(cmd)
     end
 end
 
-hl.bind("ALT + TAB", cycle_window(false))
-hl.bind("ALT + SHIFT + TAB", cycle_window(true))
+hl.bind("ALT + TAB", alt_step("alt-next"), { repeating = true })
+hl.bind("ALT + SHIFT + TAB", alt_step("alt-prev"), { repeating = true })
+hl.bind("ALT + Escape", function()
+    if not alt_open then
+        return
+    end
+    alt_open = false
+    alt_cool = 3
+    switcher("alt-cancel")
+end)
+
+local function leave_task(cmd)
+    return function()
+        task_ready = false
+        switcher(cmd)
+        hl.dispatch(hl.dsp.submap("reset"))
+    end
+end
+
+hl.define_submap("taskview", function()
+    hl.bind("Escape", leave_task("task-close"))
+    hl.bind("Return", leave_task("task-activate"))
+    hl.bind("SUPER + TAB", function()
+        if not task_ready then
+            return
+        end
+        leave_task("task-close")()
+    end)
+    hl.bind("TAB", function() switcher("task-right") end)
+    hl.bind("SHIFT + TAB", function() switcher("task-left") end)
+    hl.bind("left", function() switcher("task-left") end)
+    hl.bind("right", function() switcher("task-right") end)
+    hl.bind("up", function() switcher("task-up") end)
+    hl.bind("down", function() switcher("task-down") end)
+end)
+
+hl.bind(mainMod .. " + TAB", function()
+    task_ready = false
+    switcher("task-open")
+    hl.dispatch(hl.dsp.submap("taskview"))
+end)
 
 hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(bin .. "/hypr-cheatsheet.sh"))
 hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd(bin .. "/hypr-wallpaper.sh"))

@@ -169,13 +169,13 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Return | — | Wallpaper picker (Hyprland) | Google Messages |
 | Super+Alt+Return | — | — | Tmux terminal |
 | Super+Ctrl+Return | Narrator | — | Herdr |
-| Super+Tab | Task View | — | Mirador overview |
+| Super+Tab | Task View | Every window, by screen | Mirador overview |
 | Super+Shift+Tab | — | Previous workspace | Previous occupied desk |
 | Super+Ctrl+Tab | — | — | Former workspace |
 | Super+Alt+Tab | — | — | Cycle windows in a group |
 | Super+Alt+Shift+Tab | — | — | Cycle group, reverse |
-| Alt+Tab | MRU windows | Next window | MRU across desks |
-| Alt+Shift+Tab | MRU, reverse | Previous window | MRU, reverse |
+| Alt+Tab | MRU windows | Recent windows, release Alt | MRU across desks |
+| Alt+Shift+Tab | MRU, reverse | Recent windows, reverse | MRU, reverse |
 
 ---
 

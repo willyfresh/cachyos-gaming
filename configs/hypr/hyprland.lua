@@ -98,18 +98,20 @@ hl.window_rule({
     float = true,
     center = true,
 })
--- Apps. An open window is focused. A miss launches a new one.
+-- System, Utilities
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("fuzzel"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(bin .. "/hypr-clipboard.sh"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
-hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^yazi$' setsid kitty --class yazi --title yazi -e yazi]]))
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(bin .. "/waybar-devices.py"))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus --new-window"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(bin .. "/hypr-notifications.sh"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(bin .. "/hypr-clipboard.sh"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(bin .. "/waybar-weather.py detail"))
 hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(bin .. "/hypr-session.sh"))
 
+-- Apps. An open window is focused. A miss launches a new one.
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
 hl.bind(mainMod .. " + SHIFT + CTRL + A", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^grok-cli$' setsid kitty --class grok-cli --title grok -e /home/willyfresh/.grok/bin/grok]]))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bin .. "/launch-or-focus-webapp.sh 'chrome-boardgamearena.com.*Default' 'https://boardgamearena.com/'"))
@@ -118,6 +120,7 @@ hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(bin .. "/launch-discord.sh"))
 hl.bind(mainMod .. " + SHIFT + CTRL + D", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^concord$' setsid kitty --class concord --title concord -e concord]]))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^(thunderbird|org\.mozilla\.Thunderbird)$' thunderbird]]))
 hl.bind(mainMod .. " + SHIFT + CTRL + E", hl.dsp.exec_cmd("thunderbird -compose"))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^yazi$' setsid kitty --class yazi --title yazi -e yazi]]))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd(bin .. "/launch-or-focus-webapp.sh 'chrome-mail.google.com.*Default' 'https://mail.google.com/'"))
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(bin .. "/launch-or-focus-app.sh heroic setsid heroic"))
 hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(bin .. "/launch-or-focus-app.sh inkscape setsid inkscape"))
@@ -131,15 +134,11 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(bin .. "/launch-btop.sh"))
 hl.bind(mainMod .. " + SHIFT + CTRL + T", hl.dsp.exec_cmd(bin .. "/launch-btop.sh nvtop"))
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^nvim$' setsid kitty --class nvim --title nvim -e nvim]]))
 hl.bind(mainMod .. " + SHIFT + CTRL + V", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^[Cc]ode$' code]]))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(bin .. "/waybar-weather.py detail"))
-hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(bin .. "/waybar-devices.py"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^google-chrome$' setsid google-chrome-stable]]))
 hl.bind(mainMod .. " + SHIFT + CTRL + W", hl.dsp.exec_cmd(bin .. [[/launch-or-focus-app.sh '^lynx$' setsid kitty --class lynx --title lynx -e lynx]]))
 hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.exec_cmd(bin .. "/launch-youtube.sh music"))
 hl.bind(mainMod .. " + SHIFT + CTRL + Y", hl.dsp.exec_cmd(bin .. "/launch-youtube.sh youtube"))
-hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(bin .. "/launch-btop.sh"))
-hl.bind("CTRL + SHIFT + F3", hl.dsp.exec_cmd(bin .. "/launch-grok-bot.sh"))
-hl.bind("CTRL + SHIFT + F4", hl.dsp.exec_cmd(bin .. "/launch-steam-heroic.sh"))
+
 
 -- Media keys. keyd turns the Keychron knob and Fn+F8 into the Ctrl+Shift
 -- chords. These talk to PipeWire and playerctl directly. The screens
@@ -164,6 +163,8 @@ hl.bind("Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh region"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh window"))
 hl.bind("CTRL + SHIFT + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh screen"))
 
+hl.bind("CTRL + SHIFT + F4", hl.dsp.exec_cmd(bin .. "/waybar-devices.py"))
+hl.bind("CTRL + SHIFT + F5", hl.dsp.exec_cmd(bin .. "/launch-steam-heroic.sh"))
 -- Dwindle. Super+F keeps the gaps (maximize). Super+Ctrl+F2 covers
 -- the screen. Super+Up/Down and Super+Shift+Up/Down are bound after
 -- hyprsplit. At the edge, Up/Down go to an occupied workspace.

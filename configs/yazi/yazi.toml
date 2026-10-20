@@ -6,30 +6,46 @@
 # Audio, video, and archives keep Yazi's default openers.
 # O still lists the other openers.
 
-[opener]
-edit = [
-	{ run = "nvim %s", desc = "LazyVim", block = true, for = "unix" },
-]
-view = [
-	{ run = "swayimg %s", desc = "Image Viewer", orphan = true, for = "linux" },
-]
-read = [
-	{ run = "zathura %s", desc = "PDF Reader", orphan = true, for = "linux" },
-]
-grok = [
-  { run = "grok %s", desc = "Grok", block = true, for = "unix" },
-]
-tty = [
-  { run = "kitty %s", desc = "Terminal", block = true, for = "unix" },
-]
+[[opener.vim]]
+run = "nvim %s"
+desc = "LazyVim"
+block = true
 
+[[opener.img]]
+run = "swayimg %s"
+desc = "Image Viewer"
+orphan = true
 
-[open]
-prepend_rules = [
-	{ mime = "image/*", use = [ "view", "open", "reveal" ] },
-	{ mime = "application/pdf", use = [ "read", "reveal" ] },
-  { url = "*/", use = [ "edit", "tty", "grok"  ] }
-]
-append_rules = [
-	{ url = "*", use = [ "edit", "tty", "reveal", "read" ] },
-]
+[[opener.pdf]]
+run = "zathura %s"
+desc = "PDF Reader"
+orphan = true
+
+[[opener.grok]]
+run = "grok %s"
+desc = "Grok"
+block = true
+
+[[opener.tty]]
+run = "kitty --directory %s1"
+desc = "Terminal"
+orphan = true
+
+# open rules
+
+[[open.prepend_rules]]
+mime = "image/*"
+use = [ "img", "reveal" ]
+
+[[open.prepend_rules]]
+mime = "application/pdf"
+use = [ "pdf", "reveal" ]
+
+[[open.prepend_rules]]
+url = "*/"
+use = [ "vim", "grok", "tty" ]
+
+[[open.append_rules]]
+url = "*"
+use = [ "vim", "reveal" ]
+

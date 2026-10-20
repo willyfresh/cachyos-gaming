@@ -104,3 +104,9 @@ SDDM greeter were tried and dropped. The lock stays the blurred
 screenshot. The WebKit Board Game Arena window was replaced by the
 Chrome webapp. GNU Stow was considered and left as a note in
 `records/next.md`.
+
+## 2026-10-19 — installed tailscale
+
+- requested: tailscale
+- repos (pacman): tailscale
+- AUR (paru): (none)

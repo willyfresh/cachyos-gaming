@@ -63,3 +63,4 @@ gvfs-smb
 # Dev
 nodejs
 npm
+tailscale

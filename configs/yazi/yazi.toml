@@ -8,20 +8,28 @@
 
 [opener]
 edit = [
-	{ run = "nvim %s", desc = "nvim", block = true, for = "unix" },
+	{ run = "nvim %s", desc = "LazyVim", block = true, for = "unix" },
 ]
 view = [
-	{ run = "swayimg %s", desc = "swayimg", orphan = true, for = "linux" },
+	{ run = "swayimg %s", desc = "Image Viewer", orphan = true, for = "linux" },
 ]
 read = [
-	{ run = "zathura %s", desc = "zathura", orphan = true, for = "linux" },
+	{ run = "zathura %s", desc = "PDF Reader", orphan = true, for = "linux" },
 ]
+grok = [
+  { run = "grok %s", desc = "Grok", block = true, for = "unix" },
+]
+tty = [
+  { run = "kitty %s", desc = "Terminal", block = true, for = "unix" },
+]
+
 
 [open]
 prepend_rules = [
 	{ mime = "image/*", use = [ "view", "open", "reveal" ] },
-	{ mime = "application/pdf", use = [ "read", "edit", "reveal" ] },
+	{ mime = "application/pdf", use = [ "read", "reveal" ] },
+  { url = "*/", use = [ "edit", "tty", "grok"  ] }
 ]
 append_rules = [
-	{ url = "*", use = [ "edit", "open", "reveal" ] },
+	{ url = "*", use = [ "edit", "tty", "reveal", "read" ] },
 ]

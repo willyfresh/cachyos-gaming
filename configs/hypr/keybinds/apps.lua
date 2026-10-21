@@ -21,7 +21,7 @@ hl.bind(modshi .. " + CTRL + D", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^conco
 hl.bind(modshi .. " + E", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^(thunderbird|org\.mozilla\.Thunderbird)$' thunderbird]]))
 hl.bind(modshi .. " + CTRL + E", hl.dsp.exec_cmd("thunderbird -compose"))
 
-hl.bind(modshi .. " + F", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^yazi$' setsid kitty --class yazi --title yazi -e yazi]]))
+hl.bind(modshi .. " + F", hl.dsp.exec_cmd("setsid kitty --class yazi --title yazi -e yazi"))
 hl.bind(modshi .. " + CTRL + F", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-drive.google.com.*Default' 'https://drive.google.com/']]))
 
 hl.bind(modshi .. " + G", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-mail.google.com.*Default' 'https://mail.google.com/']]))

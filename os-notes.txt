@@ -1,2 +1,3 @@
 # Scratch inbox. Dump obstacles here, then hand the file over.
 # Open items go on records/next.md. Finished items leave that page.
+the nowplaying chip seems to disconnect when I pause. track title changes to "unknown" and clicking it does not restart media.

@@ -14,8 +14,6 @@ Pace is backlog only. Start one item, or two, when you pick them.
 | Keychron light and X | unbound |
 | Mic dictation | backlog |
 | Super+Shift+scroll moves the window | backlog |
-| Duplicate program menu entries | backlog |
-| Cheatsheet order, and a row runs the chord | backlog |
 | Library updates that need a service restart | unmarked on the update list |
 | Halo Xbox login, For Honor | tabled in `records/gaming.md` |
 
@@ -52,18 +50,6 @@ dictation on until Ctrl is released.
 
 Super+scroll changes workspace on this screen. Super+Shift+scroll
 should move the window.
-
-## Duplicate program menu entries
-
-Fuzzel lists the same program twice. Not investigated yet.
-
-## Cheatsheet
-
-Super+K order wanted: Super+K, Super+Space, Super+Tab, Alt+Tab,
-Ctrl+Alt+Delete, the singular buttons, the Super window-movement
-chords (scroll and arrows), the remaining Super chords in alpha
-order, Super+Shift and Super+Shift+Ctrl together in alpha order,
-then the rest. Selecting a row should send that chord.
 
 ## Update list
 

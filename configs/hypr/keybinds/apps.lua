@@ -11,7 +11,7 @@ hl.bind(mod .. " + Return", hl.dsp.exec_cmd(tty))
 hl.bind(modshi .. " + A", hl.dsp.exec_cmd(bin .. [[/launch-app.sh --match both 'grok[- ]?bot' setsid grok-bot]]))
 hl.bind(modshi .. " + CTRL + A", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^grok-cli$' setsid kitty --class grok-cli --title grok -e /home/willyfresh/.grok/bin/grok]]))
 
-hl.bind(modshi .. " + B", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-boardgamearena.com.*Default' 'https://boardgamearena.com/']]))
+hl.bind(modshi .. " + B", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-boardgamearena.com.*Default' 'https://boardgamearena.com/play']]))
 
 hl.bind(modshi .. " + C", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-calendar.google.com.*Default' 'https://calendar.google.com/']]))
 

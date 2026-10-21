@@ -103,29 +103,19 @@ if [[ -f "$CONFIGS_DIR/applications/steam.desktop" ]]; then
   link_path "$CONFIGS_DIR/applications/steam.desktop" "$HOME/.local/share/applications/steam.desktop"
 fi
 
-# Our names: symlink. Chrome-generated names: copy, so a Chrome rewrite
-# cannot clobber the repo (and so Desktop launchers stay --app=URL).
-install_desktop() {
-  local src="$1" dest="$2"
-  [[ -f "$src" ]] || die "desktop source missing: $src"
-  mkdir -p "$(dirname "$dest")"
-  if [[ -L "$dest" ]]; then
-    rm -f "$dest"
-  elif [[ -f "$dest" ]] && cmp -s "$src" "$dest"; then
-    log "already current: $dest"
-    return 0
-  elif [[ -e "$dest" ]]; then
-    local stamp dest_name backup
-    stamp="$(date +%Y%m%d-%H%M%S)"
-    dest_name="$(basename "$dest")"
-    backup="$BACKUP_DIR/$stamp/$dest_name"
-    mkdir -p "$(dirname "$backup")"
-    log "backing up $dest -> $backup"
-    mv "$dest" "$backup"
-  fi
-  cp "$src" "$dest"
-  log "installed $dest"
-}
+# Fuzzel only looks in the apps context. These are the site icons.
+link_path "$CONFIGS_DIR/icons/hicolor/256x256/apps/gmail.png" \
+  "$HOME/.local/share/icons/hicolor/256x256/apps/gmail.png"
+link_path "$CONFIGS_DIR/icons/hicolor/128x128/apps/google-calendar.png" \
+  "$HOME/.local/share/icons/hicolor/128x128/apps/google-calendar.png"
+link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/google-maps.png" \
+  "$HOME/.local/share/icons/hicolor/512x512/apps/google-maps.png"
+link_path "$CONFIGS_DIR/icons/hicolor/192x192/apps/google-messages.png" \
+  "$HOME/.local/share/icons/hicolor/192x192/apps/google-messages.png"
+link_path "$CONFIGS_DIR/icons/hicolor/256x256/apps/youtube.png" \
+  "$HOME/.local/share/icons/hicolor/256x256/apps/youtube.png"
+link_path "$CONFIGS_DIR/icons/hicolor/128x128/apps/youtube-music.png" \
+  "$HOME/.local/share/icons/hicolor/128x128/apps/youtube-music.png"
 
 link_path "$CONFIGS_DIR/applications/board-game-arena.desktop" \
   "$HOME/.local/share/applications/board-game-arena.desktop"
@@ -151,13 +141,6 @@ mkdir -p "$HOME/.config/neomutt"
 link_path "$CONFIGS_DIR/neomutt/neomuttrc" "$HOME/.config/neomutt/neomuttrc"
 link_path "$CONFIGS_DIR/neomutt/mailcap" "$HOME/.config/neomutt/mailcap"
 link_path "$REPO_ROOT/scripts/neomutt-icat.sh" "$HOME/.local/bin/neomutt-icat.sh"
-
-install_desktop "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
-  "$HOME/.local/share/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
-if [[ -f "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" || -L "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" ]]; then
-  install_desktop "$CONFIGS_DIR/applications/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop" \
-    "$HOME/Desktop/chrome-acgfoponpgapajbgbfgboblhfejpaamn-Default.desktop"
-fi
 
 # Chrome --app-id files repeat a name we already launch (YouTube, Maps,
 # Board Game Arena). Hide those. Drive, Keep, Photos, and Tasks have no

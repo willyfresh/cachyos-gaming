@@ -36,6 +36,8 @@ bin_scripts=(
   waybar-notifications.py
   waybar-calendar.py
   waybar-clock.py
+  waybar-mic.py
+  hypr-dictation-model.sh
   keychron-v6-via.py
   neomutt-icat.sh
 )

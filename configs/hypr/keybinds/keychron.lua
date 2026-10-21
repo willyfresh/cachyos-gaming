@@ -12,6 +12,12 @@ hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), media)
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), media)
 hl.bind("CTRL + SHIFT + F6", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), media)
+-- The mic key is F20. keyd emits Ctrl+Shift+F6, so Super+Mic arrives
+-- as Super+Ctrl+Shift+F6. Press once to record, again to type the words.
+hl.bind("SUPER + CTRL + SHIFT + F6", hl.dsp.exec_cmd("hyprwhspr record toggle"))
+-- Alt stays held, so Super+Alt+Mic is a different chord. Unload the
+-- model, or load it again. The mic readout turns red while it is off.
+hl.bind("SUPER + ALT + CTRL + SHIFT + F6", hl.dsp.exec_cmd(bin .. "/hypr-dictation-model.sh"))
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), media)
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), media)
 hl.bind("CTRL + SHIFT + F8", hl.dsp.exec_cmd("playerctl play-pause"), media)

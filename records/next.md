@@ -8,17 +8,11 @@ two, when you pick them.
 
 | Want | Status |
 |------|--------|
-| Mic dictation | backlog |
 | Library updates that need a service restart | backlog |
 | Stow layout | tabled |
 | Mango | tabled |
 | Keychron light key | tabled |
 | Halo Xbox login, For Honor | tabled |
-
-## Mic dictation
-
-Super+Mic starts dictation and stops it. That is the only control.
-The mic key by itself still toggles mute.
 
 ## Update list
 

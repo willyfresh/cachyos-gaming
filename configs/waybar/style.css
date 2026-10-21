@@ -387,6 +387,7 @@ label:focus {
 #custom-weather,
 #pulseaudio,
 #pulseaudio.muted,
+#custom-mic,
 #privacy,
 #privacy-item,
 #privacy-item.screenshare,
@@ -412,6 +413,7 @@ label:focus {
 }
 
 #pulseaudio:hover,
+#custom-mic:hover,
 #idle_inhibitor:hover,
 #clock:hover,
 #custom-clock:hover,
@@ -441,6 +443,29 @@ label:focus {
 #custom-mem.hot,
 #custom-disk.hot,
 #custom-gpu.hot {
+    color: #FF4B4B;
+}
+
+/* The speaker and the mic sit in one cluster. The mic icon is a few
+   pixels larger than the 14px text. Red means the dictation model is
+   off the GPU. */
+#group-volume {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+#pulseaudio,
+#pulseaudio.muted {
+    padding: 0 2px 0 10px;
+}
+
+#custom-mic {
+    padding: 0 10px 0 2px;
+}
+
+#custom-mic.unloaded,
+#custom-mic.unloaded:hover {
     color: #FF4B4B;
 }
 

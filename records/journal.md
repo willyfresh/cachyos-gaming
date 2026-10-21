@@ -100,6 +100,12 @@ Video and audio open in VLC. Super+Alt+M opens now playing.
 Super+. picks an emoji and types it. The menu keeps a name only when it
 contains what you typed, then sorts those hits. A loose match does not
 sit on the first row. With nothing typed, the list stays in emoji order.
+Super+Mic starts hyprwhspr and stops it. The mic key alone still mutes.
+A mic overlay shows while it is listening. hyprwhspr does not grab the
+keyboard, so keyd keeps the mic key. It listens with faster-whisper
+large-v3-turbo on the NVIDIA card, and starts with the Hyprland session.
+Super+Alt+Mic unloads that model and loads it again. The mic readout
+turns red while the model is off the GPU.
 
 ## Packages
 
@@ -132,3 +138,9 @@ Chrome webapp. GNU Stow was considered and left as a note in
 - requested: tailscale
 - repos (pacman): tailscale
 - AUR (paru): (none)
+
+## 2026-10-21 — installed gtk4-layer-shell wtype hyprwhspr
+
+- requested: gtk4-layer-shell wtype hyprwhspr
+- repos (pacman): gtk4-layer-shell wtype
+- AUR (paru): hyprwhspr

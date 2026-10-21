@@ -13,3 +13,4 @@ dropbox
 concord-bin
 # paru also installs steamcmd. Run `steamcmd`, log in, then quit.
 steam-tui
+hyprwhspr

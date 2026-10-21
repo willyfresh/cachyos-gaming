@@ -287,7 +287,9 @@ numbered desk, Ctrl = swap on this desk.
 | Ctrl+Shift+1/2/3 | — | — | — |
 
 Media keys on Novalis use PipeWire and playerctl (volume, mute, mic,
-play, next, prev). The screens have no backlight, so brightness is
+play, next, prev). The mic key mutes. Super+Mic starts dictation and
+stops it. Super+Alt+Mic unloads the dictation model and loads it again.
+The screens have no backlight, so brightness is
 unbound. The Keychron circle opens notification history, the triangle
 opens the update list, and the square opens devices. The light key
 is unbound. X opens the session list. The Keychron crop key sends Print. Crop copies a region

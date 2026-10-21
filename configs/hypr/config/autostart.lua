@@ -15,6 +15,9 @@ hl.on("hyprland.start", function()
 			.. "/hypr-clipboard-store.sh'"
 	)
 	hl.exec_cmd("sh -c 'systemctl --user is-active --quiet hyprpolkitagent || systemctl --user start hyprpolkitagent'")
+	-- graphical-session.target does not start from the tty, so the
+	-- enabled unit would stay down. Start it with the session.
+	hl.exec_cmd("sh -c 'systemctl --user is-active --quiet hyprwhspr || systemctl --user start hyprwhspr'")
 	-- Inkscape crashes if its private SVG clipboard type is persisted.
 	hl.exec_cmd(
 		[[sh -c 'pgrep -x wl-clip-persist >/dev/null || exec wl-clip-persist --clipboard regular --all-mime-type-regex "(?i)^(?!image/x-inkscape-svg).+"']]

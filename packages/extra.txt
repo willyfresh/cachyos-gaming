@@ -65,3 +65,4 @@ gvfs-smb
 nodejs
 npm
 tailscale
+gtk4-layer-shell

@@ -23,7 +23,7 @@
         "custom/notifications",
         "custom/updates",
         "tray",
-        "pulseaudio",
+        "group/volume",
         "privacy",
         "custom/cpu",
         "custom/mem",
@@ -352,14 +352,25 @@
         "format-disconnected": "Disconnected ⚠",
         "on-click": "$HOME/.local/bin/waybar-devices.py"
     },
+    "group/volume": {
+        "orientation": "horizontal",
+        "modules": [
+            "pulseaudio",
+            "custom/mic"
+        ]
+    },
+    "custom/mic": {
+        "exec": "$HOME/.local/bin/waybar-mic.py",
+        "return-type": "json",
+        "tooltip": true,
+        "on-click": "pavucontrol"
+    },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% <span size='16384'>{icon}</span> {format_source}",
-        "format-bluetooth": "{volume}% <span size='16384'>{icon}</span> {format_source}",
-        "format-bluetooth-muted": "<span size='16384'> {icon}</span> {format_source}",
-        "format-muted": "<span size='16384'></span> {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{volume}% <span size='16384'>{icon}</span>",
+        "format-bluetooth": "{volume}% <span size='16384'>{icon}</span>",
+        "format-bluetooth-muted": "<span size='16384'> {icon}</span>",
+        "format-muted": "<span size='16384'></span>",
         "format-icons": {
             "headphone": "",
             "hands-free": "",

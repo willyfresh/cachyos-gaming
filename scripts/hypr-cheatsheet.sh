@@ -24,6 +24,8 @@ Volume up|5% louder|-k XF86AudioRaiseVolume
 Volume down|5% quieter|-k XF86AudioLowerVolume
 Volume mute|Mute or unmute|-k XF86AudioMute
 Ctrl+Shift+F6|Mic. Mute the microphone|-M ctrl -M shift -k F6 -m shift -m ctrl
+Super+Ctrl+Shift+F6|Mic. Start or stop dictation|-M logo -M ctrl -M shift -k F6 -m shift -m ctrl -m logo
+Super+Alt+Ctrl+Shift+F6|Mic. Unload or load the dictation model|-M logo -M alt -M ctrl -M shift -k F6 -m shift -m ctrl -m alt -m logo
 Ctrl+Shift+F8|Play or pause|-M ctrl -M shift -k F8 -m shift -m ctrl
 Media next|Next track|-k XF86AudioNext
 Media previous|Previous track|-k XF86AudioPrev

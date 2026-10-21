@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Keep
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://keep.google.com/
+Terminal=false
+Type=Application
+Icon=google-keep
+StartupNotify=true
+StartupWMClass=chrome-keep.google.com-Default
+Categories=Office;

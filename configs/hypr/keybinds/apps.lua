@@ -22,6 +22,7 @@ hl.bind(modshi .. " + E", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^(thunderbird
 hl.bind(modshi .. " + CTRL + E", hl.dsp.exec_cmd("thunderbird -compose"))
 
 hl.bind(modshi .. " + F", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^yazi$' setsid kitty --class yazi --title yazi -e yazi]]))
+hl.bind(modshi .. " + CTRL + F", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-drive.google.com.*Default' 'https://drive.google.com/']]))
 
 hl.bind(modshi .. " + G", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-mail.google.com.*Default' 'https://mail.google.com/']]))
 
@@ -29,14 +30,19 @@ hl.bind(modshi .. " + H", hl.dsp.exec_cmd(bin .. "/launch-app.sh heroic setsid h
 
 hl.bind(modshi .. " + I", hl.dsp.exec_cmd(bin .. "/launch-app.sh inkscape setsid inkscape"))
 
+hl.bind(modshi .. " + K", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-keep.google.com.*Default' 'https://keep.google.com/']]))
+
 hl.bind(modshi .. " + L", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-maps.google.com.*Default' 'https://maps.google.com/']]))
 
 hl.bind(modshi .. " + M", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-messages.google.com.*Default' 'https://messages.google.com/web/conversations']]))
 
+hl.bind(modshi .. " + N", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-feedly.com.*Default' 'https://feedly.com/i/my']]))
+
 hl.bind(modshi .. " + O", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^(libreoffice|soffice)' setsid libreoffice]]))
 hl.bind(modshi .. " + CTRL + O", hl.dsp.exec_cmd(bin .. "/launch-app.sh obsidian setsid obsidian"))
 
-hl.bind(modshi .. " + P", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^gimp' setsid gimp]]))
+hl.bind(modshi .. " + P", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-photos.google.com.*Default' 'https://photos.google.com/']]))
+hl.bind(modshi .. " + CTRL + P", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^gimp' setsid gimp]]))
 
 hl.bind(modshi .. " + S", hl.dsp.exec_cmd(bin .. [[/launch-app.sh --match both --skip-title notificationtoast '^steam(?!\w)' setsid steam]]))
 
@@ -51,3 +57,5 @@ hl.bind(modshi .. " + CTRL + W", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^lynx$
 
 hl.bind(modshi .. " + Y", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-music\.youtube\.com' 'https://music.youtube.com/']]))
 hl.bind(modshi .. " + CTRL + Y", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-(www\.)?youtube\.com' 'https://www.youtube.com/']]))
+
+hl.bind(modshi .. " + period", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-tasks.google.com.*Default' 'https://tasks.google.com/']]))

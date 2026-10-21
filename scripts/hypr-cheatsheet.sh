@@ -69,14 +69,18 @@ Super+Shift+Ctrl+D|Concord|-M logo -M shift -M ctrl -k d -m ctrl -m shift -m log
 Super+Shift+E|Thunderbird|-M logo -M shift -k e -m shift -m logo
 Super+Shift+Ctrl+E|Thunderbird compose|-M logo -M shift -M ctrl -k e -m ctrl -m shift -m logo
 Super+Shift+F|Yazi|-M logo -M shift -k f -m shift -m logo
+Super+Shift+Ctrl+F|Google Drive|-M logo -M shift -M ctrl -k f -m ctrl -m shift -m logo
 Super+Shift+G|Gmail|-M logo -M shift -k g -m shift -m logo
 Super+Shift+H|Heroic|-M logo -M shift -k h -m shift -m logo
 Super+Shift+I|Inkscape|-M logo -M shift -k i -m shift -m logo
+Super+Shift+K|Google Keep|-M logo -M shift -k k -m shift -m logo
 Super+Shift+L|Maps|-M logo -M shift -k l -m shift -m logo
 Super+Shift+M|Messages|-M logo -M shift -k m -m shift -m logo
+Super+Shift+N|Feedly|-M logo -M shift -k n -m shift -m logo
 Super+Shift+O|LibreOffice|-M logo -M shift -k o -m shift -m logo
 Super+Shift+Ctrl+O|Obsidian|-M logo -M shift -M ctrl -k o -m ctrl -m shift -m logo
-Super+Shift+P|GIMP|-M logo -M shift -k p -m shift -m logo
+Super+Shift+P|Google Photos|-M logo -M shift -k p -m shift -m logo
+Super+Shift+Ctrl+P|GIMP|-M logo -M shift -M ctrl -k p -m ctrl -m shift -m logo
 Super+Shift+S|Steam|-M logo -M shift -k s -m shift -m logo
 Super+Shift+T|btop|-M logo -M shift -k t -m shift -m logo
 Super+Shift+Ctrl+T|nvtop|-M logo -M shift -M ctrl -k t -m ctrl -m shift -m logo
@@ -93,6 +97,7 @@ Super+Shift+Up|Move up. At the top, previous workspace, even if empty|-M logo -M
 Super+Shift+Down|Move down. At the bottom, next workspace, even if empty|-M logo -M shift -k Down -m shift -m logo
 Super+Shift+minus|This window 10% shorter|-M logo -M shift -k minus -m shift -m logo
 Super+Shift+equal|This window 10% taller|-M logo -M shift -k equal -m shift -m logo
+Super+Shift+.|Google Tasks|-M logo -M shift -k period -m shift -m logo
 Super+Shift+Return|Wallpaper color|-M logo -M shift -k Return -m shift -m logo
 Super+Shift+1|Move the window to workspace 1|-M logo -M shift -k 1 -m shift -m logo
 Super+Shift+2|Move the window to workspace 2|-M logo -M shift -k 2 -m shift -m logo

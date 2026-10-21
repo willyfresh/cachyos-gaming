@@ -54,7 +54,8 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Ctrl+E | — | Thunderbird compose | — |
 | **F** | | | |
 | Super+F | Feedback Hub | Maximize, keep the gaps | Maximize window |
-| Super+Shift+F | — | — | File manager |
+| Super+Shift+F | — | Yazi | File manager |
+| Super+Shift+Ctrl+F | — | Google Drive | — |
 | Super+Ctrl+F | Search PCs on the network | Maximize, keep the gaps | Windowed fullscreen (site chrome off) |
 | Super+Ctrl+F2 | — | Cover the screen | — |
 | Super+Alt+F | — | — | Full width |
@@ -78,6 +79,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+J | Recall (Copilot+ PCs) | — | Toggle split direction |
 | **K** | | | |
 | Super+K | Cast | Keybind cheatsheet | Keybind cheatsheet |
+| Super+Shift+K | — | Google Keep | — |
 | Super+Ctrl+K | — | — | Herdr keybinds |
 | Super+Alt+K | Mute / unmute mic (supported apps) | — | Tmux keybinds |
 | **L** | | | |
@@ -91,7 +93,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Alt+M | — | — | Music TUI (cliamp) |
 | **N** | | | |
 | Super+N | Notification center + calendar | Notification history | — |
-| Super+Shift+N | — | — | Neovim |
+| Super+Shift+N | — | Feedly | Neovim |
 | Super+Ctrl+N | — | — | Toggle nightlight |
 | **O** | | | |
 | Super+O | Lock screen rotation | — | LibreOffice |
@@ -100,7 +102,8 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+O | — | — | Toggle menu bar |
 | **P** | | | |
 | Super+P | Project / displays | — | Pseudo (dwindle stretch) |
-| Super+Shift+P | — | GIMP | Google Photos |
+| Super+Shift+P | — | Google Photos | Google Photos |
+| Super+Shift+Ctrl+P | — | GIMP | — |
 | Super+Alt+P | — | Power off monitors | — |
 | Super+Ctrl+P | — | — | Power panel |
 | **Q** | | | |
@@ -235,6 +238,7 @@ numbered desk, Ctrl = swap on this desk.
 | Super+Ctrl+Comma | — | — | Silence notifications |
 | Super+Alt+Comma | — | — | Invoke latest notification |
 | Super+Period | Emoji panel | — | Toggle clickpad |
+| Super+Shift+Period | — | Google Tasks | — |
 | Super+Ctrl+Period | — | — | Transcode media |
 | Super+[ / Super+] | — | — | Webcam overlay smaller / larger (Alt+[ / ]) |
 | Super+/ | IME reconversion | — | Next monitor scale |

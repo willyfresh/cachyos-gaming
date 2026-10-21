@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Photos
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://photos.google.com/
+Terminal=false
+Type=Application
+Icon=google-photos
+StartupNotify=true
+StartupWMClass=chrome-photos.google.com-Default
+Categories=Graphics;Photography;

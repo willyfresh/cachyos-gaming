@@ -22,7 +22,7 @@ desc = "PDF Reader"
 orphan = true
 
 [[opener.grok]]
-run = "grok %s"
+run = "grok --cwd %s"
 desc = "Grok"
 block = true
 

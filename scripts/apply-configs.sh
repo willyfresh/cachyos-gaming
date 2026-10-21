@@ -116,6 +116,16 @@ link_path "$CONFIGS_DIR/icons/hicolor/256x256/apps/youtube.png" \
   "$HOME/.local/share/icons/hicolor/256x256/apps/youtube.png"
 link_path "$CONFIGS_DIR/icons/hicolor/128x128/apps/youtube-music.png" \
   "$HOME/.local/share/icons/hicolor/128x128/apps/youtube-music.png"
+link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/google-drive.png" \
+  "$HOME/.local/share/icons/hicolor/512x512/apps/google-drive.png"
+link_path "$CONFIGS_DIR/icons/hicolor/256x256/apps/google-keep.png" \
+  "$HOME/.local/share/icons/hicolor/256x256/apps/google-keep.png"
+link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/google-photos.png" \
+  "$HOME/.local/share/icons/hicolor/512x512/apps/google-photos.png"
+link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/google-tasks.png" \
+  "$HOME/.local/share/icons/hicolor/512x512/apps/google-tasks.png"
+link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/feedly.png" \
+  "$HOME/.local/share/icons/hicolor/512x512/apps/feedly.png"
 
 link_path "$CONFIGS_DIR/applications/board-game-arena.desktop" \
   "$HOME/.local/share/applications/board-game-arena.desktop"
@@ -131,6 +141,16 @@ link_path "$CONFIGS_DIR/applications/youtube-music.desktop" \
   "$HOME/.local/share/applications/YouTube Music.desktop"
 link_path "$CONFIGS_DIR/applications/youtube.desktop" \
   "$HOME/.local/share/applications/YouTube.desktop"
+link_path "$CONFIGS_DIR/applications/google-tasks.desktop" \
+  "$HOME/.local/share/applications/Google Tasks.desktop"
+link_path "$CONFIGS_DIR/applications/google-keep.desktop" \
+  "$HOME/.local/share/applications/Google Keep.desktop"
+link_path "$CONFIGS_DIR/applications/google-drive.desktop" \
+  "$HOME/.local/share/applications/Google Drive.desktop"
+link_path "$CONFIGS_DIR/applications/google-photos.desktop" \
+  "$HOME/.local/share/applications/Google Photos.desktop"
+link_path "$CONFIGS_DIR/applications/feedly.desktop" \
+  "$HOME/.local/share/applications/Feedly.desktop"
 link_path "$CONFIGS_DIR/applications/superfile.desktop" \
   "$HOME/.local/share/applications/superfile.desktop"
 link_path "$CONFIGS_DIR/applications/concord.desktop" \
@@ -142,10 +162,8 @@ link_path "$CONFIGS_DIR/neomutt/neomuttrc" "$HOME/.config/neomutt/neomuttrc"
 link_path "$CONFIGS_DIR/neomutt/mailcap" "$HOME/.config/neomutt/mailcap"
 link_path "$REPO_ROOT/scripts/neomutt-icat.sh" "$HOME/.local/bin/neomutt-icat.sh"
 
-# Chrome --app-id files repeat a name we already launch (YouTube, Maps,
-# Board Game Arena). Hide those. Drive, Keep, Photos, and Tasks have no
-# twin, so they stay. Chrome rewrites its own files; the next apply
-# hides the twin again.
+# Chrome --app-id files repeat a name we already launch. Hide those.
+# Chrome rewrites its own files; the next apply hides the twin again.
 hide_chrome_name_twins() {
   local apps="${1:-$HOME/.local/share/applications}"
   python3 - "$apps" /usr/share/applications <<'PY'

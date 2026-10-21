@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Drive
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://drive.google.com/
+Terminal=false
+Type=Application
+Icon=google-drive
+StartupNotify=true
+StartupWMClass=chrome-drive.google.com-Default
+Categories=Network;

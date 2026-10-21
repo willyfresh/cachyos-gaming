@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Tasks
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://tasks.google.com/
+Terminal=false
+Type=Application
+Icon=google-tasks
+StartupNotify=true
+StartupWMClass=chrome-tasks.google.com-Default
+Categories=Office;

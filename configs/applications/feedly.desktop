@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Feedly
+Exec=/home/willyfresh/.local/bin/launch-webapp.sh https://feedly.com/i/my
+Terminal=false
+Type=Application
+Icon=feedly
+StartupNotify=true
+StartupWMClass=chrome-feedly.com__i_my-Default
+Categories=Network;News;

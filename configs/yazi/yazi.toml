@@ -3,7 +3,7 @@
 # Enter and o open text, unknown files, and directories in nvim.
 # Right enters a directory. Left leaves it.
 # Images open in swayimg. PDFs open in zathura.
-# Audio, video, and archives keep Yazi's default openers.
+# Audio and video open in VLC. Archives keep Yazi's default openers.
 # O still lists the other openers.
 
 [[opener.vim]]
@@ -19,6 +19,11 @@ orphan = true
 [[opener.pdf]]
 run = "zathura %s"
 desc = "PDF Reader"
+orphan = true
+
+[[opener.vlc]]
+run = "vlc --started-from-file %s"
+desc = "VLC"
 orphan = true
 
 [[opener.grok]]
@@ -40,6 +45,26 @@ use = [ "img", "reveal" ]
 [[open.prepend_rules]]
 mime = "application/pdf"
 use = [ "pdf", "reveal" ]
+
+[[open.prepend_rules]]
+mime = "video/*"
+use = [ "vlc", "reveal" ]
+
+[[open.prepend_rules]]
+mime = "audio/*"
+use = [ "vlc", "reveal" ]
+
+[[open.prepend_rules]]
+mime = "application/ogg"
+use = [ "vlc", "reveal" ]
+
+[[open.prepend_rules]]
+mime = "application/x-ogg"
+use = [ "vlc", "reveal" ]
+
+[[open.prepend_rules]]
+mime = "application/x-matroska"
+use = [ "vlc", "reveal" ]
 
 [[open.prepend_rules]]
 url = "*/"

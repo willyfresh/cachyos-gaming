@@ -60,6 +60,7 @@ hl.bind(modshi .. " + CTRL + W", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^lynx$
 hl.bind(modshi .. " + Y", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-music\.youtube\.com' 'https://music.youtube.com/']]))
 hl.bind(modshi .. " + CTRL + Y", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-(www\.)?youtube\.com' 'https://www.youtube.com/']]))
 
+hl.bind(modshi .. " + U", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^vlc$' setsid vlc]]))
 hl.bind(mod .. " + U", hl.dsp.exec_cmd(bin .. "/waybar-updates.py detail"))
 hl.bind(mod .. " + ALT + M", hl.dsp.exec_cmd(bin .. "/waybar-media.py menu"))
 

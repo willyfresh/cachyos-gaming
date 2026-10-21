@@ -26,7 +26,8 @@ hl.bind("SHIFT + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh window"))
 hl.bind("CTRL + SHIFT + Print", hl.dsp.exec_cmd(bin .. "/hypr-screenshot.sh screen"))
 
 -- Triangle opens the update list. Square opens devices.
--- Circle is Super+N, bound with the other utilities. Light and X stay open.
+-- Circle is Super+N, bound with the other utilities.
+-- X opens the session list. The light key stays open.
 hl.bind("CTRL + SHIFT + F3", hl.dsp.exec_cmd(bin .. "/waybar-updates.py detail"))
 hl.bind("CTRL + SHIFT + F4", hl.dsp.exec_cmd(bin .. "/waybar-devices.py"))
 hl.bind("CTRL + SHIFT + F5", hl.dsp.exec_cmd(bin .. "/hypr-session.sh"))

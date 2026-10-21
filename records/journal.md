@@ -57,7 +57,7 @@ colors, at 1920×1080, which is the size of these panels. Super+Shift+Return pic
 Chrome webapps are title-less `--app` windows. Their profile stays at
 `~/.local/share/borg/chrome-webapps` (the old hostname). Do not use
 `--app-id`; that draws a title bar. PDFs open in Zathura. Images open
-in swayimg.
+in swayimg. Video and audio open in VLC.
 
 A link from another app opens in the running Chrome, and that window
 is focused. `configs/hyprland-mimeapps.list` sends http and https to
@@ -89,7 +89,8 @@ process has exited, it is started again.
 Super+Ctrl+Left and Super+Ctrl+Right step every screen to the previous
 or next workspace number, including an empty one, and stop at 1 and at
 10. Super+D opens the next empty number on the focused screen.
-Super+U opens the update list. Super+Alt+M opens now playing.
+Super+U opens the update list. Super+Shift+U focuses VLC, or starts it.
+Video and audio open in VLC. Super+Alt+M opens now playing.
 Super+. picks an emoji and types it.
 
 ## Packages

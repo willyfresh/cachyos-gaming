@@ -89,6 +89,7 @@ Super+Shift+Ctrl+P|GIMP|-M logo -M shift -M ctrl -k p -m ctrl -m shift -m logo
 Super+Shift+S|Steam|-M logo -M shift -k s -m shift -m logo
 Super+Shift+T|btop|-M logo -M shift -k t -m shift -m logo
 Super+Shift+Ctrl+T|nvtop|-M logo -M shift -M ctrl -k t -m ctrl -m shift -m logo
+Super+Shift+U|VLC|-M logo -M shift -k u -m shift -m logo
 Super+Shift+V|Neovim|-M logo -M shift -k v -m shift -m logo
 Super+Shift+Ctrl+V|VS Code|-M logo -M shift -M ctrl -k v -m ctrl -m shift -m logo
 Super+Shift+W|Chrome|-M logo -M shift -k w -m shift -m logo

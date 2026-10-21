@@ -133,6 +133,7 @@ Super+E files, Super+L lock, Super+V clipboard, Super+Q close
 | Super+Ctrl+Alt+T | — | — | Time as notification |
 | **U** | | | |
 | Super+U | Accessibility settings | Update list | — |
+| Super+Shift+U | — | VLC | — |
 | **V** | | | |
 | Super+V | Clipboard history | Clipboard history | Clipboard history |
 | Super+Shift+V | — | Neovim | — |
@@ -285,7 +286,7 @@ Media keys on Novalis use PipeWire and playerctl (volume, mute, mic,
 play, next, prev). The screens have no backlight, so brightness is
 unbound. The Keychron circle opens notification history, the triangle
 opens the update list, and the square opens devices. The light key
-and X are unbound. The Keychron crop key sends Print. Crop copies a region
+is unbound. X opens the session list. The Keychron crop key sends Print. Crop copies a region
 and saves it under `~/Pictures/Screenshots`. Shift+crop grabs the
 focused window. Ctrl+Shift+crop grabs both screens. Alt+crop is
 SysRq, so the kernel keeps it and Hyprland never sees a window

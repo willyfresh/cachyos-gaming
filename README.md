@@ -24,7 +24,7 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `configs/hypr/wallpapers/` | Fractal wallpapers. Super+Shift+Return picks one |
 | `configs/keyd` | Keychron media and knob keys (`/etc/keyd/default.conf`). Super alone does nothing |
 | `configs/nvim` | LazyVim (live `~/.config/nvim`, via symlink). Plugin downloads stay in `~/.local/share/nvim` |
-| `configs/mimeapps.list` | Default apps: Zathura for PDFs, swayimg for images, Chrome for the web |
+| `configs/mimeapps.list` | Default apps: Zathura for PDFs, swayimg for images, VLC for video and audio, Chrome for the web |
 | `configs/hyprland-mimeapps.list` | http and https open through `launch-browser.sh`, which focuses Chrome |
 | `configs/chrome-flags.conf` | Skip Chrome's default-browser bar |
 | `configs/lsfg-vk/conf.toml` | Frame-generation profiles (live file symlink) |

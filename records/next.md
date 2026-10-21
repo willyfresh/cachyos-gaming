@@ -1,50 +1,38 @@
 # Next
 
 Scratch notes from `os-notes.txt` land here after triage. This page is
-only open work. Finished items leave. The inbox is emptied after triage.
+the backlog. Finished items leave. The inbox is emptied after triage.
 
-Pace is backlog only. Start one item, or two, when you pick them.
+Tabled items stay on the list and are not up next. Start one item, or
+two, when you pick them.
 
 | Want | Status |
 |------|--------|
-| Quieter Hyprland animations | current motion is in; shorter is unpicked |
-| Stow layout | backlog |
-| Mango | later, and only if you ask |
-| VLC chord | no key yet |
-| Keychron light and X | unbound |
+| Super+Ctrl+number moves every screen | backlog |
 | Mic dictation | backlog |
 | Super+Shift+scroll moves the window | backlog |
-| Library updates that need a service restart | unmarked on the update list |
-| Halo Xbox login, For Honor | tabled in `records/gaming.md` |
+| Library updates that need a service restart | backlog |
+| Emoji menu should not fuzzy-search | backlog |
+| Stow layout | tabled |
+| Mango | tabled |
+| Keychron light key | tabled |
+| Halo Xbox login, For Honor | tabled |
 
-## Quieter Hyprland animations
+## Super+Ctrl+number
 
-Windows use `gnomed` at speed 3 (300ms). Opacity uses `fadeIn` and
-`fadeOut` at speed 1 (100ms). Workspace changes use `slidevert` at
-speed 3 and stay solid. Tile moves stay a plain move. Speed is tenths
-of a second. Still unpicked: turn the motion off, or drop the speed
-toward 1.
-
-## Stow layout
-
-`./setup.sh` installs the package lists. `scripts/apply-configs.sh`
-symlinks the live files. `hyprland.lua` is linked as one file so
-Hyprland's runtime files stay out of the repo. Scripts go to
-`~/.local/bin`. Desktop entries go to `~/.local/share/applications`.
-`scripts/apply-system.sh` copies keyd, udev, and the Limine hook into
-`/etc`. GNU Stow is not installed. A Stow tree would replace those two
-scripts. The current links already come back from `./setup.sh`.
-
-## Keychron light and X
-
-The light key (Ctrl+Shift+F1) and X (Ctrl+Shift+F5) open nothing.
-These panels have no backlight.
+Super+Ctrl+1 through Super+Ctrl+0 moves every screen to that workspace
+number together. 0 is 10. Left stays on ids 1–10 and right on 11–20.
+Super+number still follows the focused screen only.
 
 ## Mic dictation
 
-The mic key (F20, Ctrl+Shift+F6) toggles microphone mute. Wanted:
-press once to dictate, and any key stops it. Holding Ctrl keeps
-dictation on until Ctrl is released.
+Super+Mic starts dictation and stops it. That is the only control.
+The mic key by itself still toggles mute.
+
+## Emoji menu
+
+Super+. still fuzzy-filters the list as you type. It should not.
+`--no-sort` only keeps the list order.
 
 ## Super+Shift+scroll
 
@@ -56,3 +44,26 @@ should move the window.
 A row ends in `reboot *` when that package is unused until the next
 boot. The list can update the other pending packages without those.
 Restarting a service after a library update is still unmarked.
+
+## Stow layout
+
+Tabled. `./setup.sh` installs the package lists. `scripts/apply-configs.sh`
+symlinks the live files. `hyprland.lua` is linked as one file so
+Hyprland's runtime files stay out of the repo. Scripts go to
+`~/.local/bin`. Desktop entries go to `~/.local/share/applications`.
+`scripts/apply-system.sh` copies keyd, udev, and the Limine hook into
+`/etc`. GNU Stow is not installed. A Stow tree would replace those two
+scripts. The current links already come back from `./setup.sh`.
+
+## Mango
+
+Tabled. Only if you ask.
+
+## Keychron light key
+
+Tabled. The light key (Ctrl+Shift+F1) opens nothing. These panels have
+no backlight.
+
+## Halo Xbox login, For Honor
+
+Tabled. Notes are in `records/gaming.md`.

@@ -7,3 +7,189 @@ add to super-scroll: shift moves window.
 there are double programs in the programs menu. can we get rid of duplicates?
 i'd like to reorder the keybind menu. su-k first, su-space, su-tab, alt-tab, ct-al-del, any singular buttons, all the su-* window movement combos (scrolling and arrows right?) then the rest of the su-* buttons in alpha order, the su-sh-* and su-sh-ct-* together in alpha order, then the rest, i guess?? and why not make selecting one perform the keystrokes for you?
 
+# prompt to complete the hypr.lua stuff
+
+Help me continue modularizing my Hyprland Lua configuration. I’m stopping for now, so first inspect what I actually have before suggesting changes. Don’t assume every proposal below has already been implemented.
+
+Environment/context:
+- Hyprland uses hyprland.lua and the hl.* Lua API.
+- My config/project directory appears in existing code as:
+  /home/willyfresh/Projects/cachyos-gaming/configs/hypr
+- My setup has a Keychron keyboard with keyd mappings, Waybar, custom helper scripts, and the hyprsplit Lua module.
+- Variables used throughout my bindings are mod, modshi, and bin. Ask for their actual definitions rather than guessing.
+- I prefer practical, intermediate-level guidance. Preserve existing functionality; don’t redesign working behavior while splitting files.
+
+What we’ve discussed:
+- Make hyprland.lua primarily an entrypoint that loads modules.
+- Settings can live under config/:
+  appearance.lua, layouts.lua, monitors.lua, input.lua,
+  environment.lua, rules.lua, autostart.lua, shared.lua as needed.
+- Appearance includes gaps, borders, opacity, decorations, and background.
+- Layout settings include general.layout = "dwindle" and dwindle.preserve_split.
+- Startup commands belong together in config/autostart.lua inside the existing
+  hl.on("hyprland.start", function() ... end) callback.
+- Rules belong in config/rules.lua. My existing rule floats and centers
+  class "^xdg-desktop-portal-gtk$".
+- A modal-dialog float/center rule was suggested, but don’t assume I added it.
+- I previously hit a require() problem with monitors.lua. If imports fail, inspect the actual error, file paths, active config, and installed Hyprland behavior instead of assuming the cause.
+
+Current task / latest decision:
+I want to split my large binding section BY CONCERN/INTENT, not merely by action type.
+
+Two important concerns:
+1. Keychron keyboard integration:
+   media keys, special Ctrl+Shift+F* mappings, and the crop/Print key.
+2. Windows muscle-memory shortcuts:
+   shortcuts I’m carrying over from Microsoft Windows.
+
+Proposed binding layout, not necessarily created yet:
+keybinds/
+  keychron.lua
+  windows-compat.lua
+  apps.lua
+  utilities.lua
+  session.lua
+  window-management.lua
+  workspaces.lua
+
+Proposed ownership:
+
+keychron.lua:
+- All XF86Audio* bindings.
+- Ctrl+Shift+F6: microphone mute.
+- Ctrl+Shift+F8: playerctl play-pause.
+- Ctrl+Shift+F4: bin .. "/waybar-devices.py".
+- Ctrl+Shift+F5: bin .. "/launch-steam-heroic.sh".
+- Print: screenshot region.
+- Shift+Print: screenshot focused window.
+- Ctrl+Shift+Print: screenshot screens.
+- Keep local media/media_repeat option tables here.
+- Preserve locked/repeating options.
+- No brightness bindings: my monitors have no backlight controls in this setup.
+- keyd turns the Keychron knob and Fn+F8 into Ctrl+Shift chords.
+
+windows-compat.lua:
+Candidate bindings from my existing config:
+- Alt+F4: close.
+- Super+E: nautilus --new-window.
+- Super+L: pidof hyprlock || hyprlock.
+- Ctrl+Alt+Delete: custom session menu.
+- Alt+Tab / Alt+Shift+Tab: custom Windows-style switcher.
+- Super+Tab: custom Task View.
+Confirm these reflect my intended Windows carryovers.
+
+IMPORTANT: Keep the entire custom switcher implementation together:
+- alt_open, alt_cool, task_ready state.
+- switcher() dispatches hl.dsp.event("switcher>>" .. cmd).
+- alt_held().
+- Repeating 30 ms timer handling Alt release, cooldown, and Super release.
+- alt_step().
+- Alt+Tab, Alt+Shift+Tab, Alt+Escape.
+- leave_task().
+- taskview submap with arrows, Tab, Shift+Tab, Enter, Escape, Super+Tab.
+- Super+Tab opening Task View.
+Do not simplify/rewrite this state machine casually. It contains workarounds for quick taps, release timing, and unwanted submap behavior.
+The hypr-switcher.py process launch remains in autostart.lua.
+
+apps.lua:
+- Ordinary application launch / launch-or-focus bindings.
+- Super+Space: fuzzel.
+- Super+Return: kitty.
+- The large modshi application group and Ctrl-modified alternatives.
+- Existing helpers include launch-or-focus-app.sh,
+  launch-or-focus-webapp.sh, launch-discord.sh, launch-steam.sh,
+  launch-btop.sh, launch-youtube.sh, etc.
+- Preserve commands, quoting, regexes, and setsid usage exactly.
+
+utilities.lua:
+- Super+Escape: devices panel.
+- Super+N: notifications.
+- Super+V: clipboard.
+- Super+W: weather detail.
+- Super+K: cheatsheet.
+- modshi+Return: wallpaper picker.
+It’s intentional that Super+Escape and the Keychron Ctrl+Shift+F4
+can live in different files while invoking the same script.
+
+session.lua:
+- Custom screen-off shortcut: Super+Alt+P.
+- Existing implementation uses a 500 ms one-shot hl.timer before
+  dispatching DPMS disable so the triggering keypress doesn’t wake screens.
+- Other non-Windows-specific session shortcuts as needed.
+
+window-management.lua:
+- Super+Q: close.
+- Super+Left/Right: focus.
+- modshi+Left/Right: move.
+- Super+T: float toggle.
+- Existing maximized/fullscreen bindings.
+- resize_by() helper and minus/equal bindings.
+- Mouse drag/resize bindings.
+- Keep Up/Down navigation out of here because it depends on workspace logic.
+- Existing Super+F, Super+M, and Super+Ctrl+F all maximize.
+  Don’t remove aliases without asking.
+- Super+Ctrl+F2 is actual fullscreen.
+- resize_by() uses 10% of active monitor width/height.
+
+workspaces.lua:
+Keep the whole hyprsplit system together initially:
+- Existing package.path additions for the project config directory.
+- local hs = require("hyprsplit").
+- hs.config({ num_workspaces = 10, persistent_workspaces = false }).
+- hs.monitor_priority({ "DP-1", "HDMI-A-1" }).
+- Each monitor has its own workspace numbers 1–10:
+  DP-1 uses IDs 1–10, HDMI-A-1 uses IDs 11–20.
+- Number-key loop focuses/moves relative to the focused monitor.
+- modshi+Tab: previous occupied workspace.
+- Super+wheel: occupied workspace navigation.
+- window_center(), has_window_that_way(),
+  focus_or_workspace(), move_or_workspace().
+- Super+Up/Down focuses a window in that direction if available;
+  at the edge it goes to previous/next occupied workspace on that monitor.
+- modshi+Up/Down moves within the workspace if possible;
+  at the edge it carries the window to the neighboring workspace number,
+  including empty workspaces.
+- Preserve special-workspace checks and boundary behavior.
+
+Organization principle:
+“One owner per binding. Put it where the reason for choosing that shortcut belongs.”
+Do not duplicate a binding across files merely because it fits multiple categories.
+
+Shared values / module pattern suggested:
+Modules can return setup functions so existing locals remain explicit:
+
+-- example module
+return function(ctx)
+    local mod = ctx.mod
+    local modshi = ctx.modshi
+    local bin = ctx.bin
+    -- existing code
+end
+
+-- entrypoint, after existing variable definitions
+local ctx = {
+    mod = mod,
+    modshi = modshi,
+    bin = bin,
+}
+require("keybinds.keychron")(ctx)
+require("keybinds.windows-compat")(ctx)
+require("keybinds.apps")(ctx)
+require("keybinds.utilities")(ctx)
+require("keybinds.session")(ctx)
+require("keybinds.window-management")(ctx)
+require("keybinds.workspaces")(ctx)
+
+This was a suggestion, not confirmed implementation. Match my actual module
+pattern if I’ve already established one. Don’t mix side-effect-only imports
+and returned setup functions accidentally.
+
+Other completed detail:
+- My pacman-installed Bitwarden desktop executable is bitwarden-desktop,
+  not bitwarden.
+- I enabled Bitwarden’s Start to tray setting.
+- Its startup command can remain hl.exec_cmd("bitwarden-desktop").
+
+Start by asking me to paste/attach the current hyprland.lua and any modules
+already created. Then help split the remaining bindings incrementally by
+the concerns above, preserving behavior and checking dependencies/load order.

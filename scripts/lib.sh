@@ -183,3 +183,48 @@ pull_path() {
   log "copying $live -> $dest"
   cp -a "$live" "$dest"
 }
+
+# Paths under configs/ that mirror ~/.config/. A parent stays a real
+# directory when the app writes runtime files beside the ones we track
+# (Hyprland, lsfg-vk, Goverlay, kitty).
+CONFIG_LINKS=(
+  environment.d/gaming.conf
+  # xdg-desktop-portal reads this when XDG_CURRENT_DESKTOP=Hyprland.
+  xdg-desktop-portal/hyprland-portals.conf
+  # The file, not ~/.config/hypr. require() still looks there, so the
+  # module trees are linked too.
+  hypr/hyprland.lua
+  hypr/hyprlock.conf
+  hypr/hypridle.conf
+  hypr/config
+  hypr/keybinds
+  hypr/hyprsplit
+  mako/config
+  waybar
+  fuzzel
+  kitty/kitty.conf
+  yazi/yazi.toml
+  yazi/keymap.toml
+  # Neovim state stays in ~/.local/share/nvim and ~/.local/state/nvim.
+  nvim
+  mimeapps.list
+  # lsfg-vk and Goverlay write beside these files.
+  lsfg-vk/conf.toml
+  MangoHud/MangoHud.conf
+  neomutt/neomuttrc
+  neomutt/mailcap
+)
+
+apply_config_links() {
+  local rel
+  for rel in "${CONFIG_LINKS[@]}"; do
+    link_path "$CONFIGS_DIR/$rel" "$HOME/.config/$rel"
+  done
+}
+
+pull_config_links() {
+  local rel
+  for rel in "${CONFIG_LINKS[@]}"; do
+    pull_path "$HOME/.config/$rel" "$CONFIGS_DIR/$rel"
+  done
+}

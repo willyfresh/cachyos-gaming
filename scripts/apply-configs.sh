@@ -5,162 +5,79 @@ set -euo pipefail
 # shellcheck source=lib.sh
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib.sh"
 
-mkdir -p "$HOME/.config"
+apply_config_links
 
-if [[ -f "$CONFIGS_DIR/environment.d/gaming.conf" ]]; then
-  mkdir -p "$HOME/.config/environment.d"
-  link_path "$CONFIGS_DIR/environment.d/gaming.conf" "$HOME/.config/environment.d/gaming.conf"
-fi
+# User commands. Repo tools and waybar_level.py stay in the repo.
+bin_scripts=(
+  launch-webapp.sh
+  launch-app.sh
+  collapse-webapp-profile.sh
+  hypr-cheatsheet.sh
+  hypr-wallpaper.sh
+  hypr-clipboard.sh
+  hypr-clipboard-store.sh
+  hypr-notifications.sh
+  hypr-screenshot.sh
+  hypr-switcher.py
+  hypr-session.sh
+  waybar-weather.py
+  waybar-disk.py
+  waybar-temp.py
+  waybar-gpu.py
+  waybar-cpu.py
+  waybar-mem.py
+  waybar-devices.py
+  waybar-media.py
+  waybar-ws.py
+  waybar-locks.py
+  waybar-updates.py
+  waybar-notifications.py
+  waybar-calendar.py
+  waybar-clock.py
+  keychron-v6-via.py
+  neomutt-icat.sh
+)
 
-# Chrome's file dialog. xdg-desktop-portal reads this file when
-# XDG_CURRENT_DESKTOP=Hyprland.
-mkdir -p "$HOME/.config/xdg-desktop-portal"
-link_path "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf" \
-  "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
-
-# The file, not the directory, so Hyprland's runtime files stay out of the repo.
-# require() still looks in ~/.config/hypr, so the module trees are linked too.
-link_path "$CONFIGS_DIR/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"
-link_path "$CONFIGS_DIR/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
-link_path "$CONFIGS_DIR/hypr/hypridle.conf" "$HOME/.config/hypr/hypridle.conf"
-link_path "$CONFIGS_DIR/hypr/config" "$HOME/.config/hypr/config"
-link_path "$CONFIGS_DIR/hypr/keybinds" "$HOME/.config/hypr/keybinds"
-link_path "$CONFIGS_DIR/hypr/hyprsplit" "$HOME/.config/hypr/hyprsplit"
-mkdir -p "$HOME/.config/mako"
-link_path "$CONFIGS_DIR/mako/config" "$HOME/.config/mako/config"
-link_path "$CONFIGS_DIR/waybar" "$HOME/.config/waybar"
-link_path "$CONFIGS_DIR/fuzzel" "$HOME/.config/fuzzel"
-mkdir -p "$HOME/.config/kitty"
-link_path "$CONFIGS_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-mkdir -p "$HOME/.config/yazi"
-link_path "$CONFIGS_DIR/yazi/yazi.toml" "$HOME/.config/yazi/yazi.toml"
-link_path "$CONFIGS_DIR/yazi/keymap.toml" "$HOME/.config/yazi/keymap.toml"
-# Neovim state stays in ~/.local/share/nvim and ~/.local/state/nvim.
-link_path "$CONFIGS_DIR/nvim" "$HOME/.config/nvim"
-link_path "$CONFIGS_DIR/mimeapps.list" "$HOME/.config/mimeapps.list"
-# The file, not the directory. lsfg-vk and Goverlay write beside these.
-mkdir -p "$HOME/.config/lsfg-vk"
-link_path "$CONFIGS_DIR/lsfg-vk/conf.toml" "$HOME/.config/lsfg-vk/conf.toml"
-mkdir -p "$HOME/.config/MangoHud"
-link_path "$CONFIGS_DIR/MangoHud/MangoHud.conf" "$HOME/.config/MangoHud/MangoHud.conf"
-
-mkdir -p "$HOME/.local/share/applications"
-mkdir -p "$HOME/.local/bin"
-
-chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
-  "$REPO_ROOT/scripts/launch-app.sh" \
-  "$REPO_ROOT/scripts/collapse-webapp-profile.sh" \
-  "$REPO_ROOT/scripts/hypr-clipboard.sh" \
-  "$REPO_ROOT/scripts/hypr-clipboard-store.sh" \
-  "$REPO_ROOT/scripts/hypr-notifications.sh" \
-  "$REPO_ROOT/scripts/hypr-screenshot.sh" \
-  "$REPO_ROOT/scripts/hypr-switcher.py" \
-  "$REPO_ROOT/scripts/hypr-session.sh" \
-  "$REPO_ROOT/scripts/waybar-weather.py" \
-  "$REPO_ROOT/scripts/waybar-disk.py" \
-  "$REPO_ROOT/scripts/waybar-temp.py" \
-  "$REPO_ROOT/scripts/waybar-gpu.py" \
-  "$REPO_ROOT/scripts/waybar-cpu.py" \
-  "$REPO_ROOT/scripts/waybar-mem.py" \
-  "$REPO_ROOT/scripts/waybar-devices.py" \
-  "$REPO_ROOT/scripts/waybar-media.py" \
-  "$REPO_ROOT/scripts/waybar-ws.py" \
-  "$REPO_ROOT/scripts/waybar-locks.py" \
-  "$REPO_ROOT/scripts/waybar-updates.py" \
-  "$REPO_ROOT/scripts/waybar-notifications.py" \
-  "$REPO_ROOT/scripts/waybar-calendar.py" \
-  "$REPO_ROOT/scripts/waybar-clock.py" \
-  "$REPO_ROOT/scripts/keychron-v6-via.py" \
-  "$REPO_ROOT/scripts/neomutt-icat.sh"
-link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.sh"
-link_path "$REPO_ROOT/scripts/launch-app.sh" "$HOME/.local/bin/launch-app.sh"
-link_path "$REPO_ROOT/scripts/collapse-webapp-profile.sh" "$HOME/.local/bin/collapse-webapp-profile.sh"
-link_path "$REPO_ROOT/scripts/hypr-cheatsheet.sh" "$HOME/.local/bin/hypr-cheatsheet.sh"
-link_path "$REPO_ROOT/scripts/hypr-wallpaper.sh" "$HOME/.local/bin/hypr-wallpaper.sh"
-link_path "$REPO_ROOT/scripts/hypr-clipboard.sh" "$HOME/.local/bin/hypr-clipboard.sh"
-link_path "$REPO_ROOT/scripts/hypr-clipboard-store.sh" "$HOME/.local/bin/hypr-clipboard-store.sh"
-link_path "$REPO_ROOT/scripts/hypr-notifications.sh" "$HOME/.local/bin/hypr-notifications.sh"
-link_path "$REPO_ROOT/scripts/hypr-screenshot.sh" "$HOME/.local/bin/hypr-screenshot.sh"
-link_path "$REPO_ROOT/scripts/hypr-switcher.py" "$HOME/.local/bin/hypr-switcher.py"
-link_path "$REPO_ROOT/scripts/hypr-session.sh" "$HOME/.local/bin/hypr-session.sh"
-link_path "$REPO_ROOT/scripts/waybar-weather.py" "$HOME/.local/bin/waybar-weather.py"
-link_path "$REPO_ROOT/scripts/waybar-disk.py" "$HOME/.local/bin/waybar-disk.py"
-link_path "$REPO_ROOT/scripts/waybar-temp.py" "$HOME/.local/bin/waybar-temp.py"
-link_path "$REPO_ROOT/scripts/waybar-gpu.py" "$HOME/.local/bin/waybar-gpu.py"
-link_path "$REPO_ROOT/scripts/waybar-cpu.py" "$HOME/.local/bin/waybar-cpu.py"
-link_path "$REPO_ROOT/scripts/waybar-mem.py" "$HOME/.local/bin/waybar-mem.py"
-link_path "$REPO_ROOT/scripts/waybar-devices.py" "$HOME/.local/bin/waybar-devices.py"
-link_path "$REPO_ROOT/scripts/waybar-media.py" "$HOME/.local/bin/waybar-media.py"
-link_path "$REPO_ROOT/scripts/waybar-ws.py" "$HOME/.local/bin/waybar-ws.py"
-link_path "$REPO_ROOT/scripts/waybar-locks.py" "$HOME/.local/bin/waybar-locks.py"
-link_path "$REPO_ROOT/scripts/waybar-updates.py" "$HOME/.local/bin/waybar-updates.py"
-link_path "$REPO_ROOT/scripts/waybar-notifications.py" "$HOME/.local/bin/waybar-notifications.py"
-link_path "$REPO_ROOT/scripts/waybar-calendar.py" "$HOME/.local/bin/waybar-calendar.py"
-link_path "$REPO_ROOT/scripts/waybar-clock.py" "$HOME/.local/bin/waybar-clock.py"
-link_path "$REPO_ROOT/scripts/keychron-v6-via.py" "$HOME/.local/bin/keychron-v6-via.py"
-
-if [[ -f "$CONFIGS_DIR/applications/steam.desktop" ]]; then
-  link_path "$CONFIGS_DIR/applications/steam.desktop" "$HOME/.local/share/applications/steam.desktop"
-fi
+for name in "${bin_scripts[@]}"; do
+  chmod +x "$REPO_ROOT/scripts/$name"
+  link_path "$REPO_ROOT/scripts/$name" "$HOME/.local/bin/$name"
+done
 
 # Fuzzel only looks in the apps context. These are the site icons.
-link_path "$CONFIGS_DIR/icons/hicolor/256x256/apps/gmail.png" \
-  "$HOME/.local/share/icons/hicolor/256x256/apps/gmail.png"
-link_path "$CONFIGS_DIR/icons/hicolor/128x128/apps/google-calendar.png" \
-  "$HOME/.local/share/icons/hicolor/128x128/apps/google-calendar.png"
-link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/google-maps.png" \
-  "$HOME/.local/share/icons/hicolor/512x512/apps/google-maps.png"
-link_path "$CONFIGS_DIR/icons/hicolor/192x192/apps/google-messages.png" \
-  "$HOME/.local/share/icons/hicolor/192x192/apps/google-messages.png"
-link_path "$CONFIGS_DIR/icons/hicolor/256x256/apps/youtube.png" \
-  "$HOME/.local/share/icons/hicolor/256x256/apps/youtube.png"
-link_path "$CONFIGS_DIR/icons/hicolor/128x128/apps/youtube-music.png" \
-  "$HOME/.local/share/icons/hicolor/128x128/apps/youtube-music.png"
-link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/google-drive.png" \
-  "$HOME/.local/share/icons/hicolor/512x512/apps/google-drive.png"
-link_path "$CONFIGS_DIR/icons/hicolor/256x256/apps/google-keep.png" \
-  "$HOME/.local/share/icons/hicolor/256x256/apps/google-keep.png"
-link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/google-photos.png" \
-  "$HOME/.local/share/icons/hicolor/512x512/apps/google-photos.png"
-link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/google-tasks.png" \
-  "$HOME/.local/share/icons/hicolor/512x512/apps/google-tasks.png"
-link_path "$CONFIGS_DIR/icons/hicolor/512x512/apps/feedly.png" \
-  "$HOME/.local/share/icons/hicolor/512x512/apps/feedly.png"
+shopt -s globstar nullglob
+for src in "$CONFIGS_DIR"/icons/**/*; do
+  [[ -f "$src" ]] || continue
+  rel="${src#"$CONFIGS_DIR/icons/"}"
+  link_path "$src" "$HOME/.local/share/icons/$rel"
+done
+shopt -u globstar nullglob
 
-link_path "$CONFIGS_DIR/applications/board-game-arena.desktop" \
-  "$HOME/.local/share/applications/board-game-arena.desktop"
-link_path "$CONFIGS_DIR/applications/gmail.desktop" \
-  "$HOME/.local/share/applications/Gmail.desktop"
-link_path "$CONFIGS_DIR/applications/google-messages.desktop" \
-  "$HOME/.local/share/applications/Google Messages.desktop"
-link_path "$CONFIGS_DIR/applications/google-maps.desktop" \
-  "$HOME/.local/share/applications/Google Maps.desktop"
-link_path "$CONFIGS_DIR/applications/google-calendar.desktop" \
-  "$HOME/.local/share/applications/Google Calendar.desktop"
-link_path "$CONFIGS_DIR/applications/youtube-music.desktop" \
-  "$HOME/.local/share/applications/YouTube Music.desktop"
-link_path "$CONFIGS_DIR/applications/youtube.desktop" \
-  "$HOME/.local/share/applications/YouTube.desktop"
-link_path "$CONFIGS_DIR/applications/google-tasks.desktop" \
-  "$HOME/.local/share/applications/Google Tasks.desktop"
-link_path "$CONFIGS_DIR/applications/google-keep.desktop" \
-  "$HOME/.local/share/applications/Google Keep.desktop"
-link_path "$CONFIGS_DIR/applications/google-drive.desktop" \
-  "$HOME/.local/share/applications/Google Drive.desktop"
-link_path "$CONFIGS_DIR/applications/google-photos.desktop" \
-  "$HOME/.local/share/applications/Google Photos.desktop"
-link_path "$CONFIGS_DIR/applications/feedly.desktop" \
-  "$HOME/.local/share/applications/Feedly.desktop"
-link_path "$CONFIGS_DIR/applications/superfile.desktop" \
-  "$HOME/.local/share/applications/superfile.desktop"
-link_path "$CONFIGS_DIR/applications/concord.desktop" \
-  "$HOME/.local/share/applications/concord.desktop"
-link_path "$CONFIGS_DIR/applications/neomutt.desktop" \
-  "$HOME/.local/share/applications/neomutt.desktop"
-mkdir -p "$HOME/.config/neomutt"
-link_path "$CONFIGS_DIR/neomutt/neomuttrc" "$HOME/.config/neomutt/neomuttrc"
-link_path "$CONFIGS_DIR/neomutt/mailcap" "$HOME/.config/neomutt/mailcap"
-link_path "$REPO_ROOT/scripts/neomutt-icat.sh" "$HOME/.local/bin/neomutt-icat.sh"
+# Dest basename differs when it must match the Chrome webapp filename.
+desktop_links=(
+  board-game-arena.desktop
+  concord.desktop
+  neomutt.desktop
+  steam.desktop
+  superfile.desktop
+  "gmail.desktop|Gmail.desktop"
+  "google-messages.desktop|Google Messages.desktop"
+  "google-maps.desktop|Google Maps.desktop"
+  "google-calendar.desktop|Google Calendar.desktop"
+  "youtube-music.desktop|YouTube Music.desktop"
+  "youtube.desktop|YouTube.desktop"
+  "google-tasks.desktop|Google Tasks.desktop"
+  "google-keep.desktop|Google Keep.desktop"
+  "google-drive.desktop|Google Drive.desktop"
+  "google-photos.desktop|Google Photos.desktop"
+  "feedly.desktop|Feedly.desktop"
+)
+
+for spec in "${desktop_links[@]}"; do
+  src="${spec%%|*}"
+  dest="${spec#*|}"
+  link_path "$CONFIGS_DIR/applications/$src" \
+    "$HOME/.local/share/applications/$dest"
+done
 
 # Chrome --app-id files repeat a name we already launch. Hide those.
 # Chrome rewrites its own files; the next apply hides the twin again.

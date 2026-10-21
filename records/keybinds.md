@@ -276,6 +276,7 @@ numbered desk, Ctrl = swap on this desk.
 | Super+Left mouse | — | Move window | Drag window |
 | Super+Right mouse | — | Resize window | Resize window |
 | Super+scroll | — | Occupied workspace on this screen | Scroll workspaces |
+| Super+Shift+scroll | — | Move the window one number, including empty | — |
 | Super+Ctrl+Alt+scroll | — | — | — |
 | Print Screen | Snipping Tool | Region, copy and save | Screenshot |
 | Shift+Print Screen | — | Focused window, copy and save | — |

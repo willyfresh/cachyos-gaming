@@ -30,6 +30,11 @@ hl.bind(modshi .. " + TAB", hs.dsp.focus({ workspace = "e-1" }))
 hl.bind(mod .. " + mouse_down", hs.dsp.focus({ workspace = "e+1" }))
 hl.bind(mod .. " + mouse_up", hs.dsp.focus({ workspace = "e-1" }))
 
+-- Super+Shift+scroll moves the window one number on this screen and
+-- follows it. The number can be empty. The step stops at 1 and at 10.
+hl.bind(modshi .. " + mouse_down", hs.dsp.window.move({ workspace = "+1", follow = true }))
+hl.bind(modshi .. " + mouse_up", hs.dsp.window.move({ workspace = "-1", follow = true }))
+
 -- Super+Up/Down moves focus. Hyprland wraps at the edge, so a second
 -- window would bounce forever. A window counts as further up or down
 -- only when its center is that way. The top window's Up, and the

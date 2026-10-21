@@ -9,7 +9,6 @@ two, when you pick them.
 | Want | Status |
 |------|--------|
 | Mic dictation | backlog |
-| Super+Shift+scroll moves the window | backlog |
 | Library updates that need a service restart | backlog |
 | Emoji menu should not fuzzy-search | backlog |
 | Stow layout | tabled |
@@ -26,11 +25,6 @@ The mic key by itself still toggles mute.
 
 Super+. still fuzzy-filters the list as you type. It should not.
 `--no-sort` only keeps the list order.
-
-## Super+Shift+scroll
-
-Super+scroll changes workspace on this screen. Super+Shift+scroll
-should move the window.
 
 ## Update list
 

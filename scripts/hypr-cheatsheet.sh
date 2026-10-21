@@ -33,6 +33,8 @@ Ctrl+Shift+Crop|Screenshot both screens|-M ctrl -M shift -k Print -m shift -m ct
 
 Super+scroll down|Next occupied workspace on this screen|-
 Super+scroll up|Previous occupied workspace on this screen|-
+Super+Shift+scroll down|Move the window to the next workspace, even if empty|-
+Super+Shift+scroll up|Move the window to the previous workspace, even if empty|-
 Super+Left|Focus left|-M logo -k Left -m logo
 Super+Right|Focus right|-M logo -k Right -m logo
 Super+Up|Focus up. At the top window, previous workspace|-M logo -k Up -m logo

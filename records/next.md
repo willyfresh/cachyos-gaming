@@ -8,7 +8,6 @@ two, when you pick them.
 
 | Want | Status |
 |------|--------|
-| Library updates that need a service restart | backlog |
 | Stow layout | tabled |
 | Mango | tabled |
 | Keychron light key | tabled |
@@ -18,7 +17,11 @@ two, when you pick them.
 
 A row ends in `reboot *` when that package is unused until the next
 boot. The list can update the other pending packages without those.
-Restarting a service after a library update is still unmarked.
+A row ends in `restart *` when a running service has one of that
+package's libraries loaded. After the upgrade, the terminal asks
+before a reboot or a service restart. Enter means yes. A reboot is
+refused when the Limine menu names a missing or mismatched file.
+The menu is only as tall as its rows, and it stops growing at 40.
 
 ## Stow layout
 

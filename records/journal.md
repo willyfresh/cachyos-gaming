@@ -75,8 +75,13 @@ the newest copy first, then wipe, delete, and delete-query. A picture is
 stored once. The UTF-16 text Chrome offers beside it is skipped.
 
 Fuzzel 1.15 cannot color a single row. An update that needs a reboot is
-marked `reboot *`. The updates list can install every other pending
-package without those. Each row shows the download size when it is known.
+marked `reboot *`. A library a running service still has loaded is
+marked `restart *`. The updates list can install every other pending
+package without the reboot ones. Each row shows the download size when
+it is known. After the upgrade, the terminal asks before a reboot or a
+service restart. Enter means yes. A reboot is refused when the Limine
+menu names a missing or mismatched file. The list is only as tall as
+its rows, and it stops growing at 40.
 
 Alt+Tab walks windows in the order you used them, on both screens, nine
 on a row, and switches when Alt is released. Alt+Shift+Tab goes the other way. Alt+Esc

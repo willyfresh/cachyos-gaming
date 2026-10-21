@@ -2,7 +2,8 @@
 """Pending repo and AUR updates for Waybar. Hidden when there are none.
 
 checkupdates and paru -Qua are slow, so the bar runs this every half
-hour. A click lists the saved packages in Fuzzel. The first line
+hour. A click, or the Keychron triangle, lists the saved packages in
+Fuzzel. The first line
 upgrades every package. When some of those wait until the next boot,
 the next line upgrades the rest. Any other line upgrades that one
 package. Each row shows the download size when it is known. A row

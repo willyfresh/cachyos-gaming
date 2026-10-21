@@ -8,7 +8,9 @@ Super+K                     Keybind cheatsheet
 Super+Shift+Return          Wallpaper color
 Super+Space                 Launcher
 Super+V                     Clipboard history. End of the list: wipe, delete, delete-query
-Super+N                     Notification history
+Super+N / Circle            Notification history
+Triangle                    Update list
+Square                      Devices
 Super+L                     Lock screen
 Super+Return                Terminal
 Super+E                     Yazi

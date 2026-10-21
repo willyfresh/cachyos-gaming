@@ -12,6 +12,10 @@ Pace is backlog only. Start one item, or two, when you pick them.
 | Mango | later, and only if you ask |
 | VLC chord | no key yet |
 | Keychron light and X | unbound |
+| Mic dictation | backlog |
+| Super+Shift+scroll moves the window | backlog |
+| Duplicate program menu entries | backlog |
+| Cheatsheet order, and a row runs the chord | backlog |
 | Library updates that need a service restart | unmarked on the update list |
 | Halo Xbox login, For Honor | tabled in `records/gaming.md` |
 
@@ -35,10 +39,31 @@ scripts. The current links already come back from `./setup.sh`.
 
 ## Keychron light and X
 
-Volume, mute, play, crop, the circle (notifications), the triangle
-(Grok Bot), and the square (Steam or Heroic) are bound. The light key
-(Ctrl+Shift+F1) and X (Ctrl+Shift+F5) open nothing. These panels have
-no backlight.
+The light key (Ctrl+Shift+F1) and X (Ctrl+Shift+F5) open nothing.
+These panels have no backlight.
+
+## Mic dictation
+
+The mic key (F20, Ctrl+Shift+F6) toggles microphone mute. Wanted:
+press once to dictate, and any key stops it. Holding Ctrl keeps
+dictation on until Ctrl is released.
+
+## Super+Shift+scroll
+
+Super+scroll changes workspace on this screen. Super+Shift+scroll
+should move the window.
+
+## Duplicate program menu entries
+
+Fuzzel lists the same program twice. Not investigated yet.
+
+## Cheatsheet
+
+Super+K order wanted: Super+K, Super+Space, Super+Tab, Alt+Tab,
+Ctrl+Alt+Delete, the singular buttons, the Super window-movement
+chords (scroll and arrows), the remaining Super chords in alpha
+order, Super+Shift and Super+Shift+Ctrl together in alpha order,
+then the rest. Selecting a row should send that chord.
 
 ## Update list
 

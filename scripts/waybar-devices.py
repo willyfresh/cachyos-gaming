@@ -2,7 +2,7 @@
 """Every device value, in Fuzzel.
 
 Left click on the CPU, memory, disk, GPU, or network chip runs this.
-Super+Escape does too. The bar itself stays a percent. A hot part
+The Keychron square does too. The bar itself stays a percent. A hot part
 shows degrees there instead.
 
 Return on a row opens a tool. CPU, cores, and memory open btop.
@@ -135,7 +135,7 @@ HERE = Path(__file__).resolve().parent
 def terminal(app: str, *cmd: str) -> list[str]:
     """Focus a kitty with this class, or start one."""
     return [
-        str(HERE / "launch-or-focus-app.sh"),
+        str(HERE / "launch-app.sh"),
         f"^{app}$",
         "setsid", "kitty", "--class", app, "--title", app, "-e", *cmd,
     ]

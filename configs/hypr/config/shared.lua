@@ -4,6 +4,6 @@ return {
 	modshi = "SUPER + SHIFT",
 	tty = "kitty",
 	www = "firefox",
-	filem = "nautilus",
-	local bin = "~/.local/bin"
+	filem = "nautilus --new-window",
+	bin = "~/.local/bin"
 }

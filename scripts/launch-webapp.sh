@@ -5,10 +5,23 @@
 # Do not attach to the running Super+B browser — a second process is required
 # so --user-data-dir / --app actually take effect.
 # Never use --app-id: real PWAs draw a CSD title bar the compositor cannot strip.
+# --focus <pattern> focuses an open window (class or title) before launching.
+# usage: launch-webapp.sh [--focus <window-pattern>] <url> [chrome-flags...]
 set -euo pipefail
 
+ROOT="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+if [[ "${1:-}" == "--focus" ]]; then
+  if (($# < 3)); then
+    echo "Usage: $0 --focus <window-pattern> <url> [chrome-flags...]" >&2
+    exit 1
+  fi
+  pattern="$2"
+  shift 2
+  exec "$ROOT/launch-app.sh" --match both "$pattern" "$ROOT/launch-webapp.sh" "$@"
+fi
+
 if (($# < 1)); then
-  echo "Usage: $0 <url> [chrome-flags...]" >&2
+  echo "Usage: $0 [--focus <window-pattern>] <url> [chrome-flags...]" >&2
   exit 1
 fi
 

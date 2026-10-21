@@ -37,14 +37,8 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `records/keybinds.md` | Super-key table: Windows, Novalis, Delorean |
 | `os-notes.txt` | Scratch inbox, emptied after triage |
 | `scripts/pkg-add.sh` | Install a package *and* record it |
-| `scripts/launch-webapp.sh` | Title-less Chrome `--app=URL` (profile still under `~/.local/share/borg`) |
-| `scripts/launch-or-focus-webapp.sh` | Focus a title-less webapp, or launch it |
-| `scripts/launch-or-focus-app.sh` | Focus a native app by window class, or launch it |
-| `scripts/launch-discord.sh` | Super+Shift+D: focus Discord, skip the updater splash |
-| `scripts/launch-youtube.sh` | Super+Shift+Y YouTube Music. Super+Shift+Ctrl+Y YouTube |
-| `scripts/launch-steam.sh` | Super+Shift+S: focus Steam, skip notification toasts |
-| `scripts/launch-btop.sh` | Super+Ctrl+T and Super+Shift+T: tiled btop. Super+Shift+Ctrl+T: nvtop |
-| `scripts/launch-grok-bot.sh` | Super+Shift+A, and the Keychron triangle: focus or launch Grok Bot |
+| `scripts/launch-app.sh` | Focus a window, or run the command. `--match both` also checks the title, `--skip-title` ignores one, `--toggle` closes it when it is already focused |
+| `scripts/launch-webapp.sh` | Title-less Chrome `--app=URL` (profile still under `~/.local/share/borg`). `--focus PATTERN` focuses an open window first |
 
 ## Day-to-day
 

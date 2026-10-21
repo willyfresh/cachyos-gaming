@@ -256,7 +256,7 @@ numbered desk, Ctrl = swap on this desk.
 
 | Key | Windows | Novalis | Delorean |
 |-----|---------|------|----------|
-| Super+Escape | Close Magnifier | Devices | System menu |
+| Super+Escape | Close Magnifier | — | System menu |
 | Super+Shift+Escape | — | — | — |
 | Ctrl+Alt+Delete | Security screen | Session menu | Close all windows |
 | Super+Ctrl+Delete | — | — | Toggle laptop panel |
@@ -275,7 +275,9 @@ numbered desk, Ctrl = swap on this desk.
 
 Media keys on Novalis use PipeWire and playerctl (volume, mute, mic,
 play, next, prev). The screens have no backlight, so brightness is
-unbound. The Keychron crop key sends Print. Crop copies a region
+unbound. The Keychron circle opens notification history, the triangle
+opens the update list, and the square opens devices. The light key
+and X are unbound. The Keychron crop key sends Print. Crop copies a region
 and saves it under `~/Pictures/Screenshots`. Shift+crop grabs the
 focused window. Ctrl+Shift+crop grabs both screens. Alt+crop is
 SysRq, so the kernel keeps it and Hyprland never sees a window

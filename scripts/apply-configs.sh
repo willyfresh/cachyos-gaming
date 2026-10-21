@@ -19,9 +19,13 @@ link_path "$CONFIGS_DIR/xdg-desktop-portal/hyprland-portals.conf" \
   "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
 
 # The file, not the directory, so Hyprland's runtime files stay out of the repo.
+# require() still looks in ~/.config/hypr, so the module trees are linked too.
 link_path "$CONFIGS_DIR/hypr/hyprland.lua" "$HOME/.config/hypr/hyprland.lua"
 link_path "$CONFIGS_DIR/hypr/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
 link_path "$CONFIGS_DIR/hypr/hypridle.conf" "$HOME/.config/hypr/hypridle.conf"
+link_path "$CONFIGS_DIR/hypr/config" "$HOME/.config/hypr/config"
+link_path "$CONFIGS_DIR/hypr/keybinds" "$HOME/.config/hypr/keybinds"
+link_path "$CONFIGS_DIR/hypr/hyprsplit" "$HOME/.config/hypr/hyprsplit"
 mkdir -p "$HOME/.config/mako"
 link_path "$CONFIGS_DIR/mako/config" "$HOME/.config/mako/config"
 link_path "$CONFIGS_DIR/waybar" "$HOME/.config/waybar"
@@ -44,16 +48,9 @@ mkdir -p "$HOME/.local/share/applications"
 mkdir -p "$HOME/.local/bin"
 
 chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
-  "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" \
-  "$REPO_ROOT/scripts/launch-or-focus-app.sh" \
-  "$REPO_ROOT/scripts/launch-youtube.sh" \
-  "$REPO_ROOT/scripts/launch-steam.sh" \
+  "$REPO_ROOT/scripts/launch-app.sh" \
   "$REPO_ROOT/scripts/collapse-webapp-profile.sh" \
-  "$REPO_ROOT/scripts/launch-discord.sh" \
-  "$REPO_ROOT/scripts/launch-btop.sh" \
-  "$REPO_ROOT/scripts/launch-grok-bot.sh" \
   "$REPO_ROOT/scripts/yazi-open-grok.sh" \
-  "$REPO_ROOT/scripts/launch-steam-heroic.sh" \
   "$REPO_ROOT/scripts/hypr-clipboard.sh" \
   "$REPO_ROOT/scripts/hypr-clipboard-store.sh" \
   "$REPO_ROOT/scripts/hypr-notifications.sh" \
@@ -77,15 +74,8 @@ chmod +x "$REPO_ROOT/scripts/launch-webapp.sh" \
   "$REPO_ROOT/scripts/keychron-v6-via.py" \
   "$REPO_ROOT/scripts/neomutt-icat.sh"
 link_path "$REPO_ROOT/scripts/launch-webapp.sh" "$HOME/.local/bin/launch-webapp.sh"
-link_path "$REPO_ROOT/scripts/launch-or-focus-webapp.sh" "$HOME/.local/bin/launch-or-focus-webapp.sh"
-link_path "$REPO_ROOT/scripts/launch-or-focus-app.sh" "$HOME/.local/bin/launch-or-focus-app.sh"
-link_path "$REPO_ROOT/scripts/launch-youtube.sh" "$HOME/.local/bin/launch-youtube.sh"
-link_path "$REPO_ROOT/scripts/launch-steam.sh" "$HOME/.local/bin/launch-steam.sh"
+link_path "$REPO_ROOT/scripts/launch-app.sh" "$HOME/.local/bin/launch-app.sh"
 link_path "$REPO_ROOT/scripts/collapse-webapp-profile.sh" "$HOME/.local/bin/collapse-webapp-profile.sh"
-link_path "$REPO_ROOT/scripts/launch-discord.sh" "$HOME/.local/bin/launch-discord.sh"
-link_path "$REPO_ROOT/scripts/launch-btop.sh" "$HOME/.local/bin/launch-btop.sh"
-link_path "$REPO_ROOT/scripts/launch-grok-bot.sh" "$HOME/.local/bin/launch-grok-bot.sh"
-link_path "$REPO_ROOT/scripts/launch-steam-heroic.sh" "$HOME/.local/bin/launch-steam-heroic.sh"
 link_path "$REPO_ROOT/scripts/hypr-cheatsheet.sh" "$HOME/.local/bin/hypr-cheatsheet.sh"
 link_path "$REPO_ROOT/scripts/hypr-wallpaper.sh" "$HOME/.local/bin/hypr-wallpaper.sh"
 link_path "$REPO_ROOT/scripts/hypr-clipboard.sh" "$HOME/.local/bin/hypr-clipboard.sh"

@@ -30,6 +30,8 @@ hl.bind(modshi .. " + H", hl.dsp.exec_cmd(bin .. "/launch-app.sh heroic setsid h
 
 hl.bind(modshi .. " + I", hl.dsp.exec_cmd(bin .. "/launch-app.sh inkscape setsid inkscape"))
 
+hl.bind(modshi .. " + J", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-tasks.google.com.*Default' 'https://tasks.google.com/']]))
+
 hl.bind(modshi .. " + K", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-keep.google.com.*Default' 'https://keep.google.com/']]))
 
 hl.bind(modshi .. " + L", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-maps.google.com.*Default' 'https://maps.google.com/']]))
@@ -58,4 +60,6 @@ hl.bind(modshi .. " + CTRL + W", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^lynx$
 hl.bind(modshi .. " + Y", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-music\.youtube\.com' 'https://music.youtube.com/']]))
 hl.bind(modshi .. " + CTRL + Y", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-(www\.)?youtube\.com' 'https://www.youtube.com/']]))
 
-hl.bind(modshi .. " + period", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-tasks.google.com.*Default' 'https://tasks.google.com/']]))
+hl.bind(mod .. " + U", hl.dsp.exec_cmd(bin .. "/waybar-updates.py detail"))
+hl.bind(mod .. " + ALT + M", hl.dsp.exec_cmd(bin .. "/waybar-media.py menu"))
+

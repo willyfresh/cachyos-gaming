@@ -112,3 +112,7 @@ end
 
 hl.bind(modshi .. " + up", move_or_workspace("up", "-1"))
 hl.bind(modshi .. " + down", move_or_workspace("down", "+1"))
+
+-- Super+Ctrl+Left/Right and Super+D. A separate file, so loading it
+-- does not call monitor_priority a second time.
+require("keybinds.desk")

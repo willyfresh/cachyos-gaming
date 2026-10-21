@@ -1,0 +1,7 @@
+# Apps open links through xdg-open or the desktop portal. Both run the
+# handler listed here, and both read this file before mimeapps.list.
+# launch-browser.sh hands the link to the browser named in mimeapps.list
+# and focuses that window.
+[Default Applications]
+x-scheme-handler/http=novalis-browser.desktop
+x-scheme-handler/https=novalis-browser.desktop

@@ -12,8 +12,8 @@ Super-key (Windows key) chords on three machines. A combo is listed if
 Modifier order per letter: Super, Shift, Ctrl, Alt, then the doubles, then all three.
 
 Already the same job: Super+Space launcher (Start-adjacent),
-Super+E files, Super+L lock, Super+V clipboard, Super+D Discord (not
-Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
+Super+E files, Super+L lock, Super+V clipboard, Super+Q close
+(Windows’ Super+Q is Search).
 
 ---
 
@@ -40,7 +40,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+C | — | Google Calendar | Google Calendar |
 | Super+Ctrl+C | Color filters (if enabled) | — | Capture menu |
 | **D** | | | |
-| Super+D | Show / hide desktop | — | Discord |
+| Super+D | Show / hide desktop | Next empty workspace on this screen | Discord |
 | Super+Shift+D | — | Discord | Docker TUI |
 | Super+Shift+Ctrl+D | — | Concord | — |
 | Super+Ctrl+D | New virtual desktop | — | Display panel |
@@ -77,6 +77,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Ctrl+I | — | — | Toggle idle lock |
 | **J** | | | |
 | Super+J | Recall (Copilot+ PCs) | — | Toggle split direction |
+| Super+Shift+J | — | Google Tasks | — |
 | **K** | | | |
 | Super+K | Cast | Keybind cheatsheet | Keybind cheatsheet |
 | Super+Shift+K | — | Google Keep | — |
@@ -90,6 +91,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | **M** | | | |
 | Super+M | Minimize all | Maximize, keep the gaps | YouTube Music |
 | Super+Shift+M | Restore minimized windows | Google Messages | Google Maps |
+| Super+Alt+M | — | Now playing | — |
 | Super+Shift+Alt+M | — | — | Music TUI (cliamp) |
 | **N** | | | |
 | Super+N | Notification center + calendar | Notification history | — |
@@ -130,7 +132,7 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Alt+T | — | — | Toggle floating |
 | Super+Ctrl+Alt+T | — | — | Time as notification |
 | **U** | | | |
-| Super+U | Accessibility settings | — | — |
+| Super+U | Accessibility settings | Update list | — |
 | **V** | | | |
 | Super+V | Clipboard history | Clipboard history | Clipboard history |
 | Super+Shift+V | — | Neovim | — |
@@ -172,12 +174,12 @@ Windows’ show-desktop), Super+Q close (Windows’ Super+Q is Search).
 | Super+Shift+Return | — | Wallpaper picker (Hyprland) | Google Messages |
 | Super+Alt+Return | — | — | Tmux terminal |
 | Super+Ctrl+Return | Narrator | — | Herdr |
-| Super+Tab | Task View | Every window, by screen | Mirador overview |
+| Super+Tab | Task View | Every window, by screen, five on a row | Mirador overview |
 | Super+Shift+Tab | — | Previous workspace | Previous occupied desk |
 | Super+Ctrl+Tab | — | — | Former workspace |
 | Super+Alt+Tab | — | — | Cycle windows in a group |
 | Super+Alt+Shift+Tab | — | — | Cycle group, reverse |
-| Alt+Tab | MRU windows | Recent windows, release Alt | MRU across desks |
+| Alt+Tab | MRU windows | Recent windows, nine on a row, release Alt | MRU across desks |
 | Alt+Shift+Tab | MRU, reverse | Recent windows, reverse | MRU, reverse |
 
 ---
@@ -201,7 +203,9 @@ Novalis: Super focuses, and Up/Down at the edge change to the previous
 or next occupied workspace on this screen. Shift moves, and Shift+Up/Down
 at the edge carry the window onto the neighboring workspace number,
 including an empty one. The step stops at 1 and at 10. Left and right
-stay on this workspace. Ctrl+arrow, Alt+arrow, and Ctrl+Alt+arrow are
+stay on this workspace. Ctrl+Left and Ctrl+Right move every screen to
+the previous or next workspace number, including an empty one, and stop
+at 1 and at 10. Ctrl+Up, Ctrl+Down, Alt+arrow, and Ctrl+Alt+arrow stay
 unbound. Size is Super+/- .
 Delorean: Super = focus then next occupied desk, Shift = move to adjacent
 numbered desk, Ctrl = swap on this desk.
@@ -213,7 +217,7 @@ numbered desk, Ctrl = swap on this desk.
 | Super+Down | Restore / minimize | Focus down, or next occupied workspace | Focus, then occupied desk |
 | Super+Shift+Left/Right | Move window to monitor | Move the window that way | Move window to adjacent desk 1–10 |
 | Super+Shift+Up/Down | Maximize / restore vertically | Move that way, or onto the neighboring workspace | Move window to adjacent desk 1–10 |
-| Super+Ctrl+arrows | Switch virtual desktop (L/R) | — | Swap with neighbor |
+| Super+Ctrl+arrows | Switch virtual desktop (L/R) | Left/Right: previous or next number on every screen | Swap with neighbor |
 | Super+Alt+Left/Right/Up/Down | Snap top/bottom (Alt+Up/Down) | — | Move into group that way |
 | Super+Shift+Ctrl+arrows | — | — | — |
 | Super+Shift+Alt+arrows | — | — | Move workspace to monitor |
@@ -237,8 +241,8 @@ numbered desk, Ctrl = swap on this desk.
 | Super+Shift+Comma | — | — | Dismiss all notifications |
 | Super+Ctrl+Comma | — | — | Silence notifications |
 | Super+Alt+Comma | — | — | Invoke latest notification |
-| Super+Period | Emoji panel | — | Toggle clickpad |
-| Super+Shift+Period | — | Google Tasks | — |
+| Super+Period | Emoji panel | Emoji | Toggle clickpad |
+| Super+Shift+Period | — | — | — |
 | Super+Ctrl+Period | — | — | Transcode media |
 | Super+[ / Super+] | — | — | Webcam overlay smaller / larger (Alt+[ / ]) |
 | Super+/ | IME reconversion | — | Next monitor scale |

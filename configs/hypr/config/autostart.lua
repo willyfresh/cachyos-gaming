@@ -20,5 +20,11 @@ hl.on("hyprland.start", function()
 		[[sh -c 'pgrep -x wl-clip-persist >/dev/null || exec wl-clip-persist --clipboard regular --all-mime-type-regex "(?i)^(?!image/x-inkscape-svg).+"']]
 	)
 	hl.exec_cmd("python3 /home/willyfresh/Projects/cachyos-gaming/configs/hypr/wallpaper.py")
-	hl.exec_cmd('sh -c \'pgrep -f "[h]ypr-switcher.py" >/dev/null || exec ' .. bin .. "/hypr-switcher.py'")
+	-- Empty quotes so this shell's command line does not contain the
+	-- script name. pgrep -f would match itself and never start it.
+	hl.exec_cmd(
+		"pgrep -f '[h]ypr-switcher.py' >/dev/null 2>&1 || setsid -f "
+			.. bin
+			.. "/hypr-switcher''.py >/dev/null 2>&1"
+	)
 end)

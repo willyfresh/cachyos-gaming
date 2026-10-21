@@ -10,6 +10,7 @@ apply_config_links
 # User commands. Repo tools and waybar_level.py stay in the repo.
 bin_scripts=(
   launch-webapp.sh
+  launch-browser.sh
   launch-app.sh
   collapse-webapp-profile.sh
   hypr-cheatsheet.sh
@@ -19,6 +20,7 @@ bin_scripts=(
   hypr-notifications.sh
   hypr-screenshot.sh
   hypr-switcher.py
+  hypr-emoji.sh
   hypr-session.sh
   waybar-weather.py
   waybar-disk.py
@@ -71,6 +73,7 @@ desktop_links=(
   "google-drive.desktop|Google Drive.desktop"
   "google-photos.desktop|Google Photos.desktop"
   "feedly.desktop|Feedly.desktop"
+  novalis-browser.desktop
 )
 
 for spec in "${desktop_links[@]}"; do

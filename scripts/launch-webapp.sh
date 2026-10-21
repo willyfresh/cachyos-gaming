@@ -28,7 +28,9 @@ fi
 profile="${BORG_CHROME_WEBAPP_DIR:-$HOME/.local/share/borg/chrome-webapps}"
 mkdir -p "$profile"
 
-browser=$(xdg-settings get default-web-browser 2>/dev/null || true)
+# The Hyprland list points http at the link handler. The browser is the
+# one named in mimeapps.list.
+browser=$(env -u BROWSER XDG_CURRENT_DESKTOP= xdg-settings get default-web-browser 2>/dev/null || true)
 case $browser in
   google-chrome* | brave* | microsoft-edge* | opera* | vivaldi* | helium* | chromium*) ;;
   *) browser="google-chrome.desktop" ;;

@@ -3,9 +3,10 @@ local shared = require("config.shared")
 local bin = shared.bin
 local mod = shared.mod
 
-hl.bind("ALT + F4", hl.dsp.window.close())
+hl.bind(mod .. " + period", hl.dsp.exec_cmd(bin .. "/hypr-emoji.sh"))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(shared.filem))
 hl.bind(mod .. " + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
+hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(bin .. "/hypr-session.sh"))
 
 -- Alt+Tab is the Windows switcher. The list is frozen in the order
@@ -106,3 +107,16 @@ hl.bind(mod .. " + TAB", function()
 	switcher("task-open")
 	hl.dispatch(hl.dsp.submap("taskview"))
 end)
+
+-- The switcher is a separate process. If it has exited, Alt+Tab and
+-- Super+Tab dispatch into nothing. Bring it back.
+-- pgrep -f reads every command line, including this shell. The path
+-- has to stay off that line or the check matches itself and the
+-- process is never started. The empty quotes are what keeps it off.
+hl.timer(function()
+	os.execute(
+		"pgrep -f '[h]ypr-switcher.py' >/dev/null 2>&1 || setsid -f "
+			.. bin
+			.. "/hypr-switcher''.py >/dev/null 2>&1"
+	)
+end, { timeout = 5000, type = "repeat" })

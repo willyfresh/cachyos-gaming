@@ -25,6 +25,8 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `configs/keyd` | Keychron media and knob keys (`/etc/keyd/default.conf`). Super alone does nothing |
 | `configs/nvim` | LazyVim (live `~/.config/nvim`, via symlink). Plugin downloads stay in `~/.local/share/nvim` |
 | `configs/mimeapps.list` | Default apps: Zathura for PDFs, swayimg for images, Chrome for the web |
+| `configs/hyprland-mimeapps.list` | http and https open through `launch-browser.sh`, which focuses Chrome |
+| `configs/chrome-flags.conf` | Skip Chrome's default-browser bar |
 | `configs/lsfg-vk/conf.toml` | Frame-generation profiles (live file symlink) |
 | `configs/MangoHud/MangoHud.conf` | In-game HUD (live file symlink) |
 | `packages/extra.txt` | Extra **repo** packages (pacman), including `paru` |
@@ -39,6 +41,7 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `scripts/pkg-add.sh` | Install a package *and* record it |
 | `scripts/launch-app.sh` | Focus a window, or run the command. `--match both` also checks the title, `--skip-title` ignores one, `--toggle` closes it when it is already focused |
 | `scripts/launch-webapp.sh` | Title-less Chrome `--app=URL` (profile still under `~/.local/share/borg`). `--focus PATTERN` focuses an open window first |
+| `scripts/launch-browser.sh` | Open a link in the default browser and focus its window |
 
 ## Day-to-day
 

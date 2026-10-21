@@ -208,6 +208,10 @@ CONFIG_LINKS=(
   # Neovim state stays in ~/.local/share/nvim and ~/.local/state/nvim.
   nvim
   mimeapps.list
+  # http and https go through launch-browser.sh. Read before mimeapps.list.
+  hyprland-mimeapps.list
+  # Chrome's default-browser check would fail while that handler is in front.
+  chrome-flags.conf
   # lsfg-vk and Goverlay write beside these files.
   lsfg-vk/conf.toml
   MangoHud/MangoHud.conf

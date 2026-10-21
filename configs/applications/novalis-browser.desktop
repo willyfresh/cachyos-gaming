@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Chrome
+Comment=Open a link in Chrome and focus the window
+Exec=/home/willyfresh/.local/bin/launch-browser.sh %U
+Terminal=false
+Type=Application
+NoDisplay=true
+MimeType=x-scheme-handler/http;x-scheme-handler/https;

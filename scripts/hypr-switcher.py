@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Windows-style window switching on Hyprland.
 
-Alt+Tab walks a frozen most-recent list and focuses when Alt is released.
-Super+Tab shows every window, grouped by screen and workspace, and stays
-up until you pick one or cancel.
+Alt+Tab walks a frozen most-recent list, nine windows on a row, and
+focuses when Alt is released. Super+Tab shows every window, grouped by
+screen, five on a row, and stays up until you pick one or cancel.
 
 Hyprland sends commands on socket2 as custom>>switcher>>...
 """
@@ -20,6 +20,8 @@ from dataclasses import dataclass
 PREFIX = "custom>>switcher>>"
 MAX_ALT_WIDTH = 1680
 ALT_TIMEOUT_S = 60
+TASK_PER_ROW = 5
+ALT_PER_ROW = 9
 
 
 @dataclass
@@ -85,7 +87,104 @@ def app_name(klass):
     return tail[:18] or "Window"
 
 
-def collect_windows(clients, monitors):
+def tty_name(tty_nr):
+    # Linux /proc stat tty encoding: minor in bits 31–20 and 7–0, major in 15–8.
+    if not tty_nr:
+        return ""
+    minor = (tty_nr & 0xFF) | ((tty_nr >> 12) & 0xFFF00)
+    major = (tty_nr >> 8) & 0xFF
+    if major == 136:
+        return f"pts/{minor}"
+    if major == 4:
+        return f"tty/{minor}"
+    return f"{major}:{minor}"
+
+
+def read_procs():
+    procs = []
+    try:
+        entries = os.scandir("/proc")
+    except OSError:
+        return procs
+    for entry in entries:
+        if not entry.name.isdigit():
+            continue
+        try:
+            with open(f"/proc/{entry.name}/stat", "r") as fh:
+                data = fh.read()
+        except OSError:
+            continue
+        left = data.find("(")
+        right = data.rfind(")")
+        if left < 0 or right < left:
+            continue
+        fields = data[right + 2 :].split()
+        if len(fields) < 5:
+            continue
+        try:
+            pid = int(entry.name)
+            ppid = int(fields[1])
+            tty_nr = int(fields[4])
+        except ValueError:
+            continue
+        procs.append((pid, ppid, data[left + 1 : right], tty_name(tty_nr)))
+    return procs
+
+
+def front_name(procs, root_pid):
+    """Name of the program in front inside this terminal.
+
+    procs are (pid, ppid, comm, tty). tty is "pts/3" or "" when the
+    process has no terminal. The one in front is the deepest descendant
+    that still has the window's terminal, so grok or nvim wins over
+    yazi, and off-terminal helpers do not.
+    """
+    by_pid = {}
+    children = {}
+    for pid, ppid, comm, tty in procs:
+        by_pid[pid] = (comm, tty)
+        children.setdefault(ppid, []).append(pid)
+
+    counts = {}
+
+    def collect(pid):
+        info = by_pid.get(pid)
+        if info is None:
+            return
+        if info[1]:
+            counts[info[1]] = counts.get(info[1], 0) + 1
+        for child in children.get(pid, ()):
+            collect(child)
+
+    for child in children.get(root_pid, ()):
+        collect(child)
+    if not counts:
+        return None
+    terminal = max(counts, key=lambda name: (counts[name], name))
+
+    best = None
+
+    def walk(pid, depth):
+        nonlocal best
+        info = by_pid.get(pid)
+        if info is None:
+            return
+        comm, tty = info
+        shown = " ".join(comm.split())
+        if tty == terminal and shown:
+            if best is None or depth > best[0] or (depth == best[0] and pid > best[1]):
+                best = (depth, pid, shown)
+        for child in children.get(pid, ()):
+            walk(child, depth + 1)
+
+    for child in children.get(root_pid, ()):
+        walk(child, 1)
+    if best is None:
+        return None
+    return best[2]
+
+
+def collect_windows(clients, monitors, procs=None):
     by_id = {m.get("id"): m for m in monitors}
     found = []
     for client in clients:
@@ -108,6 +207,16 @@ def collect_windows(clients, monitors):
         if not isinstance(hist, int):
             hist = 10**9
         title = " ".join(str(client.get("title") or "").split())
+        # kitty --title freezes the Wayland title at "yazi". The program
+        # actually in front is a child on the same terminal.
+        if klass == "yazi":
+            pid = client.get("pid")
+            if isinstance(pid, int) and pid > 0:
+                if procs is None:
+                    procs = read_procs()
+                front = front_name(procs, pid)
+                if front:
+                    title = front
         found.append(
             Win(
                 address=address,
@@ -149,6 +258,21 @@ def group_screens(windows):
     return screens
 
 
+def task_grid(windows, per_row=TASK_PER_ROW):
+    """Task View lines. A screen stays together, and a line holds at most per_row windows."""
+    grid = []
+    for screen in group_screens(windows):
+        wins = screen["windows"]
+        for start in range(0, len(wins), per_row):
+            grid.append(
+                {
+                    "screen": screen["screen"],
+                    "windows": wins[start : start + per_row],
+                }
+            )
+    return grid
+
+
 def task_start(rows):
     """Task View opens on the window that already has focus."""
     for r, row in enumerate(rows):
@@ -156,6 +280,11 @@ def task_start(rows):
             if win.hist == 0:
                 return r, c
     return 0, 0
+
+
+def alt_lines(windows, per_row=ALT_PER_ROW):
+    """Alt+Tab lines. The recent-window order stays, and a line holds at most per_row windows."""
+    return [windows[start : start + per_row] for start in range(0, len(windows), per_row)]
 
 
 def alt_open_index(count, direction):
@@ -280,6 +409,69 @@ def self_test():
     assert task_step(rows, (2, 0), 1) == (0, 0)
     assert task_vert(rows, (0, 0), 1) == (1, 0)
     assert task_vert(rows, (0, 0), -1) == (0, 0)
+    six = []
+    for i in range(6):
+        six.append(
+            {
+                "address": str(i),
+                "class": "kitty",
+                "title": str(i),
+                "focusHistoryID": i,
+                "mapped": True,
+                "hidden": False,
+                "workspace": {"id": 1, "name": "1"},
+                "monitor": 1,
+            }
+        )
+    grid = task_grid(collect_windows(six, monitors))
+    assert [len(row["windows"]) for row in grid] == [5, 1]
+    assert grid[0]["screen"] == grid[1]["screen"] == "Left"
+    assert task_start(grid) == (0, 0)
+    assert task_step(grid, (0, 4), 1) == (1, 0)
+    assert task_step(grid, (1, 0), -1) == (0, 4)
+    assert task_vert(grid, (0, 4), 1) == (1, 0)
+    assert task_vert(grid, (1, 0), -1) == (0, 0)
+    five = six[:5]
+    assert len(task_grid(collect_windows(five, monitors))) == 1
+    assert [len(line) for line in alt_lines(list(range(10)))] == [9, 1]
+    assert len(alt_lines(list(range(9)))) == 1
+    assert alt_lines([]) == []
+    tree = [
+        (10, 1, "kitty", ""),
+        (11, 10, "kitten", ""),
+        (12, 10, "yazi", "pts/3"),
+        (13, 12, "grok", "pts/3"),
+        (14, 13, "bash", ""),
+        (90, 1, "yazi", "tty/1"),
+        (91, 90, "nvim", "tty/1"),
+    ]
+    assert front_name(tree, 10) == "grok"
+    assert front_name([(10, 1, "kitty", ""), (12, 10, "yazi", "pts/3")], 10) == "yazi"
+    nvim_tree = [
+        (10, 1, "kitty", ""),
+        (12, 10, "yazi", "pts/3"),
+        (15, 12, "nvim", "pts/3"),
+    ]
+    assert front_name(nvim_tree, 10) == "nvim"
+    assert front_name([], 10) is None
+    yazi_client = {
+        "address": "live",
+        "class": "yazi",
+        "title": "yazi",
+        "pid": 10,
+        "focusHistoryID": 0,
+        "mapped": True,
+        "hidden": False,
+        "workspace": {"id": 11, "name": "11"},
+        "monitor": 0,
+    }
+    shown = collect_windows([yazi_client], monitors, tree)
+    assert shown[0].title == "grok"
+    assert shown[0].app == "Yazi"
+    untouched = collect_windows(
+        [{**yazi_client, "pid": 0, "address": "plain"}], monitors, tree
+    )
+    assert untouched[0].title == "yazi"
     print("ok")
 
 
@@ -563,40 +755,49 @@ class Switcher:
         self.hide()
         self.mode = "alt"
         windows = self.alt_windows
-        count = len(windows)
+        lines = alt_lines(windows)
+        row_count = max((len(line) for line in lines), default=1)
         inner = MAX_ALT_WIDTH - 36
         cell_w = 150
-        if count > 1:
-            cell_w = max(84, min(150, (inner - 6 * (count - 1)) // count))
+        if row_count > 1:
+            cell_w = max(84, min(150, (inner - 6 * (row_count - 1)) // row_count))
         win = self._layer(False)
         panel = self.Gtk.Box(orientation=self.Gtk.Orientation.VERTICAL, spacing=12)
         panel.get_style_context().add_class("panel")
-        row = self.Gtk.Box(orientation=self.Gtk.Orientation.HORIZONTAL, spacing=6)
-        row.set_halign(self.Gtk.Align.CENTER)
         self.alt_cells = []
-        for index, item in enumerate(windows):
-            button = self.Gtk.Button()
-            button.set_relief(self.Gtk.ReliefStyle.NONE)
-            button.set_can_focus(False)
-            button.get_style_context().add_class("cell")
-            button.set_size_request(cell_w, -1)
-            button.set_tooltip_text(item.title)
-            box = self.Gtk.Box(orientation=self.Gtk.Orientation.VERTICAL, spacing=6)
-            box.set_halign(self.Gtk.Align.CENTER)
-            icon = self.icon_widget(item, 40)
-            icon.set_halign(self.Gtk.Align.CENTER)
-            name = self.Gtk.Label(label=item.app)
-            name.get_style_context().add_class("app")
-            name.set_ellipsize(self._ellipsize())
-            name.set_max_width_chars(max(8, cell_w // 10))
-            name.set_halign(self.Gtk.Align.CENTER)
-            box.pack_start(icon, False, False, 0)
-            box.pack_start(name, False, False, 0)
-            button.add(box)
-            button.connect("clicked", self._alt_clicked, index)
-            button.connect("enter-notify-event", self._alt_hover, index)
-            row.pack_start(button, False, False, 0)
-            self.alt_cells.append(button)
+        index = 0
+        for line in lines:
+            row = self.Gtk.Box(orientation=self.Gtk.Orientation.HORIZONTAL, spacing=6)
+            row.set_halign(self.Gtk.Align.CENTER)
+            for item in line:
+                button = self.Gtk.Button()
+                button.set_relief(self.Gtk.ReliefStyle.NONE)
+                button.set_can_focus(False)
+                button.get_style_context().add_class("cell")
+                button.set_size_request(cell_w, -1)
+                button.set_tooltip_text(item.title)
+                box = self.Gtk.Box(orientation=self.Gtk.Orientation.VERTICAL, spacing=6)
+                box.set_halign(self.Gtk.Align.CENTER)
+                icon = self.icon_widget(item, 40)
+                icon.set_halign(self.Gtk.Align.CENTER)
+                # Yazi's frozen title is replaced with grok or nvim above.
+                label = item.app
+                if item.klass == "yazi" and item.title.lower() != item.app.lower():
+                    label = item.title
+                name = self.Gtk.Label(label=label)
+                name.get_style_context().add_class("app")
+                name.set_ellipsize(self._ellipsize())
+                name.set_max_width_chars(max(8, cell_w // 10))
+                name.set_halign(self.Gtk.Align.CENTER)
+                box.pack_start(icon, False, False, 0)
+                box.pack_start(name, False, False, 0)
+                button.add(box)
+                button.connect("clicked", self._alt_clicked, index)
+                button.connect("enter-notify-event", self._alt_hover, index)
+                row.pack_start(button, False, False, 0)
+                self.alt_cells.append(button)
+                index += 1
+            panel.pack_start(row, False, False, 0)
         caption = self.Gtk.Label()
         caption.get_style_context().add_class("caption")
         caption.set_ellipsize(self._ellipsize())
@@ -607,7 +808,6 @@ class Switcher:
         place.set_halign(self.Gtk.Align.CENTER)
         self.alt_caption = caption
         self.alt_place = place
-        panel.pack_start(row, False, False, 0)
         panel.pack_start(caption, False, False, 0)
         panel.pack_start(place, False, False, 0)
         win.add(panel)
@@ -672,7 +872,7 @@ class Switcher:
             # A release that arrives late must not focus a window from the strip.
             pass
         self.mode = "task"
-        self.task_rows = group_screens(windows)
+        self.task_rows = task_grid(windows)
         self.task_pos = task_start(self.task_rows)
         self._show_task()
 
@@ -694,13 +894,16 @@ class Switcher:
             panel.pack_start(empty, False, False, 0)
         else:
             self.task_cells = []
+            shown = None
             for r, row in enumerate(self.task_rows):
-                header = self.Gtk.Label(label=row["screen"])
-                header.get_style_context().add_class("screen")
-                header.set_halign(self.Gtk.Align.START)
-                if r:
-                    header.set_margin_top(10)
-                panel.pack_start(header, False, False, 0)
+                if row["screen"] != shown:
+                    header = self.Gtk.Label(label=row["screen"])
+                    header.get_style_context().add_class("screen")
+                    header.set_halign(self.Gtk.Align.START)
+                    if shown is not None:
+                        header.set_margin_top(10)
+                    panel.pack_start(header, False, False, 0)
+                    shown = row["screen"]
                 line = self.Gtk.Box(orientation=self.Gtk.Orientation.HORIZONTAL, spacing=8)
                 cells = []
                 for c, item in enumerate(row["windows"]):

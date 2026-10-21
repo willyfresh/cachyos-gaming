@@ -12,8 +12,8 @@ set -euo pipefail
 rows=$(cat <<'EOF'
 Super+K|Keybind cheatsheet|-M logo -k k -m logo
 Super+Space|Launcher|-M logo -k space -m logo
-Super+Tab|Every window, by screen. Esc closes|-M logo -k Tab -m logo
-Alt+Tab|Recent windows. Release Alt to switch|-M alt -k Tab -m alt
+Super+Tab|Every window, by screen, five on a row. Esc closes|-M logo -k Tab -m logo
+Alt+Tab|Recent windows, nine on a row. Release Alt to switch|-M alt -k Tab -m alt
 Ctrl+Alt+Delete|Session: lock, quit, reboot, shut down|-M ctrl -M alt -k Delete -m alt -m ctrl
 
 Super+N|Circle. Notification history|-M logo -k n -m logo
@@ -37,13 +37,17 @@ Super+Left|Focus left|-M logo -k Left -m logo
 Super+Right|Focus right|-M logo -k Right -m logo
 Super+Up|Focus up. At the top window, previous workspace|-M logo -k Up -m logo
 Super+Down|Focus down. At the bottom window, next workspace|-M logo -k Down -m logo
+Super+Ctrl+Left|Previous workspace on every screen|-M logo -M ctrl -k Left -m ctrl -m logo
+Super+Ctrl+Right|Next workspace on every screen|-M logo -M ctrl -k Right -m ctrl -m logo
 
+Super+D|Next empty workspace on this screen|-M logo -k d -m logo
 Super+E|Files|-M logo -k e -m logo
 Super+F|Maximize, keep the gaps|-M logo -k f -m logo
 Super+L|Lock screen|-M logo -k l -m logo
 Super+M|Maximize, keep the gaps|-M logo -k m -m logo
 Super+Q|Close window|-M logo -k q -m logo
 Super+T|Float or tile|-M logo -k t -m logo
+Super+U|Update list|-M logo -k u -m logo
 Super+V|Clipboard history|-M logo -k v -m logo
 Super+W|Weather|-M logo -k w -m logo
 Super+Return|Terminal|-M logo -k Return -m logo
@@ -73,6 +77,7 @@ Super+Shift+Ctrl+F|Google Drive|-M logo -M shift -M ctrl -k f -m ctrl -m shift -
 Super+Shift+G|Gmail|-M logo -M shift -k g -m shift -m logo
 Super+Shift+H|Heroic|-M logo -M shift -k h -m shift -m logo
 Super+Shift+I|Inkscape|-M logo -M shift -k i -m shift -m logo
+Super+Shift+J|Google Tasks|-M logo -M shift -k j -m shift -m logo
 Super+Shift+K|Google Keep|-M logo -M shift -k k -m shift -m logo
 Super+Shift+L|Maps|-M logo -M shift -k l -m shift -m logo
 Super+Shift+M|Messages|-M logo -M shift -k m -m shift -m logo
@@ -97,7 +102,7 @@ Super+Shift+Up|Move up. At the top, previous workspace, even if empty|-M logo -M
 Super+Shift+Down|Move down. At the bottom, next workspace, even if empty|-M logo -M shift -k Down -m shift -m logo
 Super+Shift+minus|This window 10% shorter|-M logo -M shift -k minus -m shift -m logo
 Super+Shift+equal|This window 10% taller|-M logo -M shift -k equal -m shift -m logo
-Super+Shift+.|Google Tasks|-M logo -M shift -k period -m shift -m logo
+Super+.|Emoji|-M logo -k period -m logo
 Super+Shift+Return|Wallpaper color|-M logo -M shift -k Return -m shift -m logo
 Super+Shift+1|Move the window to workspace 1|-M logo -M shift -k 1 -m shift -m logo
 Super+Shift+2|Move the window to workspace 2|-M logo -M shift -k 2 -m shift -m logo
@@ -115,6 +120,7 @@ Alt+Escape|Cancel that switch|-M alt -k Escape -m alt
 Alt+F4|Close window|-M alt -k F4 -m alt
 Super+Ctrl+F|Maximize, keep the gaps|-M logo -M ctrl -k f -m ctrl -m logo
 Super+Ctrl+F2|Cover the screen|-M logo -M ctrl -k F2 -m ctrl -m logo
+Super+Alt+M|Now playing|-M logo -M alt -k m -m alt -m logo
 Super+Alt+P|Turn the screens off|-M logo -M alt -k p -m alt -m logo
 EOF
 )

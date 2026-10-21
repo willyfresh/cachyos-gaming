@@ -59,6 +59,12 @@ Chrome webapps are title-less `--app` windows. Their profile stays at
 `--app-id`; that draws a title bar. PDFs open in Zathura. Images open
 in swayimg.
 
+A link from another app opens in the running Chrome, and that window
+is focused. `configs/hyprland-mimeapps.list` sends http and https to
+`launch-browser.sh`. The browser named in `mimeapps.list` stays
+`google-chrome.desktop`, which Chrome and the webapp launcher read.
+`chrome-flags.conf` skips the default-browser bar.
+
 Print grabs a region, Shift+Print the focused window, Ctrl+Shift+Print
 both screens. Alt+Print is SysRq and never reaches Hyprland. Shots are
 copied and saved under `~/Pictures/Screenshots`. The notification and
@@ -72,12 +78,19 @@ Fuzzel 1.15 cannot color a single row. An update that needs a reboot is
 marked `reboot *`. The updates list can install every other pending
 package without those. Each row shows the download size when it is known.
 
-Alt+Tab walks windows in the order you used them, on both screens, and
-switches when Alt is released. Alt+Shift+Tab goes the other way. Alt+Esc
-cancels. Super+Tab lists every window by screen and stays up until you
+Alt+Tab walks windows in the order you used them, on both screens, nine
+on a row, and switches when Alt is released. Alt+Shift+Tab goes the other way. Alt+Esc
+cancels. Super+Tab lists every window by screen, five on a row, and stays up until you
 pick one or press Esc. Super+Shift+Tab is still the previous workspace.
 Alt+Tab is not a submap. Super+Tab uses one named `taskview` so the
-arrows work, and Waybar does not show that name.
+arrows work, and Waybar does not show that name. If that switcher
+process has exited, it is started again.
+
+Super+Ctrl+Left and Super+Ctrl+Right step every screen to the previous
+or next workspace number, including an empty one, and stop at 1 and at
+10. Super+D opens the next empty number on the focused screen.
+Super+U opens the update list. Super+Alt+M opens now playing.
+Super+. picks an emoji and types it.
 
 ## Packages
 

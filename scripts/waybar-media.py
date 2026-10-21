@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Now playing from playerctl. Click pauses or resumes that player."""
+"""Now playing from playerctl. Click pauses or resumes that player.
+
+The menu's first row focuses the window for that track.
+"""
 
 from __future__ import annotations
 
@@ -135,6 +138,89 @@ def control(player: str, command: str) -> None:
     subprocess.run(args, check=False)
 
 
+def player_pid(name: str) -> int | None:
+    tail = name.rsplit(".", 1)[-1]
+    if tail.startswith("instance") and tail.removeprefix("instance").isdigit():
+        return int(tail.removeprefix("instance"))
+    try:
+        status = run(["busctl", "--user", "status", f"org.mpris.MediaPlayer2.{name}"])
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    for line in status.splitlines():
+        if line.startswith("PID=") and line[4:].isdigit():
+            return int(line[4:])
+    return None
+
+
+def clients() -> list[dict]:
+    try:
+        return json.loads(run(["hyprctl", "clients", "-j"]))
+    except (OSError, subprocess.CalledProcessError, json.JSONDecodeError):
+        return []
+
+
+def history(window: dict) -> int:
+    rank_id = window.get("focusHistoryID")
+    return rank_id if isinstance(rank_id, int) else 10**9
+
+
+# Chrome's player reports CanRaise false, and every webapp in the shared
+# profile is the same pid. A title that contains the track wins. Otherwise
+# a music or video site beats Feedly, mail, and the other windows.
+MEDIA_SITES = (
+    "music.youtube",
+    "youtube",
+    "spotify",
+    "soundcloud",
+    "bandcamp",
+    "deezer",
+    "tidal",
+    "pandora",
+    "music.apple",
+    "podcasts.google",
+    "netflix",
+    "twitch",
+    "plex",
+    "vimeo",
+    "crunchyroll",
+)
+
+
+def window_for(player: Player) -> str:
+    windows = clients()
+    pid = player_pid(player.name)
+    pool = [window for window in windows if pid is not None and window.get("pid") == pid]
+    if not pool:
+        base = player.name.split(".", 1)[0].casefold()
+        if base == "chromium":
+            base = "chrome"
+        pool = [window for window in windows if base and base in (window.get("class") or "").casefold()]
+    if not pool:
+        return ""
+    title = (player.title or "").casefold()
+    if len(title) >= 4:
+        titled = [window for window in pool if title in (window.get("title") or "").casefold()]
+        if titled:
+            return min(titled, key=history).get("address") or ""
+
+    def rank_window(window: dict) -> tuple[int, int]:
+        blob = f"{window.get('class') or ''} {window.get('title') or ''}".casefold()
+        media = 0 if any(site in blob for site in MEDIA_SITES) else 1
+        return (media, history(window))
+
+    return min(pool, key=rank_window).get("address") or ""
+
+
+def focus_player(player: Player) -> None:
+    address = window_for(player)
+    if not address:
+        return
+    subprocess.run(
+        ["hyprctl", "dispatch", f'hl.dsp.focus({{ window = "address:{address}" }})'],
+        check=False,
+    )
+
+
 def fuzzel(lines: list[str], prompt: str) -> str:
     width = max(len(prompt), min(72, max((len(line) for line in lines), default=20)))
     result = subprocess.run(
@@ -162,6 +248,9 @@ def menu(found: list[Player]) -> None:
     rows: list[tuple[str, tuple[str, str]]] = []
     used: set[str] = set()
     many = len(kept) > 1
+    if kept:
+        rows.append(("Focus window", ("focus", kept[0].name)))
+        used.add("Focus window")
     for player in kept:
         title = player.title or pretty(player.name)
         who = f"{title}  —  {player.artist}" if player.artist else title
@@ -189,6 +278,11 @@ def menu(found: list[Player]) -> None:
     if action is None:
         return
     command, name = action
+    if command == "focus":
+        player = next((item for item in kept if item.name == name), None)
+        if player is not None:
+            focus_player(player)
+        return
     control(name, command)
 
 

@@ -10,7 +10,6 @@ two, when you pick them.
 |------|--------|
 | Mic dictation | backlog |
 | Library updates that need a service restart | backlog |
-| Emoji menu should not fuzzy-search | backlog |
 | Stow layout | tabled |
 | Mango | tabled |
 | Keychron light key | tabled |
@@ -20,11 +19,6 @@ two, when you pick them.
 
 Super+Mic starts dictation and stops it. That is the only control.
 The mic key by itself still toggles mute.
-
-## Emoji menu
-
-Super+. still fuzzy-filters the list as you type. It should not.
-`--no-sort` only keeps the list order.
 
 ## Update list
 

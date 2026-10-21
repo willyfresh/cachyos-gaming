@@ -97,7 +97,9 @@ on this screen, including an empty one, and follows it.
 Super+D opens the next empty number on the focused screen.
 Super+U opens the update list. Super+Shift+U focuses VLC, or starts it.
 Video and audio open in VLC. Super+Alt+M opens now playing.
-Super+. picks an emoji and types it.
+Super+. picks an emoji and types it. The menu keeps a name only when it
+contains what you typed, then sorts those hits. A loose match does not
+sit on the first row. With nothing typed, the list stays in emoji order.
 
 ## Packages
 

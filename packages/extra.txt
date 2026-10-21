@@ -18,6 +18,7 @@ hyprlock
 hypridle
 grim
 slurp
+wtype
 tesseract-data-eng
 otf-font-awesome
 keyd

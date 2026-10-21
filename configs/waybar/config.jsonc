@@ -258,7 +258,10 @@
         "exec-if": "playerctl status",
         "return-type": "json",
         "interval": 2,
-        "on-click": "$HOME/.local/bin/waybar-media.py toggle"
+        "tooltip": true,
+        "hide-empty-text": true,
+        "on-click": "$HOME/.local/bin/waybar-media.py toggle",
+        "on-click-right": "$HOME/.local/bin/waybar-media.py menu"
     },
     "custom/cpu": {
         "exec": "$HOME/.local/bin/waybar-cpu.py",

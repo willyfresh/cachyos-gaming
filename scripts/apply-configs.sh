@@ -57,6 +57,7 @@ desktop_links=(
   board-game-arena.desktop
   concord.desktop
   neomutt.desktop
+  nvim.desktop
   steam.desktop
   superfile.desktop
   "gmail.desktop|Gmail.desktop"

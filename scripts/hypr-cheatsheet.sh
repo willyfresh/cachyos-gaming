@@ -39,6 +39,8 @@ Super+Up|Focus up. At the top window, previous workspace|-M logo -k Up -m logo
 Super+Down|Focus down. At the bottom window, next workspace|-M logo -k Down -m logo
 Super+Ctrl+Left|Previous workspace on every screen|-M logo -M ctrl -k Left -m ctrl -m logo
 Super+Ctrl+Right|Next workspace on every screen|-M logo -M ctrl -k Right -m ctrl -m logo
+Super+Ctrl+Up|Previous occupied workspace on every screen|-M logo -M ctrl -k Up -m ctrl -m logo
+Super+Ctrl+Down|Next occupied workspace on every screen|-M logo -M ctrl -k Down -m ctrl -m logo
 
 Super+D|Next empty workspace on this screen|-M logo -k d -m logo
 Super+E|Files|-M logo -k e -m logo
@@ -63,6 +65,16 @@ Super+7|This screen's workspace 7|-M logo -k 7 -m logo
 Super+8|This screen's workspace 8|-M logo -k 8 -m logo
 Super+9|This screen's workspace 9|-M logo -k 9 -m logo
 Super+0|This screen's workspace 10|-M logo -k 0 -m logo
+Super+Ctrl+1|Workspace 1 on every screen|-M logo -M ctrl -k 1 -m ctrl -m logo
+Super+Ctrl+2|Workspace 2 on every screen|-M logo -M ctrl -k 2 -m ctrl -m logo
+Super+Ctrl+3|Workspace 3 on every screen|-M logo -M ctrl -k 3 -m ctrl -m logo
+Super+Ctrl+4|Workspace 4 on every screen|-M logo -M ctrl -k 4 -m ctrl -m logo
+Super+Ctrl+5|Workspace 5 on every screen|-M logo -M ctrl -k 5 -m ctrl -m logo
+Super+Ctrl+6|Workspace 6 on every screen|-M logo -M ctrl -k 6 -m ctrl -m logo
+Super+Ctrl+7|Workspace 7 on every screen|-M logo -M ctrl -k 7 -m ctrl -m logo
+Super+Ctrl+8|Workspace 8 on every screen|-M logo -M ctrl -k 8 -m ctrl -m logo
+Super+Ctrl+9|Workspace 9 on every screen|-M logo -M ctrl -k 9 -m ctrl -m logo
+Super+Ctrl+0|Workspace 10 on every screen|-M logo -M ctrl -k 0 -m ctrl -m logo
 
 Super+Shift+A|Grok Bot|-M logo -M shift -k a -m shift -m logo
 Super+Shift+Ctrl+A|Grok|-M logo -M shift -M ctrl -k a -m ctrl -m shift -m logo
@@ -90,8 +102,8 @@ Super+Shift+S|Steam|-M logo -M shift -k s -m shift -m logo
 Super+Shift+T|btop|-M logo -M shift -k t -m shift -m logo
 Super+Shift+Ctrl+T|nvtop|-M logo -M shift -M ctrl -k t -m ctrl -m shift -m logo
 Super+Shift+U|VLC|-M logo -M shift -k u -m shift -m logo
-Super+Shift+V|Neovim|-M logo -M shift -k v -m shift -m logo
-Super+Shift+Ctrl+V|VS Code|-M logo -M shift -M ctrl -k v -m ctrl -m shift -m logo
+Super+Shift+V|VS Code|-M logo -M shift -k v -m shift -m logo
+Super+Shift+Ctrl+V|Neovim|-M logo -M shift -M ctrl -k v -m ctrl -m shift -m logo
 Super+Shift+W|Chrome|-M logo -M shift -k w -m shift -m logo
 Super+Shift+Ctrl+W|Lynx|-M logo -M shift -M ctrl -k w -m ctrl -m shift -m logo
 Super+Shift+Y|YouTube Music|-M logo -M shift -k y -m shift -m logo

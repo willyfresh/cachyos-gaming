@@ -1,5 +1,7 @@
 -- require("keybinds.desk")
 -- Super+Ctrl+Left/Right steps every screen one workspace number.
+-- Super+Ctrl+Up/Down does that too, and skips numbers with no windows.
+-- Super+Ctrl+number moves every screen to that number. 0 is 10.
 -- Super+D opens the next empty number on the focused screen.
 -- This file only reads hyprsplit. Calling monitor_priority again would
 -- append to the list and renumber the right screen.
@@ -63,9 +65,8 @@ local function next_empty()
 	end
 end
 
--- One local number on every screen, including an empty one. Stop at 1
--- and at 10. The mouse stays put while the screens move.
-local function shift_all(delta)
+-- The mouse stays put. Focus returns to the screen that had it.
+local function across_screens(visit)
 	return function()
 		local orig = hl.get_active_monitor()
 		local have_warp, saved = pcall(hl.get_config, "cursor.no_warps")
@@ -78,16 +79,8 @@ local function shift_all(delta)
 					local active = monitor.active_workspace
 					if active and not active.special then
 						local range = range_for(monitor)
-						if range and active.id >= range.min and active.id <= range.max then
-							local local_n = active.id - range.min + 1
-							local next_local = math.max(1, math.min(range.num, local_n + delta))
-							if next_local ~= local_n then
-								hl.dispatch(hl.dsp.focus({ monitor = monitor }))
-								hl.dispatch(hl.dsp.focus({
-									workspace = range.min + next_local - 1,
-									on_current_monitor = true,
-								}))
-							end
+						if range then
+							visit(monitor, active, range)
 						end
 					end
 				end
@@ -105,11 +98,73 @@ local function shift_all(delta)
 	end
 end
 
+local function show_on(monitor, workspace)
+	hl.dispatch(hl.dsp.focus({ monitor = monitor }))
+	hl.dispatch(hl.dsp.focus({
+		workspace = workspace,
+		on_current_monitor = true,
+	}))
+end
+
+-- One step on every screen, including an empty number. Stop at 1 and at 10.
+local function shift_all(delta)
+	return across_screens(function(monitor, active, range)
+		if active.id < range.min or active.id > range.max then
+			return
+		end
+		local local_n = active.id - range.min + 1
+		local next_local = math.max(1, math.min(range.num, local_n + delta))
+		if next_local ~= local_n then
+			show_on(monitor, range.min + next_local - 1)
+		end
+	end)
+end
+
+-- Previous or next number that has windows, on every screen. Empty
+-- numbers are skipped. The step stops at 1 and at 10.
+local function step_occupied(delta)
+	local step = delta < 0 and -1 or 1
+	return across_screens(function(monitor, active, range)
+		if active.id < range.min or active.id > range.max then
+			return
+		end
+		local local_n = active.id - range.min + 1
+		local n = local_n + step
+		while n >= 1 and n <= range.num do
+			if window_count(range.min + n - 1) > 0 then
+				show_on(monitor, range.min + n - 1)
+				return
+			end
+			n = n + step
+		end
+	end)
+end
+
+-- The same local number on every screen, including an empty one.
+local function focus_all(local_n)
+	return across_screens(function(monitor, active, range)
+		if local_n < 1 or local_n > range.num then
+			return
+		end
+		local target = range.min + local_n - 1
+		if active.id ~= target then
+			show_on(monitor, target)
+		end
+	end)
+end
+
 hl.bind(mod .. " + CTRL + left", shift_all(-1))
 hl.bind(mod .. " + CTRL + right", shift_all(1))
+hl.bind(mod .. " + CTRL + up", step_occupied(-1))
+hl.bind(mod .. " + CTRL + down", step_occupied(1))
+for i = 1, 10 do
+	hl.bind(mod .. " + CTRL + " .. (i % 10), focus_all(i))
+end
 hl.bind(mod .. " + D", next_empty)
 
 return {
 	next_empty = next_empty,
 	shift_all = shift_all,
+	step_occupied = step_occupied,
+	focus_all = focus_all,
 }

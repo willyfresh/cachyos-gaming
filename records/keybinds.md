@@ -136,8 +136,8 @@ Super+E files, Super+L lock, Super+V clipboard, Super+Q close
 | Super+Shift+U | — | VLC | — |
 | **V** | | | |
 | Super+V | Clipboard history | Clipboard history | Clipboard history |
-| Super+Shift+V | — | Neovim | — |
-| Super+Shift+Ctrl+V | — | VS Code | — |
+| Super+Shift+V | — | VS Code | — |
+| Super+Shift+Ctrl+V | — | Neovim | — |
 | Super+Ctrl+V | Sound output / volume mixer | — | Universal paste |
 | **W** | | | |
 | Super+W | Widgets | Weather | Browser |
@@ -193,7 +193,8 @@ Super+E files, Super+L lock, Super+V clipboard, Super+Q close
 | Super+0 | Tenth taskbar app | Workspace 10 | Workspace 10 |
 | Super+Shift+1…9 | New instance of that taskbar app | Move window to workspace 1–9 | Move window to that workspace |
 | Super+Shift+Alt+1…9 | — | — | Move window, do not follow |
-| Super+Ctrl+1…9 | Last window of that taskbar app | — | Toggle nth bar panel |
+| Super+Ctrl+1…9 | Last window of that taskbar app | Workspace 1–9 on every screen | Toggle nth bar panel |
+| Super+Ctrl+0 | — | Workspace 10 on every screen | — |
 | Super+Alt+1…5 | Jumplist for that taskbar app | — | Window N in a group |
 
 ---
@@ -206,8 +207,10 @@ at the edge carry the window onto the neighboring workspace number,
 including an empty one. The step stops at 1 and at 10. Left and right
 stay on this workspace. Ctrl+Left and Ctrl+Right move every screen to
 the previous or next workspace number, including an empty one, and stop
-at 1 and at 10. Ctrl+Up, Ctrl+Down, Alt+arrow, and Ctrl+Alt+arrow stay
-unbound. Size is Super+/- .
+at 1 and at 10. Ctrl+Up and Ctrl+Down do the same and skip empty
+workspaces. Ctrl+1 through Ctrl+0 move every screen to that number
+together. 0 is 10. Alt+arrow and Ctrl+Alt+arrow stay unbound. Size is
+Super+/- .
 Delorean: Super = focus then next occupied desk, Shift = move to adjacent
 numbered desk, Ctrl = swap on this desk.
 
@@ -218,7 +221,7 @@ numbered desk, Ctrl = swap on this desk.
 | Super+Down | Restore / minimize | Focus down, or next occupied workspace | Focus, then occupied desk |
 | Super+Shift+Left/Right | Move window to monitor | Move the window that way | Move window to adjacent desk 1–10 |
 | Super+Shift+Up/Down | Maximize / restore vertically | Move that way, or onto the neighboring workspace | Move window to adjacent desk 1–10 |
-| Super+Ctrl+arrows | Switch virtual desktop (L/R) | Left/Right: previous or next number on every screen | Swap with neighbor |
+| Super+Ctrl+arrows | Switch virtual desktop (L/R) | Every screen. Left/Right include empty. Up/Down skip empty | Swap with neighbor |
 | Super+Alt+Left/Right/Up/Down | Snap top/bottom (Alt+Up/Down) | — | Move into group that way |
 | Super+Shift+Ctrl+arrows | — | — | — |
 | Super+Shift+Alt+arrows | — | — | Move workspace to monitor |

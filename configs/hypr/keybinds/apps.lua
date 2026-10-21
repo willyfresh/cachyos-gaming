@@ -51,8 +51,8 @@ hl.bind(modshi .. " + S", hl.dsp.exec_cmd(bin .. [[/launch-app.sh --match both -
 hl.bind(modshi .. " + T", hl.dsp.exec_cmd(bin .. [[/launch-app.sh --toggle '^(btop|btop-key)$' setsid kitty --class btop-key --title btop -e btop]]))
 hl.bind(modshi .. " + CTRL + T", hl.dsp.exec_cmd(bin .. [[/launch-app.sh --toggle '^(nvtop|nvtop-key)$' setsid kitty --class nvtop-key --title nvtop -e nvtop]]))
 
-hl.bind(modshi .. " + V", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^nvim$' setsid kitty --class nvim --title nvim -e nvim]]))
-hl.bind(modshi .. " + CTRL + V", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^[Cc]ode$' code]]))
+hl.bind(modshi .. " + V", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^(code|com\.microsoft\.VSCode)$' code]]))
+hl.bind(modshi .. " + CTRL + V", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^nvim$' setsid kitty --class nvim --title nvim -e nvim]]))
 
 hl.bind(modshi .. " + W", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^google-chrome$' setsid google-chrome-stable]]))
 hl.bind(modshi .. " + CTRL + W", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^lynx$' setsid kitty --class lynx --title lynx -e lynx]]))

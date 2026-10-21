@@ -8,7 +8,6 @@ two, when you pick them.
 
 | Want | Status |
 |------|--------|
-| Super+Ctrl+number moves every screen | backlog |
 | Mic dictation | backlog |
 | Super+Shift+scroll moves the window | backlog |
 | Library updates that need a service restart | backlog |
@@ -17,12 +16,6 @@ two, when you pick them.
 | Mango | tabled |
 | Keychron light key | tabled |
 | Halo Xbox login, For Honor | tabled |
-
-## Super+Ctrl+number
-
-Super+Ctrl+1 through Super+Ctrl+0 moves every screen to that workspace
-number together. 0 is 10. Left stays on ids 1–10 and right on 11–20.
-Super+number still follows the focused screen only.
 
 ## Mic dictation
 

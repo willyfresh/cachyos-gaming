@@ -88,7 +88,10 @@ process has exited, it is started again.
 
 Super+Ctrl+Left and Super+Ctrl+Right step every screen to the previous
 or next workspace number, including an empty one, and stop at 1 and at
-10. Super+D opens the next empty number on the focused screen.
+10. Super+Ctrl+Up and Super+Ctrl+Down do the same and skip numbers with
+no windows. Super+Ctrl+1 through Super+Ctrl+0 moves every screen to that
+number together. 0 is 10. Super+number still follows the focused screen only.
+Super+D opens the next empty number on the focused screen.
 Super+U opens the update list. Super+Shift+U focuses VLC, or starts it.
 Video and audio open in VLC. Super+Alt+M opens now playing.
 Super+. picks an emoji and types it.

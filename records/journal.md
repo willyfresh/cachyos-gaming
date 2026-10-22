@@ -57,7 +57,8 @@ colors, at 1920×1080, which is the size of these panels. Super+Shift+Return pic
 Chrome webapps are title-less `--app` windows. Their profile stays at
 `~/.local/share/borg/chrome-webapps` (the old hostname). Do not use
 `--app-id`; that draws a title bar. PDFs open in Zathura. Images open
-in swayimg. Video and audio open in VLC.
+in swayimg. Video and audio open in VLC. In Yazi, O on a video also
+lists Kdenlive, and a `.kdenlive` project opens in Kdenlive.
 
 A link from another app opens in the running Chrome, and that window
 is focused. `configs/hyprland-mimeapps.list` sends http and https to
@@ -149,3 +150,9 @@ Chrome webapp. GNU Stow was considered and left as a note in
 - requested: gtk4-layer-shell wtype hyprwhspr
 - repos (pacman): gtk4-layer-shell wtype
 - AUR (paru): hyprwhspr
+
+## 2026-10-21 — installed kdenlive
+
+- requested: kdenlive
+- repos (pacman): kdenlive
+- AUR (paru): (none)

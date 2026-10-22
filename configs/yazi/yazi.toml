@@ -3,7 +3,8 @@
 # Enter and o open text, unknown files, and directories in nvim.
 # Right enters a directory. Left leaves it.
 # Images open in swayimg. PDFs open in zathura.
-# Audio and video open in VLC. Archives keep Yazi's default openers.
+# Audio and video open in VLC. O on a video also lists Kdenlive.
+# A .kdenlive project opens in Kdenlive. Archives keep Yazi's default openers.
 # O still lists the other openers.
 
 [[opener.vim]]
@@ -24,6 +25,11 @@ orphan = true
 [[opener.vlc]]
 run = "vlc --started-from-file %s"
 desc = "VLC"
+orphan = true
+
+[[opener.kdenlive]]
+run = "kdenlive %s"
+desc = "Kdenlive"
 orphan = true
 
 [[opener.grok]]
@@ -48,7 +54,7 @@ use = [ "pdf", "reveal" ]
 
 [[open.prepend_rules]]
 mime = "video/*"
-use = [ "vlc", "reveal" ]
+use = [ "vlc", "kdenlive", "reveal" ]
 
 [[open.prepend_rules]]
 mime = "audio/*"
@@ -64,7 +70,11 @@ use = [ "vlc", "reveal" ]
 
 [[open.prepend_rules]]
 mime = "application/x-matroska"
-use = [ "vlc", "reveal" ]
+use = [ "vlc", "kdenlive", "reveal" ]
+
+[[open.prepend_rules]]
+mime = "application/x-kdenlive"
+use = [ "kdenlive", "reveal" ]
 
 [[open.prepend_rules]]
 url = "*/"

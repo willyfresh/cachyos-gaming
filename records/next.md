@@ -8,10 +8,36 @@ two, when you pick them.
 
 | Want | Status |
 |------|--------|
+| ArtCraft: PhotoCraft, VectorCraft, DesignCraft, FilmCraft | now |
 | Stow layout | tabled |
 | Mango | tabled |
 | Keychron light key | tabled |
 | Halo Xbox login, For Honor | tabled |
+
+## ArtCraft
+
+Picked 2026-10-21. A test drive of the Adobe-shaped apps from the
+storytold GitHub releases. These builds are early. GIMP and Inkscape stay
+installed.
+
+| Adobe | App | Package |
+|-------|-----|---------|
+| Illustrator | VectorCraft 0.14.0 | `ai.storyteller.vectorcraft` |
+| Photoshop | PhotoCraft 0.12.0 | `ai.storyteller.photocraft` |
+| InDesign | DesignCraft 0.11.0 | `ai.storyteller.designcraft` |
+| Premiere | FilmCraft 0.10.0 | `ai.storyteller.filmcraft` |
+
+The Arch packages are in `~/Downloads/artcraft`. Each SHA256 matches the
+release sums. glibc, gcc-libs, hicolor-icon-theme, libxkbcommon, and
+vulkan-icd-loader are already installed, and the NVIDIA Vulkan ICD is
+present.
+
+```
+sudo pacman -U ~/Downloads/artcraft/*.pkg.tar.zst
+```
+
+Fuzzel will list PhotoCraft, VectorCraft, DesignCraft, and FilmCraft.
+They are foreign packages, so they stay out of `packages/extra.txt`.
 
 ## Update list
 

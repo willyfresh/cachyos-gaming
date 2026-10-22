@@ -67,3 +67,5 @@ npm
 tailscale
 gtk4-layer-shell
 kdenlive
+audacity
+lmms

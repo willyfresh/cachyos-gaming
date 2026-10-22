@@ -1,0 +1,5 @@
+# Kdenlive projects are MLT XML. file(1) stops at text/xml, so Yazi and
+# xdg-open never see application/x-kdenlive. The marker sits near the top
+# of a real project.
+0	search/262144	kdenlive:	Kdenlive project
+!:mime	application/x-kdenlive

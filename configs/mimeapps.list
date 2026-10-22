@@ -42,6 +42,7 @@ application/yaml=nvim.desktop;
 text/yaml=nvim.desktop;
 text/css=nvim.desktop;
 text/csv=nvim.desktop;
+application/x-kdenlive=org.kde.kdenlive.desktop;
 
 # Video and audio. These are the types vlc.desktop claims.
 application/ogg=vlc.desktop
@@ -230,6 +231,7 @@ application/yaml=nvim.desktop;
 text/yaml=nvim.desktop;
 text/css=nvim.desktop;
 text/csv=nvim.desktop;
+application/x-kdenlive=org.kde.kdenlive.desktop;
 application/ogg=vlc.desktop;
 application/x-ogg=vlc.desktop;
 audio/ogg=vlc.desktop;

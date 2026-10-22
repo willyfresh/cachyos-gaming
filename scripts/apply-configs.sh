@@ -161,6 +161,9 @@ hide_chrome_name_twins
 # tty1 login stays a shell. CachyOS's stock file execs a compositor; do not
 # put that back. Type start-hyprland (see bash_profile).
 link_path "$CONFIGS_DIR/bash_profile" "$HOME/.bash_profile"
+# file(1) reads ~/.magic in addition to the system database. Yazi and
+# xdg-open take their types from file, not from shared-mime-info.
+link_path "$CONFIGS_DIR/magic" "$HOME/.magic"
 
 if command -v update-desktop-database >/dev/null 2>&1; then
   update-desktop-database "$HOME/.local/share/applications" >/dev/null 2>&1 || true

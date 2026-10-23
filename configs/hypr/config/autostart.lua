@@ -5,6 +5,10 @@ local bin = shared.bin
 hl.on("hyprland.start", function()
 	hl.exec_cmd("dropbox start -i")
 	hl.exec_cmd("bitwarden-desktop")
+	-- Light glyph: the tray chip is blue. The bracket keeps pgrep from matching this shell.
+	hl.exec_cmd(
+		"sh -c 'pgrep -f \"[t]ailscale systray\" >/dev/null || exec tailscale systray --theme=light'"
+	)
 	hl.exec_cmd("sh -c 'pgrep -x waybar >/dev/null || exec waybar'")
 	hl.exec_cmd("sh -c 'pgrep -x mako >/dev/null || exec mako'")
 	hl.exec_cmd("sh -c 'pgrep -x hypridle >/dev/null || exec hypridle'")

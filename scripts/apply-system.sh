@@ -44,6 +44,20 @@ if systemctl list-unit-files systemd-timesyncd.service >/dev/null 2>&1; then
   sudo systemctl enable --now systemd-timesyncd.service
 fi
 
+# Tailscale is in packages/extra.txt. The package does not enable the
+# daemon. The operator is whoever runs this script, so later `tailscale up`
+# needs no root. Joining the tailnet stays a browser login. No account
+# name and no auth key are written down.
+if pacman -Q tailscale >/dev/null 2>&1; then
+  log "enabling tailscaled"
+  sudo systemctl enable --now tailscaled.service
+  if [[ -n "${USER:-}" && "$USER" != "root" ]]; then
+    sudo tailscale set --operator="$USER"
+  else
+    warn "tailscaled is up; run tailscale set --operator as the login user before tailscale up"
+  fi
+fi
+
 # Hovercraft nameplate. Pretty hostname is Novalis; /etc/hosts 127.0.1.1
 # must match or sudo and some local TLS break.
 if [[ "$(hostname)" != "Novalis" ]]; then

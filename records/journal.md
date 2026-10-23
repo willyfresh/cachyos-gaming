@@ -117,6 +117,19 @@ large-v3-turbo on the NVIDIA card, and starts with the Hyprland session.
 Super+Alt+Mic unloads that model and loads it again. The mic readout
 turns red while the model is off the GPU.
 
+## Tailscale
+
+The package is `tailscale` in `packages/extra.txt`. `scripts/apply-system.sh`
+enables `tailscaled` and sets the operator to whoever runs that script.
+Hyprland starts `tailscale systray --theme=light` from
+`configs/hypr/config/autostart.lua`. The glyph is light because the Waybar
+tray chip is blue (`#2980b9`). That icon sits in the tray, left of the
+volume group. The network chip stays the LAN link.
+
+Joining the tailnet is one `tailscale up` in a browser. This repo does
+not store an account name, an address, or an auth key. A rebuild stays
+logged out until that login is approved again.
+
 ## Packages
 
 Repo names go in `packages/extra.txt`. AUR names go in `packages/aur.txt`.

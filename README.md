@@ -87,3 +87,4 @@ emptied after that. Same loop as
 3. `./setup.sh`
 4. Confirm both ASUS VE247 monitors come up (see `records/hardware.md`).
 5. `./setup.sh` links `~/.bash_profile` at `configs/bash_profile`. tty1 is a shell. Type `start-hyprland`. Waybar starts with Hyprland. Do not `exec` that command from `bash_profile`.
+6. `./setup.sh` enables `tailscaled`. Run `tailscale up` once and approve it in the browser. The tray icon starts with Hyprland. This repo does not keep the login.

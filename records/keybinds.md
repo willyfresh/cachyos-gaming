@@ -28,7 +28,7 @@ Super+E files, Super+L lock, Super+V clipboard, Super+Q close
 | Super+Shift+Alt+A | — | — | Grok |
 | Super+Ctrl+Shift+A | — | Grok | Pick an AI agent |
 | **B** | | | |
-| Super+B | Focus the tray | — | — (browser is Super+W) |
+| Super+B | Focus the tray | Show or hide Bitwarden | — (browser is Super+W) |
 | Super+Shift+B | — | Board Game Arena | Board Game Arena |
 | Super+Ctrl+B | — | — | Bluetooth panel |
 | Super+Alt+B | HDR on/off | — | — |

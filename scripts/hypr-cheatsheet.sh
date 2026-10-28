@@ -46,6 +46,7 @@ Super+Ctrl+Right|Next workspace on every screen|-M logo -M ctrl -k Right -m ctrl
 Super+Ctrl+Up|Previous occupied workspace on every screen|-M logo -M ctrl -k Up -m ctrl -m logo
 Super+Ctrl+Down|Next occupied workspace on every screen|-M logo -M ctrl -k Down -m ctrl -m logo
 
+Super+B|Show or hide Bitwarden|-M logo -k b -m logo
 Super+D|Next empty workspace on this screen|-M logo -k d -m logo
 Super+E|Files|-M logo -k e -m logo
 Super+F|Maximize, keep the gaps|-M logo -k f -m logo

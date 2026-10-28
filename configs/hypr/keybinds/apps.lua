@@ -11,7 +11,9 @@ hl.bind(mod .. " + Return", hl.dsp.exec_cmd(tty))
 hl.bind(modshi .. " + A", hl.dsp.exec_cmd(bin .. [[/launch-app.sh --match both 'grok[- ]?bot' setsid grok-bot]]))
 hl.bind(modshi .. " + CTRL + A", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^grok-cli$' setsid kitty --class grok-cli --title grok -e /home/willyfresh/.grok/bin/grok]]))
 
+hl.bind(mod .. " + B", hl.dsp.exec_cmd(bin .. [[/launch-app.sh --show-hide '^bitwarden$' setsid bitwarden-desktop]]))
 hl.bind(modshi .. " + B", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-boardgamearena.com.*Default' 'https://boardgamearena.com/play']]))
+
 
 hl.bind(modshi .. " + C", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-calendar.google.com.*Default' 'https://calendar.google.com/']]))
 
@@ -36,6 +38,7 @@ hl.bind(modshi .. " + K", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'ch
 
 hl.bind(modshi .. " + L", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-maps.google.com.*Default' 'https://maps.google.com/']]))
 
+hl.bind(mod .. " + ALT + M", hl.dsp.exec_cmd(bin .. "/waybar-media.py menu"))
 hl.bind(modshi .. " + M", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-messages.google.com.*Default' 'https://messages.google.com/web/conversations']]))
 
 hl.bind(modshi .. " + N", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --focus 'chrome-feedly.com.*Default' 'https://feedly.com/i/my']]))
@@ -62,5 +65,4 @@ hl.bind(modshi .. " + CTRL + Y", hl.dsp.exec_cmd(bin .. [[/launch-webapp.sh --fo
 
 hl.bind(modshi .. " + U", hl.dsp.exec_cmd(bin .. [[/launch-app.sh '^vlc$' setsid vlc]]))
 hl.bind(mod .. " + U", hl.dsp.exec_cmd(bin .. "/waybar-updates.py detail"))
-hl.bind(mod .. " + ALT + M", hl.dsp.exec_cmd(bin .. "/waybar-media.py menu"))
 

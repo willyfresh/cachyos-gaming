@@ -5,11 +5,17 @@ local bin = shared.bin
 hl.on("hyprland.start", function()
 	hl.exec_cmd("dropbox start -i")
 	hl.exec_cmd("bitwarden-desktop")
-	-- Light glyph: the tray chip is blue. The bracket keeps pgrep from matching this shell.
-	hl.exec_cmd(
-		"sh -c 'pgrep -f \"[t]ailscale systray\" >/dev/null || exec tailscale systray --theme=light'"
-	)
 	hl.exec_cmd("sh -c 'pgrep -x waybar >/dev/null || exec waybar'")
+	-- Light glyph: the tray chip is blue. The bracket keeps pgrep from matching this shell.
+	-- Waybar owns the tray watcher. Starting the icon before that watcher exists
+	-- makes it exit, and nothing brings it back until the next login.
+	hl.exec_cmd(
+		"sh -c 'pgrep -f \"[t]ailscale systray\" >/dev/null && exit 0; "
+			.. "i=0; while [ \"$i\" -lt 50 ]; do "
+			.. "busctl --user status org.kde.StatusNotifierWatcher >/dev/null 2>&1 && break; "
+			.. "i=$((i+1)); sleep 0.2; done; "
+			.. "exec tailscale systray --theme=light'"
+	)
 	hl.exec_cmd("sh -c 'pgrep -x mako >/dev/null || exec mako'")
 	hl.exec_cmd("sh -c 'pgrep -x hypridle >/dev/null || exec hypridle'")
 	-- One row per copy. An image wins over the text that came with it.

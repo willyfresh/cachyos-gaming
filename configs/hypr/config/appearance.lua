@@ -19,6 +19,13 @@ hl.config({
 		active_opacity = 1.0,
 		inactive_opacity = 0.7,
 		fullscreen_opacity = 1.0,
+		-- One variant for the whole compositor. It only shows where a window
+		-- is transparent: kitty's background, and the VS Code opacity rule.
+		-- drops is the rain-on-glass variant.
+		blur = {
+			enabled = true,
+			variant = "drops",
+		},
 	},
 	misc = {
 		disable_hyprland_logo = true,

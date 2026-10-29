@@ -16,6 +16,14 @@ hl.window_rule({
     center = true,
 })
 
+-- Whole window, including text. override so inactive_opacity does not stack.
+-- Fullscreen stays solid. Class is the running VS Code window, not "Code".
+hl.window_rule({
+    name = "blur-vscode",
+    match = { class = "^(code|com\\.microsoft\\.VSCode)$" },
+    opacity = "0.88 override 0.88 override 1.0 override",
+})
+
 -- Other rules: add them for actual behavior you want
 -- Useful candidates for your setup are:
 

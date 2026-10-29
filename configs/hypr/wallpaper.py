@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Fractal wallpaper behind every Hyprland screen. One process, background layer.
+"""One image behind every Hyprland screen. One process, background layer.
 
-The picture is chosen by ~/.local/state/hypr/wallpaper (fall, greens, sky,
-relaxing). Super+Shift+Return writes that file and restarts this process.
+The path is one line in ~/.local/state/hypr/wallpaper. Super+Shift+Return
+writes that file and restarts this process. The picture itself stays
+wherever it already lives.
 """
 
 import fcntl
@@ -17,29 +18,21 @@ gi.require_version("Gdk", "3.0")
 gi.require_version("GtkLayerShell", "0.1")
 from gi.repository import Gdk, GdkPixbuf, Gtk, GtkLayerShell
 
-WALLPAPERS = Path(__file__).resolve().parent / "wallpapers"
-NAMES = {
-    "fall": "fall-fractal.png",
-    "greens": "greens-fractal.png",
-    "sky": "sky-fractal.png",
-    "relaxing": "relaxing-fractal.png",
-}
 STATE = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state")) / "hypr" / "wallpaper"
-LOCK = Path("/tmp/hypr-fall-wallpaper.lock")
+LOCK = Path("/tmp/hypr-wallpaper.lock")
 
 
 def chosen_image():
-    name = "fall"
     try:
         picked = STATE.read_text(encoding="utf-8").strip()
     except OSError:
-        picked = ""
-    if picked in NAMES:
-        name = picked
-    path = WALLPAPERS / NAMES[name]
-    if not path.is_file():
-        path = WALLPAPERS / NAMES["fall"]
-    return path
+        return None
+    if not picked:
+        return None
+    path = Path(picked).expanduser()
+    if path.is_file():
+        return path
+    return None
 
 
 def already_running():
@@ -78,12 +71,20 @@ class Wall(Gtk.Window):
 
 def main():
     if already_running():
-        return
+        return 0
     image = chosen_image()
+    if image is None:
+        print("wallpaper: state file has no image path", file=sys.stderr)
+        return 1
     display = Gdk.Display.get_default()
-    for i in range(display.get_n_monitors()):
-        Wall(display.get_monitor(i), image).show_all()
+    try:
+        for i in range(display.get_n_monitors()):
+            Wall(display.get_monitor(i), image).show_all()
+    except Exception as exc:
+        print(f"wallpaper: {image}: {exc}", file=sys.stderr)
+        return 1
     Gtk.main()
+    return 0
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ That installs `packages/extra.txt` (CachyOS/Arch repos) and `packages/aur.txt` (
 | `configs/waybar` | Hyprland bar (live, via symlink). Bottom of both screens |
 | `scripts/install-hyprland.sh` | From the tty prompt: install Hyprland and link that config |
 | `configs/bash_profile` | tty1 login stays a shell (live `~/.bash_profile`, via symlink). Type `start-hyprland` |
-| `configs/hypr/wallpapers/` | Fractal wallpapers. Super+Shift+Return picks one |
+| `scripts/hypr-wallpaper.sh` | Super+Shift+Return. Pick any image. The path stays in `~/.local/state/hypr/wallpaper` |
 | `configs/keyd` | Keychron media and knob keys (`/etc/keyd/default.conf`). Super alone does nothing |
 | `configs/nvim` | LazyVim (live `~/.config/nvim`, via symlink). Plugin downloads stay in `~/.local/share/nvim` |
 | `configs/mimeapps.list` | Default apps: Zathura for PDFs, swayimg for images, VLC for video and audio, Kdenlive for `.kdenlive`, Chrome for the web |
@@ -56,8 +56,9 @@ Repo packages go through pacman into `packages/extra.txt`. Anything not in a syn
 
 **Edit configs:** change files under `configs/`. The linked ones are live. Commit when it feels right.
 
-**Wallpapers:** Super+Shift+Return opens the picker. Files live in
-`configs/hypr/wallpapers/`.
+**Wallpapers:** Super+Shift+Return opens a file chooser in
+`~/Dropbox/Pictures/Wallpaper`. The chosen path is stored in
+`~/.local/state/hypr/wallpaper`. Nothing is copied into this repo.
 
 **OS notes:** dump obstacles and wants in `os-notes.txt` (plain text, no
 structure). Hand the file over. Open items go on `records/next.md` and

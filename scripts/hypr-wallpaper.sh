@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
-# Super+Shift+Return. Pick a color from configs/hypr/wallpapers.
+# Super+Shift+Return. Pick any image. The path is stored outside the repo.
 set -euo pipefail
 
 state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/hypr"
 state_file="$state_dir/wallpaper"
 wallpaper_py="/home/willyfresh/Projects/cachyos-gaming/configs/hypr/wallpaper.py"
+pictures="${HOME}/Dropbox/Pictures/Wallpaper"
 
 wallpaper_pids() {
     ps -C python3 -o pid=,args= | awk '/\/configs\/hypr\/wallpaper\.py/ {print $1}'
 }
 
 apply() {
-    local name=$1
+    local path=$1
+    if [[ ! -f $path ]]; then
+        echo "not a file: $path" >&2
+        exit 1
+    fi
+    path=$(realpath "$path")
     mkdir -p "$state_dir"
-    printf '%s\n' "$name" >"$state_file"
+    printf '%s\n' "$path" >"$state_file"
     local pid
     for pid in $(wallpaper_pids); do
         kill "$pid" 2>/dev/null || true
@@ -27,42 +33,20 @@ apply() {
 }
 
 if [[ $# -gt 0 ]]; then
-    case $1 in
-        fall | greens | sky | relaxing) apply "$1" ;;
-        *)
-            echo "usage: hypr-wallpaper.sh [fall|greens|sky|relaxing]" >&2
-            exit 1
-            ;;
-    esac
+    apply "$1"
     exit 0
 fi
 
-current=fall
-if [[ -f $state_file ]]; then
-    current=$(tr -d '[:space:]' <"$state_file")
+if [[ ! -d $pictures ]]; then
+    pictures="${HOME}/Dropbox"
 fi
 
-mark() {
-    if [[ $1 == "$current" ]]; then
-        printf '%s  (on)\n' "$2"
-    else
-        printf '%s\n' "$2"
-    fi
-}
-
 choice=$(
-    {
-        mark fall Fall
-        mark greens Greens
-        mark sky Sky
-        mark relaxing Relaxing
-    } | fuzzel --dmenu --prompt "Wallpaper  " --placeholder "color" --width 28 --lines 4
+    zenity --file-selection \
+        --title="Wallpaper" \
+        --filename="${pictures}/" \
+        --file-filter="Images | *.png *.jpg *.jpeg *.webp *.gif *.PNG *.JPG *.JPEG *.WEBP *.GIF" \
+        --file-filter="All | *"
 ) || exit 0
 
-case ${choice%%  (on)} in
-    Fall) apply fall ;;
-    Greens) apply greens ;;
-    Sky) apply sky ;;
-    Relaxing) apply relaxing ;;
-    *) exit 0 ;;
-esac
+apply "$choice"

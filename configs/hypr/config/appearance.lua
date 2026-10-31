@@ -19,12 +19,10 @@ hl.config({
 		active_opacity = 1.0,
 		inactive_opacity = 0.7,
 		fullscreen_opacity = 1.0,
-		-- One variant for the whole compositor. It only shows where a window
-		-- is transparent: kitty's background, and the VS Code opacity rule.
-		-- drops is the rain-on-glass variant.
+		-- Default kawase blur. It only shows through transparent pixels:
+		-- kitty's background, the VS Code opacity rule, and unfocused windows.
 		blur = {
 			enabled = true,
-			variant = "drops",
 		},
 	},
 	misc = {
